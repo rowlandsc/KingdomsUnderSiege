@@ -20,6 +20,7 @@ public class Minion_Basic : MonoBehaviour, IMinion_Attack {
      */ 
     private Minion_Stats _stats;
     private NavMeshAgent _navMeshAgent;
+    private Minions_State _state;
 
     /**
      * Called when Minion is created.
@@ -28,6 +29,7 @@ public class Minion_Basic : MonoBehaviour, IMinion_Attack {
 	void Start () {
         this._stats = GetComponent<Minion_Stats>();
         this._navMeshAgent = GetComponent<NavMeshAgent>();
+        this._state = GetComponent<Minions_State>();
 	}
 
     /**
@@ -54,6 +56,9 @@ public class Minion_Basic : MonoBehaviour, IMinion_Attack {
 
             // Start pursuing the main target again
             this._navMeshAgent.SetDestination(this.Target.position);
+
+            //Set state to walking
+            this._state.State = MINION_STATE.WALKING;
         }
     }
 }
