@@ -1,16 +1,30 @@
 fileFormatVersion: 2
-guid: 1ffaf35994a8d1e44bb411300d730095
-timeCreated: 1448253202
+guid: b7b06b80f0a174449bf98402de95aab3
+timeCreated: 1448527087
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: TowerBase2
-    9500000: //RootNode
+    100000: ArrowBase
+    100002: ArrowFeathers
+    100004: ArrowHead
+    100006: //RootNode
+    400000: ArrowBase
+    400002: ArrowFeathers
+    400004: ArrowHead
+    400006: //RootNode
+    2300000: ArrowBase
+    2300002: ArrowFeathers
+    2300004: ArrowHead
+    2300006: //RootNode
+    3300000: ArrowBase
+    3300002: ArrowFeathers
+    3300004: ArrowHead
+    3300006: //RootNode
+    4300000: ArrowBase
+    4300002: ArrowFeathers
+    4300004: ArrowHead
+    4300006: ArrowCombined
   materials:
     importMaterials: 1
     materialName: 0
@@ -69,7 +83,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
