@@ -23,7 +23,11 @@ public class TowerPlacementTester : MonoBehaviour {
 
         TowerToPlace = tower;
         _meshFilter.mesh = TowerToPlace.GetComponent<MeshFilter>().sharedMesh;
-        _meshRenderer.material = ValidMaterial;
+        Material[] matlist = TowerToPlace.GetComponent<MeshRenderer>().sharedMaterials;
+        for (int i=0; i<matlist.Length; i++) {
+            matlist.SetValue(ValidMaterial, i);
+        }
+        _meshRenderer.sharedMaterials = matlist;
 
         _mapCircleDrawer.CircleRadius = TowerToPlace.Radius;
         _mapCircleDrawer.GameMap = GameMap;
@@ -35,10 +39,18 @@ public class TowerPlacementTester : MonoBehaviour {
         if (TowerPlacer.Instance.TowerPlaceModeOn) {
             transform.position = TowerPlacer.Instance.TowerPlaceLocation;
             if (TowerPlacer.Instance.TowerPlaceLocationValid) {
-                _meshRenderer.material = ValidMaterial;
+                Material[] matlist = _meshRenderer.sharedMaterials;
+                for (int i = 0; i < matlist.Length; i++) {
+                    matlist.SetValue(ValidMaterial, i);
+                }
+                _meshRenderer.sharedMaterials = matlist;
             }
             else {
-                _meshRenderer.material = InvalidMaterial;
+                Material[] matlist = _meshRenderer.sharedMaterials;
+                for (int i = 0; i < matlist.Length; i++) {
+                    matlist.SetValue(InvalidMaterial, i);
+                }
+                _meshRenderer.sharedMaterials = matlist;
             }
             if (!_mapCircleDrawer.CircleIsVisible()) {
                 _mapCircleDrawer.SetCircleVisible(true);
