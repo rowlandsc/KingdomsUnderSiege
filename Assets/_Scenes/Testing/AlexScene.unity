@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e96a1433be09d4588db4c8b04f4fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameMap: {fileID: 2068379484}
+  TowerList: []
   TowerPlaceTesterPrefab: {fileID: 118888, guid: a6d427c314d7957468c5ecdd509a1550,
     type: 2}
   TowerPlaceTester: {fileID: 0}
