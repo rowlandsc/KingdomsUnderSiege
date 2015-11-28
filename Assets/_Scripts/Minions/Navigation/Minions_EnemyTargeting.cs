@@ -5,7 +5,6 @@ using System.Collections;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Minions_State))]
 [RequireComponent(typeof(Minions_Navigation))]
-[RequireComponent(typeof(IMinion_Attack))]
 /**
  * A class for how a Minion targets an opponent.
  */
@@ -60,9 +59,10 @@ public class Minions_EnemyTargeting : MonoBehaviour
         }
 
         // If an enemy is found, attack the first one found.
-        if (_enemiesFound.Length > ZERO && this._state.State != MINION_STATE.ATTACKING){
+        if (this._enemiesFound.Length > ZERO && this._state.State != MINION_STATE.ATTACKING){
+            Debug.Log("Found " + this._enemiesFound[0]);
             // Go to first target found
-            this._navMeshAgent.SetDestination(this._enemiesFound[ZERO].gameObject.transform.position);
+            this._navMeshAgent.SetDestination(this._enemiesFound[ZERO].transform.position);
 
             // Set state to attacking
             this._state.State = MINION_STATE.ATTACKING;

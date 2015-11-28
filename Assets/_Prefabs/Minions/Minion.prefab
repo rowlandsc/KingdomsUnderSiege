@@ -14,11 +14,11 @@ GameObject:
   - 195: {fileID: 19502510}
   - 114: {fileID: 11434540}
   - 54: {fileID: 5469988}
-  - 65: {fileID: 6540582}
   - 114: {fileID: 11430604}
   - 114: {fileID: 11438120}
   - 114: {fileID: 11492280}
   - 114: {fileID: 11424742}
+  - 114: {fileID: 11461648}
   m_Layer: 8
   m_Name: Minion
   m_TagString: Minion
@@ -84,18 +84,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6540582
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6, y: 3, z: 6}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11424742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,7 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DetectionRange: 8
-  AttackTarget: Tower
   TargetEnemy:
     serializedVersion: 2
     m_Bits: 512
@@ -135,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c172650e31503ed418a8065221ae8c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveTarget: {fileID: 0}
+  MoveTarget: HeroPlayerEndTarget
 --- !u!114 &11438120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,7 +134,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1497d574395e5fe48bad1eda885e4f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
+--- !u!114 &11461648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd0fd9291b0ac648a2284198be2f610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitPoints: 20
 --- !u!114 &11492280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +200,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: MoveTarget
+      value: HeroPlayerEndTarget
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196462}
