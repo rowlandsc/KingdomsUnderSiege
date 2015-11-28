@@ -7,7 +7,7 @@ using System.Collections;
  * This is not intended to be a final product script.
  */
 public class TEST_HEALTH : MonoBehaviour {
-    public float Health = 20;
+    public float Health = 20; 
 
 	// Use this for initialization
 	void Start () {

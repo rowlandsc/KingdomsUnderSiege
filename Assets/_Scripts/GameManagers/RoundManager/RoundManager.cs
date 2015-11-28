@@ -52,10 +52,12 @@ public class RoundManager : MonoBehaviour{
         
         // If it doesn't already exist, create it
         // Otherwise destroy it
-        if (!Instance)
+        if (Instance == null){
             Instance = this;
-        else
+        }
+        else{
             Destroy(this);
+        }
 
         // Start the game
         this.StartGame();
@@ -183,6 +185,7 @@ public class RoundManager : MonoBehaviour{
      */
     private void EndGame(){
         // TODO: END GAME FUNCTION
+        Time.timeScale = 0;
     }
 
     /**
