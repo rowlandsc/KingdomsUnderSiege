@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Minion_Stats))]
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Minions_State))]
+[RequireComponent(typeof(Minions_Navigation))]
+[RequireComponent(typeof(IMinion_Attack))]
 /**
  * A class for how a Minion targets an opponent.
  */
@@ -11,10 +16,8 @@ public class Minions_EnemyTargeting : MonoBehaviour
     /**
      * Public Variables
      * DetectionRange - The range in which the Minion will detect enemies
-     * AttackTarget - The tag on the enemy it should be attacking
      */
     public float DetectionRange;
-    public string AttackTarget;
     public LayerMask TargetEnemy;
 
     /**
@@ -26,7 +29,6 @@ public class Minions_EnemyTargeting : MonoBehaviour
      */
     private Minion_Stats _stats;
     private IMinion_Attack _attack;
-    private BoxCollider _attackRange;
     private NavMeshAgent _navMeshAgent;
     private Collider[] _enemiesFound;
     private Minions_State _state;
@@ -39,9 +41,7 @@ public class Minions_EnemyTargeting : MonoBehaviour
     {
         this._stats = GetComponent<Minion_Stats>();
         this._navMeshAgent = GetComponent<NavMeshAgent>();
-        this._attackRange = GetComponent<BoxCollider>();
         this._navMeshAgent.stoppingDistance = this._stats.AttackRange;
-        this._attackRange.size = new Vector3(this.DetectionRange, this.DetectionRange, this.DetectionRange);
         this._attack = GetComponent<IMinion_Attack>();
         this._state = GetComponent<Minions_State>();
     }

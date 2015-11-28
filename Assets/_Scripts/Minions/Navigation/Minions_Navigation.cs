@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(NavMeshAgent))]
 /**
  * A class to handle the Minion navigation.
  * Not quited fully finished, but a good basic start.

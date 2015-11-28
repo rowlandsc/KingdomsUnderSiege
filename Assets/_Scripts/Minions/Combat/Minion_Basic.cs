@@ -1,17 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof(Minion_Stats))]
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Minions_State))]
+[RequireComponent(typeof(Minions_Navigation))]
 /**
  * The basic Minion implementation.
  * Has a basic melee attack.
  */
 public class Minion_Basic : MonoBehaviour, IMinion_Attack {
-
-    /**
-     * Public Variables:
-     * Target - The end target of the minion
-     */
-    public Transform Target;
 
     /**
      * Private Variables
@@ -21,6 +19,7 @@ public class Minion_Basic : MonoBehaviour, IMinion_Attack {
     private Minion_Stats _stats;
     private NavMeshAgent _navMeshAgent;
     private Minions_State _state;
+    private Transform _endTarget;
 
     /**
      * Called when Minion is created.
@@ -30,6 +29,7 @@ public class Minion_Basic : MonoBehaviour, IMinion_Attack {
         this._stats = GetComponent<Minion_Stats>();
         this._navMeshAgent = GetComponent<NavMeshAgent>();
         this._state = GetComponent<Minions_State>();
+        this._endTarget = GetComponent<Minions_Navigation>().MoveTarget;
 	}
 
     /**
@@ -55,7 +55,7 @@ public class Minion_Basic : MonoBehaviour, IMinion_Attack {
         else {
 
             // Start pursuing the main target again
-            this._navMeshAgent.SetDestination(this.Target.position);
+            this._navMeshAgent.SetDestination(this._endTarget.position);
 
             //Set state to walking
             this._state.State = MINION_STATE.WALKING;
