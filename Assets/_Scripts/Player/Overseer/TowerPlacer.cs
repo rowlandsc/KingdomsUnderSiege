@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class TowerPlacer : MonoBehaviour {
 
     public static TowerPlacer Instance;
 
+    public Map GameMap = null;
+    public List<Tower> TowerList;
     public GameObject TowerPlaceTesterPrefab = null;
     public GameObject TowerPlaceTester = null;
     public bool TowerPlaceModeOn = false;
@@ -12,6 +14,8 @@ public class TowerPlacer : MonoBehaviour {
     public Vector3 TowerPlaceLocation;
     public GameObject TowerToPlace = null;
     public GameObject TestSphere = null;
+
+    private bool _lastTowerPlaceModeOn = false;
 
     void Awake() {
         if (Instance == null) {
@@ -31,29 +35,54 @@ public class TowerPlacer : MonoBehaviour {
             TowerPlaceModeOn = !TowerPlaceModeOn;
         }
 
-        if (TowerPlaceModeOn && Input.GetMouseButtonUp(0)) {
-            TowerPlaceTester.GetComponent<TowerPlacementTester>().PlaceTower();
-            TowerPlaceModeOn = false;
-        }
-
         if (TowerPlaceModeOn) {
-            //if (TestSphere) {
             if (!TowerPlaceTester) {
                 TowerPlaceTester = Instantiate(TowerPlaceTesterPrefab);
-                TowerPlaceTester.GetComponent<TowerPlacementTester>().Init(TowerToPlace.GetComponent<Tower>());
+                TowerPlaceTester.GetComponent<TowerPlacementTester>().Init(GameMap, TowerToPlace.GetComponent<Tower>());              
             }
 
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                LayerMask mask = LayerMask.GetMask("Map");
-                RaycastHit hit;
-                Physics.Raycast(ray, out hit, Camera.main.transform.position.y * 2, mask);
-                if (hit.collider != null) {
-                    //TestSphere.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y));
-                    //TestSphere.transform.position = hit.point;
-                    TowerPlaceLocation = hit.point;
+            if (!_lastTowerPlaceModeOn) {
+                foreach (Tower t in TowerList) {
+                    t.GetComponent<MapCircleDrawer>().SetCircleVisible(true);
                 }
-                Debug.DrawRay(ray.origin, ray.direction * Camera.main.transform.position.y * 2, Color.green);
-            //}
+            }
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            string layer = LayerMask.LayerToName(GameMap.gameObject.layer);
+            LayerMask mask = LayerMask.GetMask(layer);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit, Camera.main.transform.position.y * 4, mask);
+            if (hit.collider != null) {
+                TowerPlaceLocation = hit.point;
+            }
+            Debug.DrawRay(ray.origin, ray.direction * Camera.main.transform.position.y * 2, Color.green);
+
+            TowerPlaceLocationValid = true;
+            foreach (Tower t in TowerList) {
+                float minDistance = TowerPlaceTester.GetComponent<TowerPlacementTester>().TowerToPlace.Radius + t.Radius;
+                if (Vector2.Distance(new Vector2(TowerPlaceLocation.x, TowerPlaceLocation.z), new Vector2(t.transform.position.x, t.transform.position.z)) < minDistance) {
+                    TowerPlaceLocationValid = false;
+                    break;
+                }
+            }
+
+            if (Input.GetMouseButtonUp(0)) {
+                if (TowerPlaceLocationValid) {
+                    Tower tower = TowerPlaceTester.GetComponent<TowerPlacementTester>().PlaceTower();
+                    tower.GetComponent<MapCircleDrawer>().UpdateCircle();
+                    TowerList.Add(tower);
+                    TowerPlaceModeOn = false;
+                }
+            }
         }
-	}
+        if (!TowerPlaceModeOn) {
+            if (_lastTowerPlaceModeOn) {
+                foreach (Tower t in TowerList) {
+                    t.GetComponent<MapCircleDrawer>().SetCircleVisible(false);
+                }
+            }
+        }
+
+        _lastTowerPlaceModeOn = TowerPlaceModeOn;
+    }
 }

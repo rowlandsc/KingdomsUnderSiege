@@ -60,14 +60,14 @@ public class Map : MonoBehaviour {
             for (int i = 0; i < GridHeight; i++) {
                 Cell[] list = { };
                 for (int j = 0; j < GridWidth; j++) {
-                    Vector3 xzpos = transform.position + new Vector3(CellWidth * j, 100, CellHeight * i);
+                    /*Vector3 xzpos = transform.position + new Vector3(CellWidth * j, 100, CellHeight * i);
                     Ray ray = new Ray(xzpos, Vector3.down);
                     RaycastHit hit;
-                    Terrain.Raycast(ray, out hit, 200);
+                    Terrain.Raycast(ray, out hit, 200);*/
 
                     Cell c = new Cell();
                     c.map = this;
-                    c.pos = hit.point + new Vector3(0, yOffset, 0);
+                    c.pos = GetMapPositionAtPoint(CellWidth * j, CellHeight * i) + new Vector3(0, yOffset, 0);
                     ArrayUtility.Add<Cell>(ref list, c);
                 }
                 ArrayUtility.Add<Cell[]>(ref _grid, list);
@@ -77,6 +77,30 @@ public class Map : MonoBehaviour {
         else {
             Debug.Log("Can't update grid: no terrain given.");
         }
+    }
+
+    public Vector3 GetMapPositionAtPoint(float x, float z) {
+        float TEST_HEIGHT = 100;
+
+        if (x < Terrain.transform.position.x)
+            x = Terrain.transform.position.x;
+        if (x > Terrain.transform.position.x + Terrain.terrainData.size.x - .1f)
+            x = Terrain.transform.position.x + Terrain.terrainData.size.x - .1f;
+        if (z < Terrain.transform.position.z)
+            z = Terrain.transform.position.z;
+        if (z > Terrain.transform.position.z + Terrain.terrainData.size.z - .1f)
+            z = Terrain.transform.position.z + Terrain.terrainData.size.z - .1f;
+
+        if (Terrain) {
+            Vector3 xzpos = transform.position + new Vector3(x, TEST_HEIGHT, z);
+            Ray ray = new Ray(xzpos, Vector3.down);
+            RaycastHit hit;
+            Terrain.Raycast(ray, out hit, TEST_HEIGHT * 2);
+
+            return hit.point;
+        }
+
+        return new Vector3(x, TEST_HEIGHT, z);
     }
 }
 
