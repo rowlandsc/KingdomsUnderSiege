@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Tower
   - Minion
+  - Super
+  - Fire
+  - Enemy
+  - MagicBall
   layers:
   - Default
   - TransparentFX
@@ -18,6 +22,9 @@ TagManager:
   - HeroPlayer
   - OverseerPlayer
   - Map
+  - Super
+  - Player
+  - MagicBall
   - 
   - 
   - 
