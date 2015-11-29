@@ -4,7 +4,7 @@ using System.Collections;
 public class HealthBar : MonoBehaviour {
 
 	public Transform camera;
-	private float ratio=1;
+	private float ratio=0.02453401f;
 
 	// Use this for initialization
 	void Start () {
@@ -18,10 +18,8 @@ public class HealthBar : MonoBehaviour {
 
 		ratio = (OverseerMinion.hp)/100;
 
-		print (ratio);
-
 		Vector3 temp = this.transform.localScale;
-		temp.x = -1*ratio;
+		temp.x = -0.02453401f*ratio;
 		this.transform.localScale = temp;
 
 	}
