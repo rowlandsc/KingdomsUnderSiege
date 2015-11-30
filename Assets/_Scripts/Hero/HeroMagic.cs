@@ -6,13 +6,13 @@ public class HeroMagic : MonoBehaviour {
 	public GameObject smoke;
 	public GameObject spark;
 	public GameObject Magic;
-	public float magicuse = 10;
+	public float magicuse = 10f;
 
 	public GameObject MagicPrefeb;
 	public GameObject hero;
-	static public float magicSpeed = 25;
-	static public float magicDistance = 15;
-	static public float magicDamage = 40;
+	static public float magicSpeed = 25f;
+	static public float magicDistance = 15f;
+	static public float magicDamage = 40f;
 
 	
 

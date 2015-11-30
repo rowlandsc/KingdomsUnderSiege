@@ -13,7 +13,7 @@ GameObject:
   - 54: {fileID: 5406408}
   - 135: {fileID: 13584464}
   - 114: {fileID: 11479072}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: MagicPrefeb
   m_TagString: MagicBall
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 4: {fileID: 476544}
   - 198: {fileID: 19861720}
   - 199: {fileID: 19966790}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 4: {fileID: 429776}
   - 198: {fileID: 19828582}
   - 199: {fileID: 19930712}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecf0625c55af409482deae4742c8a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemy: OverseerPlayer
 --- !u!135 &13584464
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -3279,7 +3280,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 10
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Enemy.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Enemy
+      value: OverseerPlayer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
