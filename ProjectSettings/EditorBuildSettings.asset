@@ -7,5 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/_Scenes/Testing/TestScene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Testing/AlexScene.unity
+  - enabled: 1
+    path: Assets/_Scenes/Game/HeroMainScene.unity
