@@ -35,6 +35,8 @@ public class Map : MonoBehaviour {
         
 	}
 
+#if UNITY_EDITOR
+
     void OnDrawGizmos() {
         if (ShowGridDebug && !ShowGrid) {
             Gizmos.color = Color.red;
@@ -78,6 +80,8 @@ public class Map : MonoBehaviour {
             Debug.Log("Can't update grid: no terrain given.");
         }
     }
+
+#endif
 
     public Vector3 GetMapPositionAtPoint(float x, float z) {
         float TEST_HEIGHT = 100;
