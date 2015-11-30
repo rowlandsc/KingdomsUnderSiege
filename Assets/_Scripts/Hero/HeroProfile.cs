@@ -38,7 +38,7 @@ public class HeroProfile : MonoBehaviour {
 
 
 	void OnGUI(){
-		GUI.Label(new Rect(10f, 10f, 100f, 50f), "HP "+ hp.ToString());
+		GUI.Label(new Rect(10f, 10f, 100f, 50f), "HP "+ GetComponent<Health>().HitPoints.ToString());
 		GUI.Label(new Rect(10f, 20f, 100f, 50f), "MP "+ mp.ToString());
 	}
 }

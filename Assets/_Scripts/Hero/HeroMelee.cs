@@ -5,6 +5,8 @@ public class HeroMelee : MonoBehaviour {
 
 	public float meleedamage=100;
 	public float meleeDistance = 0.5f;
+    public LayerMask Enemy;
+
 	private bool pressyes = false;
 
 
@@ -29,10 +31,10 @@ public class HeroMelee : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
 		
-		if(collision.gameObject.tag=="Enemy"&&pressyes){
+		if(collision.gameObject.layer == this.Enemy&&pressyes){
 
 			print ("you hit it!");
-			OverseerMinion.hp-=meleedamage;
+			GetComponent<Health>().HitPoints-=meleedamage;
 			
 		}
 

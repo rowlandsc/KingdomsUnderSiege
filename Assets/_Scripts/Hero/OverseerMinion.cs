@@ -3,7 +3,7 @@ using System.Collections;
 
 public class OverseerMinion : MonoBehaviour {
 	
-	static public float hp=100;
+    public float hp;
 
 
 	public GameObject OnFire;
@@ -19,7 +19,7 @@ public class OverseerMinion : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        
 
 
 	}
@@ -27,9 +27,9 @@ public class OverseerMinion : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+        hp = GetComponent<Health>().HitPoints;
 	
-		if(hp<80 && smokeyes){
+		if(hp < 80 && smokeyes){
 			clone = (GameObject)Instantiate(Smoke, this.gameObject.transform.position, Quaternion.identity) as GameObject;
 			smokeyes=false;
 		}

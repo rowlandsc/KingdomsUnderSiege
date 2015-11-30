@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MagicBallAttack : MonoBehaviour {
-
+    public string Enemy;
 	private float timer;
 
 	// Use this for initialization
@@ -21,11 +21,12 @@ public class MagicBallAttack : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
-
-		if(collision.gameObject.tag=="Enemy"){
-
-			OverseerMinion.hp-=HeroMagic.magicDamage;
-
+        
+		if(collision.gameObject.tag == Enemy){
+            Debug.Log("MAGICBALL HIT THE " + collision.gameObject.name + "\n" +
+                "It did " + HeroMagic.magicDamage + " to it.\n The health went from " + collision.gameObject.GetComponent<Health>().HitPoints);
+			collision.gameObject.GetComponent<Health>().HitPoints-=HeroMagic.magicDamage;
+            Debug.Log(" to " + collision.gameObject.GetComponent<Health>().HitPoints);
 		}
 		Destroy(this.gameObject);
 	}
