@@ -34,7 +34,7 @@ public class HeroMelee : MonoBehaviour {
 		if(collision.gameObject.layer == this.Enemy&&pressyes){
 
 			print ("you hit it!");
-			OverseerMinion.hp-=meleedamage;
+			GetComponent<Health>().HitPoints-=meleedamage;
 			
 		}
 
