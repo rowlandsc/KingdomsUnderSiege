@@ -85,6 +85,48 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &836463200
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 18.718605
+      objectReference: {fileID: 0}
+    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .620999992
+      objectReference: {fileID: 0}
+    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 16.0979996
+      objectReference: {fileID: 0}
+    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &948951982
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +139,7 @@ GameObject:
   - 154: {fileID: 948951983}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: IceBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -350,6 +392,7 @@ GameObject:
   - 114: {fileID: 1857816664}
   - 54: {fileID: 1857816668}
   - 114: {fileID: 1857816669}
+  - 114: {fileID: 1857816670}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -432,8 +475,8 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1857816662}
   serializedVersion: 2
-  m_Mass: 1000
-  m_Drag: 1
+  m_Mass: 100
+  m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -454,3 +497,16 @@ MonoBehaviour:
   movespeed: 3
   backwardspeed: 1
   sidespeed: 2
+--- !u!114 &1857816670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1857816662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c274c6c1566a648cd94e4bf9a76d33f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iceball: {fileID: 182594, guid: e546559c4a25d41df8add6cb2ffdc534, type: 2}
+  cooldown: .5

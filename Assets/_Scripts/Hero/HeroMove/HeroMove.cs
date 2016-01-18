@@ -49,6 +49,9 @@ public class HeroMove : MonoBehaviour {
 
 			transform.Translate(-moveDirection * Time.deltaTime* backwardspeed, Space.World);
 		}
+
+
+
 	
 	}
 }

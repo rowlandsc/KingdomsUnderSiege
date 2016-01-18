@@ -9,8 +9,9 @@ TagManager:
   - Super
   - Fire
   - Enemy
+  - IceBall
+  - IceBullet
   - MagicBall
-  - OverseerPlayer
   layers:
   - Default
   - TransparentFX
