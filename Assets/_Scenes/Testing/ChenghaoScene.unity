@@ -85,48 +85,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &836463200
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 18.718605
-      objectReference: {fileID: 0}
-    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: .620999992
-      objectReference: {fileID: 0}
-    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 16.0979996
-      objectReference: {fileID: 0}
-    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 437256, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: fbf69e30cff0e4ebd8af5633df4e5134, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &948951982
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,9 +348,10 @@ GameObject:
   - 65: {fileID: 1857816666}
   - 23: {fileID: 1857816665}
   - 114: {fileID: 1857816664}
-  - 54: {fileID: 1857816668}
   - 114: {fileID: 1857816669}
   - 114: {fileID: 1857816670}
+  - 114: {fileID: 1857816671}
+  - 54: {fileID: 1857816668}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -510,3 +469,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iceball: {fileID: 182594, guid: e546559c4a25d41df8add6cb2ffdc534, type: 2}
   cooldown: .5
+--- !u!114 &1857816671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1857816662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa133c00efd647bea7a81ad57b6196b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icebullet: {fileID: 128786, guid: 6f81d365ec00a4e1abd2f2ec85f5a7dd, type: 2}
+  cooldown: 1
