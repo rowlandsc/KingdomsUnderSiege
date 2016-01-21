@@ -8,6 +8,8 @@ public class HeroMove : MonoBehaviour {
 	public float backwardspeed=1.0f;
 	public float sidespeed=1.0f;
 
+	static public bool CanMove=true;
+
 	private GameObject Maincamera;
 
 	// Use this for initialization
@@ -18,7 +20,7 @@ public class HeroMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKey(KeyCode.W)){
+		if(Input.GetKey(KeyCode.W)&&CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
@@ -26,7 +28,7 @@ public class HeroMove : MonoBehaviour {
 
 			transform.Translate(moveDirection * Time.deltaTime* movespeed, Space.World);
 		}
-		if(Input.GetKey(KeyCode.A)){
+		if(Input.GetKey(KeyCode.A)&&CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.right;
 			moveDirection.y = 0.0f;
@@ -34,7 +36,7 @@ public class HeroMove : MonoBehaviour {
 
 			transform.Translate(-moveDirection * Time.deltaTime* sidespeed, Space.World);
 		}
-		if(Input.GetKey(KeyCode.D)){
+		if(Input.GetKey(KeyCode.D)&&CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.right;
 			moveDirection.y = 0.0f;
@@ -42,16 +44,20 @@ public class HeroMove : MonoBehaviour {
 
 			transform.Translate(moveDirection * Time.deltaTime* sidespeed, Space.World);
 		}
-		if(Input.GetKey(KeyCode.S)){
+		if(Input.GetKey(KeyCode.S)&&CanMove){
 			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);
 
 			transform.Translate(-moveDirection * Time.deltaTime* backwardspeed, Space.World);
 		}
+	}
 
+	static public void EnableMove(){
+		CanMove = true;
+	}
 
-
-	
+	static public void DisableMove(){
+		CanMove = false;
 	}
 }

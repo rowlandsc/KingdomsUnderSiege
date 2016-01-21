@@ -12,6 +12,8 @@ TagManager:
   - IceBall
   - IceBullet
   - MagicBall
+  - OverseerPlayer
+  - Anim
   layers:
   - Default
   - TransparentFX
