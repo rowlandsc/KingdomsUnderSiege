@@ -13,9 +13,9 @@ using System.Collections;
 // keeps camera behind the player and aimed at aiming point
 public class TPSCamera : MonoBehaviour {
 	
-	public Transform player;
+	private Transform player;
 
-	protected Transform aimTarget; // that was public and a gameobject had to be dragged on it. - ben0bi
+	protected  Transform aimTarget; // that was public and a gameobject had to be dragged on it. - ben0bi
 	
 	public float smoothingTime = 10.0f; // it should follow it faster by jumping (y-axis) (previous: 0.1 or so) ben0bi
 	public Vector3 pivotOffset = new Vector3(0.2f, 0.7f,  0.0f); // offset of point from player transform (?) ben0bi
@@ -39,6 +39,7 @@ public class TPSCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		player = GameObject.FindGameObjectWithTag("Player").transform;
 		// [edit] no aimtarget gameobject needs to be placed anymore - ben0bi
 		GameObject g=new GameObject();
 		aimTarget=g.transform;

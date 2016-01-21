@@ -314,7 +314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66bd01d370fd482abcdb44ef44e61ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1857816663}
   smoothingTime: 10
   pivotOffset: {x: 0, y: 0, z: 0}
   camOffset: {x: .400000006, y: .699999988, z: -1.29999995}
@@ -480,5 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa133c00efd647bea7a81ad57b6196b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charingAnim: {fileID: 100006, guid: 60bc526f4be1e044ab9e46340b82ffb3, type: 2}
   icebullet: {fileID: 128786, guid: 6f81d365ec00a4e1abd2f2ec85f5a7dd, type: 2}
-  cooldown: 1
+  holdtime: 3
+  cooldown: 3
