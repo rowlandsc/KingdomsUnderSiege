@@ -14,6 +14,8 @@ public class MegeSecond : MonoBehaviour {
 	private float holdingtime = 0;
 	private float cooldown_timer;
 	private int bullet_shot = 0;
+
+	private GameObject chargingAnim_;
 	
 
 	private GameObject icebullet_clone1,icebullet_clone2,icebullet_clone3,icebullet_clone4,icebullet_clone5,icebullet_clone6,icebullet_clone7;
@@ -30,7 +32,7 @@ public class MegeSecond : MonoBehaviour {
 	
 		if(Input.GetMouseButtonDown(1)&&canAttack)
 		{
-			GameObject chargingAnim_ = Instantiate(charingAnim, this.gameObject.transform.position, transform.rotation) as GameObject;
+			chargingAnim_ = Instantiate(charingAnim, this.gameObject.transform.position, transform.rotation) as GameObject;
 			chargingAnim_.transform.parent = this.gameObject.transform;
 		}
 
@@ -68,16 +70,15 @@ public class MegeSecond : MonoBehaviour {
 
 		if(Input.GetMouseButtonUp(1)&&canAttack){
 
-			GameObject anim=GameObject.FindGameObjectWithTag("Anim");
-			Destroy(anim);
+			Destroy(chargingAnim_);
 
 			holdingtime=0;
 
 			if(bullet_shot>=3){
 
 				Ray ray1 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+0f,Screen.height/2,0));
-				Ray ray2 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+-40f,Screen.height/2,0));
-				Ray ray3 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+40f,Screen.height/2,0));
+				Ray ray2 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2-50f,Screen.height/2,0));
+				Ray ray3 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+50f,Screen.height/2,0));
 				RaycastHit hit1,hit2,hit3;
 
 				if (Physics.Raycast(ray1, out hit1))  {  
@@ -98,8 +99,8 @@ public class MegeSecond : MonoBehaviour {
 
 				if(bullet_shot>=5){
 
-					Ray ray4 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2-60f,Screen.height/2,0));
-					Ray ray5 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+60f,Screen.height/2,0));
+					Ray ray4 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2-75f,Screen.height/2,0));
+					Ray ray5 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+75f,Screen.height/2,0));
 					RaycastHit hit4,hit5;
 
 					if (Physics.Raycast(ray4, out hit4))  {  
@@ -115,8 +116,8 @@ public class MegeSecond : MonoBehaviour {
 
 					if(bullet_shot>=7){
 
-						Ray ray6 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2-80f,Screen.height/2,0));
-						Ray ray7 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+80f,Screen.height/2,0));
+						Ray ray6 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2-100f,Screen.height/2,0));
+						Ray ray7 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+100f,Screen.height/2,0));
 						RaycastHit hit6,hit7;
 
 						if (Physics.Raycast(ray6, out hit6))  {  

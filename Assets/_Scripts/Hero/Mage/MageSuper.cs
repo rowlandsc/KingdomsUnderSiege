@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class MageSuper : MonoBehaviour {
 
 	public GameObject superAnim1;
 	public GameObject superAnim2;
+	public GameObject superBallanim;
+
+	public GameObject[] hits = new GameObject[9];
 
 	private bool Startcooldown = false;
 	public float spelltime=3f;
 	private float real_spelltime=0f;
 
-	private GameObject super1 = new GameObject();
-	private GameObject super2 = new GameObject();
+	private GameObject super1_;
+	private GameObject super2_;
+	private GameObject superBallanim_;
 
 	// Use this for initialization
 	void Start () {
@@ -24,8 +29,19 @@ public class MageSuper : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.R)&&!Startcooldown){
 			Startcooldown=true;
 			HeroMove.DisableMove();
-			super1 = Instantiate(superAnim1, this.transform.position, this.transform.rotation) as GameObject;
-			super2 = Instantiate(superAnim2, this.transform.position, this.transform.rotation) as GameObject;
+
+			hits=GameObject.FindGameObjectsWithTag("Freezed");
+	
+			for(int i = 0; i < hits.Length; i++)
+			{
+				print ("find one");
+				superBallanim_ = Instantiate(superBallanim, this.transform.position+new Vector3(0,40,0), this.transform.rotation) as GameObject;
+				superBallanim_.transform.DOLocalMove(hits[i].transform.position+new Vector3(0,-2f,-0),4f,false);
+
+			}
+
+			super1_ = Instantiate(superAnim1, this.transform.position, this.transform.rotation) as GameObject;
+			super2_ = Instantiate(superAnim2, this.transform.position, this.transform.rotation) as GameObject;
 		}
 
 		if(Startcooldown){
@@ -34,8 +50,8 @@ public class MageSuper : MonoBehaviour {
 			if(real_spelltime>=spelltime){
 				HeroMove.EnableMove();
 
-				Destroy(super1);
-				Destroy(super2);
+				Destroy(super1_);
+				Destroy(super2_);
 				real_spelltime=0f;
 				Startcooldown=false;
 			}

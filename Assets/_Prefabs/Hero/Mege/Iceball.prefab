@@ -80,7 +80,8 @@ GameObject:
   - 33: {fileID: 3314964}
   - 135: {fileID: 13514804}
   - 23: {fileID: 2355156}
-  - 114: {fileID: 11498582}
+  - 54: {fileID: 5482704}
+  - 114: {fileID: 11431886}
   m_Layer: 14
   m_Name: Iceball
   m_TagString: IceBall
@@ -122,8 +123,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.8099995, y: .449999988, z: 16.2399998}
-  m_LocalScale: {x: .280267179, y: .280267179, z: .280267179}
+  m_LocalPosition: {x: 18.8099995, y: .449999988, z: 12.3900003}
+  m_LocalScale: {x: .638121307, y: .638121486, z: .638121486}
   m_Children:
   - {fileID: 417356}
   m_Father: {fileID: 0}
@@ -185,6 +186,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182594}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &5482704
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182594}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &11402094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
---- !u!114 &11498582
+--- !u!114 &11431886
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -205,9 +221,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 182594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4f42620b282e4a019632287496773ef, type: 3}
+  m_Script: {fileID: 11500000, guid: e328607fbb4874b8e9a0cec9d4c4efb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kill_time: 10
 --- !u!135 &13514804
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -215,7 +232,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182594}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: .5

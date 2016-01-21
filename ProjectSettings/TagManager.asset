@@ -11,9 +11,11 @@ TagManager:
   - Enemy
   - IceBall
   - IceBullet
-  - MagicBall
-  - OverseerPlayer
+  - Freezed
   - Anim
+  - Terrain
+  - New Tag
+  - OverseerPlayer
   layers:
   - Default
   - TransparentFX
