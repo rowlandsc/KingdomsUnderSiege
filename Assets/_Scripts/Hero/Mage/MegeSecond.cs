@@ -32,7 +32,7 @@ public class MegeSecond : MonoBehaviour {
 	
 		if(Input.GetMouseButtonDown(1)&&canAttack)
 		{
-			chargingAnim_ = Instantiate(charingAnim, this.gameObject.transform.position, transform.rotation) as GameObject;
+			chargingAnim_ = Instantiate(charingAnim, this.gameObject.transform.position-new Vector3(0,0.4f,0), transform.rotation) as GameObject;
 			chargingAnim_.transform.parent = this.gameObject.transform;
 		}
 

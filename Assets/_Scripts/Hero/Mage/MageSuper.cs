@@ -40,8 +40,8 @@ public class MageSuper : MonoBehaviour {
 
 			}
 
-			super1_ = Instantiate(superAnim1, this.transform.position, this.transform.rotation) as GameObject;
-			super2_ = Instantiate(superAnim2, this.transform.position, this.transform.rotation) as GameObject;
+			super1_ = Instantiate(superAnim1, this.transform.position-new Vector3(0,0.4f,0), this.transform.rotation) as GameObject;
+			super2_ = Instantiate(superAnim2, this.transform.position-new Vector3(0,0.4f,0), this.transform.rotation) as GameObject;
 		}
 
 		if(Startcooldown){
