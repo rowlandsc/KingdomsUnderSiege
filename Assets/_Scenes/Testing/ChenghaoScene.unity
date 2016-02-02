@@ -121,7 +121,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 83382582}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 1e+06
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
@@ -297,7 +297,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 244967784}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 1e+06
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
@@ -473,7 +473,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 525762521}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 1e+06
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
@@ -709,7 +709,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1058626077}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 1e+06
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
@@ -753,7 +753,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1058649592}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 1e+06
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
@@ -797,7 +797,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1113825397}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 1e+06
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
@@ -841,7 +841,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1123755531}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 1e+06
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
@@ -885,7 +885,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1189764476}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 1e+06
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
@@ -995,7 +995,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1469399643}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 1e+06
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothingTime: 10
   pivotOffset: {x: 0, y: 0, z: 0}
-  camOffset: {x: .400000006, y: .699999988, z: -1.29999995}
+  camOffset: {x: 1, y: .699999988, z: -2}
   closeOffset: {x: .349999994, y: 1.70000005, z: 0}
   horizontalAimingSpeed: 200
   verticalAimingSpeed: 100
@@ -1466,7 +1466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa133c00efd647bea7a81ad57b6196b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charingAnim: {fileID: 100006, guid: 60bc526f4be1e044ab9e46340b82ffb3, type: 2}
+  charingAnim: {fileID: 100006, guid: 6eef8fd94177c2b49bcef51b6eac54f3, type: 2}
   icebullet: {fileID: 128786, guid: 6f81d365ec00a4e1abd2f2ec85f5a7dd, type: 2}
   holdtime: 3
   cooldown: 3
