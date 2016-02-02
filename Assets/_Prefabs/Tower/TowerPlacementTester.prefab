@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11415516}
   - 120: {fileID: 12055672}
   - 114: {fileID: 11498842}
+  - 114: {fileID: 11476364}
   m_Layer: 0
   m_Name: TowerPlacementTester
   m_TagString: Untagged
@@ -78,6 +79,38 @@ MonoBehaviour:
   TowerToPlace: {fileID: 0}
   ValidMaterial: {fileID: 2100000, guid: 67b8f90f754d2704f9d0684704654f07, type: 2}
   InvalidMaterial: {fileID: 2100000, guid: e75c88b326e8848419f39df8dbd43e2b, type: 2}
+--- !u!114 &11476364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 166
+    i1: 212
+    i2: 39
+    i3: 195
+    i4: 20
+    i5: 215
+    i6: 149
+    i7: 116
+    i8: 104
+    i9: 197
+    i10: 236
+    i11: 221
+    i12: 80
+    i13: 154
+    i14: 21
+    i15: 80
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &11498842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,6 +175,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: LineWidth
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPlayerAuthority
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

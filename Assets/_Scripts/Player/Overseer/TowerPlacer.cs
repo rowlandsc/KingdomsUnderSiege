@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
-public class TowerPlacer : MonoBehaviour {
+public class TowerPlacer : NetworkBehaviour {
 
     public static TowerPlacer Instance;
 
@@ -22,15 +23,17 @@ public class TowerPlacer : MonoBehaviour {
             Instance = this;
         }
         else {
-            Destroy(this);
+           // Destroy(this);
         }
     }
 
-	void Start() {
-	    
-	}
+    void Start()
+    {
+        this.GameMap = GameObject.Find("Map").GetComponent<Map>();
+    }
 	
 	void Update() {
+        
         if (Input.GetKeyUp(KeyCode.Space)) {
             TowerPlaceModeOn = !TowerPlaceModeOn;
         }
@@ -69,8 +72,8 @@ public class TowerPlacer : MonoBehaviour {
             if (Input.GetMouseButtonUp(0)) {
                 if (TowerPlaceLocationValid) {
                     Tower tower = TowerPlaceTester.GetComponent<TowerPlacementTester>().PlaceTower();
-                    tower.GetComponent<MapCircleDrawer>().UpdateCircle();
-                    TowerList.Add(tower);
+                    //tower.GetComponent<MapCircleDrawer>().UpdateCircle();
+                    //TowerList.Add(tower);
                     TowerPlaceModeOn = false;
                 }
             }

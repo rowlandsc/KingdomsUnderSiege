@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 /**
  *  A class for handling the round/pre-round system.
  */
-public class RoundManager : MonoBehaviour{
+public class RoundManager : NetworkBehaviour{
 
     /**
      * Constants Description
@@ -32,7 +33,10 @@ public class RoundManager : MonoBehaviour{
      * NextPhase - What the next phase will be of the game.
      */
     public static RoundManager Instance = null;
-    public float RoundTime = 120f, PreroundTime = 30f, FirstPreroundTime = 120f, NumberOfRounds = 10f, CountDownTime = 0f;
+    public float RoundTime = 120f, PreroundTime = 30f, FirstPreroundTime = 120f, NumberOfRounds = 10f;
+
+    [SyncVar]
+    public float CountDownTime = 120f;
     public float RoundNumber = 0f, PreroundNumber = 0f;
     public string NextPhase = START_ROUND;
 
@@ -42,13 +46,20 @@ public class RoundManager : MonoBehaviour{
      * _isPreround - True when it's currently a preround phase, otherwise false.
      * _isFirstPreround - True when it's currently the first preround phase, otherwise false.
      */
-    private bool _isRound=false, _isPreround=false, _isFirstPreround=false;
+    [SyncVar]
+    private bool _isRound = false;
+
+    [SyncVar]
+    private bool _isPreround = false;
+
+    [SyncVar]
+    private bool _isFirstPreround=false;
    
     /**
      * Called when a new instance of the RoundManager is created.
      * Automatically starts the game.
      */
-    public void Awake(){
+    public override void OnStartServer(){
         
         // If it doesn't already exist, create it
         // Otherwise destroy it
@@ -56,11 +67,14 @@ public class RoundManager : MonoBehaviour{
             Instance = this;
         }
         else{
-            Destroy(this);
+           // Destroy(this);
         }
 
-        // Start the game
-        this.StartGame();
+        if (isServer)
+        {
+            // Start the game
+            this.StartGame();
+        }
     }
 
     /**
