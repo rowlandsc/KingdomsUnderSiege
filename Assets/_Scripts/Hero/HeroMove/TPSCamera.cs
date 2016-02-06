@@ -59,6 +59,7 @@ public class TPSCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
+		player = GameObject.FindGameObjectWithTag("Player").transform;
 		if (Time.deltaTime == 0 || Time.timeScale == 0 || player == null) 
 			return;
 		// if you want to set up an xbox controller or something, you need to uncomment the 

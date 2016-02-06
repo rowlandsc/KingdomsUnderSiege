@@ -16,7 +16,6 @@ public class MegeSecond : MonoBehaviour {
 	private int bullet_shot = 0;
 
 	private GameObject chargingAnim_;
-	
 
 	private GameObject icebullet_clone1,icebullet_clone2,icebullet_clone3,icebullet_clone4,icebullet_clone5,icebullet_clone6,icebullet_clone7;
 	

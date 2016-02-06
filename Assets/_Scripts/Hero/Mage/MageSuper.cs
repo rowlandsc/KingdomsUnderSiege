@@ -18,6 +18,7 @@ public class MageSuper : MonoBehaviour {
 	private GameObject super2_;
 	private GameObject superBallanim_;
 
+
 	// Use this for initialization
 	void Start () {
 	

@@ -6,6 +6,7 @@ public class MageMelee : MonoBehaviour {
 
 	public GameObject iceball;
 	public float cooldown = 0.5f;
+	public float distance=30f;
 
 	private bool canAttack;
 	private float timer;
@@ -28,11 +29,14 @@ public class MageMelee : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2,Screen.height/2,0));
 			RaycastHit hit;
 
-
 			if (Physics.Raycast(ray, out hit))  {  
-				if(hit.transform.gameObject.tag!="Player"){
-					iceball_clone = Instantiate(iceball, this.transform.position, transform.rotation) as GameObject;
-					iceball_clone.transform.DOMove(hit.point,0.3f,false);
+				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.transform.position); 
+				if(real_distance<=distance){
+				  
+				   if(hit.transform.gameObject.tag!="Player"){
+				  	    iceball_clone = Instantiate(iceball, this.transform.position, transform.rotation) as GameObject;
+				    	iceball_clone.transform.DOMove(hit.point,real_distance/80f,false);
+				   }
 				}
 			} 
 		}
