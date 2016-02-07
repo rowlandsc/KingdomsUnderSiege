@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mage: {fileID: 159646, guid: cdfbff2d595d245aeb7f029e49ed732d, type: 2}
   knight: {fileID: 163586, guid: 4dee2a0bd1f0d443bb2bbd8ddef7df89, type: 2}
-  arch: {fileID: 0}
+  arch: {fileID: 152332, guid: bf05d0b104cab43a0966b667acafcd63, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

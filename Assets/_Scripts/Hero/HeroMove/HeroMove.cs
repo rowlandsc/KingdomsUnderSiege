@@ -11,6 +11,7 @@ public class HeroMove : MonoBehaviour {
 	static public bool CanMove=true;
 
 	private GameObject Maincamera;
+	private GameObject[] NewGameObject;
 
 	// Use this for initialization
 	void Start () {
@@ -59,6 +60,15 @@ public class HeroMove : MonoBehaviour {
 			Vector3.Normalize(moveDirection);
 
 			transform.Translate(-moveDirection * Time.deltaTime* backwardspeed, Space.World);
+		}
+
+
+		NewGameObject=GameObject.FindGameObjectsWithTag("Untagged"); 
+		for(int i = 0; i < (NewGameObject.Length); i++)
+		{
+			if(NewGameObject[i].name=="New Game Object");
+			{Destroy(NewGameObject[i]);}
+			
 		}
 	}
 

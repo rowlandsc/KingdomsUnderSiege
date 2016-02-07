@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   electric: {fileID: 191426, guid: 3b20f5a51bb754b9886e99e50f75b526, type: 2}
-  electric_linked: {fileID: 0}
+  electric_linked: {fileID: 188194, guid: df1028cfb7a6b425b91b1a1de8becc0c, type: 2}
   timer: 0
   ifhit: 0
   hitpoint: {x: 0, y: 0, z: 0}
