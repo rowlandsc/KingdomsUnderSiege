@@ -25,7 +25,7 @@ public class ArchMelee : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if(Input.GetMouseButtonDown(0)&&canAttack)
+		if(Input.GetMouseButtonDown(0)&&canAttack&&!this.gameObject.GetComponent<ArchSuper>().SuperActivate)
 		{
 			canAttack = false;
 			
