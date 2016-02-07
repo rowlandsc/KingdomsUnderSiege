@@ -4,8 +4,8 @@ using DG.Tweening;
 
 public class KnightSecond : MonoBehaviour {
 
-	public float effect_time=1f;
-	public float cooldown = 0.5f;
+	private float effect_time;
+	private float cooldown;
 
 	private bool canAttack;
 	private bool Startcooldown;
@@ -25,6 +25,9 @@ public class KnightSecond : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		effect_time=2f;
+		cooldown=10f;
+
 		canAttack = true;
 		Startcooldown = false;
 		timer = cooldown;

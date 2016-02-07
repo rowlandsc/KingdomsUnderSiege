@@ -31,8 +31,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.7600002, y: .504999995, z: 17.2000008}
-  m_LocalScale: {x: .476091325, y: 1.05271733, z: .476091325}
+  m_LocalPosition: {x: 10.2278357, y: .439999998, z: 12.013093}
+  m_LocalScale: {x: .380006343, y: .840257406, z: .380006343}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -107,9 +107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4be3908184a428085b2f4fcd1c4c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  superAnim1: {fileID: 100000, guid: 1874c1a1006e96d4b9227ae0e8855656, type: 2}
-  superAnim2: {fileID: 100000, guid: d8660f7612ea3124589c0d73e27e710e, type: 2}
-  superBallanim: {fileID: 177348, guid: 5552ac4de08a64011b4dc08fd93fbba8, type: 2}
   hits:
   - {fileID: 0}
   - {fileID: 0}
@@ -120,7 +117,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  spelltime: 3
+  timer: 0
+  superAnim1: {fileID: 100000, guid: 1874c1a1006e96d4b9227ae0e8855656, type: 2}
+  superAnim2: {fileID: 100000, guid: d8660f7612ea3124589c0d73e27e710e, type: 2}
+  superBallanim: {fileID: 177348, guid: 5552ac4de08a64011b4dc08fd93fbba8, type: 2}
 --- !u!114 &11432236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,10 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa133c00efd647bea7a81ad57b6196b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown_timer: 0
+  bullet_shot: 0
   charingAnim: {fileID: 100006, guid: 6eef8fd94177c2b49bcef51b6eac54f3, type: 2}
   icebullet: {fileID: 128786, guid: 6f81d365ec00a4e1abd2f2ec85f5a7dd, type: 2}
-  holdtime: 3
-  cooldown: 3
 --- !u!114 &11454866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,8 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iceball: {fileID: 182594, guid: e546559c4a25d41df8add6cb2ffdc534, type: 2}
-  cooldown: .5
-  distance: 30
+  timer: 0
 --- !u!114 &11466124
 MonoBehaviour:
   m_ObjectHideFlags: 1

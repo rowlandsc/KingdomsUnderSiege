@@ -4,23 +4,31 @@ using DG.Tweening;
 
 public class MegeSecond : MonoBehaviour {
 
-	public GameObject charingAnim;
-	public GameObject icebullet;
-	public float holdtime=9.0f;
-	public float cooldown = 9.0f;
+
+	private float holdtime;
+	private float cooldown;
 	
 	private bool canAttack;
 	private bool Startcooldown;
-	private float holdingtime = 0;
-	private float cooldown_timer;
-	private int bullet_shot = 0;
+	private float holdingtime;
+	public float cooldown_timer;
+	public int bullet_shot;
 
 	private GameObject chargingAnim_;
 
 	private GameObject icebullet_clone1,icebullet_clone2,icebullet_clone3,icebullet_clone4,icebullet_clone5,icebullet_clone6,icebullet_clone7;
+
+	//FX
+	public GameObject charingAnim;
+	public GameObject icebullet;
 	
 	// Use this for initialization
 	void Start () {
+		holdtime=9f;
+		cooldown=9f;
+
+		holdingtime=0;
+		bullet_shot=0;
 		canAttack = true;
 		Startcooldown = false;
 		cooldown_timer = cooldown;

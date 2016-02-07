@@ -4,31 +4,41 @@ using DG.Tweening;
 
 public class MageSuper : MonoBehaviour {
 
-	public GameObject superAnim1;
-	public GameObject superAnim2;
-	public GameObject superBallanim;
 
 	public GameObject[] hits = new GameObject[9];
 
-	private bool Startcooldown = false;
-	public float spelltime=3f;
-	private float real_spelltime=0f;
+	private float cooldown;
+	public float timer;
+
+	private bool canAttack;
+	private float spelltime;
+	private float real_spelltime;
 
 	private GameObject super1_;
 	private GameObject super2_;
 	private GameObject superBallanim_;
 
+	//FX
+	public GameObject superAnim1;
+	public GameObject superAnim2;
+	public GameObject superBallanim;
+
 
 	// Use this for initialization
 	void Start () {
-	
+		spelltime=2f;
+		cooldown=30f;
+
+		timer=cooldown;
+		real_spelltime=0f;
+		canAttack=true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
-		if(Input.GetKeyDown(KeyCode.R)&&!Startcooldown){
-			Startcooldown=true;
+		if(Input.GetKeyDown(KeyCode.R)&&canAttack){
+			canAttack=false;
 			HeroMove.DisableMove();
 
 			hits=GameObject.FindGameObjectsWithTag("Freezed");
@@ -45,7 +55,7 @@ public class MageSuper : MonoBehaviour {
 			super2_ = Instantiate(superAnim2, this.transform.position-new Vector3(0,0.4f,0), this.transform.rotation) as GameObject;
 		}
 
-		if(Startcooldown){
+		if(!canAttack){
 			real_spelltime+=Time.deltaTime;
 
 			if(real_spelltime>=spelltime){
@@ -54,7 +64,12 @@ public class MageSuper : MonoBehaviour {
 				Destroy(super1_);
 				Destroy(super2_);
 				real_spelltime=0f;
-				Startcooldown=false;
+			}
+
+			timer-=Time.deltaTime;
+			if(timer<=0){
+				canAttack=true;
+				timer=cooldown;
 			}
 		}
 

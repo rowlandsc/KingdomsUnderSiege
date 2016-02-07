@@ -3,15 +3,16 @@ using System.Collections;
 
 public class KnightMelee : MonoBehaviour {
 
-
-	public float cooldown = 0.5f;
+	private float cooldown;
 		
 	public bool canAttack;
-	private float timer;
+	public float timer;
 
 	
 	// Use this for initialization
 	void Start () {
+		cooldown = 0.5f;
+
 		canAttack = true;
 		timer = cooldown;
 	}

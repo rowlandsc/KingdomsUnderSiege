@@ -5,16 +5,19 @@ using DG.Tweening;
 public class MageMelee : MonoBehaviour {
 
 	public GameObject iceball;
-	public float cooldown = 0.5f;
-	public float distance=30f;
+	private float cooldown;
+	private float distance;
 
 	private bool canAttack;
-	private float timer;
+	public float timer;
 
 	private GameObject iceball_clone;
 	
 	// Use this for initialization
 	void Start () {
+		cooldown = 0.5f;
+		distance=30f;
+
 		canAttack = true;
 		timer = cooldown;
 	}

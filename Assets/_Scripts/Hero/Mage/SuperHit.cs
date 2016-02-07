@@ -5,12 +5,13 @@ public class SuperHit : MonoBehaviour {
 
 	public GameObject hitanim_;
 
-	public float kill_time=10f;
-	private float memory_saving_timer=0;
+	private float kill_time;
+	private float memory_saving_timer;
 	
 	// Use this for initialization
 	void Start () {
-		
+		kill_time=10f;
+		memory_saving_timer=0f;
 	}
 	
 	// Update is called once per frame

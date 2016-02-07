@@ -59,7 +59,7 @@ public class TPSCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+
 		if (Time.deltaTime == 0 || Time.timeScale == 0 || player == null) 
 			return;
 		// if you want to set up an xbox controller or something, you need to uncomment the 
@@ -124,6 +124,24 @@ public class TPSCamera : MonoBehaviour {
 	public void SetTarget(Transform t)
 	{
 		player=t;
+	}
+
+	public void ChangePlayer(GameObject temp)
+	{
+		player = temp.transform;
+		GameObject g=new GameObject();
+		aimTarget=g.transform;
+		// Add player's own layer to mask
+		mask = 1 << player.gameObject.layer;
+		// Add Igbore Raycast layer to mask
+		mask |= 1 << LayerMask.NameToLayer("Ignore Raycast");
+		// Invert mask
+		mask = ~mask;
+		
+		cam = transform;
+		smoothPlayerPos = player.position;
+		
+		maxCamDist = 3;
 	}
 
     

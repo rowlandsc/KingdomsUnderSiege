@@ -5,16 +5,19 @@ public class SecondHit : MonoBehaviour {
 
 
 
-	private float kill_time=2f;
-	static public float FreezeTime=5f;
+	private float kill_time;
+	static public float FreezeTime;
 
 	private GameObject hit = new GameObject();
-	private float memory_saving_timer=0;
-	private float freeze_timer=0;
+	private float memory_saving_timer;
+	public float freeze_timer;
 
 	// Use this for initialization
 	void Start () {
-	
+		kill_time=2f;
+		FreezeTime=5f;
+		memory_saving_timer=0f;
+		freeze_timer=0f;
 	}
 	
 	// Update is called once per frame
