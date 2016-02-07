@@ -20,7 +20,7 @@ public class HeroMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKey(KeyCode.W)&&CanMove){
+		if(Input.GetKey(KeyCode.W)&&CanMove&&!Input.GetKey(KeyCode.LeftShift)){
 
 			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
@@ -34,7 +34,7 @@ public class HeroMove : MonoBehaviour {
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);
 			
-			transform.Translate(moveDirection * Time.deltaTime* movespeed*1.3f, Space.World);
+			transform.Translate(moveDirection * Time.deltaTime* movespeed*1.5f, Space.World);
 		}
 
 		if(Input.GetKey(KeyCode.A)&&CanMove){
