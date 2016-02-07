@@ -18,6 +18,8 @@ TagManager:
   - OverseerPlayer
   - MagicBall
   - Birthplace
+  - Sword
+  - ArchDamage
   layers:
   - Default
   - TransparentFX

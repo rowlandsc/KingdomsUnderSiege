@@ -5,12 +5,14 @@ public class ChooseHero : MonoBehaviour {
 
 	public GameObject mage;
 	public GameObject knight;
+	public GameObject arch;
 
 	private GameObject birthplace;
 	private GameObject cam;
 
 	private GameObject mage_Clone;
 	private GameObject knight_Clone;
+	private GameObject arch_Clone;
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +48,21 @@ public class ChooseHero : MonoBehaviour {
 			knight_Clone=Instantiate(knight, birthplace.transform.position, Quaternion.identity)as GameObject;
 			cam.gameObject.GetComponent<TPSCamera>().ChangePlayer(knight_Clone);
 		}
+
+
+		if(Input.GetKeyDown(KeyCode.F3)){
+			
+			if(GameObject.FindGameObjectWithTag("Player")){
+				GameObject temp = GameObject.FindGameObjectWithTag("Player");
+				Destroy(temp);
+			}
+			
+			arch_Clone=Instantiate(arch, birthplace.transform.position, Quaternion.identity)as GameObject;
+			
+			cam.gameObject.GetComponent<TPSCamera>().ChangePlayer(arch_Clone);
+			
+		}
+
 	
 }
 }
