@@ -1,43 +1,22 @@
 fileFormatVersion: 2
-guid: ed86c9f0e0e414d3b824923fe67f1f40
-timeCreated: 1454378209
-licenseType: Pro
+guid: 51ea694500ec39847912445b8db9db7c
+timeCreated: 1454817054
+licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: HeroKnightBody
-    100002: HeroKnightHead
-    100004: HeroKnightLeftHand
-    100006: HeroKnightLeftLeg
-    100008: HeroKnightRightHand
-    100010: HeroKnightRightLeg
-    100012: //RootNode
-    400000: HeroKnightBody
-    400002: HeroKnightHead
-    400004: HeroKnightLeftHand
-    400006: HeroKnightLeftLeg
-    400008: HeroKnightRightHand
-    400010: HeroKnightRightLeg
-    400012: //RootNode
-    2300000: HeroKnightBody
-    2300002: HeroKnightHead
-    2300004: HeroKnightLeftHand
-    2300006: HeroKnightLeftLeg
-    2300008: HeroKnightRightHand
-    2300010: HeroKnightRightLeg
-    3300000: HeroKnightBody
-    3300002: HeroKnightHead
-    3300004: HeroKnightLeftHand
-    3300006: HeroKnightLeftLeg
-    3300008: HeroKnightRightHand
-    3300010: HeroKnightRightLeg
-    4300000: HeroKnightHead
-    4300002: HeroKnightBody
-    4300004: HeroKnightRightLeg
-    4300006: HeroKnightLeftLeg
-    4300008: HeroKnightLeftHand
-    4300010: HeroKnightRightHand
-    9500000: //RootNode
+    100000: //RootNode
+    100002: SwordBlade
+    100004: SwordHandle
+    400000: //RootNode
+    400002: SwordBlade
+    400004: SwordHandle
+    2300000: SwordBlade
+    2300002: SwordHandle
+    3300000: SwordBlade
+    3300002: SwordHandle
+    4300000: SwordHandle
+    4300002: SwordBlade
   materials:
     importMaterials: 1
     materialName: 0
@@ -77,7 +56,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 20
+    normalSmoothAngle: 0
     splitTangentsAcrossUV: 1
     normalImportMode: 1
     tangentImportMode: 1
@@ -96,7 +75,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
