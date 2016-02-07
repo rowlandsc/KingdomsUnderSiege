@@ -16,6 +16,8 @@ public class HeroFaceCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.rotation = Quaternion.Euler(0,Maincamera.transform.eulerAngles.y,0);
+		if(this.gameObject.name=="Mage"){transform.rotation = Quaternion.Euler(0,Maincamera.transform.eulerAngles.y,0);}
+		if(this.gameObject.name=="Knight"){transform.rotation = Quaternion.Euler(0,Maincamera.transform.eulerAngles.y-90f,0);}
+
 	}
 }

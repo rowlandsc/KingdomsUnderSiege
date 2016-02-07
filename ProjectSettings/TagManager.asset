@@ -16,6 +16,8 @@ TagManager:
   - Terrain
   - New Tag
   - OverseerPlayer
+  - MagicBall
+  - Sword
   layers:
   - Default
   - TransparentFX
