@@ -13,7 +13,7 @@ public class TowerPlacer : NetworkBehaviour {
     public bool TowerPlaceModeOn = false;
     public bool TowerPlaceLocationValid = true;
     public Vector3 TowerPlaceLocation;
-    public GameObject TowerToPlace = null;
+    public string TowerToPlaceID = "TowerArcher1";
     public GameObject TestSphere = null;
 
     private bool _lastTowerPlaceModeOn = false;
@@ -41,7 +41,7 @@ public class TowerPlacer : NetworkBehaviour {
         if (TowerPlaceModeOn) {
             if (!TowerPlaceTester) {
                 TowerPlaceTester = Instantiate(TowerPlaceTesterPrefab);
-                TowerPlaceTester.GetComponent<TowerPlacementTester>().Init(GameMap, TowerToPlace.GetComponent<Tower>());              
+                TowerPlaceTester.GetComponent<TowerPlacementTester>().Init(GameMap, TowerToPlaceID);              
             }
 
             if (!_lastTowerPlaceModeOn) {
@@ -62,7 +62,7 @@ public class TowerPlacer : NetworkBehaviour {
 
             TowerPlaceLocationValid = true;
             foreach (Tower t in TowerList) {
-                float minDistance = TowerPlaceTester.GetComponent<TowerPlacementTester>().TowerToPlace.Radius + t.Radius;
+                float minDistance = PrefabCache.Instance.PrefabIndex[TowerToPlaceID].GetComponent<Tower>().Radius + t.Radius;
                 if (Vector2.Distance(new Vector2(TowerPlaceLocation.x, TowerPlaceLocation.z), new Vector2(t.transform.position.x, t.transform.position.z)) < minDistance) {
                     TowerPlaceLocationValid = false;
                     break;
@@ -71,7 +71,7 @@ public class TowerPlacer : NetworkBehaviour {
 
             if (Input.GetMouseButtonUp(0)) {
                 if (TowerPlaceLocationValid) {
-                    Tower tower = TowerPlaceTester.GetComponent<TowerPlacementTester>().PlaceTower();
+                    TowerPlaceTester.GetComponent<TowerPlacementTester>().PlaceTower();
                     //tower.GetComponent<MapCircleDrawer>().UpdateCircle();
                     //TowerList.Add(tower);
                     TowerPlaceModeOn = false;

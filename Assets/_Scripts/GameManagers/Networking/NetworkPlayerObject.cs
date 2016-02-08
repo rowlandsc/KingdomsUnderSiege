@@ -16,13 +16,13 @@ public class NetworkPlayerObject : NetworkBehaviour {
 	}
 
     [Command]
-    public void CmdPlaceTower(GameObject TowerToPlace, GameObject GameMap) { 
+    public void CmdPlaceTower(string prefabID, Vector3 position) { 
    
-        Debug.Log("Server Command Called");
-        Tower tower = GameObject.Instantiate(TowerToPlace).GetComponent<Tower>();
-        tower.transform.position = transform.position;
-        tower.transform.rotation = transform.rotation;
-        tower.GetComponent<MapCircleDrawer>().GameMap = GameMap.GetComponent<Map>();
+        Debug.Log("Server Command Called " + prefabID + " " + position);
+        Tower tower = GameObject.Instantiate(PrefabCache.Instance.PrefabIndex[prefabID]).GetComponent<Tower>();
+        tower.transform.position = position;
+        //tower.transform.rotation = transform.rotation;
+        tower.GetComponent<MapCircleDrawer>().GameMap = Map.Instance;
         tower.GetComponent<MapCircleDrawer>().CircleRadius = tower.Radius;
         NetworkServer.Spawn(tower.gameObject);
     }

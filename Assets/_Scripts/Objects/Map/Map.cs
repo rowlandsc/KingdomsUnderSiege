@@ -6,6 +6,16 @@ using UnityEditor;
 
 public class Map : MonoBehaviour {
 
+    public static Map Instance = null;
+    void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        }
+        else {
+            Destroy(this);
+        }
+    }
+
     public TerrainCollider Terrain;
     public int GridHeight = 50;
     public int GridWidth = 50;
