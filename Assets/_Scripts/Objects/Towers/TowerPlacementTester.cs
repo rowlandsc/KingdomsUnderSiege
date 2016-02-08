@@ -9,7 +9,7 @@ public class TowerPlacementTester : NetworkBehaviour
 {
 
     public Map GameMap = null;
-    public Tower TowerToPlace = null;
+    public string TowerToPlaceID = "TowerArcher1";
     public Material ValidMaterial = null;
     public Material InvalidMaterial = null;
 
@@ -19,7 +19,7 @@ public class TowerPlacementTester : NetworkBehaviour
 
     private Tower _networkSpawnedTower;
 
-    public void Init(Map map, Tower tower)
+    public void Init(Map map, string towerID)
     {
         GameMap = map;
 
@@ -27,19 +27,19 @@ public class TowerPlacementTester : NetworkBehaviour
         _meshRenderer = GetComponent<MeshRenderer>();
         _mapCircleDrawer = GetComponent<MapCircleDrawer>();
 
-        TowerToPlace = tower;
-        _meshFilter.mesh = TowerToPlace.GetComponent<MeshFilter>().sharedMesh;
-        Material[] matlist = TowerToPlace.GetComponent<MeshRenderer>().sharedMaterials;
+        TowerToPlaceID = towerID;
+        _meshFilter.mesh = PrefabCache.Instance.PrefabIndex[TowerToPlaceID].GetComponent<MeshFilter>().sharedMesh;
+        Material[] matlist = PrefabCache.Instance.PrefabIndex[TowerToPlaceID].GetComponent<MeshRenderer>().sharedMaterials;
         for (int i = 0; i < matlist.Length; i++)
         {
             matlist.SetValue(ValidMaterial, i);
         }
         _meshRenderer.sharedMaterials = matlist;
 
-        _mapCircleDrawer.CircleRadius = TowerToPlace.Radius;
+        _mapCircleDrawer.CircleRadius = PrefabCache.Instance.PrefabIndex[TowerToPlaceID].GetComponent<Tower>().Radius;
         _mapCircleDrawer.GameMap = GameMap;
 
-        transform.localScale = TowerToPlace.transform.localScale;
+        transform.localScale = PrefabCache.Instance.PrefabIndex[TowerToPlaceID].transform.localScale;
     }
 
     void Update()
@@ -76,14 +76,13 @@ public class TowerPlacementTester : NetworkBehaviour
     }
 
 
-    public Tower PlaceTower()
+    public void PlaceTower()
     {
         PlayerController player = NetworkManager.singleton.client.connection.playerControllers[0];
-        player.gameObject.GetComponent<NetworkPlayerObject>().CmdPlaceTower(TowerToPlace.gameObject, GameMap.gameObject);
-        return _networkSpawnedTower;
+        player.gameObject.GetComponent<NetworkPlayerObject>().CmdPlaceTower(TowerToPlaceID, transform.position);
     }
 
-    [Command]
+    /*[Command]
     public void CmdPlaceTower()
     {
         Debug.Log("Server Command Called");
@@ -95,5 +94,5 @@ public class TowerPlacementTester : NetworkBehaviour
         NetworkServer.Spawn(tower.gameObject);
 
         _networkSpawnedTower = tower;
-    }
+    }*/
 }

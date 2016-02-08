@@ -175,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoundManager: {fileID: 129340, guid: ba0bdacff6679e5448208c04b8de18ff, type: 2}
   TowerPlacer: {fileID: 160172, guid: c8561078b99ffe346a8542c1461b307a, type: 2}
+  PrefabCache: {fileID: 195394, guid: e3bc9e526d416114997692f8544ec6d2, type: 2}
 --- !u!114 &1119812876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +486,7 @@ MonoBehaviour:
   - {fileID: 129340, guid: ba0bdacff6679e5448208c04b8de18ff, type: 2}
   - {fileID: 181652, guid: 3c495dd3c3f17ac43aab8e68ed15de81, type: 2}
   - {fileID: 160172, guid: c8561078b99ffe346a8542c1461b307a, type: 2}
+  - {fileID: 195394, guid: e3bc9e526d416114997692f8544ec6d2, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
