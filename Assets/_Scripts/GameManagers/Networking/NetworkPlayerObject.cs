@@ -4,6 +4,22 @@ using System.Collections;
 
 public class NetworkPlayerObject : NetworkBehaviour {
     
+    public enum PlayerType
+    {
+        HERO,
+        OVERSEER
+    }
+
+    public enum PlayerClass
+    {
+        KNIGHT,
+        ARCHER,
+        MAGE,
+        OVERSEER
+    }
+
+    public PlayerType Type;
+    public PlayerClass Class;
 
 	// Use this for initialization
 	void Start () {
