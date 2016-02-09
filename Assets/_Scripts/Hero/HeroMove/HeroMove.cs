@@ -4,9 +4,9 @@ using DG.Tweening;
 
 public class HeroMove : MonoBehaviour {
 
-	public float movespeed=1.0f;
+	public float movespeed=1.2f;
 	public float backwardspeed=1.0f;
-	public float sidespeed=1.0f;
+	public float sidespeed=1.1f;
 
 	static public bool CanMove=true;
 
@@ -21,7 +21,7 @@ public class HeroMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKey(KeyCode.W)&&CanMove&&!Input.GetKey(KeyCode.LeftShift)){
+		if(Input.GetKey(KeyCode.W)&&CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
@@ -35,7 +35,7 @@ public class HeroMove : MonoBehaviour {
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);
 			
-			transform.Translate(moveDirection * Time.deltaTime* movespeed*1.5f, Space.World);
+			transform.Translate(moveDirection * Time.deltaTime* movespeed*1.2f, Space.World);
 		}
 
 		if(Input.GetKey(KeyCode.A)&&CanMove){

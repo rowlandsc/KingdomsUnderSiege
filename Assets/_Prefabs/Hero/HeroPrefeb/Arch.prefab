@@ -16,6 +16,7 @@ GameObject:
   - 54: {fileID: 5494894}
   - 114: {fileID: 11426140}
   - 114: {fileID: 11454666}
+  - 114: {fileID: 11444318}
   m_Layer: 12
   m_Name: Arch
   m_TagString: Player
@@ -119,6 +120,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e2bb99fec2b490db12fa18e8ece471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11444318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce09ca475a66494896ea69ffd91ca9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SuperActivate: 0
+  timer: 0
+  superbullet: {fileID: 164174, guid: 2f7b54b938e104c2e8df0b3152845567, type: 2}
+  superFx: {fileID: 100000, guid: d1912b480b82d6441a8d97bc2836a977, type: 2}
 --- !u!114 &11454666
 MonoBehaviour:
   m_ObjectHideFlags: 1

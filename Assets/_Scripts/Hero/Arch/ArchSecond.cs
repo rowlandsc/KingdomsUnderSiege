@@ -50,7 +50,6 @@ public class ArchSecond : MonoBehaviour {
 
 		delete[0]=new Vector3(0f,0f,0f);
 		delete[1]=new Vector3(0f,0f,0f);
-		delete[2]=new Vector3(0f,0f,0f);
 
 	}
 	
@@ -66,13 +65,13 @@ public class ArchSecond : MonoBehaviour {
 			
 			if (Physics.Raycast(ray, out hit))  {  
 				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.transform.position); 
-				if(real_distance<=distance){
+
 					
 					if(hit.transform.gameObject.tag!="Player"){
 						electric_clone = Instantiate(electric, this.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
 						electric_clone.transform.DOMove(hit.point,real_distance/30f,false);
 					}
-				}
+
 			} 
 		}
 		

@@ -34,13 +34,13 @@ public class ArchMelee : MonoBehaviour {
 			
 			if (Physics.Raycast(ray, out hit))  {  
 				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.transform.position); 
-				if(real_distance<=distance){
+
 					
 					if(hit.transform.gameObject.tag!="Player"){
 						arch_clone = Instantiate(arch, this.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
 						arch_clone.transform.DOMove(hit.point,real_distance/30f,false);
 					}
-				}
+
 			} 
 		}
 		

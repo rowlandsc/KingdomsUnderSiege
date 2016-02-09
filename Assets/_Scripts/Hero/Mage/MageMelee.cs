@@ -34,13 +34,13 @@ public class MageMelee : MonoBehaviour {
 
 			if (Physics.Raycast(ray, out hit))  {  
 				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.transform.position); 
-				if(real_distance<=distance){
+
 				  
 				   if(hit.transform.gameObject.tag!="Player"){
 						iceball_clone = Instantiate(iceball, this.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
 				    	iceball_clone.transform.DOMove(hit.point,real_distance/80f,false);
 				   }
-				}
+
 			} 
 		}
 
