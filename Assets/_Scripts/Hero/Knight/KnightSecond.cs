@@ -65,8 +65,8 @@ public class KnightSecond : MonoBehaviour {
 			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);
-			if(Input.GetKey(KeyCode.W)){transform.Translate(moveDirection * Time.deltaTime* movespeed*1.5f, Space.World);}
-			else if(!Input.GetKey(KeyCode.W)){transform.Translate(moveDirection * Time.deltaTime* movespeed*3f, Space.World);}
+			if(Input.GetKey(KeyCode.W)){transform.Translate(moveDirection * Time.deltaTime* movespeed*1.2f, Space.World);}
+			else if(!Input.GetKey(KeyCode.W)){transform.Translate(moveDirection * Time.deltaTime* movespeed*1.5f, Space.World);}
 
 			if(effect_fire_clone_runonce){
 				effect_fire_clone= Instantiate(effect_fire, this.transform.position, transform.rotation)as GameObject;
