@@ -23,6 +23,7 @@ public class OverseerCamera : MonoBehaviour {
     public float _zMaxBound = 0;
     
     void Start() {
+		GameMap = Map.Instance;
         InitializeCamera();
         UpdateCameraBounds();
     }

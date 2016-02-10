@@ -14,7 +14,6 @@ public class TowerPlacer : NetworkBehaviour {
     public bool TowerPlaceLocationValid = true;
     public Vector3 TowerPlaceLocation;
     public string TowerToPlaceID = "TowerArcher1";
-    public GameObject TestSphere = null;
 
     private bool _lastTowerPlaceModeOn = false;
 

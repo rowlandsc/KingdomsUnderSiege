@@ -219,8 +219,7 @@ MonoBehaviour:
   TowerPlaceModeOn: 0
   TowerPlaceLocationValid: 1
   TowerPlaceLocation: {x: 0, y: 0, z: 0}
-  TowerToPlace: {fileID: 181652, guid: 3c495dd3c3f17ac43aab8e68ed15de81, type: 2}
-  TestSphere: {fileID: 1375240386}
+  TowerToPlaceID: TowerArcher1
 --- !u!114 &489642330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6ace3bc7f3423479329a98876f9818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cam: {fileID: 0}
 --- !u!4 &489642331
 Transform:
   m_ObjectHideFlags: 0
