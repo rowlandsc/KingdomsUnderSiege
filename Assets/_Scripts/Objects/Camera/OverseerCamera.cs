@@ -8,12 +8,12 @@ using UnityEditor;
 public class OverseerCamera : MonoBehaviour {
 
     public Map GameMap;
-    public float MaxZoom = 2;
-    public float ZoomSpeed = 0.25f;
+    public float MaxZoom = 8;
+    public float ZoomSpeed = 8;
 
     public float Zoom = 1;
 
-    public float ScrollSpeed = 5;
+    public float ScrollSpeed = 50;
 
     private Camera _camera;
     public float _maxHeight = 0;
@@ -62,6 +62,7 @@ public class OverseerCamera : MonoBehaviour {
 
     public void InitializeCamera() {
         _camera = GetComponent<Camera>();
+		Debug.Log("Inititalizing overseer camera");
         Zoom = 1;
         if (GameMap) {
             float vFOV = _camera.fieldOfView;

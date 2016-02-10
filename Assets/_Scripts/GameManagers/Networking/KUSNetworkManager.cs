@@ -49,7 +49,7 @@ public class KUSNetworkManager : NetworkManager {
 			JoinGameButton = GameObject.Find("JoinGameButton").GetComponent<Button>();
 			IPInputField = GameObject.Find("IPInputField").GetComponent<InputField>();
 			SetUpMenuSceneButtons();
-		} else {
+		} else if (level == 1) {
 			DisconnectButton = GameObject.Find("DisconnectButton").GetComponent<Button>();
 			SetUpSetUpSceneButtons();
 		}

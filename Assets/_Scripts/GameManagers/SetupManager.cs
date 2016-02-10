@@ -10,13 +10,9 @@ public class SetupManager : MonoBehaviour {
     public string TypeDropdownName = "TypeDropdown"; 
     public string ClassDropdownName = "ClassDropdown";
 
-	// Use this for initialization
-	void Start () {
-	    
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	void Start() {
+
+
 	}
 }
