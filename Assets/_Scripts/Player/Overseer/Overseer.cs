@@ -8,10 +8,18 @@ public class Overseer : Player {
 	void Start () {
 		Cam = Camera.main.gameObject.AddComponent<OverseerCamera>();
 
-		GameObject.Instantiate(PrefabCache.Instance.PrefabIndex["OverseerTowerPlacer"]);
+		StartCoroutine(BuildPrefabs());
 	}
 	
 	void Update () {
 		
+	}
+
+	public IEnumerator BuildPrefabs() {
+		while (PrefabCache.Instance == null) {
+			yield return null;
+		}
+
+		GameObject.Instantiate(PrefabCache.Instance.PrefabIndex["OverseerTowerPlacer"]);
 	}
 }

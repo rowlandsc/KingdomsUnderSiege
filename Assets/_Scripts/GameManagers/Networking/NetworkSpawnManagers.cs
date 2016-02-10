@@ -14,12 +14,13 @@ public class NetworkSpawnManagers : NetworkBehaviour {
 	void OnLevelWasLoaded(int level) {
 		if (isServer) {
 			if (level == 2) {
-		        GameObject roundManager = Instantiate(this.RoundManager);
-		        GameObject towerPlacer = Instantiate(this.TowerPlacer);
-		        GameObject prefabCache = Instantiate(this.PrefabCache);
-		        NetworkServer.Spawn(roundManager);
-		        NetworkServer.Spawn(towerPlacer);
-		        NetworkServer.Spawn(prefabCache);
+				GameObject roundManager = Instantiate (this.RoundManager);
+				GameObject towerPlacer = Instantiate (this.TowerPlacer);
+				GameObject prefabCache = Instantiate (this.PrefabCache);
+				NetworkServer.Spawn (roundManager);
+				NetworkServer.Spawn (towerPlacer);
+				NetworkServer.Spawn (prefabCache);
 			}
 		}
+	}
 }
