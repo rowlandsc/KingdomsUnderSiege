@@ -3,6 +3,8 @@ using System.Collections;
 
 public class KnightMeleeHit : MonoBehaviour {
 
+
+
 	// Use this for initialization
 	void Start () {
 	
@@ -18,7 +20,8 @@ public class KnightMeleeHit : MonoBehaviour {
 		bool canAttack=!gameObject.GetComponentInParent<KnightMelee>().canAttack;
 
 		if(canAttack){
-			Destroy(col.gameObject);
+			if(col.tag=="OverseerPlayer"){
+				Destroy(col.gameObject);}
 		}
 
 	}

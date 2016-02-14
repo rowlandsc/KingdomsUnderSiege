@@ -83,7 +83,6 @@ GameObject:
   - 33: {fileID: 3380514}
   - 65: {fileID: 6551866}
   - 23: {fileID: 2389176}
-  - 114: {fileID: 11463526}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Sword
@@ -577,17 +576,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e2bb99fec2b490db12fa18e8ece471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11463526
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69cec8578cbbf414ea3d06291bb2d2b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11469176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -627,6 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3413e9e8695416a89a3d7b1a9d341d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim_: {fileID: 158764, guid: d3ea60607b1ce414a9416c252b7fd89f, type: 2}
   canAttack: 0
   timer: 0
 --- !u!114 &11487250

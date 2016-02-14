@@ -49,7 +49,9 @@ public class ArchSuper : MonoBehaviour {
 
 
 
-				superFx_clone = Instantiate(superFx, this.gameObject.transform.position+new Vector3(0f,2.5f,0f), Quaternion.Euler(new Vector3(-90f, 0f, 0f))) as GameObject;
+				superFx_clone = Instantiate(superFx, this.gameObject.transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 0f))) as GameObject;
+				superFx_clone.transform.parent=this.gameObject.transform;
+
 				effect_apply=false;
 
 
@@ -68,7 +70,7 @@ public class ArchSuper : MonoBehaviour {
 
 					if(hit.transform.gameObject.tag!="Player"){
 						superbullet_clone = Instantiate(superbullet, this.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
-						superbullet_clone.transform.DOMove(hit.point,2f,false);
+						superbullet_clone.transform.DOMove(hit.point,1f,false);
 					}
 				} 
 			}

@@ -32,7 +32,12 @@ public class MageMelee : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2,Screen.height/2,0));
 			RaycastHit hit;
 
-			if (Physics.Raycast(ray, out hit))  {  
+			int layerMask = new int();
+			layerMask = 1 << 12;   // 8th layer is the layer you want to ignore
+			layerMask = ~layerMask;
+
+
+			if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))  {  
 				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.transform.position); 
 				  
 				   if(hit.transform.gameObject.tag!="Player"){

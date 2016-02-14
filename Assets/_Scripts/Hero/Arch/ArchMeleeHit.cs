@@ -24,7 +24,8 @@ public class ArchMeleeHit : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider col){
-		Destroy(this.gameObject);
+		if(col.gameObject.tag!="Player"){
+			Destroy(this.gameObject);}
 	}
 
 }

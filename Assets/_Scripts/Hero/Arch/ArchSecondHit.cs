@@ -34,11 +34,11 @@ public class ArchSecondHit : MonoBehaviour {
 			print("you hit");
 
 			player.GetComponent<ArchSecond>().ifhit=true;
-			player.GetComponent<ArchSecond>().hitpoint=col.transform.position;
-
 			Destroy(col.gameObject);
-			Destroy(this.gameObject);
 		}
+
+		if(col.gameObject.tag!="Player"){
+			Destroy(this.gameObject);}
 	}
 
 

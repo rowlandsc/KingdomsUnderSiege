@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 494766}
   - 82: {fileID: 8263868}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LightningProjectileSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 468804}
   - 108: {fileID: 10822042}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - 4: {fileID: 461694}
   - 198: {fileID: 19818612}
   - 199: {fileID: 19946640}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LightningArcBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - 4: {fileID: 466338}
   - 198: {fileID: 19801770}
   - 199: {fileID: 19996788}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LightningBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - 4: {fileID: 426430}
   - 198: {fileID: 19853462}
   - 199: {fileID: 19979284}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LightningTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - 4: {fileID: 400890}
   - 198: {fileID: 19856302}
   - 199: {fileID: 19990170}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LightningGlowTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,8 +112,9 @@ GameObject:
   - 135: {fileID: 13546724}
   - 23: {fileID: 2394610}
   - 114: {fileID: 11494960}
-  m_Layer: 0
-  m_Name: Arch_second_linked
+  - 54: {fileID: 5403260}
+  m_Layer: 14
+  m_Name: Arch_second_linked1
   m_TagString: ArchDamage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,6 +243,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188194}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &5403260
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188194}
+  serializedVersion: 2
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!82 &8263868
 AudioSource:
   m_ObjectHideFlags: 1
@@ -6413,7 +6429,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188194}

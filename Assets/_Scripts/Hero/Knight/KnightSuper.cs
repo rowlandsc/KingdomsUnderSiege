@@ -21,7 +21,6 @@ public class KnightSuper : MonoBehaviour {
 
 	//FX
 	public GameObject super;
-	private GameObject super_clone;
 	private bool super_clone_runonce;
 
 	// Use this for initialization
@@ -52,8 +51,6 @@ public class KnightSuper : MonoBehaviour {
 		if(super_activation){
 			//apply hero_increased_effect here
 			if(super_clone_runonce){
-				super_clone= Instantiate(super, this.transform.position, transform.rotation)as GameObject;
-				super_clone.transform.parent=this.gameObject.transform;
 
 				ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
 				ending_.transform.parent=this.gameObject.transform;
@@ -73,7 +70,6 @@ public class KnightSuper : MonoBehaviour {
 
 
 			super_clone_runonce=true;
-			Destroy(super_clone);
 			Destroy(ending_);
 			this.gameObject.transform.localScale =normal_hero_size;
 		}

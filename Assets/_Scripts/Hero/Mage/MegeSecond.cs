@@ -110,10 +110,15 @@ public class MegeSecond : MonoBehaviour {
 
 			holdingtime=0;
 
+			int layerMask = new int();
+			layerMask = 1 << 12;   // 8th layer is the layer you want to ignore
+			layerMask = ~layerMask;
+
+
 			if(bullet_shot>=1){
 				Ray ray1 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2,Screen.height/2,0));
 				RaycastHit hit1;
-				if (Physics.Raycast(ray1, out hit1))  {  
+				if (Physics.Raycast(ray1, out hit1,Mathf.Infinity,layerMask))  {  
 					if(hit1.transform.gameObject.tag!="Player"){
 						icebullet_clone1 = Instantiate(icebullet, this.transform.position, Quaternion.LookRotation(ray1.direction)) as GameObject;
 						icebullet_clone1.transform.DOMove(hit1.point,0.4f,false);}
@@ -127,12 +132,12 @@ public class MegeSecond : MonoBehaviour {
 				RaycastHit hit2,hit3;
 
 				
-				if (Physics.Raycast(ray2, out hit2))  {  
+					if (Physics.Raycast(ray2, out hit2,Mathf.Infinity,layerMask))  {  
 					if(hit2.transform.gameObject.tag!="Player"){
 							icebullet_clone2 = Instantiate(icebullet, this.transform.position+new Vector3(0.2f,0,0), Quaternion.LookRotation(ray2.direction)) as GameObject;
 						icebullet_clone2.transform.DOMove(hit2.point,0.3f,false);}
 				} 
-				if (Physics.Raycast(ray3, out hit3))  {  
+					if (Physics.Raycast(ray3, out hit3,Mathf.Infinity,layerMask))  {  
 					if(hit3.transform.gameObject.tag!="Player"){
 							icebullet_clone3 = Instantiate(icebullet, this.transform.position+new Vector3(-0.2f,0,0), Quaternion.LookRotation(ray3.direction)) as GameObject;
 						icebullet_clone3.transform.DOMove(hit3.point,0.4f,false);}
@@ -145,12 +150,12 @@ public class MegeSecond : MonoBehaviour {
 						Ray ray5 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+2*size_attack,Screen.height/2,0));
 					RaycastHit hit4,hit5;
 
-					if (Physics.Raycast(ray4, out hit4))  {  
+						if (Physics.Raycast(ray4, out hit4,Mathf.Infinity,layerMask))  {  
 						if(hit4.transform.gameObject.tag!="Player"){
 								icebullet_clone4 = Instantiate(icebullet, this.transform.position+new Vector3(0.4f,0,0), Quaternion.LookRotation(ray4.direction)) as GameObject;
 							icebullet_clone4.transform.DOMove(hit4.point,0.5f,false);}
 					} 
-					if (Physics.Raycast(ray5, out hit5))  {  
+						if (Physics.Raycast(ray5, out hit5,Mathf.Infinity,layerMask))  {  
 						if(hit5.transform.gameObject.tag!="Player"){
 								icebullet_clone5 = Instantiate(icebullet, this.transform.position+new Vector3(-0.4f,0,0), Quaternion.LookRotation(ray5.direction)) as GameObject;
 							icebullet_clone5.transform.DOMove(hit5.point,0.5f,false);}

@@ -35,6 +35,9 @@ public class SecondHit : MonoBehaviour {
 		ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
 		ending.AddComponent<DestoryselfAfterfewsecond>();
 		FreezeEffect(col.gameObject);
+
+		if(col.gameObject.tag!="Player"){
+			Destroy(this.gameObject);}
 	}
 
 	void FreezeEffect(GameObject temp){

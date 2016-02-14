@@ -4,13 +4,15 @@ using System.Collections;
 public class ArchSecondHit_Linked : MonoBehaviour {
 	private float kill_time;
 	private float memory_saving_timer;
-	
-	private Vector3 hitposition;
+
+
+	private GameObject player;
 
 	// Use this for initialization
 	void Start () {
 		kill_time=10f;
 		memory_saving_timer=0f;
+		player=GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -29,8 +31,10 @@ public class ArchSecondHit_Linked : MonoBehaviour {
 			print("you hit");
 
 			Destroy(col.gameObject);
-			Destroy(this.gameObject);
 		}
+
+		if(col.gameObject.tag!="Player"){
+			Destroy(this.gameObject);}
 	}
 	
 

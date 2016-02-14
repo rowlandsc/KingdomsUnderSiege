@@ -31,14 +31,18 @@ public class ArchMelee : MonoBehaviour {
 			
 			Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2,Screen.height/2,0));
 			RaycastHit hit;
-			
-			if (Physics.Raycast(ray, out hit))  {  
+
+			int layerMask = new int();
+			layerMask = 1 << 12;   // 8th layer is the layer you want to ignore
+			layerMask = ~layerMask;
+
+			if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))  {  
 				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.transform.position); 
 
 					
 					if(hit.transform.gameObject.tag!="Player"){
-					arch_clone = Instantiate(arch, this.transform.position+new Vector3(0f,0.8f,0f), Quaternion.LookRotation(ray.direction)) as GameObject;
-						arch_clone.transform.DOMove(hit.point,real_distance/30f,false);
+					arch_clone = Instantiate(arch, this.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
+						arch_clone.transform.DOMove(hit.point,1f,false);
 					}
 			} 
 		}

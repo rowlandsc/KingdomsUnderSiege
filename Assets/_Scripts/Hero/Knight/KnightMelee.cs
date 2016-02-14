@@ -3,11 +3,15 @@ using System.Collections;
 
 public class KnightMelee : MonoBehaviour {
 
-	private float cooldown;
+	public GameObject anim_;
+	private GameObject anim_clone;
+
+	public float cooldown;
 		
 	public bool canAttack;
 	public float timer;
 
+	private GameObject Maincamera;
 	
 	// Use this for initialization
 	void Start () {
@@ -15,6 +19,8 @@ public class KnightMelee : MonoBehaviour {
 
 		canAttack = true;
 		timer = cooldown;
+
+		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
 	}
 	
 	// Update is called once per frame
@@ -26,6 +32,11 @@ public class KnightMelee : MonoBehaviour {
 			
 			Animator anim=this.gameObject.GetComponent<Animator>();
 			anim.Play("UseSword");
+
+			anim_clone = Instantiate(anim_, this.transform.position,Quaternion.Euler(0,Maincamera.transform.eulerAngles.y,0)) as GameObject;
+			anim_clone.transform.parent=this.gameObject.transform;
+			anim_clone.AddComponent<DestoryAfter3second>();
+
 		}
 		
 		if(!canAttack){
