@@ -5,7 +5,7 @@ using DG.Tweening;
 public class MageMelee : MonoBehaviour {
 
 	public GameObject iceball;
-	private float cooldown;
+	public float cooldown;
 	private float distance;
 
 	private bool canAttack;
@@ -34,10 +34,9 @@ public class MageMelee : MonoBehaviour {
 
 			if (Physics.Raycast(ray, out hit))  {  
 				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.transform.position); 
-
 				  
 				   if(hit.transform.gameObject.tag!="Player"){
-						iceball_clone = Instantiate(iceball, this.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
+					iceball_clone = Instantiate(iceball, this.transform.position+new Vector3(0f,0.8f,0f), Quaternion.LookRotation(ray.direction)) as GameObject;
 				    	iceball_clone.transform.DOMove(hit.point,real_distance/80f,false);
 				   }
 

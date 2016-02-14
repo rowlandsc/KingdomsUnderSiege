@@ -3,7 +3,8 @@ using System.Collections;
 
 public class SecondHit : MonoBehaviour {
 
-
+	public GameObject ending;
+	private GameObject ending_;
 
 	private float kill_time;
 	static public float FreezeTime;
@@ -31,7 +32,8 @@ public class SecondHit : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider col){
-
+		ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
+		ending.AddComponent<DestoryselfAfterfewsecond>();
 		FreezeEffect(col.gameObject);
 	}
 

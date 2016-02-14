@@ -37,10 +37,9 @@ public class ArchMelee : MonoBehaviour {
 
 					
 					if(hit.transform.gameObject.tag!="Player"){
-						arch_clone = Instantiate(arch, this.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
+					arch_clone = Instantiate(arch, this.transform.position+new Vector3(0f,0.8f,0f), Quaternion.LookRotation(ray.direction)) as GameObject;
 						arch_clone.transform.DOMove(hit.point,real_distance/30f,false);
 					}
-
 			} 
 		}
 		
@@ -51,10 +50,5 @@ public class ArchMelee : MonoBehaviour {
 				timer = cooldown;
 			}
 		}
-		
-		
-		
-		
-		
 	}
 }

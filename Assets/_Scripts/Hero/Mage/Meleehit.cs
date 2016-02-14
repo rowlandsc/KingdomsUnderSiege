@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Meleehit : MonoBehaviour {
 
+	public GameObject ending;
+	private GameObject ending_;
+
 	private float kill_time;
 	private float memory_saving_timer;
 
@@ -19,14 +22,16 @@ public class Meleehit : MonoBehaviour {
 		if(memory_saving_timer>=kill_time){
 			Destroy(this.gameObject);
 
+
 		}
 	}
 	
 	
 	void OnTriggerEnter(Collider col){
-
-
+		ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
+		ending.AddComponent<DestoryselfAfterfewsecond>();
+		Destroy(this.gameObject);
 	}
-	
+
 
 }

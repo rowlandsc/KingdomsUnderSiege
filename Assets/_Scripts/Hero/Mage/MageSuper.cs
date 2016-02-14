@@ -7,7 +7,7 @@ public class MageSuper : MonoBehaviour {
 
 	public GameObject[] hits = new GameObject[9];
 
-	private float cooldown;
+	public float cooldown;
 	public float timer;
 
 	private bool canAttack;
@@ -15,12 +15,10 @@ public class MageSuper : MonoBehaviour {
 	private float real_spelltime;
 
 	private GameObject super1_;
-	private GameObject super2_;
 	private GameObject superBallanim_;
 
 	//FX
 	public GameObject superAnim1;
-	public GameObject superAnim2;
 	public GameObject superBallanim;
 
 
@@ -47,12 +45,12 @@ public class MageSuper : MonoBehaviour {
 			{
 				print ("find one");
 				superBallanim_ = Instantiate(superBallanim, this.transform.position+new Vector3(0,40,0), this.transform.rotation) as GameObject;
-				superBallanim_.transform.DOLocalMove(hits[i].transform.position+new Vector3(0,-2f,-0),4f,false);
+				superBallanim_.transform.DOLocalMove(hits[i].transform.position+new Vector3(0,-2f,-0),3f,false);
 
 			}
 
 			super1_ = Instantiate(superAnim1, this.transform.position-new Vector3(0,0.4f,0), this.transform.rotation) as GameObject;
-			super2_ = Instantiate(superAnim2, this.transform.position-new Vector3(0,0.4f,0), this.transform.rotation) as GameObject;
+
 		}
 
 		if(!canAttack){
@@ -62,7 +60,6 @@ public class MageSuper : MonoBehaviour {
 				HeroMove.EnableMove();
 
 				Destroy(super1_);
-				Destroy(super2_);
 				real_spelltime=0f;
 			}
 

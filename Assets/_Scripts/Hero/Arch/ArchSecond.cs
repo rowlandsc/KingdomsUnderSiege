@@ -96,7 +96,7 @@ public class ArchSecond : MonoBehaviour {
 		if(closest_enemy_one.transform.position!=new Vector3(0,0,0)&&canAttackone){
 			if(Vector3.Distance(closest_enemy_one.transform.position,hitpoint)<=linked_distance){
 				electric_linked_clone1 = Instantiate(electric_linked, hitpoint, Quaternion.identity) as GameObject;
-				electric_linked_clone1.transform.DOMove(closest_enemy_one.transform.position,0.1f,false);
+				electric_linked_clone1.transform.DOMove(closest_enemy_one.transform.position,0.5f,false);
 			}
 			canAttackone=false;
 		}
@@ -106,7 +106,7 @@ public class ArchSecond : MonoBehaviour {
 		if(closest_enemy_two.transform.position!=new Vector3(0,0,0)&&canAttacktwo){
 			if(Vector3.Distance(closest_enemy_two.transform.position,closest_enemy_one.transform.position)<=linked_distance){
 			electric_linked_clone2 = Instantiate(electric_linked, closest_enemy_one.transform.position, Quaternion.identity) as GameObject;
-			electric_linked_clone2.transform.DOMove(closest_enemy_two.transform.position,0.1f,false);
+			electric_linked_clone2.transform.DOMove(closest_enemy_two.transform.position,0.5f,false);
 			}
 			canAttacktwo=false;
 		}

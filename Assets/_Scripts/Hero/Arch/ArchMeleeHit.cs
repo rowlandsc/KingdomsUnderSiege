@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ArchMeleeHit : MonoBehaviour {
 
+
 	private float kill_time;
 	private float memory_saving_timer;
 	
@@ -22,10 +23,8 @@ public class ArchMeleeHit : MonoBehaviour {
 		}
 	}
 	
-	
 	void OnTriggerEnter(Collider col){
-		
-		
+		Destroy(this.gameObject);
 	}
 
 }

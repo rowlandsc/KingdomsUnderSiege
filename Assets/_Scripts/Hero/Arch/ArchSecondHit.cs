@@ -37,6 +37,7 @@ public class ArchSecondHit : MonoBehaviour {
 			player.GetComponent<ArchSecond>().hitpoint=col.transform.position;
 
 			Destroy(col.gameObject);
+			Destroy(this.gameObject);
 		}
 	}
 

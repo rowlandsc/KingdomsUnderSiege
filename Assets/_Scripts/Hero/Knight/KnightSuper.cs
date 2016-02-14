@@ -3,6 +3,11 @@ using System.Collections;
 
 public class KnightSuper : MonoBehaviour {
 
+	public GameObject ending;
+	private GameObject ending_;
+
+
+
 	private float cooldown;
 	private float duration;
 	
@@ -49,7 +54,12 @@ public class KnightSuper : MonoBehaviour {
 			if(super_clone_runonce){
 				super_clone= Instantiate(super, this.transform.position, transform.rotation)as GameObject;
 				super_clone.transform.parent=this.gameObject.transform;
-				super_clone_runonce=false;}
+
+				ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
+				ending_.transform.parent=this.gameObject.transform;
+
+				super_clone_runonce=false;
+			}
 
 			duration_timer+=Time.deltaTime;
 			if(duration_timer>=duration){
@@ -64,7 +74,7 @@ public class KnightSuper : MonoBehaviour {
 
 			super_clone_runonce=true;
 			Destroy(super_clone);
-
+			Destroy(ending_);
 			this.gameObject.transform.localScale =normal_hero_size;
 		}
 

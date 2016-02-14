@@ -43,9 +43,16 @@ public class ArchSuper : MonoBehaviour {
 		}
 
 		if(SuperActivate){
+			HeroMove.DisableMove();
+
 			if(effect_apply){
-				superFx_clone = Instantiate(superFx, this.transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 0f))) as GameObject;
+
+
+
+				superFx_clone = Instantiate(superFx, this.gameObject.transform.position+new Vector3(0f,2.5f,0f), Quaternion.Euler(new Vector3(-90f, 0f, 0f))) as GameObject;
 				effect_apply=false;
+
+
 			}
 
 			this.gameObject.GetComponent<Rigidbody>().useGravity=false;
@@ -79,6 +86,7 @@ public class ArchSuper : MonoBehaviour {
 
 
 		if(!canAttack&&!SuperActivate){
+			HeroMove.EnableMove();
 			timer -= Time.deltaTime;
 			if(timer<=0){
 				canAttack = true;	

@@ -33,7 +33,7 @@ public class HeroRoundManager : MonoBehaviour {
 			timer=0f;
 		}
 
-		print(cureent_status);
+
 
 		//pre-round
 		if(cureent_status==true){

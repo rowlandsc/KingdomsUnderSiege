@@ -31,8 +31,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.2278357, y: .439999998, z: 12.013093}
-  m_LocalScale: {x: .380006343, y: .840257406, z: .380006343}
+  m_LocalPosition: {x: 232, y: 20.54, z: 165.2}
+  m_LocalScale: {x: 0.38000634, y: 0.8402574, z: 0.38000634}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -78,7 +78,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 100
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -118,8 +118,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   timer: 0
-  superAnim1: {fileID: 100000, guid: 1874c1a1006e96d4b9227ae0e8855656, type: 2}
-  superAnim2: {fileID: 100000, guid: d8660f7612ea3124589c0d73e27e710e, type: 2}
+  superAnim1: {fileID: 127662, guid: c70cded20eb22b54b85e9004073a5073, type: 2}
   superBallanim: {fileID: 177348, guid: 5552ac4de08a64011b4dc08fd93fbba8, type: 2}
 --- !u!114 &11432236
 MonoBehaviour:
@@ -134,7 +133,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown_timer: 0
   bullet_shot: 0
-  charingAnim: {fileID: 100006, guid: 6eef8fd94177c2b49bcef51b6eac54f3, type: 2}
+  charingAnim: {fileID: 100000, guid: e3bfb3f5a39402c4894ebb9c36b1061a, type: 2}
+  charingAnim2: {fileID: 157990, guid: 98e3c735093b9d24b8df0d00646fcac4, type: 2}
+  charingAnim3: {fileID: 100000, guid: 2aa1cf69347924046b9d81ddb97985f7, type: 2}
   icebullet: {fileID: 128786, guid: 6f81d365ec00a4e1abd2f2ec85f5a7dd, type: 2}
 --- !u!114 &11454866
 MonoBehaviour:
@@ -180,7 +181,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: iceball
+      value: 
+      objectReference: {fileID: 184976, guid: e902d6290bf6a6442a6194b221a2db0f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159646}

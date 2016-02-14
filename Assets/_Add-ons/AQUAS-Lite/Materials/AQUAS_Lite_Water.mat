@@ -38,6 +38,27 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _NormalTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 1b785ba7e757439478e6db434e0d3dd2, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ReflectionTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _FoamTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 199d83fd2aca7214481411272c61f368, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -78,27 +99,6 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _NormalTexture
-        second:
-          m_Texture: {fileID: 2800000, guid: 1b785ba7e757439478e6db434e0d3dd2, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ReflectionTex
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _FoamTexture
-        second:
-          m_Texture: {fileID: 2800000, guid: 199d83fd2aca7214481411272c61f368, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -111,11 +111,91 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: .5
+        second: 0.5
+      data:
+        first:
+          name: _NormalTiling
+        second: 2
+      data:
+        first:
+          name: _Fade
+        second: 2.2
+      data:
+        first:
+          name: _Density
+        second: 1.8
+      data:
+        first:
+          name: _DepthTransparency
+        second: 5
+      data:
+        first:
+          name: _ShoreFade
+        second: 0.56
+      data:
+        first:
+          name: _ShoreTransparency
+        second: 0.5
+      data:
+        first:
+          name: _EnableReflections
+        second: 0.6
+      data:
+        first:
+          name: _ReflectionIntensity
+        second: 0.499
+      data:
+        first:
+          name: _Distortion
+        second: 0.34
+      data:
+        first:
+          name: _Specular
+        second: 1
+      data:
+        first:
+          name: _Gloss
+        second: 0.9
+      data:
+        first:
+          name: _LightWrapping
+        second: 1
+      data:
+        first:
+          name: _Refraction
+        second: 0.478
+      data:
+        first:
+          name: _WaveSpeed
+        second: -40
+      data:
+        first:
+          name: _FoamTiling
+        second: 10
+      data:
+        first:
+          name: _FoamBlend
+        second: 1
+      data:
+        first:
+          name: _FoamVisibility
+        second: 0.3
+      data:
+        first:
+          name: _FoamIntensity
+        second: 12.65
+      data:
+        first:
+          name: _FoamContrast
+        second: 0.245
+      data:
+        first:
+          name: _FoamSpeed
+        second: -100
       data:
         first:
           name: _Parallax
-        second: .0199999996
+        second: 0.02
       data:
         first:
           name: _ZWrite
@@ -123,7 +203,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: .5
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -150,96 +230,16 @@ Material:
         second: 0
       data:
         first:
-          name: _NormalTiling
-        second: 2
-      data:
-        first:
-          name: _Fade
-        second: 2.20000005
-      data:
-        first:
-          name: _Density
-        second: 1.79999995
-      data:
-        first:
-          name: _DepthTransparency
-        second: 5
-      data:
-        first:
-          name: _ShoreFade
-        second: .560000002
-      data:
-        first:
-          name: _ShoreTransparency
-        second: .5
-      data:
-        first:
-          name: _EnableReflections
-        second: .600000024
-      data:
-        first:
-          name: _ReflectionIntensity
-        second: .499000013
-      data:
-        first:
-          name: _Distortion
-        second: .340000004
-      data:
-        first:
-          name: _Specular
-        second: 1
-      data:
-        first:
-          name: _Gloss
-        second: .899999976
-      data:
-        first:
-          name: _LightWrapping
-        second: 1
-      data:
-        first:
-          name: _Refraction
-        second: .477999985
-      data:
-        first:
-          name: _WaveSpeed
-        second: -40
-      data:
-        first:
-          name: _FoamTiling
-        second: 10
-      data:
-        first:
-          name: _FoamBlend
-        second: 1
-      data:
-        first:
-          name: _FoamVisibility
-        second: .300000012
-      data:
-        first:
-          name: _FoamIntensity
-        second: 12.6499996
-      data:
-        first:
-          name: _FoamContrast
-        second: .245000005
-      data:
-        first:
-          name: _FoamSpeed
-        second: -100
-      data:
-        first:
           name: _UnderwaterMode
         second: 0
       data:
         first:
           name: _UnderwaterTranspDist
-        second: 13.5600004
+        second: 13.56
       data:
         first:
           name: _UnderwaterTranspFalloff
-        second: .779999971
+        second: 0.78
       data:
         first:
           name: _FullTransparency
@@ -256,16 +256,16 @@ Material:
       data:
         first:
           name: _MainColor
-        second: {r: .536764741, g: .942494929, b: 1, a: 1}
+        second: {r: 0.53676474, g: 0.9424949, b: 1, a: 1}
       data:
         first:
           name: _DeepWaterColor
-        second: {r: 0, g: .0520791039, b: .0955882072, a: 1}
+        second: {r: 0, g: 0.052079104, b: 0.09558821, a: 1}
       data:
         first:
           name: _SpecularColor
-        second: {r: .772058845, g: .772058845, b: .772058845, a: 1}
+        second: {r: 0.77205884, g: 0.77205884, b: 0.77205884, a: 1}
       data:
         first:
           name: _FoamColor
-        second: {r: .360294104, g: .36559251, b: .36559251, a: 1}
+        second: {r: 0.3602941, g: 0.3655925, b: 0.3655925, a: 1}

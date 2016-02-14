@@ -29,6 +29,7 @@ public class ArchSecondHit_Linked : MonoBehaviour {
 			print("you hit");
 
 			Destroy(col.gameObject);
+			Destroy(this.gameObject);
 		}
 	}
 	
