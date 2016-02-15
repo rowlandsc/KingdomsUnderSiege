@@ -6,10 +6,10 @@ public class KnightSuper : MonoBehaviour {
 	public GameObject ending;
 	private GameObject ending_;
 
+	public float mp_use=40f;
 
-
-	private float cooldown;
-	private float duration;
+	public float cooldown=30f;
+	public float duration=10f;
 	
 	private bool canAttack;
 	public float timer;
@@ -26,8 +26,6 @@ public class KnightSuper : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		cooldown=30f;
-		duration=10f;
 
 		canAttack=true;
 		timer=cooldown;
@@ -42,10 +40,11 @@ public class KnightSuper : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if(Input.GetKeyDown(KeyCode.R)&&canAttack&&!super_activation){
+		if(Input.GetKeyDown(KeyCode.R)&&canAttack&&!super_activation&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use)){
 
 			this.gameObject.transform.localScale =super_hero_size;
 			super_activation=true;
+			this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
 		}
 
 		if(super_activation){
@@ -54,6 +53,12 @@ public class KnightSuper : MonoBehaviour {
 
 				ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
 				ending_.transform.parent=this.gameObject.transform;
+
+				this.gameObject.GetComponent<ProfileSystem>().healthPoints+=200;
+				this.gameObject.GetComponent<ProfileSystem>().MAX_HealthPoints+=200;
+				this.gameObject.GetComponent<ProfileSystem>().DefendePoints+=50;
+				this.gameObject.GetComponent<ProfileSystem>().meleeDamageDealt*=3;
+				this.gameObject.GetComponent<ProfileSystem>().secondDamageDealt*=3;
 
 				super_clone_runonce=false;
 			}
@@ -66,8 +71,11 @@ public class KnightSuper : MonoBehaviour {
 		}
 
 		if(!super_activation){
-			//apply un_hero_increased_effect here
-
+			
+			this.gameObject.GetComponent<ProfileSystem>().MAX_HealthPoints=100f;
+			this.gameObject.GetComponent<ProfileSystem>().DefendePoints=0;
+			this.gameObject.GetComponent<ProfileSystem>().meleeDamageDealt*=1;
+			this.gameObject.GetComponent<ProfileSystem>().secondDamageDealt*=1;
 
 			super_clone_runonce=true;
 			Destroy(ending_);

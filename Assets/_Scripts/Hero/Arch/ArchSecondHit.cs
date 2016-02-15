@@ -1,45 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
-using DG.Tweening;
 
 public class ArchSecondHit : MonoBehaviour {
 
-	private float kill_time;
-	private float memory_saving_timer;
+	public float effect_time;
+	private float timer;
 
-	private Vector3 hitposition;
-	
 	private GameObject player;
 
 	// Use this for initialization
 	void Start () {
-		kill_time=10f;
-		memory_saving_timer=0f;
+		effect_time=10f;
+		timer=effect_time;
 		player=GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		memory_saving_timer+=Time.deltaTime;
-		
-		if(memory_saving_timer>=kill_time){
+		timer-=Time.deltaTime;
+		if(timer<=0f){
 			Destroy(this.gameObject);
-			
 		}
 	}
-	
-	
-	void OnTriggerEnter(Collider col){
+
+	void OnTriggerStay(Collider col){
+
 		if(col.tag=="OverseerPlayer"){
-			print("you hit");
 
-			player.GetComponent<ArchSecond>().ifhit=true;
-			Destroy(col.gameObject);
+			if(col.gameObject.GetComponent<ProfileSystem>()){
+
+				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().secondDamageDealt*0.01f))
+				{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
+
+			}
 		}
-
-		if(col.gameObject.tag!="Player"){
-			Destroy(this.gameObject);}
+			
 	}
-
 
 }

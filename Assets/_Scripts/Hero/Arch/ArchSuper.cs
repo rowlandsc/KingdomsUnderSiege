@@ -4,11 +4,13 @@ using DG.Tweening;
 
 public class ArchSuper : MonoBehaviour {
 	
-	private float cooldown;
+	private float cooldown=10f;
 	private bool canAttack;
-	private float skytime;
+	private float skytime=10f;
 	public bool SuperActivate;
 	private int shot_times_left;
+
+	public float mp_use=40f;
 
 	public float timer;
 	
@@ -21,8 +23,6 @@ public class ArchSuper : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		cooldown = 10f;
-		skytime=10f;
 		shot_times_left=3;
 		canAttack=true;
 		SuperActivate=false;
@@ -33,10 +33,11 @@ public class ArchSuper : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if(Input.GetKeyDown(KeyCode.R)&&canAttack){
+		if(Input.GetKeyDown(KeyCode.R)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use)){
 		
 			canAttack = false;
 			SuperActivate=true;
+			this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
 
 			this.gameObject.transform.DOMove(this.gameObject.transform.position+new Vector3(0f,2.5f,0f),0.5f,false);
 	

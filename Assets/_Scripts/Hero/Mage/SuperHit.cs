@@ -5,6 +5,7 @@ public class SuperHit : MonoBehaviour {
 
 	public GameObject ending;
 	private GameObject ending_;
+	private GameObject player;
 
 	private float kill_time;
 	private float memory_saving_timer;
@@ -13,6 +14,7 @@ public class SuperHit : MonoBehaviour {
 	void Start () {
 		kill_time=10f;
 		memory_saving_timer=0f;
+		player=GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -34,7 +36,13 @@ public class SuperHit : MonoBehaviour {
 		if(col.GetComponent<Testmove>())
 		{col.GetComponent<Testmove>().canMove=true;}
 	
-		Destroy(col.gameObject);
+		if(col.gameObject.GetComponent<ProfileSystem>()){
+
+			if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().superDamageDealt))
+			{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
+
+		}
+
 		Destroy(this.gameObject);
 		
 	}

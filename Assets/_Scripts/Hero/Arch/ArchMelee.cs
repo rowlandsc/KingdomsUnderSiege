@@ -5,8 +5,8 @@ using DG.Tweening;
 public class ArchMelee : MonoBehaviour {
 
 	public GameObject arch;
-	private float cooldown;
-	private float distance;
+	public float cooldown=0.5f;
+	public float distance=30f;
 	
 	private bool canAttack;
 	public float timer;
@@ -15,8 +15,7 @@ public class ArchMelee : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		cooldown = 0.5f;
-		distance=30f;
+		
 		
 		canAttack = true;
 		timer = cooldown;
@@ -37,13 +36,15 @@ public class ArchMelee : MonoBehaviour {
 			layerMask = ~layerMask;
 
 			if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))  {  
-				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.transform.position); 
-
-					
-					if(hit.transform.gameObject.tag!="Player"){
+				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.point); 
+			
+				if(real_distance<=distance){
 					arch_clone = Instantiate(arch, this.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
-						arch_clone.transform.DOMove(hit.point,1f,false);
+						arch_clone.transform.DOMove(hit.point,0.3f,false);
 					}
+				else{
+					canAttack = true;
+				}
 			} 
 		}
 		

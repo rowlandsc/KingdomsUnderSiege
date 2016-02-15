@@ -17,13 +17,14 @@ GameObject:
   - 114: {fileID: 11432236}
   - 54: {fileID: 5436576}
   - 114: {fileID: 11415920}
+  - 114: {fileID: 11425084}
   m_Layer: 12
   m_Name: Mage
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &456054
 Transform:
   m_ObjectHideFlags: 1
@@ -117,9 +118,35 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  cooldown: 0
   timer: 0
+  mp_use: 40
   superAnim1: {fileID: 127662, guid: c70cded20eb22b54b85e9004073a5073, type: 2}
   superBallanim: {fileID: 177348, guid: 5552ac4de08a64011b4dc08fd93fbba8, type: 2}
+--- !u!114 &11425084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 100
+  MagicPoints: 100
+  MAX_HealthPoints: 100
+  MAX_MagicPoints: 100
+  DefendePoints: 0
+  Worth: 100
+  haveMoney: 0
+  meleeDamageDealt: 5
+  secondDamageDealt: 12
+  superDamageDealt: 40
+  Health_Regen: 1
+  Magic_Regen: 1
+  death: {fileID: 0}
 --- !u!114 &11432236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa133c00efd647bea7a81ad57b6196b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 6
+  distance: 20
+  mp_use: 10
+  holdingtime: 3
   cooldown_timer: 0
   bullet_shot: 0
   charingAnim: {fileID: 100000, guid: e3bfb3f5a39402c4894ebb9c36b1061a, type: 2}
@@ -149,7 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iceball: {fileID: 182594, guid: e546559c4a25d41df8add6cb2ffdc534, type: 2}
-  timer: 0
+  cooldown: 0.5
+  timer: 20
 --- !u!114 &11466124
 MonoBehaviour:
   m_ObjectHideFlags: 1

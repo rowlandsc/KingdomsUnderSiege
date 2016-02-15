@@ -9,6 +9,8 @@ public class SecondHit : MonoBehaviour {
 	private float kill_time;
 	static public float FreezeTime;
 
+	private GameObject player;
+
 	private GameObject hit = new GameObject();
 	private float memory_saving_timer;
 	public float freeze_timer;
@@ -19,6 +21,7 @@ public class SecondHit : MonoBehaviour {
 		FreezeTime=5f;
 		memory_saving_timer=0f;
 		freeze_timer=0f;
+		player=GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -32,11 +35,19 @@ public class SecondHit : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider col){
-		ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-		ending.AddComponent<DestoryselfAfterfewsecond>();
-		FreezeEffect(col.gameObject);
+		
 
 		if(col.gameObject.tag!="Player"){
+			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
+			ending.AddComponent<DestoryselfAfterfewsecond>();
+
+			if(col.gameObject.GetComponent<ProfileSystem>()){
+
+				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().secondDamageDealt))
+				{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
+
+			}
+
 			Destroy(this.gameObject);}
 	}
 

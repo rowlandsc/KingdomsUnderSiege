@@ -4,8 +4,9 @@ using DG.Tweening;
 
 public class KnightSecond : MonoBehaviour {
 
-	private float effect_time;
-	private float cooldown;
+	public float effect_time=4f;
+	public float cooldown=10f;
+	public float mp_use=10f;
 
 	private bool canAttack;
 	private bool Startcooldown;
@@ -25,9 +26,7 @@ public class KnightSecond : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		effect_time=2f;
-		cooldown=10f;
-
+		
 		canAttack = true;
 		Startcooldown = false;
 		timer = cooldown;
@@ -41,7 +40,7 @@ public class KnightSecond : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if(Input.GetMouseButton(1)&&canAttack)
+		if(Input.GetMouseButton(1)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
 		{
 			knightsecond_Activate=true;
 
@@ -56,6 +55,7 @@ public class KnightSecond : MonoBehaviour {
 
 		if(Input.GetMouseButtonUp(1)&&knightsecond_Activate)
 		{
+			this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
 			knightsecond_Activate=false;
 			canAttack=false;
 		}
@@ -91,8 +91,12 @@ public class KnightSecond : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col){
 		if(knightsecond_Activate){
-			Destroy(col.gameObject);
+			if(col.gameObject.GetComponent<ProfileSystem>()){
+				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(this.gameObject.GetComponent<ProfileSystem>().secondDamageDealt))
+				{this.gameObject.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}}
+
+		}
 		}
 		//apply confusion effect here
 	}
-}
+

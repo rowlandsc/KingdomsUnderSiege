@@ -3,11 +3,11 @@ using System.Collections;
 
 public class KnightMeleeHit : MonoBehaviour {
 
-
+	private GameObject player;
 
 	// Use this for initialization
 	void Start () {
-	
+		player=GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -21,7 +21,11 @@ public class KnightMeleeHit : MonoBehaviour {
 
 		if(canAttack){
 			if(col.tag=="OverseerPlayer"){
-				Destroy(col.gameObject);}
+				if(col.gameObject.GetComponent<ProfileSystem>()){
+					if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().meleeDamageDealt))
+					{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}}
+
+				}
 		}
 
 	}

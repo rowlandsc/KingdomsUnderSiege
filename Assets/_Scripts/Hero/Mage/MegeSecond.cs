@@ -6,11 +6,13 @@ public class MegeSecond : MonoBehaviour {
 
 
 	private float holdtime;
-	public float cooldown;
+	public float cooldown=6f;
+	public float distance=20f;
+	public float mp_use=10f;
 
 	private bool canAttack;
 	private bool Startcooldown;
-	private float holdingtime;
+	public float holdingtime=3f;
 	public float cooldown_timer;
 	public int bullet_shot;
 
@@ -36,6 +38,7 @@ public class MegeSecond : MonoBehaviour {
 	void Start () {
 		holdtime=3f;
 		cooldown=6f;
+		distance=20f;
 
 		holdingtime=0;
 		bullet_shot=0;
@@ -54,7 +57,7 @@ public class MegeSecond : MonoBehaviour {
 
 	
 	
-		if(Input.GetMouseButtonDown(1)&&canAttack)
+		if(Input.GetMouseButtonDown(1)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
 		{
 			chargingAnim_ = Instantiate(charingAnim, this.gameObject.transform.position-new Vector3(0,0.2f,0), transform.rotation) as GameObject;
 			chargingAnim_.transform.parent = this.gameObject.transform;
@@ -100,6 +103,7 @@ public class MegeSecond : MonoBehaviour {
 
 
 		if(Input.GetMouseButtonUp(1)&&canAttack){
+			this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
 
 			anim_2_once=true;
 			anim_3_once=true;

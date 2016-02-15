@@ -7,12 +7,14 @@ public class MageSuper : MonoBehaviour {
 
 	public GameObject[] hits = new GameObject[9];
 
-	public float cooldown;
+	public float cooldown=30f;
 	public float timer;
 
 	private bool canAttack;
-	private float spelltime;
+	private float spelltime=2f;
 	private float real_spelltime;
+
+	public float mp_use=40f;
 
 	private GameObject super1_;
 	private GameObject superBallanim_;
@@ -24,8 +26,6 @@ public class MageSuper : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		spelltime=2f;
-		cooldown=30f;
 
 		timer=cooldown;
 		real_spelltime=0f;
@@ -35,10 +35,10 @@ public class MageSuper : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if(Input.GetKeyDown(KeyCode.R)&&canAttack){
+		if(Input.GetKeyDown(KeyCode.R)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use)){
 			canAttack=false;
 			HeroMove.DisableMove();
-
+			this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
 			hits=GameObject.FindGameObjectsWithTag("Freezed");
 	
 			for(int i = 0; i < hits.Length; i++)

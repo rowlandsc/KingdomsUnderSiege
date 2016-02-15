@@ -65,13 +65,14 @@ GameObject:
   - 114: {fileID: 11481834}
   - 114: {fileID: 11469176}
   - 114: {fileID: 11487250}
+  - 114: {fileID: 11499560}
   m_Layer: 12
   m_Name: Knight
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &170636
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57066134b97c745cbbbef8169ad2e73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect_time: 4
+  cooldown: 10
+  mp_use: 10
   timer: 0
   knightsecond_Activate: 0
   effect_fire: {fileID: 100002, guid: 0e4c3e38b39f63b418ffcf6ff0ea10fc, type: 2}
@@ -616,6 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim_: {fileID: 158764, guid: d3ea60607b1ce414a9416c252b7fd89f, type: 2}
+  cooldown: 0.5
   canAttack: 0
   timer: 0
 --- !u!114 &11487250
@@ -630,8 +635,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ending: {fileID: 100012, guid: 657af2b0577f5924ab20cf6492bd309e, type: 2}
+  mp_use: 40
+  cooldown: 30
+  duration: 10
   timer: 0
   super: {fileID: 100004, guid: 18a6b21b686693646907f4f8278ae8cf, type: 2}
+--- !u!114 &11499560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 100
+  MagicPoints: 100
+  MAX_HealthPoints: 100
+  MAX_MagicPoints: 100
+  DefendePoints: 0
+  Worth: 100
+  haveMoney: 0
+  meleeDamageDealt: 5
+  secondDamageDealt: 12
+  superDamageDealt: 40
+  Health_Regen: 1
+  Magic_Regen: 1
+  death: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

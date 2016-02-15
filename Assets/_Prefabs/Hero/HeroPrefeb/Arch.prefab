@@ -17,6 +17,7 @@ GameObject:
   - 114: {fileID: 11426140}
   - 114: {fileID: 11454666}
   - 114: {fileID: 11444318}
+  - 114: {fileID: 11413120}
   m_Layer: 12
   m_Name: Arch
   m_TagString: Player
@@ -96,6 +97,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11413120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 100
+  MagicPoints: 100
+  MAX_HealthPoints: 100
+  MAX_MagicPoints: 100
+  DefendePoints: 0
+  Worth: 100
+  haveMoney: 0
+  meleeDamageDealt: 5
+  secondDamageDealt: 12
+  superDamageDealt: 40
+  Health_Regen: 1
+  Magic_Regen: 1
+  death: {fileID: 0}
 --- !u!114 &11426140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,6 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arch: {fileID: 123532, guid: fd27a154a1ba744c3bf485d156dbe2f1, type: 2}
+  cooldown: 1
+  distance: 20
   timer: 0
 --- !u!114 &11436576
 MonoBehaviour:
@@ -132,9 +159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SuperActivate: 0
+  mp_use: 40
   timer: 0
-  superbullet: {fileID: 0}
-  superFx: {fileID: 112580, guid: 29e1021e6d1674541bb9e6b6041d7bed, type: 2}
+  superbullet: {fileID: 159590, guid: 9bd9f045889064f08a898b72511021df, type: 2}
+  superFx: {fileID: 190812, guid: 2d87af8cf743e8d48a795ab0d3e76eda, type: 2}
 --- !u!114 &11454666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,10 +175,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   electric: {fileID: 191426, guid: 3b20f5a51bb754b9886e99e50f75b526, type: 2}
-  electric_linked: {fileID: 188194, guid: df1028cfb7a6b425b91b1a1de8becc0c, type: 2}
+  mp_use: 10
+  cooldown: 4
+  distance: 20
   timer: 0
-  ifhit: 0
-  hitpoint: {x: 0, y: 0, z: 0}
 --- !u!114 &11463818
 MonoBehaviour:
   m_ObjectHideFlags: 1
