@@ -21,6 +21,8 @@ public class ProfileSystem : MonoBehaviour {
 	public float Magic_Regen=1f;
 
 	private float timer;
+	public GameObject damagePOP;
+	private GameObject damagePOP_;
 
 	//FX
 	public GameObject death;
@@ -56,6 +58,7 @@ public class ProfileSystem : MonoBehaviour {
 	}
 
 	public bool KillAndGains(float damage){
+		
 		if(damage>=healthPoints){
 			healthPoints=0f;
 			return true;}
@@ -64,5 +67,4 @@ public class ProfileSystem : MonoBehaviour {
 			return false;
 		}
 	}
-		
 }

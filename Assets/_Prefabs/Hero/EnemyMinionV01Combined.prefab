@@ -47,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.095602214, y: 0, z: 0.13657421}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 451442}
@@ -177,11 +177,13 @@ MonoBehaviour:
   MAX_MagicPoints: 100
   DefendePoints: 0
   Worth: 100
+  haveMoney: 0
   meleeDamageDealt: 5
   secondDamageDealt: 12
   superDamageDealt: 40
   Health_Regen: 1
   Magic_Regen: 1
+  damagePOP: {fileID: 180734, guid: 20777c550f47d4b789e6fba39c87cd5e, type: 2}
   death: {fileID: 0}
 --- !u!114 &11448806
 MonoBehaviour:
@@ -194,7 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e64ded0bc35407d9700ed613b775bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
 --- !u!114 &11499442
 MonoBehaviour:
   m_ObjectHideFlags: 1

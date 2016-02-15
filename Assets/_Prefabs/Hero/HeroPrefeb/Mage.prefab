@@ -18,13 +18,14 @@ GameObject:
   - 54: {fileID: 5436576}
   - 114: {fileID: 11415920}
   - 114: {fileID: 11425084}
+  - 114: {fileID: 11455674}
   m_Layer: 12
   m_Name: Mage
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &456054
 Transform:
   m_ObjectHideFlags: 1
@@ -118,7 +119,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  cooldown: 0
+  cooldown: 40
   timer: 0
   mp_use: 40
   superAnim1: {fileID: 127662, guid: c70cded20eb22b54b85e9004073a5073, type: 2}
@@ -146,6 +147,7 @@ MonoBehaviour:
   superDamageDealt: 40
   Health_Regen: 1
   Magic_Regen: 1
+  damagePOP: {fileID: 0}
   death: {fileID: 0}
 --- !u!114 &11432236
 MonoBehaviour:
@@ -182,6 +184,17 @@ MonoBehaviour:
   iceball: {fileID: 182594, guid: e546559c4a25d41df8add6cb2ffdc534, type: 2}
   cooldown: 0.5
   timer: 20
+--- !u!114 &11455674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a66c42fe1cd54d4e9d217234714f64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11466124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,6 +231,14 @@ Prefab:
       propertyPath: iceball
       value: 
       objectReference: {fileID: 184976, guid: e902d6290bf6a6442a6194b221a2db0f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cooldown
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159646}

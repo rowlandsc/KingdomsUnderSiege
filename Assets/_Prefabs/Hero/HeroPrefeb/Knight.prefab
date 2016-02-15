@@ -66,13 +66,14 @@ GameObject:
   - 114: {fileID: 11469176}
   - 114: {fileID: 11487250}
   - 114: {fileID: 11499560}
+  - 114: {fileID: 11429504}
   m_Layer: 12
   m_Name: Knight
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &170636
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +567,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11429504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a66c42fe1cd54d4e9d217234714f64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11440346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -663,6 +675,7 @@ MonoBehaviour:
   superDamageDealt: 40
   Health_Regen: 1
   Magic_Regen: 1
+  damagePOP: {fileID: 0}
   death: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
@@ -670,7 +683,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 163586}
