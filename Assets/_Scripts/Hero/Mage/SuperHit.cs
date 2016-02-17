@@ -30,6 +30,9 @@ public class SuperHit : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider col){
 
+
+		if(col.tag!="IceBullet"&&col.tag!="Player"){
+			
 		ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
 		ending.AddComponent<DestoryselfAfterfewsecond>();
 
@@ -44,6 +47,7 @@ public class SuperHit : MonoBehaviour {
 		}
 
 		Destroy(this.gameObject);
+		}
 		
 	}
 	

@@ -5,16 +5,16 @@ using DG.Tweening;
 public class MegeSecond : MonoBehaviour {
 
 
-	private float holdtime;
+	private float holdtime=3f;
 	public float cooldown=6f;
 	public float distance=20f;
 	public float mp_use=10f;
 
 	private bool canAttack;
 	private bool Startcooldown;
-	public float holdingtime=3f;
+	public float holdingtime;
 	public float cooldown_timer;
-	public int bullet_shot;
+	private int bullet_shot;
 
 	private GameObject icebullet_clone1,icebullet_clone2,icebullet_clone3,icebullet_clone4,icebullet_clone5;
 
@@ -55,7 +55,7 @@ public class MegeSecond : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	
+		print(bullet_shot);
 	
 		if(Input.GetMouseButtonDown(1)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
 		{

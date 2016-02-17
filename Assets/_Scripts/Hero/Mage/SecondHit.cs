@@ -37,13 +37,13 @@ public class SecondHit : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 		
 
-		if(col.gameObject.tag!="Player"){
+		if(col.gameObject.tag!="Player"&&col.gameObject.tag!="IceBullet"){
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
 			ending.AddComponent<DestoryselfAfterfewsecond>();
 
 			if(col.gameObject.GetComponent<ProfileSystem>()){
 
-				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().secondDamageDealt))
+				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().superDamageDealt))
 				{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
 
 			}

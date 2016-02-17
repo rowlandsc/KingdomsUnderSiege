@@ -36,18 +36,29 @@ public class MageSuper : MonoBehaviour {
 	void Update () {
 	
 		if(Input.GetKeyDown(KeyCode.R)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use)){
+
 			canAttack=false;
 			HeroMove.DisableMove();
 			this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
+
 			hits=GameObject.FindGameObjectsWithTag("Freezed");
 	
 			for(int i = 0; i < hits.Length; i++)
 			{
 				print ("find one");
-				superBallanim_ = Instantiate(superBallanim, this.transform.position+new Vector3(0,40,0), this.transform.rotation) as GameObject;
+				superBallanim_ = Instantiate(superBallanim, this.transform.position+new Vector3(0,500,0), this.transform.rotation) as GameObject;
 				superBallanim_.transform.DOLocalMove(hits[i].transform.position+new Vector3(0,-2f,-0),3f,false);
 
 			}
+
+			for(int i = 0; i < 10; i++)
+			{
+			superBallanim_ = Instantiate(superBallanim, this.transform.position+new Vector3(0,500,0), this.transform.rotation) as GameObject;
+			superBallanim_.transform.DOLocalMove(this.gameObject.transform.position+new Vector3(Random.Range(-20F, 20F),-10f,Random.Range(-20F, 20F)),Random.Range(2F, 7F),false);
+			}
+
+
+
 
 			super1_ = Instantiate(superAnim1, this.transform.position-new Vector3(0,0.4f,0), this.transform.rotation) as GameObject;
 

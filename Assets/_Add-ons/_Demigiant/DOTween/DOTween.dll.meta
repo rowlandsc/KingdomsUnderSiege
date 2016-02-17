@@ -1,7 +1,5 @@
 fileFormatVersion: 2
-guid: df9d91fd9d7364dfbac5b6ae48bc8bdb
-timeCreated: 1453159979
-licenseType: Pro
+guid: 6e38ac6b1c3556b4c888ca8552375e1e
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
@@ -15,6 +13,10 @@ PluginImporter:
       enabled: 0
       settings:
         DefaultValueInitialized: true
+    WindowsStoreApps:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
   userData: 
   assetBundleName: 
   assetBundleVariant: 
