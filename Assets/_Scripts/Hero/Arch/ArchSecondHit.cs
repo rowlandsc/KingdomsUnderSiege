@@ -6,6 +6,9 @@ public class ArchSecondHit : MonoBehaviour {
 	public float effect_time;
 	private float timer;
 
+	public GameObject ending;
+	private GameObject ending_;
+
 	private GameObject player;
 
 	// Use this for initialization
@@ -19,6 +22,8 @@ public class ArchSecondHit : MonoBehaviour {
 	void Update () {
 		timer-=Time.deltaTime;
 		if(timer<=0f){
+			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
+			ending.AddComponent<DestoryselfAfterfewsecond>();
 			Destroy(this.gameObject);
 		}
 	}
@@ -29,7 +34,7 @@ public class ArchSecondHit : MonoBehaviour {
 
 			if(col.gameObject.GetComponent<ProfileSystem>()){
 
-				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().secondDamageDealt*0.01f))
+				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().secondDamageDealt*0.02f))
 				{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
 
 			}

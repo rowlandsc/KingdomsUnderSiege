@@ -27,8 +27,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138842}
-  m_LocalRotation: {x: .136262864, y: -.0415984765, z: .00572801987, w: .989782393}
-  m_LocalPosition: {x: 26.3750153, y: 1.64240217, z: 14.8001251}
+  m_LocalRotation: {x: 0.1190254, y: -0.19963162, z: 0.024439191, w: 0.97230804}
+  m_LocalPosition: {x: 261.78015, y: 26.939613, z: 294.4601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,14 +42,14 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
+  near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -65,7 +65,7 @@ Camera:
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
+  m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
 --- !u!81 &8104390
 AudioListener:
@@ -108,13 +108,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothingTime: 10
   pivotOffset: {x: 0, y: 0, z: 0}
-  camOffset: {x: 1, y: .699999988, z: -2}
-  closeOffset: {x: .349999994, y: 1.70000005, z: 0}
+  camOffset: {x: 1, y: 0.7, z: -2}
+  closeOffset: {x: 0.35, y: 1.7, z: 0}
   horizontalAimingSpeed: 200
   verticalAimingSpeed: 100
-  maxVerticalAngle: 30
-  minVerticalAngle: -20
-  mouseSensitivity: .100000001
+  maxVerticalAngle: 60
+  minVerticalAngle: -90
+  mouseSensitivity: 0.05
 --- !u!124 &12404760
 Behaviour:
   m_ObjectHideFlags: 1

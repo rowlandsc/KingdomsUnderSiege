@@ -36,6 +36,11 @@ public class ProfileSystem : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if(healthPoints>MAX_HealthPoints){
+			healthPoints=MAX_HealthPoints;
+		}
+
+
 		if(healthPoints<=0){
 
 			//death_ = Instantiate(death_, this.transform.position, Quaternion.identity) as GameObject;

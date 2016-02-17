@@ -16,9 +16,11 @@ public class ArchSecond : MonoBehaviour {
 
 	private GameObject electric_clone;
 
+
+
 	// Use this for initialization
 	void Start () {
-
+		
 		canAttack = true;
 		timer = cooldown;
 

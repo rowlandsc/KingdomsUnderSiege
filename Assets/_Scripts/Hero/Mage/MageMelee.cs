@@ -11,12 +11,13 @@ public class MageMelee : MonoBehaviour {
 	private bool canAttack;
 	public float timer;
 
+	private GameObject spellPosition;
 	private GameObject iceball_clone;
 	
 	// Use this for initialization
 	void Start () {
 
-
+		spellPosition = GameObject.Find("SpellPosition");
 		canAttack = true;
 		timer = cooldown;
 	}
@@ -40,8 +41,8 @@ public class MageMelee : MonoBehaviour {
 				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.point); 
 				  
 				if(real_distance<=distance){
-					iceball_clone = Instantiate(iceball, this.transform.position+new Vector3(0f,0.8f,0f), Quaternion.LookRotation(ray.direction)) as GameObject;
-				    	iceball_clone.transform.DOMove(hit.point,real_distance/80f,false);
+					iceball_clone = Instantiate(iceball, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
+				    	iceball_clone.transform.DOMove(hit.point,real_distance/40f,false);
 				   }
 				else{
 					canAttack=true;

@@ -21,8 +21,11 @@ public class ArchSuper : MonoBehaviour {
 	private GameObject superFx_clone;
 	private bool effect_apply;
 
+	private GameObject spellPosition;
+
 	// Use this for initialization
 	void Start () {
+		spellPosition = GameObject.Find("SpellPosition_arch");
 		shot_times_left=3;
 		canAttack=true;
 		SuperActivate=false;
@@ -70,7 +73,7 @@ public class ArchSuper : MonoBehaviour {
 				if (Physics.Raycast(ray, out hit))  {  
 
 					if(hit.transform.gameObject.tag!="Player"){
-						superbullet_clone = Instantiate(superbullet, this.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
+						superbullet_clone = Instantiate(superbullet, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
 						superbullet_clone.transform.DOMove(hit.point,1f,false);
 					}
 				} 

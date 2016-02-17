@@ -6,31 +6,36 @@ public class KnightMelee : MonoBehaviour {
 	public GameObject anim_;
 	private GameObject anim_clone;
 
-	public float cooldown;
+	public float cooldown=0.5f;
 		
 	public bool canAttack;
 	public float timer;
 
 	private GameObject Maincamera;
+	private GameObject sword;
+	private Animator anim;
 	
 	// Use this for initialization
 	void Start () {
-		cooldown = 0.5f;
+		
 
 		canAttack = true;
 		timer = cooldown;
-
 		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+
 		if(Input.GetMouseButtonDown(0)&&canAttack)
 		{
 			canAttack = false;
-			
-			Animator anim=this.gameObject.GetComponent<Animator>();
+		
+
+			sword = GameObject.Find("HeroKnightSwordV01");
+			anim = sword.gameObject.GetComponentInChildren<Animator>();
 			anim.Play("UseSword");
 
 			anim_clone = Instantiate(anim_, this.transform.position,Quaternion.Euler(0,Maincamera.transform.eulerAngles.y,0)) as GameObject;

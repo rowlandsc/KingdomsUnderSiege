@@ -21,7 +21,10 @@ public class KnightMeleeHit : MonoBehaviour {
 
 		if(canAttack){
 			if(col.tag=="OverseerPlayer"){
+
+
 				if(col.gameObject.GetComponent<ProfileSystem>()){
+
 					if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().meleeDamageDealt))
 					{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}}
 

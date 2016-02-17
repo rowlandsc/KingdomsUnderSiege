@@ -33,13 +33,13 @@ public class MegeSecond : MonoBehaviour {
 
 	private bool anim_2_once,anim_3_once;
 	private float size_attack;
+
+	private GameObject spellPosition;
 	
 	// Use this for initialization
 	void Start () {
-		holdtime=3f;
-		cooldown=6f;
-		distance=20f;
-
+		spellPosition = GameObject.Find("SpellPosition");
+	
 		holdingtime=0;
 		bullet_shot=0;
 		canAttack = true;
@@ -124,7 +124,7 @@ public class MegeSecond : MonoBehaviour {
 				RaycastHit hit1;
 				if (Physics.Raycast(ray1, out hit1,Mathf.Infinity,layerMask))  {  
 					if(hit1.transform.gameObject.tag!="Player"){
-						icebullet_clone1 = Instantiate(icebullet, this.transform.position, Quaternion.LookRotation(ray1.direction)) as GameObject;
+						icebullet_clone1 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray1.direction)) as GameObject;
 						icebullet_clone1.transform.DOMove(hit1.point,0.4f,false);}
 				} 
 
@@ -138,12 +138,12 @@ public class MegeSecond : MonoBehaviour {
 				
 					if (Physics.Raycast(ray2, out hit2,Mathf.Infinity,layerMask))  {  
 					if(hit2.transform.gameObject.tag!="Player"){
-							icebullet_clone2 = Instantiate(icebullet, this.transform.position+new Vector3(0.2f,0,0), Quaternion.LookRotation(ray2.direction)) as GameObject;
+							icebullet_clone2 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray2.direction)) as GameObject;
 						icebullet_clone2.transform.DOMove(hit2.point,0.3f,false);}
 				} 
 					if (Physics.Raycast(ray3, out hit3,Mathf.Infinity,layerMask))  {  
 					if(hit3.transform.gameObject.tag!="Player"){
-							icebullet_clone3 = Instantiate(icebullet, this.transform.position+new Vector3(-0.2f,0,0), Quaternion.LookRotation(ray3.direction)) as GameObject;
+							icebullet_clone3 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray3.direction)) as GameObject;
 						icebullet_clone3.transform.DOMove(hit3.point,0.4f,false);}
 				} 
 
@@ -156,12 +156,12 @@ public class MegeSecond : MonoBehaviour {
 
 						if (Physics.Raycast(ray4, out hit4,Mathf.Infinity,layerMask))  {  
 						if(hit4.transform.gameObject.tag!="Player"){
-								icebullet_clone4 = Instantiate(icebullet, this.transform.position+new Vector3(0.4f,0,0), Quaternion.LookRotation(ray4.direction)) as GameObject;
+								icebullet_clone4 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray4.direction)) as GameObject;
 							icebullet_clone4.transform.DOMove(hit4.point,0.5f,false);}
 					} 
 						if (Physics.Raycast(ray5, out hit5,Mathf.Infinity,layerMask))  {  
 						if(hit5.transform.gameObject.tag!="Player"){
-								icebullet_clone5 = Instantiate(icebullet, this.transform.position+new Vector3(-0.4f,0,0), Quaternion.LookRotation(ray5.direction)) as GameObject;
+								icebullet_clone5 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray5.direction)) as GameObject;
 							icebullet_clone5.transform.DOMove(hit5.point,0.5f,false);}
 					} 
 							

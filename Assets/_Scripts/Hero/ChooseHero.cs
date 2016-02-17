@@ -18,6 +18,8 @@ public class ChooseHero : MonoBehaviour {
 	void Start () {
 		cam=GameObject.FindGameObjectWithTag("MainCamera");
 		birthplace=GameObject.FindGameObjectWithTag("Birthplace");
+
+
 	}
 	
 	// Update is called once per frame
@@ -28,7 +30,7 @@ public class ChooseHero : MonoBehaviour {
 
 			if(GameObject.FindGameObjectWithTag("Player")){
 				GameObject temp = GameObject.FindGameObjectWithTag("Player");
-				Destroy(temp);
+				temp.SetActive(false);
 			}
 
 			mage_Clone=Instantiate(mage, birthplace.transform.position, Quaternion.identity)as GameObject;
@@ -42,7 +44,7 @@ public class ChooseHero : MonoBehaviour {
 
 			if(GameObject.FindGameObjectWithTag("Player")){
 				GameObject temp = GameObject.FindGameObjectWithTag("Player");
-				Destroy(temp);
+				temp.SetActive(false);
 			}
 
 			knight_Clone=Instantiate(knight, birthplace.transform.position, Quaternion.identity)as GameObject;
@@ -54,7 +56,7 @@ public class ChooseHero : MonoBehaviour {
 			
 			if(GameObject.FindGameObjectWithTag("Player")){
 				GameObject temp = GameObject.FindGameObjectWithTag("Player");
-				Destroy(temp);
+				temp.SetActive(false);
 			}
 			
 			arch_Clone=Instantiate(arch, birthplace.transform.position, Quaternion.identity)as GameObject;
