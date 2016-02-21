@@ -55,7 +55,6 @@ public class MegeSecond : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		print(bullet_shot);
 	
 		if(Input.GetMouseButtonDown(1)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
 		{
