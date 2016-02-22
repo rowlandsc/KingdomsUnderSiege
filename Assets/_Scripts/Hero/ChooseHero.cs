@@ -7,6 +7,7 @@ public class ChooseHero : MonoBehaviour {
 	public GameObject knight;
 	public GameObject arch;
 	public GameObject UI;
+	public GameObject GearSystem;
 
 	private GameObject birthplace;
 	private GameObject cam;
@@ -15,9 +16,10 @@ public class ChooseHero : MonoBehaviour {
 	private GameObject knight_Clone;
 	private GameObject arch_Clone;
 	private GameObject UI_clone;
+	private GameObject GearSystem_clone;
 
 	private GameObject playerfinder;
-	private GameObject UIfinder;
+	private GameObject[] UIfinder;
 
 	// Use this for initialization
 	void Start () {
@@ -36,12 +38,16 @@ public class ChooseHero : MonoBehaviour {
 			if(GameObject.FindGameObjectWithTag("Player")){
 				playerfinder= GameObject.FindGameObjectWithTag("Player");
 				Destroy(playerfinder);
-				UIfinder = GameObject.FindGameObjectWithTag("HeroUI");
-				Destroy(UIfinder);
+				UIfinder = GameObject.FindGameObjectsWithTag("HeroUI");
+				for(int i=0;i<UIfinder.Length;i++){
+					Destroy(UIfinder[i]);
+				}
+
 			}
 
 			mage_Clone=Instantiate(mage, birthplace.transform.position, Quaternion.identity)as GameObject;
 			UI_clone=Instantiate(UI, birthplace.transform.position, Quaternion.identity)as GameObject;
+			GearSystem_clone=Instantiate(GearSystem, birthplace.transform.position, Quaternion.identity)as GameObject;
 
 			cam.gameObject.GetComponent<TPSCamera>().ChangePlayer(mage_Clone);
 
@@ -53,14 +59,17 @@ public class ChooseHero : MonoBehaviour {
 			if(GameObject.FindGameObjectWithTag("Player")){
 				playerfinder= GameObject.FindGameObjectWithTag("Player");
 				Destroy(playerfinder);
-				UIfinder = GameObject.FindGameObjectWithTag("HeroUI");
-				Destroy(UIfinder);
+				UIfinder = GameObject.FindGameObjectsWithTag("HeroUI");
+				for(int i=0;i<UIfinder.Length;i++){
+					Destroy(UIfinder[i]);
+				}
 			}
 
 
 
 			knight_Clone=Instantiate(knight, birthplace.transform.position, Quaternion.identity)as GameObject;
 			UI_clone=Instantiate(UI, birthplace.transform.position, Quaternion.identity)as GameObject;
+			GearSystem_clone=Instantiate(GearSystem, birthplace.transform.position, Quaternion.identity)as GameObject;
 
 			cam.gameObject.GetComponent<TPSCamera>().ChangePlayer(knight_Clone);
 		}
@@ -71,13 +80,16 @@ public class ChooseHero : MonoBehaviour {
 			if(GameObject.FindGameObjectWithTag("Player")){
 				playerfinder= GameObject.FindGameObjectWithTag("Player");
 				Destroy(playerfinder);
-				UIfinder = GameObject.FindGameObjectWithTag("HeroUI");
-				Destroy(UIfinder);
+				UIfinder = GameObject.FindGameObjectsWithTag("HeroUI");
+				for(int i=0;i<UIfinder.Length;i++){
+					Destroy(UIfinder[i]);
+				}
 			}
 			
 			arch_Clone=Instantiate(arch, birthplace.transform.position, Quaternion.identity)as GameObject;
 			UI_clone=Instantiate(UI, birthplace.transform.position, Quaternion.identity)as GameObject;
-			
+			GearSystem_clone=Instantiate(GearSystem, birthplace.transform.position, Quaternion.identity)as GameObject;
+
 			cam.gameObject.GetComponent<TPSCamera>().ChangePlayer(arch_Clone);
 			
 		}

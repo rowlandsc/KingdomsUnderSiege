@@ -72,4 +72,28 @@ public class ProfileSystem : MonoBehaviour {
 			return false;
 		}
 	}
+
+	public void AddHealth(float value){
+		MAX_HealthPoints+=value;
+	}
+
+	public void AddMagic(float value){
+		MAX_MagicPoints+=value;
+	}
+
+	public void AddArmor(float value){
+		DefendePoints+=value;
+	}
+
+	public void AddMeleeDamage(float value){
+		meleeDamageDealt+=value;
+	}
+
+	public void AddSecondDamage(float value){
+		secondDamageDealt+=value;
+	}
+
+	public void AddSuperDamage(float value){
+		superDamageDealt+=value;
+	}
 }
