@@ -63,7 +63,7 @@ public class MegeSecond : MonoBehaviour {
 		}
 
 
-		if(Input.GetMouseButton(1)&&canAttack)
+		if(Input.GetMouseButton(1)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
 		{
 
 			holdingtime += Time.deltaTime;
@@ -183,5 +183,14 @@ public class MegeSecond : MonoBehaviour {
 				cooldown_timer = cooldown;
 			}
 		}
+	}
+
+
+	public float gettimer(){
+		return cooldown_timer;
+	}
+
+	public float getcooldown(){
+		return cooldown;
 	}
 }

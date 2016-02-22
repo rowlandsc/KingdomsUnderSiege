@@ -894,6 +894,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a66c42fe1cd54d4e9d217234714f64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  melee_icon: {fileID: 2800000, guid: 95820cd46a64ec340875178db11a4775, type: 3}
+  second_icon: {fileID: 2800000, guid: 4f9df37e2a573a64cbc944fe068893cb, type: 3}
+  super_icon: {fileID: 2800000, guid: 2a1265ae4655d044e9c1557405696861, type: 3}
+  enable: 1
 --- !u!114 &11440346
 MonoBehaviour:
   m_ObjectHideFlags: 1

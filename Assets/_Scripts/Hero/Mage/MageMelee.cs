@@ -64,4 +64,12 @@ public class MageMelee : MonoBehaviour {
 
 
 	}
+
+	public float gettimer(){
+		return timer;
+		}
+
+	public float getcooldown(){
+		return cooldown;
+	}
 }

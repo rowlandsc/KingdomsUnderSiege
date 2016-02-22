@@ -19,6 +19,7 @@ GameObject:
   - 114: {fileID: 11415920}
   - 114: {fileID: 11425084}
   - 114: {fileID: 11455674}
+  - 114: {fileID: 11446758}
   m_Layer: 12
   m_Name: Mage
   m_TagString: Player
@@ -197,6 +198,17 @@ MonoBehaviour:
   charingAnim2: {fileID: 157990, guid: 98e3c735093b9d24b8df0d00646fcac4, type: 2}
   charingAnim3: {fileID: 100000, guid: 166fbb0185b2f314da24abdda997cbe9, type: 2}
   icebullet: {fileID: 128786, guid: 6f81d365ec00a4e1abd2f2ec85f5a7dd, type: 2}
+--- !u!114 &11446758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba46e61501e7a4bb7a4611bc8b607aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11454866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,6 +234,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a66c42fe1cd54d4e9d217234714f64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  melee_icon: {fileID: 2800000, guid: 33470548a8c102c45bec7658b3637d33, type: 3}
+  second_icon: {fileID: 2800000, guid: fccc7156f5a20d847b6f18880c73d76d, type: 3}
+  super_icon: {fileID: 2800000, guid: ab90daed9f50b844b8c80e67bb1ab96a, type: 3}
+  enable: 1
 --- !u!114 &11466124
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -57,4 +57,12 @@ public class ArchMelee : MonoBehaviour {
 			}
 		}
 	}
+
+	public float gettimer(){
+		return timer;
+	}
+
+	public float getcooldown(){
+		return cooldown;
+	}
 }
