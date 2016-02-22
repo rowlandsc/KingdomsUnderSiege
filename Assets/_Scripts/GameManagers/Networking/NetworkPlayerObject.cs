@@ -78,6 +78,20 @@ public class NetworkPlayerObject : NetworkBehaviour {
 				if (Type == PlayerType.OVERSEER) {
 					_player = gameObject.AddComponent<Overseer> ();
 				}
+				else if(Type == PlayerType.HERO) {
+					if(Class == PlayerClass.MAGE){
+						_player = gameObject.AddComponent<HeroMage>();
+						PlayerController player = NetworkManager.singleton.client.connection.playerControllers[0];
+						player.gameObject.GetComponent<NetworkPlayerObject>().CmdCreateHeroMagePlayer(_networkIdentity);
+
+					}
+					if(Class == PlayerClass.KNIGHT){
+
+					}
+					if(Class == PlayerClass.ARCHER){
+
+					}
+				}
 			} 
 		}
 	}
@@ -101,6 +115,16 @@ public class NetworkPlayerObject : NetworkBehaviour {
 	public void CmdPlayerChangeClass(NetworkIdentity player, NetworkPlayerObject.PlayerClass newClass) {
 		player.GetComponent<NetworkPlayerObject>().Class = newClass;
 	}
+
+	[Command]
+	public void CmdCreateHeroMagePlayer(NetworkIdentity player) {
+		Debug.Log("Server Command Called create mage player");
+		GameObject birthplace = GameObject.Find("SummonPoint");
+		GameObject mage_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroMage"], birthplace.transform.position, Quaternion.identity)as GameObject;
+		
+		NetworkServer.Spawn(mage_Clone);
+	}
+
 
 	[ClientRpc]
 	public void RpcStartGame() {
