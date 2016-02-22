@@ -1637,7 +1637,7 @@ Transform:
   - {fileID: 2008340138}
   - {fileID: 1199416385}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!4 &952354788 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 304f27b53ae399f45b63ea2c349fe996, type: 3}
@@ -3660,7 +3660,7 @@ Transform:
   - {fileID: 1948692947}
   - {fileID: 715489938}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
 --- !u!1001 &1743642139
 Prefab:
   m_ObjectHideFlags: 0
