@@ -75,17 +75,29 @@ MonoBehaviour:
   PrefabIndex:
     PrefabNames:
     - ArcherTower1
+    - HeroArch
+    - HeroCamera
+    - HeroKnight
     - HeroMage
+    - HeroUI
     Prefabs:
     - {fileID: 181652, guid: 3c495dd3c3f17ac43aab8e68ed15de81, type: 2}
+    - {fileID: 152332, guid: bf05d0b104cab43a0966b667acafcd63, type: 2}
+    - {fileID: 138842, guid: 1f4f3b10cfa4142338bac8c5a57f8e53, type: 2}
+    - {fileID: 163586, guid: 4dee2a0bd1f0d443bb2bbd8ddef7df89, type: 2}
     - {fileID: 159646, guid: cdfbff2d595d245aeb7f029e49ed732d, type: 2}
+    - {fileID: 122128, guid: 49f9dc83d51fd47878a1c15ba6d18358, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 195394}

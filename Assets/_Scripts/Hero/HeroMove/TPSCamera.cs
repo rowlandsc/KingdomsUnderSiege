@@ -40,7 +40,7 @@ public class TPSCamera : MonoBehaviour {
 	void Start () 
 	{
 		Cursor.visible = false;
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+		//player = GameObject.FindGameObjectWithTag("Player").transform;
 		// [edit] no aimtarget gameobject needs to be placed anymore - ben0bi
 		GameObject g=new GameObject();
 		aimTarget=g.transform;

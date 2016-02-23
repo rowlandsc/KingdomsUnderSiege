@@ -134,7 +134,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
 	[Command]
 	public void CmdCreateHeroKnightPlayer(NetworkIdentity player) {
 		Debug.Log("Server Command Called create knight player");
-		GameObject birthplace = GameObject.Find("SummonPoint");
+		GameObject birthplace = GameObject.Find("SummonPoint2");
 		GameObject knight_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroKnight"], birthplace.transform.position, Quaternion.identity)as GameObject;
 
 		NetworkServer.Spawn(knight_Clone);
@@ -143,7 +143,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
 	[Command]
 	public void CmdCreateHeroArchPlayer(NetworkIdentity player) {
 		Debug.Log("Server Command Called create arch player");
-		GameObject birthplace = GameObject.Find("SummonPoint");
+		GameObject birthplace = GameObject.Find("SummonPoint3");
 		GameObject arch_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroArch"], birthplace.transform.position, Quaternion.identity)as GameObject;
 
 		NetworkServer.Spawn(arch_Clone);
