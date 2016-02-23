@@ -29,6 +29,7 @@ public class HeroMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
 		curPos = this.gameObject.transform.position;
 
 		if(Vector3.Distance(curPos - LastPos,new Vector3(0f,0f,0f)) <=0.1) {

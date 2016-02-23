@@ -5,7 +5,6 @@ public class HeroMage : Hero {
 
 
 	void Start () {
-		
 		StartCoroutine(BuildPrefabs());
 	}
 
@@ -17,8 +16,12 @@ public class HeroMage : Hero {
 		while (PrefabCache.Instance == null) {
 			yield return null;
 		}
+		HeroCamPrefab = PrefabCache.Instance.PrefabIndex["HeroCamera"];
+		HeroUIPrefab = PrefabCache.Instance.PrefabIndex["HeroUI"];
 
 		_heroUI = Instantiate(HeroUIPrefab, Vector3.zero, Quaternion.identity)as GameObject;
+		GameObject camera_tobedestory = GameObject.FindGameObjectWithTag("MainCamera");
+		Destroy(camera_tobedestory);
 		_heroCam = Instantiate(HeroCamPrefab) as GameObject;
 		//GearSystem_clone=Instantiate(GearSystem, birthplace.transform.position, Quaternion.identity)as GameObject;
 

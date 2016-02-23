@@ -18,16 +18,16 @@ public class TPSCamera : MonoBehaviour {
 	protected  Transform aimTarget; // that was public and a gameobject had to be dragged on it. - ben0bi
 	
 	public float smoothingTime = 10.0f; // it should follow it faster by jumping (y-axis) (previous: 0.1 or so) ben0bi
-	public Vector3 pivotOffset = new Vector3(0.2f, 0.7f,  0.0f); // offset of point from player transform (?) ben0bi
-	public Vector3 camOffset   = new Vector3(0.0f, 0.7f, -3.4f); // offset of camera from pivotOffset (?) ben0bi
+	public Vector3 pivotOffset = new Vector3(0f, 0f,  0f); // offset of point from player transform (?) ben0bi
+	public Vector3 camOffset   = new Vector3(1f, 0.7f, -2f); // offset of camera from pivotOffset (?) ben0bi
 	public Vector3 closeOffset = new Vector3(0.35f, 1.7f, 0.0f); // close offset of camera from pivotOffset (?) ben0bi
 	
-	public float horizontalAimingSpeed = 800f; // was way to lame for me (270) ben0bi
-	public float verticalAimingSpeed = 800f;   // --"-- (270) ben0bi
-	public float maxVerticalAngle = 80f;
-	public float minVerticalAngle = -80f;
+	public float horizontalAimingSpeed = 200f; // was way to lame for me (270) ben0bi
+	public float verticalAimingSpeed = 100f;   // --"-- (270) ben0bi
+	public float maxVerticalAngle = 60f;
+	public float minVerticalAngle = -90f;
 	
-	public float mouseSensitivity = 0.3f;
+	public float mouseSensitivity = 0.05f;
 	
 	private float angleH = 0;
 	private float angleV = 0;
