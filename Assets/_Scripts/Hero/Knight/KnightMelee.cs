@@ -28,6 +28,7 @@ public class KnightMelee : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
 
 		if(Input.GetMouseButtonDown(0)&&canAttack)
 		{

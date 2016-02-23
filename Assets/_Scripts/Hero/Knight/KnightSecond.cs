@@ -40,6 +40,8 @@ public class KnightSecond : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
+
 		if(Input.GetMouseButton(1)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
 		{
 			knightsecond_Activate=true;
