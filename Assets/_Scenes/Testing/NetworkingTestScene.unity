@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: aac756ac953084b7fa75503b2cfea4c9, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -719,10 +719,18 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36ebb9a9e2bbff843b92cc95e0cdc972, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &458267068 stripped
+--- !u!4 &458267068
 Transform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 458267067}
+  m_GameObject: {fileID: 1941057799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 848654523}
+  m_RootOrder: 0
 --- !u!4 &486134226 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 84905871107b9fe4d86fb053d4f75cd6, type: 3}
@@ -1241,6 +1249,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d1adb2d313640f429942b696657c58f, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &848654522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 458267067}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 848654523}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &848654523
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 458267067}
+  m_GameObject: {fileID: 848654522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 458267068}
+  m_Father: {fileID: 1508930554}
+  m_RootOrder: 4
 --- !u!4 &881630078 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: b6d08b71d0d306c4bb31f80a0e885be6, type: 3}
@@ -1941,7 +1977,7 @@ Transform:
   - {fileID: 1084255484}
   - {fileID: 311942214}
   - {fileID: 342919307}
-  - {fileID: 458267068}
+  - {fileID: 848654523}
   - {fileID: 1377048260}
   - {fileID: 1818753393}
   - {fileID: 1976385135}
@@ -2114,6 +2150,21 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 84905871107b9fe4d86fb053d4f75cd6, type: 3}
   m_PrefabInternal: {fileID: 890368758}
+--- !u!1 &1941057799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 458267067}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 458267068}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &1951760501 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 84905871107b9fe4d86fb053d4f75cd6, type: 3}

@@ -86,9 +86,15 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
 					}
 					if(Class == PlayerClass.KNIGHT){
+						_player = gameObject.AddComponent<HeroKnight>();
+						PlayerController player = NetworkManager.singleton.client.connection.playerControllers[0];
+						player.gameObject.GetComponent<NetworkPlayerObject>().CmdCreateHeroKnightPlayer(_networkIdentity);
 
 					}
 					if(Class == PlayerClass.ARCHER){
+						_player = gameObject.AddComponent<HeroArch>();
+						PlayerController player = NetworkManager.singleton.client.connection.playerControllers[0];
+						player.gameObject.GetComponent<NetworkPlayerObject>().CmdCreateHeroArchPlayer(_networkIdentity);
 
 					}
 				}
@@ -123,6 +129,24 @@ public class NetworkPlayerObject : NetworkBehaviour {
 		GameObject mage_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroMage"], birthplace.transform.position, Quaternion.identity)as GameObject;
 		
 		NetworkServer.Spawn(mage_Clone);
+	}
+
+	[Command]
+	public void CmdCreateHeroKnightPlayer(NetworkIdentity player) {
+		Debug.Log("Server Command Called create knight player");
+		GameObject birthplace = GameObject.Find("SummonPoint");
+		GameObject knight_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroKnight"], birthplace.transform.position, Quaternion.identity)as GameObject;
+
+		NetworkServer.Spawn(knight_Clone);
+	}
+
+	[Command]
+	public void CmdCreateHeroArchPlayer(NetworkIdentity player) {
+		Debug.Log("Server Command Called create arch player");
+		GameObject birthplace = GameObject.Find("SummonPoint");
+		GameObject arch_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroArch"], birthplace.transform.position, Quaternion.identity)as GameObject;
+
+		NetworkServer.Spawn(arch_Clone);
 	}
 
 

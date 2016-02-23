@@ -31,7 +31,7 @@ public class ArchSuperHit : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col){
 
-		if(col.gameObject.tag!="player"){
+		if(col.gameObject.tag!="Player"){
 		ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
 		ending.AddComponent<DestoryselfAfterfewsecond>();
 
