@@ -21,6 +21,7 @@ GameObject:
   - 114: {fileID: 11488642}
   - 114: {fileID: 11487630}
   - 114: {fileID: 11472240}
+  - 114: {fileID: 11423102}
   m_Layer: 12
   m_Name: Arch
   m_TagString: Player
@@ -145,7 +146,7 @@ MonoBehaviour:
   MAX_MagicPoints: 100
   DefendePoints: 0
   Worth: 100
-  haveMoney: 0
+  haveMoney: 500
   meleeDamageDealt: 5
   secondDamageDealt: 12
   superDamageDealt: 40
@@ -153,6 +154,27 @@ MonoBehaviour:
   Magic_Regen: 1
   damagePOP: {fileID: 0}
   death: {fileID: 0}
+--- !u!114 &11423102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba46e61501e7a4bb7a4611bc8b607aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpupgrade: 50
+  mpupgrade: 50
+  meleeupgrade: 5
+  secondupgrade: 10
+  superupgrade: 20
+  armorupgrade: 10
+  healthregenupgrade: 3
+  magicregenupgrade: 3
+  price_for_upgrade: 500
+  effect: {fileID: 126012, guid: 7c9cd5ba07a192745a6202ad83c74022, type: 2}
 --- !u!114 &11426140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,6 +389,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPlayerAuthority
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: haveMoney
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

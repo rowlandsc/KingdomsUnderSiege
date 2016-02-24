@@ -8,6 +8,7 @@ public class ProfileSystem : MonoBehaviour {
 	public float MAX_HealthPoints=100;
 	public float MAX_MagicPoints=100;
 
+
 	//the defendpoints max is 100
 	public float DefendePoints=0f;
 	public float Worth=100f;
@@ -47,7 +48,26 @@ public class ProfileSystem : MonoBehaviour {
 			//death_.AddComponent<DestoryselfAfterfewsecond>();
 			Destroy(this.gameObject);
 		}
+
+		if(healthPoints<MAX_HealthPoints){
+			print("Start to recon hp");
+			healthPoints+=Health_Regen*0.01f;
+
+		}
+
+		if(MagicPoints<MAX_MagicPoints){
+			print("Start to recon mp");
+			MagicPoints+=Magic_Regen*0.01f;
+
+		}
+
+
+
+
 	}
+
+
+
 
 	public void getDamage(float damage){
 		healthPoints = healthPoints - damage*(DefendePoints/200);
@@ -74,7 +94,7 @@ public class ProfileSystem : MonoBehaviour {
 	}
 
 	public void AddHealth(float value){
-		MAX_HealthPoints+=value;
+		MAX_HealthPoints=MAX_HealthPoints+value;
 	}
 
 	public void AddMagic(float value){
@@ -95,5 +115,53 @@ public class ProfileSystem : MonoBehaviour {
 
 	public void AddSuperDamage(float value){
 		superDamageDealt+=value;
+	}
+
+	public void AddDamage(float value){
+		meleeDamageDealt+=value*0.09f;
+		secondDamageDealt+=value*0.22f;
+		superDamageDealt+=value*0.69f;
+	
+	}
+
+	public void AddHealthReco(float value){
+		Health_Regen+=value;
+	}
+
+	public void AddMagicReco(float value){
+		Magic_Regen+=value;
+	}
+
+	public float returnArmor(){
+		return DefendePoints;
+	}
+
+	public float returnMeleeDamage(){
+		return meleeDamageDealt;
+	}
+
+	public float returnSecondDamage(){
+		return secondDamageDealt;
+	}
+
+	public float returnSuperDamage(){
+		return superDamageDealt;
+	}
+
+	public float returnHR(){
+		return Health_Regen;
+	}
+
+	public float returnMR(){
+		return Magic_Regen;
+	}
+
+	public bool useMoney(float value){
+		if(haveMoney>=value){
+			haveMoney-=value;
+			return true;
+		}else{
+			return false;
+		}
 	}
 }

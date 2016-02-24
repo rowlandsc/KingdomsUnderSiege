@@ -12,7 +12,7 @@ public class HeroRoundManager : MonoBehaviour {
 	private GameObject door;
 	// Use this for initialization
 	void Start () {
-		Cursor.visible = false;
+		Cursor.visible = true;
 		preround_time=5f;
 		round_time=10f;
 		timer=0;

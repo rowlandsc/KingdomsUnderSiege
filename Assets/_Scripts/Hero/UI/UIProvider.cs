@@ -7,6 +7,8 @@ public class UIProvider : MonoBehaviour {
 	private float hp;
 	private float mp;
 	private float money;
+	private float Max_hp;
+	private float Max_mp;
 
 	private float melee_cooldown;
 	private float second_cooldown;
@@ -16,8 +18,11 @@ public class UIProvider : MonoBehaviour {
 	private float second_cooldown_timer;
 	private float super_cooldown_timer;
 
+
 	private GameObject UIhp;
+	private GameObject UIhptext;
 	private GameObject UImp;
+	private GameObject UImptext;
 	private GameObject UIMoney;
 	private GameObject UIMelee;
 	private GameObject UISecond;
@@ -47,7 +52,9 @@ public class UIProvider : MonoBehaviour {
 		if(enable){
 
 			UIhp = GameObject.Find("HealthPoints");
+			UIhptext = GameObject.Find("HP_Shows");
 			UImp = GameObject.Find("MagicPoints");
+			UImptext = GameObject.Find("MP_Shows");
 			UIMoney = GameObject.Find("Money_Amount");
 			UIMelee = GameObject.Find("Melee_Cooldown");
 			UISecond = GameObject.Find("Second_Cooldown");
@@ -60,6 +67,8 @@ public class UIProvider : MonoBehaviour {
 			hp = this.gameObject.GetComponent<ProfileSystem>().healthPoints;
 			mp = this.gameObject.GetComponent<ProfileSystem>().MagicPoints;
 			money = this.gameObject.GetComponent<ProfileSystem>().haveMoney;
+			Max_hp = this.gameObject.GetComponent<ProfileSystem>().MAX_HealthPoints;
+			Max_mp = this.gameObject.GetComponent<ProfileSystem>().MAX_MagicPoints;
 
 			if(this.gameObject.name=="Mage"||this.gameObject.name=="Mage(Clone)")
 			{
@@ -106,6 +115,9 @@ public class UIProvider : MonoBehaviour {
 			UImp.GetComponent<Slider>().value = mp/(this.gameObject.GetComponent<ProfileSystem>().MAX_MagicPoints);
 	
 			UIMoney.GetComponent<Text>().text = money.ToString();
+
+			UIhptext.GetComponent<Text>().text = ((int) Mathf.Round (hp)).ToString() + "/" + ((int) Mathf.Round (Max_hp)).ToString();
+			UImptext.GetComponent<Text>().text = ((int) Mathf.Round (mp)).ToString() + "/" + ((int) Mathf.Round (Max_mp)).ToString();
 
 			if(melee_cooldown_timer!=melee_cooldown) UIMelee.GetComponent<Text>().text = ((int) Mathf.Round (melee_cooldown_timer)).ToString();
 			if(melee_cooldown_timer==melee_cooldown) UIMelee.GetComponent<Text>().text = null;

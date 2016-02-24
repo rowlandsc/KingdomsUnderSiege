@@ -175,14 +175,15 @@ MonoBehaviour:
   MagicPoints: 100
   MAX_HealthPoints: 20
   MAX_MagicPoints: 100
-  DefendePoints: 0
-  Worth: 100
+  DamageBuff: 0
+  DefendePoints: 20
+  Worth: 65
   haveMoney: 0
   meleeDamageDealt: 5
   secondDamageDealt: 12
   superDamageDealt: 40
-  Health_Regen: 1
-  Magic_Regen: 1
+  Health_Regen: 0
+  Magic_Regen: 0
   damagePOP: {fileID: 180734, guid: 20777c550f47d4b789e6fba39c87cd5e, type: 2}
   death: {fileID: 0}
 --- !u!114 &11448806
