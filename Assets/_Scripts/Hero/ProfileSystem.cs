@@ -70,7 +70,7 @@ public class ProfileSystem : MonoBehaviour {
 
 
 	public void getDamage(float damage){
-		healthPoints = healthPoints - damage*(DefendePoints/200);
+		healthPoints = healthPoints - damage*(1- DefendePoints/200);
 	}
 
 	public void useMagic(float mp){
@@ -88,7 +88,7 @@ public class ProfileSystem : MonoBehaviour {
 			healthPoints=0f;
 			return true;}
 		else{
-			healthPoints-=damage;
+			getDamage(damage);
 			return false;
 		}
 	}
