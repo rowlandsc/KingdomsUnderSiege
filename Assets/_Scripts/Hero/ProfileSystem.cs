@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ProfileSystem : MonoBehaviour {
 
@@ -30,17 +31,22 @@ public class ProfileSystem : MonoBehaviour {
 	private GameObject death_;
 
 	private bool herodie;
-	private GameObject birthplace;
+	private GameObject Mage_birthplace;
+	private GameObject Knight_birthplace;
+	private GameObject Arch_birthplace;
 
 
 	// Use this for initialization
 	void Start () {
 		timer=0;
-		birthplace=GameObject.FindGameObjectWithTag("Birthplace");
+		Mage_birthplace=GameObject.Find("MageSummonPoint");
+		Knight_birthplace =GameObject.Find("KnightSummonPoint");
+		Arch_birthplace =GameObject.Find("ArchSummonPoint");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
 
 		if(healthPoints>MAX_HealthPoints){
 			healthPoints=MAX_HealthPoints;
@@ -54,7 +60,11 @@ public class ProfileSystem : MonoBehaviour {
 			if(this.gameObject.tag=="Player"){
 				herodie = true;
 				Destroy(this.gameObject);
-			}else{
+			}
+			else if(this.gameObject.name=="ChaDragon"){
+				this.gameObject.GetComponent<DragonAI>().NowState = 2;
+			}
+			else{
 				Destroy(this.gameObject);
 			}
 		}
@@ -75,11 +85,12 @@ public class ProfileSystem : MonoBehaviour {
 
 
 		if(herodie){
-			
-			birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,meleeDamageDealt,secondDamageDealt,superDamageDealt,DefendePoints,Health_Regen,Magic_Regen,haveMoney);
+
+			if(this.gameObject.name=="Mage(Clone)") Mage_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,meleeDamageDealt,secondDamageDealt,superDamageDealt,DefendePoints,Health_Regen,Magic_Regen,haveMoney);
+			if(this.gameObject.name=="Knight(Clone)") Knight_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,meleeDamageDealt,secondDamageDealt,superDamageDealt,DefendePoints,Health_Regen,Magic_Regen,haveMoney);
+			if(this.gameObject.name=="Arch(Clone)") Arch_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,meleeDamageDealt,secondDamageDealt,superDamageDealt,DefendePoints,Health_Regen,Magic_Regen,haveMoney);
 		}
-
-
+			
 	}
 
 
@@ -99,7 +110,7 @@ public class ProfileSystem : MonoBehaviour {
 	}
 
 	public bool KillAndGains(float damage){
-		
+
 		if(damage>=healthPoints){
 			healthPoints=0f;
 			return true;}

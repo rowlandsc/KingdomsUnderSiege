@@ -1933,7 +1933,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf0c82d1b50440c280c841b620d5de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NowState: 0
   powerball: {fileID: 177348, guid: ed30b8653b49a4074aca891c4b911161, type: 2}
+  ground: {fileID: 112356, guid: f486b303958104e5db8d90272c8f49d4, type: 2}
 --- !u!137 &13741138
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

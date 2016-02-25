@@ -27,6 +27,8 @@ GameObject:
   - 4: {fileID: 400004}
   - 198: {fileID: 19800004}
   - 199: {fileID: 19900004}
+  - 135: {fileID: 13508754}
+  - 114: {fileID: 11497776}
   m_Layer: 0
   m_Name: FireShield
   m_TagString: Untagged
@@ -71,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.5, y: -0, z: -13}
+  m_LocalPosition: {x: 231.99004, y: 19.996338, z: 156.90839}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -102,6 +104,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mprSpeed: 1.75
+--- !u!114 &11497776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb3ce06f817bc4ea2b4e0266365ec92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &13508754
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.079208
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19800002
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -110,7 +110,6 @@ public class UIProvider : MonoBehaviour {
 			SuperIcon.GetComponent<RawImage>().texture = super_icon;
 
 
-
 			UIhp.GetComponent<Slider>().value = hp/(this.gameObject.GetComponent<ProfileSystem>().MAX_HealthPoints);
 			UImp.GetComponent<Slider>().value = mp/(this.gameObject.GetComponent<ProfileSystem>().MAX_MagicPoints);
 	

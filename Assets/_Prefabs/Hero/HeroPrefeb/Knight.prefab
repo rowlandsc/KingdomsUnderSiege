@@ -1001,7 +1001,7 @@ MonoBehaviour:
   mp_use: 10
   timer: 0
   knightsecond_Activate: 0
-  effect_fire: {fileID: 100002, guid: 0e4c3e38b39f63b418ffcf6ff0ea10fc, type: 2}
+  effect_fire: {fileID: 100004, guid: 18a6b21b686693646907f4f8278ae8cf, type: 2}
 --- !u!114 &11478508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1047,7 +1047,9 @@ MonoBehaviour:
   mp_use: 40
   cooldown: 30
   duration: 10
+  canAttack: 0
   timer: 0
+  super_activation: 0
   super: {fileID: 100004, guid: 18a6b21b686693646907f4f8278ae8cf, type: 2}
 --- !u!114 &11499560
 MonoBehaviour:
@@ -1069,7 +1071,7 @@ MonoBehaviour:
   haveMoney: 500
   meleeDamageDealt: 5
   secondDamageDealt: 12
-  superDamageDealt: 40
+  superDamageDealt: 0
   Health_Regen: 1
   Magic_Regen: 1
   damagePOP: {fileID: 0}
@@ -1156,6 +1158,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: haveMoney
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: duration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: superDamageDealt
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

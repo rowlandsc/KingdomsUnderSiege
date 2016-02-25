@@ -86,6 +86,8 @@ public class ArchSuper : MonoBehaviour {
 				SuperActivate=false;
 				Destroy(superFx_clone);
 				effect_apply=true;
+				skytime=10f;
+				shot_times_left=3;
 			}
 
 		}

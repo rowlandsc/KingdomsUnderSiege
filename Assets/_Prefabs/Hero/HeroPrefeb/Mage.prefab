@@ -204,7 +204,7 @@ MonoBehaviour:
   MAX_MagicPoints: 100
   DefendePoints: 0
   Worth: 100
-  haveMoney: 500
+  haveMoney: 5000
   meleeDamageDealt: 5
   secondDamageDealt: 12
   superDamageDealt: 40
@@ -421,7 +421,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: haveMoney
-      value: 500
+      value: 5000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -7,7 +7,7 @@ public class KnightMeleeHit : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player=GameObject.FindGameObjectWithTag("Player");
+		player=GameObject.Find("Knight(Clone)");
 	}
 	
 	// Update is called once per frame
@@ -21,7 +21,6 @@ public class KnightMeleeHit : MonoBehaviour {
 
 		if(canAttack){
 			if(col.tag=="OverseerPlayer"){
-
 
 				if(col.gameObject.GetComponent<ProfileSystem>()){
 

@@ -9,7 +9,7 @@ public class ArchSecond : MonoBehaviour {
 	public float mp_use=10f;
 
 	public float cooldown=4f;
-	public float distance=20f;
+	public float distance=30f;
 
 	private bool canAttack;
 	public float timer;

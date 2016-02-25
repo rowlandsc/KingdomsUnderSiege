@@ -98,15 +98,6 @@ public class KnightSecond : MonoBehaviour {
 	public float getcooldown(){
 		return cooldown;
 	}
-
-	void OnTriggerEnter(Collider col){
-		if(knightsecond_Activate){
-			if(col.gameObject.GetComponent<ProfileSystem>()){
-				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(this.gameObject.GetComponent<ProfileSystem>().secondDamageDealt))
-				{this.gameObject.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}}
-
-		}
-		}
-		//apply confusion effect here
+		
 	}
 

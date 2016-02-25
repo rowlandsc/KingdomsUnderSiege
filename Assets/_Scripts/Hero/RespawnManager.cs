@@ -17,7 +17,9 @@ public class RespawnManager : MonoBehaviour {
 
 	private bool respawn;
 
-	private GameObject birthplace;
+	private GameObject Mage_birthplace;
+	private GameObject Knight_birthplace;
+	private GameObject Arch_birthplace;
 	private GameObject cam;
 
 	public float herorespwn_timer;
@@ -41,7 +43,10 @@ public class RespawnManager : MonoBehaviour {
 	void Start () {
 		respawn=false;
 		cam=GameObject.FindGameObjectWithTag("MainCamera");
-		birthplace=GameObject.FindGameObjectWithTag("Birthplace");
+		Mage_birthplace=GameObject.Find("MageSummonPoint");
+		Knight_birthplace =GameObject.Find("KnightSummonPoint");
+		Arch_birthplace =GameObject.Find("ArchSummonPoint");
+
 		herorespwn_words=null;
 		herorespwn_timer=10f;
 	}
@@ -66,31 +71,32 @@ public class RespawnManager : MonoBehaviour {
 				}
 
 				if(hero=="Mage(Clone)"){
-					mage_Clone=Instantiate(mage, birthplace.transform.position, Quaternion.identity)as GameObject;
+					mage_Clone=Instantiate(mage, Mage_birthplace.transform.position, Quaternion.identity)as GameObject;
 					mage_Clone.GetComponent<ProfileSystem>().inital(maxhp_,maxmp_,meleedam,seconddam,superdam,aromr_,hre_,mre_,money_);
 
 					cam.gameObject.GetComponent<TPSCamera>().ChangePlayer(mage_Clone);
 				}
 
 				if(hero=="Knight(Clone)"){
-					knight_Clone=Instantiate(knight, birthplace.transform.position, Quaternion.identity)as GameObject;
+					knight_Clone=Instantiate(knight, Knight_birthplace.transform.position, Quaternion.identity)as GameObject;
 					knight_Clone.GetComponent<ProfileSystem>().inital(maxhp_,maxmp_,meleedam,seconddam,superdam,aromr_,hre_,mre_,money_);
 
 					cam.gameObject.GetComponent<TPSCamera>().ChangePlayer(knight_Clone);
 				}
 
 				if(hero=="Arch(Clone)"){
-					arch_Clone=Instantiate(arch, birthplace.transform.position, Quaternion.identity)as GameObject;
+					arch_Clone=Instantiate(arch, Arch_birthplace.transform.position, Quaternion.identity)as GameObject;
 					arch_Clone.GetComponent<ProfileSystem>().inital(maxhp_,maxmp_,meleedam,seconddam,superdam,aromr_,hre_,mre_,money_);
 
 					cam.gameObject.GetComponent<TPSCamera>().ChangePlayer(arch_Clone);
 				}
 
-				UI_clone=Instantiate(UI, birthplace.transform.position, Quaternion.identity)as GameObject;
-				GearSystem_clone=Instantiate(GearSystem, birthplace.transform.position, Quaternion.identity)as GameObject;
+				UI_clone=Instantiate(UI, Arch_birthplace.transform.position, Quaternion.identity)as GameObject;
+				GearSystem_clone=Instantiate(GearSystem, Arch_birthplace.transform.position, Quaternion.identity)as GameObject;
 
 				respawn=false;
 				herorespwn_words=null;
+				herorespwn_timer=10f;
 
 			}
 

@@ -9,7 +9,9 @@ public class ChooseHero : MonoBehaviour {
 	public GameObject UI;
 	public GameObject GearSystem;
 
-	private GameObject birthplace;
+	private GameObject Mage_birthplace;
+	private GameObject Knight_birthplace;
+	private GameObject Arch_birthplace;
 	private GameObject cam;
 
 	private GameObject mage_Clone;
@@ -24,7 +26,9 @@ public class ChooseHero : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		cam=GameObject.FindGameObjectWithTag("MainCamera");
-		birthplace=GameObject.FindGameObjectWithTag("Birthplace");
+		Mage_birthplace=GameObject.Find("MageSummonPoint");
+		Knight_birthplace =GameObject.Find("KnightSummonPoint");
+		Arch_birthplace =GameObject.Find("ArchSummonPoint");
 
 
 	}
@@ -46,9 +50,9 @@ public class ChooseHero : MonoBehaviour {
 
 			}
 
-			mage_Clone=Instantiate(mage, birthplace.transform.position, Quaternion.identity)as GameObject;
-			UI_clone=Instantiate(UI, birthplace.transform.position, Quaternion.identity)as GameObject;
-			GearSystem_clone=Instantiate(GearSystem, birthplace.transform.position, Quaternion.identity)as GameObject;
+			mage_Clone=Instantiate(mage, Mage_birthplace.transform.position, Quaternion.identity)as GameObject;
+			UI_clone=Instantiate(UI, Mage_birthplace.transform.position, Quaternion.identity)as GameObject;
+			GearSystem_clone=Instantiate(GearSystem, Mage_birthplace.transform.position, Quaternion.identity)as GameObject;
 
 			cam.gameObject.GetComponent<TPSCamera>().ChangePlayer(mage_Clone);
 
@@ -68,9 +72,9 @@ public class ChooseHero : MonoBehaviour {
 
 
 
-			knight_Clone=Instantiate(knight, birthplace.transform.position, Quaternion.identity)as GameObject;
-			UI_clone=Instantiate(UI, birthplace.transform.position, Quaternion.identity)as GameObject;
-			GearSystem_clone=Instantiate(GearSystem, birthplace.transform.position, Quaternion.identity)as GameObject;
+			knight_Clone=Instantiate(knight, Knight_birthplace.transform.position, Quaternion.identity)as GameObject;
+			UI_clone=Instantiate(UI, Knight_birthplace.transform.position, Quaternion.identity)as GameObject;
+			GearSystem_clone=Instantiate(GearSystem, Knight_birthplace.transform.position, Quaternion.identity)as GameObject;
 
 			cam.gameObject.GetComponent<TPSCamera>().ChangePlayer(knight_Clone);
 		}
@@ -87,9 +91,9 @@ public class ChooseHero : MonoBehaviour {
 				}
 			}
 			
-			arch_Clone=Instantiate(arch, birthplace.transform.position, Quaternion.identity)as GameObject;
-			UI_clone=Instantiate(UI, birthplace.transform.position, Quaternion.identity)as GameObject;
-			GearSystem_clone=Instantiate(GearSystem, birthplace.transform.position, Quaternion.identity)as GameObject;
+			arch_Clone=Instantiate(arch, Arch_birthplace.transform.position, Quaternion.identity)as GameObject;
+			UI_clone=Instantiate(UI, Arch_birthplace.transform.position, Quaternion.identity)as GameObject;
+			GearSystem_clone=Instantiate(GearSystem, Arch_birthplace.transform.position, Quaternion.identity)as GameObject;
 
 			cam.gameObject.GetComponent<TPSCamera>().ChangePlayer(arch_Clone);
 			

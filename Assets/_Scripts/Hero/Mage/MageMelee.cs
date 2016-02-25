@@ -6,7 +6,7 @@ public class MageMelee : MonoBehaviour {
 
 	public GameObject iceball;
 	public float cooldown=0.5f;
-	private float distance=20f;
+	private float distance=30f;
 
 	private bool canAttack;
 	public float timer;
