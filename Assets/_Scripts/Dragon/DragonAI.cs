@@ -52,6 +52,7 @@ public class DragonAI : MonoBehaviour {
 			if(Vector3.Distance(transform.position,HeroChoose.transform.position)<AI_ATTACT_DISTANCE)
 			{
 
+				this.gameObject.GetComponent<ProfileSystem>().Health_Regen=0;
 				this.transform.LookAt(HeroChoose.transform);
 
 				if(canAttack){
@@ -73,7 +74,11 @@ public class DragonAI : MonoBehaviour {
 
 					//改变位置
 					NowState=STATE_HOME;
+
+					this.gameObject.GetComponent<ProfileSystem>().Health_Regen=10;
+
 				}
+					
 	
 			}
 		}
