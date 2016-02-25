@@ -32,6 +32,7 @@ public class ChooseHero : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		cam=GameObject.FindGameObjectWithTag("MainCamera");
 
 		if(Input.GetKeyDown(KeyCode.F1)){
 

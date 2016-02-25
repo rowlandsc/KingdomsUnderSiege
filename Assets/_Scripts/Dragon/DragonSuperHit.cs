@@ -3,9 +3,11 @@ using System.Collections;
 
 public class DragonSuperHit : MonoBehaviour {
 
+	private GameObject dragon;
+	private float damage;
+
 	public GameObject ending;
 	private GameObject ending_;
-	private GameObject dragon;
 
 	private float kill_time;
 	private float memory_saving_timer;
@@ -14,7 +16,8 @@ public class DragonSuperHit : MonoBehaviour {
 	void Start () {
 		kill_time=10f;
 		memory_saving_timer=0f;
-		dragon=GameObject.Find("Dragon");
+		dragon=GameObject.Find("ChaDragon");
+		damage = dragon.GetComponent<ProfileSystem>().returnSuperDamage();
 	}
 
 	// Update is called once per frame
@@ -31,7 +34,7 @@ public class DragonSuperHit : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 
 
-		if(col.tag!="IceBullet"&&col.name!="Dragon"&&col.name!="HealthBar"&&col.tag!="MainCamera"){
+		if(col.tag!="OverseerPlayer"&&col.name!="HealthBar"&&col.tag!="IceBullet"){
 
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
 			ending.AddComponent<DestoryselfAfterfewsecond>();
@@ -39,15 +42,15 @@ public class DragonSuperHit : MonoBehaviour {
 
 			if(col.gameObject.GetComponent<ProfileSystem>()){
 
-				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(10f));
+				col.gameObject.GetComponent<ProfileSystem>().KillAndGains(damage);
 
 
 			}
 
-			Destroy(this.gameObject);
+				Destroy(this.gameObject);
+
+
 		}
 
 	}
-
-
 }

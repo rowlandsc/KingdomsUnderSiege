@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 477508}
   - 65: {fileID: 6529068}
   - 114: {fileID: 11459386}
+  - 114: {fileID: 11417960}
   m_Layer: 0
   m_Name: SummonPoint
   m_TagString: Birthplace
@@ -24,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.88840294, y: .519999981, z: 12.7299995}
+  m_LocalPosition: {x: 324.2, y: 19.9, z: 200.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -41,6 +42,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11417960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b77053595e44c3799fd0efe261fe7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mage: {fileID: 159646, guid: cdfbff2d595d245aeb7f029e49ed732d, type: 2}
+  knight: {fileID: 163586, guid: 4dee2a0bd1f0d443bb2bbd8ddef7df89, type: 2}
+  arch: {fileID: 152332, guid: bf05d0b104cab43a0966b667acafcd63, type: 2}
+  UI: {fileID: 122128, guid: 49f9dc83d51fd47878a1c15ba6d18358, type: 2}
+  GearSystem: {fileID: 147068, guid: 14a5a5c6c8c824b32842b1739672346d, type: 2}
+  herorespwn_timer: 0
 --- !u!114 &11459386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,6 +73,8 @@ MonoBehaviour:
   mage: {fileID: 159646, guid: cdfbff2d595d245aeb7f029e49ed732d, type: 2}
   knight: {fileID: 163586, guid: 4dee2a0bd1f0d443bb2bbd8ddef7df89, type: 2}
   arch: {fileID: 152332, guid: bf05d0b104cab43a0966b667acafcd63, type: 2}
+  UI: {fileID: 122128, guid: 49f9dc83d51fd47878a1c15ba6d18358, type: 2}
+  GearSystem: {fileID: 147068, guid: 14a5a5c6c8c824b32842b1739672346d, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

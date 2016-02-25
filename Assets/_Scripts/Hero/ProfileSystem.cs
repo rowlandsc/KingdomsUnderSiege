@@ -29,9 +29,14 @@ public class ProfileSystem : MonoBehaviour {
 	public GameObject death;
 	private GameObject death_;
 
+	private bool herodie;
+	private GameObject birthplace;
+
+
 	// Use this for initialization
 	void Start () {
 		timer=0;
+		birthplace=GameObject.FindGameObjectWithTag("Birthplace");
 	}
 	
 	// Update is called once per frame
@@ -46,22 +51,33 @@ public class ProfileSystem : MonoBehaviour {
 
 			//death_ = Instantiate(death_, this.transform.position, Quaternion.identity) as GameObject;
 			//death_.AddComponent<DestoryselfAfterfewsecond>();
-			Destroy(this.gameObject);
+			if(this.gameObject.tag=="Player"){
+				herodie = true;
+				Destroy(this.gameObject);
+			}else{
+				Destroy(this.gameObject);
+			}
 		}
 
 		if(healthPoints<MAX_HealthPoints){
-			print("Start to recon hp");
+			
 			healthPoints+=Health_Regen*0.01f;
 
 		}
 
 		if(MagicPoints<MAX_MagicPoints){
-			print("Start to recon mp");
+			
 			MagicPoints+=Magic_Regen*0.01f;
 
 		}
 
 
+
+
+		if(herodie){
+			
+			birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,meleeDamageDealt,secondDamageDealt,superDamageDealt,DefendePoints,Health_Regen,Magic_Regen,haveMoney);
+		}
 
 
 	}
@@ -164,4 +180,22 @@ public class ProfileSystem : MonoBehaviour {
 			return false;
 		}
 	}
+
+	public void inital(float maxhp, float maxmp, float meleedamage, float seconddamage, float superdamage, float armor, float hre, float mre, float money){
+		
+		MAX_HealthPoints=maxhp;
+		MAX_MagicPoints=maxmp;
+
+		DefendePoints=armor;
+		haveMoney=money;
+
+		meleeDamageDealt=meleedamage;
+		secondDamageDealt=seconddamage;
+		superDamageDealt=superdamage;
+
+		Health_Regen=hre;
+		Magic_Regen=mre;
+	}
+
+
 }
