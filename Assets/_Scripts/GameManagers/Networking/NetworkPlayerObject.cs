@@ -107,8 +107,6 @@ public class NetworkPlayerObject : NetworkBehaviour {
         Tower tower = GameObject.Instantiate(PrefabCache.Instance.PrefabIndex[prefabID]).GetComponent<Tower>();
         tower.transform.position = position;
         //tower.transform.rotation = transform.rotation;
-        tower.GetComponent<MapCircleDrawer>().GameMap = Map.Instance;
-        tower.GetComponent<MapCircleDrawer>().CircleRadius = tower.Radius;
         NetworkServer.Spawn(tower.gameObject);
     }
 
