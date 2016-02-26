@@ -7,6 +7,7 @@ public class PrefabCache : MonoBehaviour {
     void Awake() {
         if (Instance == null) {
             Instance = this;
+			DontDestroyOnLoad(this.gameObject);
         }
         else {
             Debug.Log("Extra prefab cache");

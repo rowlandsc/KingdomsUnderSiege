@@ -46,8 +46,7 @@ MonoBehaviour:
   m_DontDestroyOnLoad: 1
   m_RunInBackground: 1
   m_ScriptCRCCheck: 1
-  m_SendPeerInfo: 0
-  m_MaxDelay: .00999999978
+  m_MaxDelay: 0.01
   m_LogLevel: 2
   m_PlayerPrefab: {fileID: 168786, guid: 2e9b001f6f0548f4b8242a3ff7103693, type: 2}
   m_AutoCreatePlayer: 1
@@ -59,6 +58,9 @@ MonoBehaviour:
   - {fileID: 195394, guid: e3bc9e526d416114997692f8544ec6d2, type: 2}
   - {fileID: 181652, guid: 3c495dd3c3f17ac43aab8e68ed15de81, type: 2}
   - {fileID: 129340, guid: ba0bdacff6679e5448208c04b8de18ff, type: 2}
+  - {fileID: 163586, guid: 4dee2a0bd1f0d443bb2bbd8ddef7df89, type: 2}
+  - {fileID: 152332, guid: bf05d0b104cab43a0966b667acafcd63, type: 2}
+  - {fileID: 159646, guid: cdfbff2d595d245aeb7f029e49ed732d, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -79,7 +81,14 @@ MonoBehaviour:
     m_MaxCombinedReliableMessageCount: 10
     m_MaxSentMessageQueueSize: 128
     m_IsAcksLong: 0
+    m_UsePlatformSpecificProtocols: 0
     m_Channels: []
+  m_GlobalConfig:
+    m_ThreadAwakeTimeout: 1
+    m_ReactorModel: 0
+    m_ReactorMaximumReceivedMessages: 1024
+    m_ReactorMaximumSentMessages: 1024
+    m_MaxPacketSize: 2000
   m_Channels: 0000000005000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
