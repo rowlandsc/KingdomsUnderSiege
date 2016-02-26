@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.Networking;
 
-public class HeroMove : MonoBehaviour {
+public class HeroMove : NetworkBehaviour {
 
 
 
@@ -40,6 +41,10 @@ public class HeroMove : MonoBehaviour {
 		}
 		LastPos = curPos;
 
+
+		if(!isLocalPlayer){return;}
+		else{
+			
 		if(Input.GetKey(KeyCode.W)&&CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.forward;
@@ -71,6 +76,7 @@ public class HeroMove : MonoBehaviour {
 			Vector3.Normalize(moveDirection);
 
 			transform.Translate(-moveDirection * Time.deltaTime* backwardspeed, Space.World);
+		}
 		}
 
 
