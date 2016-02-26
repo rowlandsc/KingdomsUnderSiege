@@ -13,7 +13,9 @@ public class HeroArch : Hero {
 	}
 
 	public IEnumerator BuildPrefabs() {
-		while (PrefabCache.Instance == null) {
+		GameObject archObject = GameObject.Find("Arch(Clone)");
+		while (PrefabCache.Instance == null || !archObject) {
+			archObject = GameObject.Find("Mage(Clone)");
 			yield return null;
 		}
 		HeroCamPrefab = PrefabCache.Instance.PrefabIndex["HeroCamera"];
@@ -26,6 +28,6 @@ public class HeroArch : Hero {
 		_heroCam = Instantiate(HeroCamPrefab) as GameObject;
 		_heroGearSystem=Instantiate(HeroGearSystemPrefab)as GameObject;
 
-		_heroCam.gameObject.GetComponent<TPSCamera>().ChangePlayer(GameObject.Find("Arch(Clone)"));
+		_heroCam.gameObject.GetComponent<TPSCamera>().ChangePlayer(archObject);
 	}
 }

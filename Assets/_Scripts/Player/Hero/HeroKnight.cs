@@ -13,7 +13,9 @@ public class HeroKnight : Hero {
 	}
 
 	public IEnumerator BuildPrefabs() {
-		while (PrefabCache.Instance == null) {
+		GameObject knightObject = GameObject.Find("Knight(Clone)");
+		while (PrefabCache.Instance == null || !knightObject) {
+			knightObject = GameObject.Find("Knight(Clone)");
 			yield return null;
 		}
 		HeroCamPrefab = PrefabCache.Instance.PrefabIndex["HeroCamera"];
@@ -26,7 +28,7 @@ public class HeroKnight : Hero {
 		_heroCam = Instantiate(HeroCamPrefab) as GameObject;
 		_heroGearSystem=Instantiate(HeroGearSystemPrefab)as GameObject;
 
-		_heroCam.gameObject.GetComponent<TPSCamera>().ChangePlayer(GameObject.Find("Knight(Clone)"));
+		_heroCam.gameObject.GetComponent<TPSCamera>().ChangePlayer(knightObject);
 	}
 }
 

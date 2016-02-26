@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class KUSNetworkManager : NetworkManager {
 
-	public int Port = 84000;
+	public int Port = 48084;
 	public InputField IPInputField;
 	public Button HostGameButton;
 	public Button JoinGameButton;

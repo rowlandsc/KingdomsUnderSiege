@@ -81,7 +81,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
 	}
 
 	IEnumerator SpawnPlayer() {
-		while (!NetworkSpawnManagers.Instance || !NetworkSpawnManagers.Instance.DoneLoading) {
+		while (NetworkSpawnManagers.Instance && !NetworkSpawnManagers.Instance.DoneLoading) {
 			yield return null;
 		}
 
