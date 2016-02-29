@@ -13,7 +13,6 @@ GameObject:
   - 23: {fileID: 2326114}
   - 114: {fileID: 11436576}
   - 114: {fileID: 11463818}
-  - 54: {fileID: 5494894}
   - 114: {fileID: 11426140}
   - 114: {fileID: 11454666}
   - 114: {fileID: 11444318}
@@ -23,6 +22,7 @@ GameObject:
   - 114: {fileID: 11472240}
   - 114: {fileID: 11423102}
   - 114: {fileID: 11413038}
+  - 54: {fileID: 5495304}
   m_Layer: 12
   m_Name: Arch
   m_TagString: Player
@@ -103,7 +103,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152332}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5494894
+--- !u!54 &5495304
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -273,8 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.1
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0

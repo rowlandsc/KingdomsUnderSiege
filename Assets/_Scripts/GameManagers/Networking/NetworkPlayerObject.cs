@@ -151,7 +151,9 @@ public class NetworkPlayerObject : NetworkBehaviour {
         knightOwner.Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
         NetworkServer.Spawn(knight_Clone);
-	}
+
+        RpcSetOwner(knight_Clone.GetComponent<NetworkIdentity>(), player);
+    }
 
 	[Command]
 	public void CmdCreateHeroArchPlayer(NetworkIdentity player) {
