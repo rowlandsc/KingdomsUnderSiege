@@ -12,6 +12,7 @@ public class KUSNetworkManager : NetworkManager {
 	public Button DisconnectButton;
 
 	public void StartUpHost() {
+        StopHost();
 		SetPort();
 		NetworkManager.singleton.StartHost();
 	}

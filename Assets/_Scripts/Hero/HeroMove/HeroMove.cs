@@ -20,12 +20,14 @@ public class HeroMove : NetworkBehaviour {
 	public bool ifMoving;
 	private Vector3 curPos, LastPos;
 
+    public NetworkPlayerInput PlayerInput;
+
 	// Use this for initialization
 	void Start () {
 		ifMoving=false;
 		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
-
-	}
+        PlayerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -41,11 +43,7 @@ public class HeroMove : NetworkBehaviour {
 		}
 		LastPos = curPos;
 
-
-		if(!isLocalPlayer){return;}
-		else{
-			
-		if(Input.GetKey(KeyCode.W)&&CanMove){
+        if(PlayerInput.HeroMoveForwardInput > float.Epsilon && CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
@@ -54,7 +52,7 @@ public class HeroMove : NetworkBehaviour {
 			transform.Translate(moveDirection * Time.deltaTime* movespeed, Space.World);
 		}
 
-		if(Input.GetKey(KeyCode.A)&&CanMove){
+		if(PlayerInput.HeroMoveHorizontalInput < -1 * float.Epsilon && CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.right;
 			moveDirection.y = 0.0f;
@@ -62,7 +60,7 @@ public class HeroMove : NetworkBehaviour {
 
 			transform.Translate(-moveDirection * Time.deltaTime* sidespeed, Space.World);
 		}
-		if(Input.GetKey(KeyCode.D)&&CanMove){
+		if(PlayerInput.HeroMoveHorizontalInput > float.Epsilon && CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.right;
 			moveDirection.y = 0.0f;
@@ -70,17 +68,14 @@ public class HeroMove : NetworkBehaviour {
 
 			transform.Translate(moveDirection * Time.deltaTime* sidespeed, Space.World);
 		}
-		if(Input.GetKey(KeyCode.S)&&CanMove){
+		if(PlayerInput.HeroMoveForwardInput < -1 * float.Epsilon && CanMove){
 			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);
 
 			transform.Translate(-moveDirection * Time.deltaTime* backwardspeed, Space.World);
 		}
-		}
-
-
-
+        
 	}
 
 	static public void EnableMove(){

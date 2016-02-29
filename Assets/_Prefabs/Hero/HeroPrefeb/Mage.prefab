@@ -22,6 +22,7 @@ GameObject:
   - 114: {fileID: 11446758}
   - 114: {fileID: 11416478}
   - 114: {fileID: 11436536}
+  - 114: {fileID: 11489452}
   m_Layer: 12
   m_Name: Mage
   m_TagString: Player
@@ -317,6 +318,19 @@ MonoBehaviour:
   backwardspeed: 2
   sidespeed: 3
   ifMoving: 0
+  PlayerInput: {fileID: 0}
+--- !u!114 &11489452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0e981756f0b9b4ca745c3e5277833c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
 --- !u!114 &11490268
 MonoBehaviour:
   m_ObjectHideFlags: 1

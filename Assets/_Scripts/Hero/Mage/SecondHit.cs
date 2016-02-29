@@ -11,7 +11,7 @@ public class SecondHit : MonoBehaviour {
 
 	private GameObject player;
 
-	private GameObject hit = new GameObject();
+	private GameObject hit;
 	private float memory_saving_timer;
 	public float freeze_timer;
 

@@ -30,5 +30,6 @@ public class InputManager : MonoBehaviour {
             Destroy(this);
         }
     }
-	
+
+
 }

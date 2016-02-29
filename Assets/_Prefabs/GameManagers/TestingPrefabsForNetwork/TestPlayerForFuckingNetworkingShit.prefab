@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2357638}
   - 114: {fileID: 11453054}
   - 114: {fileID: 11481898}
+  - 114: {fileID: 11470012}
   m_Layer: 0
   m_Name: TestPlayerForFuckingNetworkingShit
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.6899719, y: -4.46119881, z: 8.35798264}
+  m_LocalPosition: {x: 36.689972, y: -4.461199, z: 8.357983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -50,8 +51,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -107,6 +110,17 @@ MonoBehaviour:
     i15: 147
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11470012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624cccc5442b45040b2dd34d179ae0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11481898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,6 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed6f44a92f307d4a872182ce0d3c2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Class: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

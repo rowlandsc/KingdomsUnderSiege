@@ -135,8 +135,11 @@ public class NetworkPlayerObject : NetworkBehaviour {
 		Debug.Log("Server Command Called create mage player");
 		GameObject birthplace = GameObject.Find("MageSummonPoint");
 		GameObject mage_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroMage"], birthplace.transform.position, Quaternion.identity)as GameObject;
-		
-		NetworkServer.Spawn(mage_Clone);
+        mage_Clone.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
+
+        NetworkServer.Spawn(mage_Clone);
+
+        RpcSetOwner(mage_Clone.GetComponent<NetworkIdentity>(), player);
 	}
 
 	[Command]
@@ -144,8 +147,10 @@ public class NetworkPlayerObject : NetworkBehaviour {
 		Debug.Log("Server Command Called create knight player");
 		GameObject birthplace = GameObject.Find("KnightSummonPoint");
 		GameObject knight_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroKnight"], birthplace.transform.position, Quaternion.identity)as GameObject;
+        NetworkPlayerOwner knightOwner = knight_Clone.AddComponent<NetworkPlayerOwner>();
+        knightOwner.Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
-		NetworkServer.Spawn(knight_Clone);
+        NetworkServer.Spawn(knight_Clone);
 	}
 
 	[Command]
@@ -153,8 +158,11 @@ public class NetworkPlayerObject : NetworkBehaviour {
 		Debug.Log("Server Command Called create arch player");
 		GameObject birthplace = GameObject.Find("ArchSummonPoint");
 		GameObject arch_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroArch"], birthplace.transform.position, Quaternion.identity)as GameObject;
+        arch_Clone.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
-		NetworkServer.Spawn(arch_Clone);
+        NetworkServer.Spawn(arch_Clone);
+
+        RpcSetOwner(arch_Clone.GetComponent<NetworkIdentity>(), player);
 	}
 
 
@@ -162,4 +170,10 @@ public class NetworkPlayerObject : NetworkBehaviour {
 	public void RpcStartGame() {
 		Application.LoadLevel(2);
 	}
+
+    [ClientRpc]
+    public void RpcSetOwner(NetworkIdentity obj, NetworkIdentity owner) {
+        Debug.Log("Setting network player owner of " + obj.gameObject.name + " to " + owner.gameObject.name);
+        obj.gameObject.GetComponent<NetworkPlayerOwner>().Owner = owner.gameObject.GetComponent<NetworkPlayerObject>();
+    }
 }
