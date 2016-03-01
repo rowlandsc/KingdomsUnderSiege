@@ -11,6 +11,10 @@ public class KUSNetworkManager : NetworkManager {
 	public Button JoinGameButton;
 	public Button DisconnectButton;
 
+    public void Start() {
+        FindStartButtons();
+    }
+
 	public void StartUpHost() {
         StopHost();
 		SetPort();
@@ -46,15 +50,18 @@ public class KUSNetworkManager : NetworkManager {
 
 	void OnLevelWasLoaded(int level) {
 		if (level == 0) {
-			HostGameButton = GameObject.Find("StartHostButton").GetComponent<Button>();
-			JoinGameButton = GameObject.Find("JoinGameButton").GetComponent<Button>();
-			IPInputField = GameObject.Find("IPInputField").GetComponent<InputField>();
-			SetUpMenuSceneButtons();
+            FindStartButtons();
 		} else if (level == 1) {
 			DisconnectButton = GameObject.Find("DisconnectButton").GetComponent<Button>();
 			SetUpSetUpSceneButtons();
 		}
 	}
 
+    void FindStartButtons() {
+        HostGameButton = GameObject.Find("StartHostButton").GetComponent<Button>();
+        JoinGameButton = GameObject.Find("JoinGameButton").GetComponent<Button>();
+        IPInputField = GameObject.Find("IPInputField").GetComponent<InputField>();
+        SetUpMenuSceneButtons();
+    }
 
 }
