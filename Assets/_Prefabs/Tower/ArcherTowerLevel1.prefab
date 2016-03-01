@@ -39,7 +39,7 @@ GameObject:
   - 114: {fileID: 11472120}
   m_Layer: 0
   m_Name: ArcherTowerLevel1
-  m_TagString: Enemy
+  m_TagString: OverseerPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,9 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 1000
+  healthPoints: 200
   MagicPoints: 100
-  MAX_HealthPoints: 1000
+  MAX_HealthPoints: 200
   MAX_MagicPoints: 100
   DefendePoints: 50
   Worth: 1000

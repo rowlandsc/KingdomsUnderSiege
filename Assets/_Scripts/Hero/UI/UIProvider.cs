@@ -48,6 +48,7 @@ public class UIProvider : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if (!GameObject.Find("UISystem(Clone)")) return;
 
 		if(enable){
 
