@@ -6,7 +6,7 @@ public class NetworkSpawnManagers : NetworkBehaviour {
 
 	public static NetworkSpawnManagers Instance;
 
-    public GameObject RoundManager, PrefabCache;
+    public GameObject RoundManager, PrefabCache, HeroMinionSpawner;
 	public bool DoneLoading = false;
 
 	void Awake() {
@@ -31,6 +31,8 @@ public class NetworkSpawnManagers : NetworkBehaviour {
 
 				GameObject prefabCache = Instantiate (this.PrefabCache);
 				NetworkServer.Spawn (prefabCache);
+
+                GameObject heroMinionSpawner = (GameObject) Instantiate(this.HeroMinionSpawner, new Vector3(249.76f, 19.996f, 157.2f), Quaternion.identity);
 
 				DoneLoading = true;
 			}

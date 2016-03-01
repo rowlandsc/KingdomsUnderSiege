@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.6899719, y: -4.46119881, z: 8.35798264}
+  m_LocalPosition: {x: 36.689972, y: -4.461199, z: 8.357983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,8 +73,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoundManager: {fileID: 129340, guid: ba0bdacff6679e5448208c04b8de18ff, type: 2}
-  TowerPlacer: {fileID: 160172, guid: c8561078b99ffe346a8542c1461b307a, type: 2}
   PrefabCache: {fileID: 195394, guid: e3bc9e526d416114997692f8544ec6d2, type: 2}
+  HeroMinionSpawner: {fileID: 156598, guid: e0ad773a730c6104ca0afef309440c9e, type: 2}
+  DoneLoading: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

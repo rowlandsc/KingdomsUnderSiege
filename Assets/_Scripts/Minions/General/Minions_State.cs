@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
-public class Minions_State : MonoBehaviour {
+public class Minions_State : NetworkBehaviour {
 
+    [SyncVar]
     public MINION_STATE State;
 
 	// Use this for initialization

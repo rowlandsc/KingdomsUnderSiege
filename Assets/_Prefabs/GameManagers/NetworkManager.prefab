@@ -58,9 +58,11 @@ MonoBehaviour:
   - {fileID: 195394, guid: e3bc9e526d416114997692f8544ec6d2, type: 2}
   - {fileID: 181652, guid: 3c495dd3c3f17ac43aab8e68ed15de81, type: 2}
   - {fileID: 129340, guid: ba0bdacff6679e5448208c04b8de18ff, type: 2}
-  - {fileID: 163586, guid: 4dee2a0bd1f0d443bb2bbd8ddef7df89, type: 2}
-  - {fileID: 152332, guid: bf05d0b104cab43a0966b667acafcd63, type: 2}
   - {fileID: 159646, guid: cdfbff2d595d245aeb7f029e49ed732d, type: 2}
+  - {fileID: 152332, guid: bf05d0b104cab43a0966b667acafcd63, type: 2}
+  - {fileID: 163586, guid: 4dee2a0bd1f0d443bb2bbd8ddef7df89, type: 2}
+  - {fileID: 135998, guid: 8c617c95d17c80448a2ae0dd6ecb1119, type: 2}
+  - {fileID: 156598, guid: e0ad773a730c6104ca0afef309440c9e, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -100,7 +102,7 @@ MonoBehaviour:
   matchMaker: {fileID: 0}
   matchName: default
   matchSize: 4
-  Port: 84000
+  Port: 48084
   IPInputField: {fileID: 0}
   HostGameButton: {fileID: 0}
   JoinGameButton: {fileID: 0}
