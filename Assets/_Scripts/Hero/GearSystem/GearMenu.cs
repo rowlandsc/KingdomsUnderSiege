@@ -56,14 +56,14 @@ public class GearMenu : MonoBehaviour {
 	
 		finder=GameObject.FindGameObjectsWithTag("HeroUI");
 		for(int i=0;i<finder.Length;i++){
-			if(finder[i].name=="GearSystem(Clone)"){
-				gearsystemUI=finder[i];
-			}
+            if (finder[i].name == "GearSystem(Clone)") {
+                gearsystemUI = finder[i];
+            }
 		}
 
 
 
-		if(Input.GetKeyDown(KeyCode.Tab)){
+        if (Input.GetKeyDown(KeyCode.Tab)){
 			actvate=true;
 		}
 		if(Input.GetKeyUp(KeyCode.Tab)){
@@ -74,7 +74,9 @@ public class GearMenu : MonoBehaviour {
 
 		if(actvate){
 
-			camera.GetComponent<DrawShotStar>().disableFS();
+      
+
+            camera.GetComponent<DrawShotStar>().disableFS();
 			
 			HeroMove.DisableMove();
 			gearsystemUI.SetActive(true);
