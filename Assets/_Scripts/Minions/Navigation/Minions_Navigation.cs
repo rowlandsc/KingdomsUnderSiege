@@ -36,8 +36,12 @@ public class Minions_Navigation : MonoBehaviour {
     }
 
     void Update(){
-        if (RoundManager.Instance.IsPreround()){
-            Destroy(this.gameObject);
+        if (RoundManager.Instance)
+        {
+            if (RoundManager.Instance.IsPreround())
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

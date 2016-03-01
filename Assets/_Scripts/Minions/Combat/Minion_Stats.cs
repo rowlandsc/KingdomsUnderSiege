@@ -1,9 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
 /**
  * A class to hold the stats of a Minion.
  */
-public class Minion_Stats : MonoBehaviour {
-    public float Health = 20f, AttackSpeed = 2f, AttackPower = 5f, AttackRange = 3f;
+public class Minion_Stats : NetworkBehaviour {
+
+    [SyncVar]
+    public float Health = 20f;
+
+    [SyncVar]
+    public float AttackSpeed = 2f;
+
+    [SyncVar]
+    public float AttackPower = 5f;
+
+    [SyncVar]
+    public float AttackRange = 3f;
 }

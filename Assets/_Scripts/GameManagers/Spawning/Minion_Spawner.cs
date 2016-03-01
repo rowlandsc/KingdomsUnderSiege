@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 /**
  * A class for managing the Minion spawner.
  */
-public class Minion_Spawner : MonoBehaviour {
+public class Minion_Spawner : NetworkBehaviour {
 
     /**
      * Constants Description
@@ -34,6 +35,7 @@ public class Minion_Spawner : MonoBehaviour {
      * _timer - A float to hold how much time is being counted down.
      * _roundManager - Holds the Instance of the RoundManager class.
      */
+    [SyncVar]
     private float _timer;
     private RoundManager _roundManager;
 
@@ -79,7 +81,8 @@ public class Minion_Spawner : MonoBehaviour {
         for (int i = 0; i < this.NumberToSpawn; i++){
 
             // Create a minion
-            Instantiate(Minion, this.SpawnPoint.transform.position, this.SpawnPoint.transform.rotation);
+            GameObject minionToSpawn = (GameObject) Instantiate(Minion, this.SpawnPoint.transform.position, this.SpawnPoint.transform.rotation);
+            NetworkServer.Spawn(minionToSpawn);
 
             // Wait TimeBetweenMinions until next one is spawned
             yield return new WaitForSeconds(this.TimeBetweenMinions);
