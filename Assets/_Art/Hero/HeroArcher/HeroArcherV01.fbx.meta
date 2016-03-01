@@ -1,20 +1,42 @@
 fileFormatVersion: 2
-guid: 0c7d4455e47bb46efb62e418203436c6
-timeCreated: 1456528247
+guid: 0620a622264c9401e80f54201571f3f9
+timeCreated: 1456792562
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: pasted__pSolid1
-    100002: //RootNode
-    400000: pasted__pSolid1
-    400002: //RootNode
-    2300000: pasted__pSolid1
-    2300002: //RootNode
-    3300000: pasted__pSolid1
-    3300002: //RootNode
-    4300000: pasted__pSolid1
-    4300002: Rock1
+    100000: HeroArcherBody
+    100002: HeroArcherHead
+    100004: HeroArcherLeftHand
+    100006: HeroArcherLeftLeg
+    100008: HeroArcherRightHand
+    100010: HeroArcherRightLeg
+    100012: //RootNode
+    400000: HeroArcherBody
+    400002: HeroArcherHead
+    400004: HeroArcherLeftHand
+    400006: HeroArcherLeftLeg
+    400008: HeroArcherRightHand
+    400010: HeroArcherRightLeg
+    400012: //RootNode
+    2300000: HeroArcherBody
+    2300002: HeroArcherHead
+    2300004: HeroArcherLeftHand
+    2300006: HeroArcherLeftLeg
+    2300008: HeroArcherRightHand
+    2300010: HeroArcherRightLeg
+    3300000: HeroArcherBody
+    3300002: HeroArcherHead
+    3300004: HeroArcherLeftHand
+    3300006: HeroArcherLeftLeg
+    3300008: HeroArcherRightHand
+    3300010: HeroArcherRightLeg
+    4300000: HeroArcherHead
+    4300002: HeroArcherBody
+    4300004: HeroArcherLeftHand
+    4300006: HeroArcherRightHand
+    4300008: HeroArcherRightLeg
+    4300010: HeroArcherLeftLeg
   materials:
     importMaterials: 1
     materialName: 0
@@ -55,8 +77,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
