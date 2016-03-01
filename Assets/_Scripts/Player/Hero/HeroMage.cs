@@ -18,6 +18,8 @@ public class HeroMage : Hero {
 			mageObject = GameObject.Find("Mage(Clone)");
 			yield return null;
 		}
+        yield return new WaitForSeconds(0.1f);
+
 		HeroCamPrefab = PrefabCache.Instance.PrefabIndex["HeroCamera"];
 		HeroUIPrefab = PrefabCache.Instance.PrefabIndex["HeroUI"];
 		HeroGearSystemPrefab = PrefabCache.Instance.PrefabIndex["HeroGearSystem"];

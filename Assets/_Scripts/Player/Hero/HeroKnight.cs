@@ -17,8 +17,10 @@ public class HeroKnight : Hero {
 		while (PrefabCache.Instance == null || !knightObject) {
 			knightObject = GameObject.Find("Knight(Clone)");
 			yield return null;
-		}
-		HeroCamPrefab = PrefabCache.Instance.PrefabIndex["HeroCamera"];
+        }
+        yield return new WaitForSeconds(0.1f);
+        
+        HeroCamPrefab = PrefabCache.Instance.PrefabIndex["HeroCamera"];
 		HeroUIPrefab = PrefabCache.Instance.PrefabIndex["HeroUI"];
 		HeroGearSystemPrefab = PrefabCache.Instance.PrefabIndex["HeroGearSystem"];
 
