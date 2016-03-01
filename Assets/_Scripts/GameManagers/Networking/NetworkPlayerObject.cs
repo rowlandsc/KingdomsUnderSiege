@@ -135,7 +135,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
 		Debug.Log("Server Command Called create mage player");
 		GameObject birthplace = GameObject.Find("MageSummonPoint");
 		GameObject mage_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroMage"], birthplace.transform.position, Quaternion.identity)as GameObject;
-        mage_Clone.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
+        mage_Clone.gameObject.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
         NetworkServer.Spawn(mage_Clone);
 
@@ -147,8 +147,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
 		Debug.Log("Server Command Called create knight player");
 		GameObject birthplace = GameObject.Find("KnightSummonPoint");
 		GameObject knight_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroKnight"], birthplace.transform.position, Quaternion.identity)as GameObject;
-        NetworkPlayerOwner knightOwner = knight_Clone.AddComponent<NetworkPlayerOwner>();
-        knightOwner.Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
+        knight_Clone.gameObject.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
         NetworkServer.Spawn(knight_Clone);
 
@@ -160,7 +159,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
 		Debug.Log("Server Command Called create arch player");
 		GameObject birthplace = GameObject.Find("ArchSummonPoint");
 		GameObject arch_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroArch"], birthplace.transform.position, Quaternion.identity)as GameObject;
-        arch_Clone.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
+        arch_Clone.gameObject.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
         NetworkServer.Spawn(arch_Clone);
 
