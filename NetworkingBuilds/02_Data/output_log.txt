@@ -1,0 +1,216 @@
+Mono path[0] = 'C:/Users/Bryan/Desktop/GameDev/KUS/NetworkingBuilds/02_Data/Managed'
+Mono path[1] = 'C:/Users/Bryan/Desktop/GameDev/KUS/NetworkingBuilds/02_Data/Mono'
+Mono config path = 'C:/Users/Bryan/Desktop/GameDev/KUS/NetworkingBuilds/02_Data/Mono/etc'
+PlayerConnection initialized from C:/Users/Bryan/Desktop/GameDev/KUS/NetworkingBuilds/02_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55288
+Multi-casting "[IP] 144.118.48.57 [Port] 55288 [Flags] 3 [Guid] 1363761141 [EditorId] 2658344336 [Version] 1048832 [Id] WindowsPlayer(Bryan-PC) [Debug] 1" to [225.0.0.222:54997]...
+Waiting for connection from host on [144.118.48.57:55288]...
+PlayerConnection accepted from [144.118.48.57] handle:0x2f0
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,defer=y,address=0.0.0.0:56141
+PlayerConnection already initialized - listening to [144.118.48.57:55288]
+Initialize engine version: 5.3.3f1 (910d71450a97)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics Family (ID=0xa16)
+    Vendor:   Intel
+    VRAM:     2103 MB
+Default GameObject BitMask: UI already registered
+ 
+(Filename: C:/buildslave/unity/build/Runtime/BaseClasses/TagManager.cpp Line: 98)
+
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween43.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween43.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween46.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween46.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween50.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween50.dll into Unity Child Domain
+- Completed reload, in  0.073 seconds
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI.Hid> Failed to create device file:
+ 2 The system cannot find the file specified.
+
+ 
+(Filename: C:/buildslave/unity/build/PlatformDependent/Win/RawInput.cpp Line: 54)
+
+<RI.Hid> Failed to create device file:
+ 2 The system cannot find the file specified.
+
+ 
+(Filename: C:/buildslave/unity/build/PlatformDependent/Win/RawInput.cpp Line: 54)
+
+<RI> Input initialized.
+<RI> Initialized touch support.
+Mono path[0] = 'C:/Users/Bryan/Desktop/GameDev/KUS/NetworkingBuilds/02_Data/Managed'
+Mono path[1] = 'C:/Users/Bryan/Desktop/GameDev/KUS/NetworkingBuilds/02_Data/Mono'
+Mono config path = 'C:/Users/Bryan/Desktop/GameDev/KUS/NetworkingBuilds/02_Data/Mono/etc'
+PlayerConnection initialized from C:/Users/Bryan/Desktop/GameDev/KUS/NetworkingBuilds/02_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55378
+Multi-casting "[IP] 144.118.48.57 [Port] 55378 [Flags] 3 [Guid] 1340389336 [EditorId] 2658344336 [Version] 1048832 [Id] WindowsPlayer(Bryan-PC) [Debug] 1" to [225.0.0.222:54997]...
+Waiting for connection from host on [144.118.48.57:55378]...
+PlayerConnection accepted from [144.118.48.57] handle:0x2f0
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,defer=y,address=0.0.0.0:56336
+PlayerConnection already initialized - listening to [144.118.48.57:55378]
+Initialize engine version: 5.3.3f1 (910d71450a97)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics Family (ID=0xa16)
+    Vendor:   Intel
+    VRAM:     2103 MB
+Default GameObject BitMask: UI already registered
+ 
+(Filename: C:/buildslave/unity/build/Runtime/BaseClasses/TagManager.cpp Line: 98)
+
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween43.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween43.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween46.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween46.dll into Unity Child Domain
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween50.dll (this message is harmless)
+Loading C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\DOTween50.dll into Unity Child Domain
+- Completed reload, in  0.103 seconds
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Bryan\Desktop\GameDev\KUS\NetworkingBuilds\02_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI.Hid> Failed to create device file:
+ 2 The system cannot find the file specified.
+
+ 
+(Filename: C:/buildslave/unity/build/PlatformDependent/Win/RawInput.cpp Line: 54)
+
+<RI.Hid> Failed to create device file:
+ 2 The system cannot find the file specified.
+
+ 
+(Filename: C:/buildslave/unity/build/PlatformDependent/Win/RawInput.cpp Line: 54)
+
+<RI> Input initialized.
+UnloadTime: 1.572913 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2c1c -> priority: 1 
+<RI> Initialized touch support.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 9.739832 ms
+System memory in use before: 25.6 MB.
+System memory in use after: 26.0 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 6283.
+Total: 4.644755 ms (FindLiveObjects: 0.278403 ms CreateObjectMapping: 0.590163 ms MarkObjects: 3.731713 ms  DeleteObjects: 0.038061 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.003845 ms
+System memory in use before: 25.9 MB.
+System memory in use after: 26.2 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 6443.
+Total: 4.912467 ms (FindLiveObjects: 0.339985 ms CreateObjectMapping: 0.816820 ms MarkObjects: 3.724015 ms  DeleteObjects: 0.030791 ms)
+
+UnloadTime: 1.629363 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 3fac -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 8.456013 ms
+System memory in use before: 27.8 MB.
+System memory in use after: 28.2 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 6431.
+Total: 6.649172 ms (FindLiveObjects: 0.502921 ms CreateObjectMapping: 1.315465 ms MarkObjects: 4.762788 ms  DeleteObjects: 0.058588 ms)
+
+Hit start button like a mofo
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkPlayerObject:OnHitStartButton() (at C:\Users\Bryan\Desktop\GameDev\KUS\Assets\_Scripts\GameManagers\Networking\NetworkPlayerObject.cs:71)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:144)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:621)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:756)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\buildslave\unity\build\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:35)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:44)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:529)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:428)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:416)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:190)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\EventSystem.cs:277)
+ 
+(Filename: C:/Users/Bryan/Desktop/GameDev/KUS/Assets/_Scripts/GameManagers/Networking/NetworkPlayerObject.cs Line: 71)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/BillboardTree' - Pass '' has no vertex shader
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Soft Occlusion Bark rendertex' - Pass '' has no vertex shader
+WARNING: Shader Unsupported: 'Nature/ats Soft Occlusion Bark' - Pass '' has no vertex shader
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.791872 ms
+System memory in use before: 48.9 MB.
+System memory in use after: 49.2 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 6629.
+Total: 5.246465 ms (FindLiveObjects: 0.369065 ms CreateObjectMapping: 0.865572 ms MarkObjects: 3.696645 ms  DeleteObjects: 0.313470 ms)
+
+Inititalizing overseer camera
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+OverseerCamera:InitializeCamera() (at C:\Users\Bryan\Desktop\GameDev\KUS\Assets\_Scripts\Objects\Camera\OverseerCamera.cs:66)
+OverseerCamera:Start() (at C:\Users\Bryan\Desktop\GameDev\KUS\Assets\_Scripts\Objects\Camera\OverseerCamera.cs:27)
+ 
+(Filename: C:/Users/Bryan/Desktop/GameDev/KUS/Assets/_Scripts/Objects/Camera/OverseerCamera.cs Line: 66)
+
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/BillboardTree' - Pass '' has no vertex shader
+WARNING: Shader Unsupported: 'Hidden/TerrainEngine/Soft Occlusion Bark rendertex' - Pass '' has no vertex shader
+WARNING: Shader Unsupported: 'Nature/ats Soft Occlusion Bark' - Pass '' has no vertex shader
+UnloadTime: 1.864146 ms
+System memory in use before: 48.9 MB.
+System memory in use after: 49.2 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 6605.
+Total: 4.897927 ms (FindLiveObjects: 0.294226 ms CreateObjectMapping: 0.540127 ms MarkObjects: 3.753951 ms  DeleteObjects: 0.307911 ms)
+
+Inititalizing overseer camera
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+OverseerCamera:InitializeCamera() (at C:\Users\Bryan\Desktop\GameDev\KUS\Assets\_Scripts\Objects\Camera\OverseerCamera.cs:66)
+OverseerCamera:Start() (at C:\Users\Bryan\Desktop\GameDev\KUS\Assets\_Scripts\Objects\Camera\OverseerCamera.cs:27)
+ 
+(Filename: C:/Users/Bryan/Desktop/GameDev/KUS/Assets/_Scripts/Objects/Camera/OverseerCamera.cs Line: 66)
+
+Waiting for finish
+Waiting for finish

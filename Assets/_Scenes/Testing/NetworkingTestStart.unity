@@ -252,23 +252,13 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 32224083}
---- !u!114 &403228191 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11449672, guid: 603adec6c10c1544e85b1a762e1da78d,
-    type: 2}
-  m_PrefabInternal: {fileID: 424865478}
-  m_Script: {fileID: 11500000, guid: c1fd2d0d479104fe9b3b6bd6ffa08dda, type: 3}
---- !u!1001 &424865478
+--- !u!1001 &307543307
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11449672, guid: 603adec6c10c1544e85b1a762e1da78d, type: 2}
-      propertyPath: m_SpawnPrefabs.Array.size
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 497696, guid: 603adec6c10c1544e85b1a762e1da78d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -299,31 +289,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 497696, guid: 603adec6c10c1544e85b1a762e1da78d, type: 2}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449672, guid: 603adec6c10c1544e85b1a762e1da78d, type: 2}
-      propertyPath: IPInputField
-      value: 
-      objectReference: {fileID: 1345741570}
-    - target: {fileID: 11449672, guid: 603adec6c10c1544e85b1a762e1da78d, type: 2}
-      propertyPath: m_SpawnPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 159646, guid: cdfbff2d595d245aeb7f029e49ed732d, type: 2}
-    - target: {fileID: 11449672, guid: 603adec6c10c1544e85b1a762e1da78d, type: 2}
-      propertyPath: m_SpawnPrefabs.Array.data[5]
-      value: 
-      objectReference: {fileID: 152332, guid: bf05d0b104cab43a0966b667acafcd63, type: 2}
-    - target: {fileID: 11449672, guid: 603adec6c10c1544e85b1a762e1da78d, type: 2}
-      propertyPath: m_SpawnPrefabs.Array.data[6]
-      value: 
-      objectReference: {fileID: 163586, guid: 4dee2a0bd1f0d443bb2bbd8ddef7df89, type: 2}
-    - target: {fileID: 11449672, guid: 603adec6c10c1544e85b1a762e1da78d, type: 2}
-      propertyPath: m_CustomConfig
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449672, guid: 603adec6c10c1544e85b1a762e1da78d, type: 2}
-      propertyPath: Port
-      value: 48084
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 603adec6c10c1544e85b1a762e1da78d, type: 2}
@@ -476,7 +442,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 403228191}
+      - m_Target: {fileID: 0}
         m_MethodName: JoinGame
         m_Mode: 1
         m_Arguments:
@@ -613,7 +579,7 @@ RectTransform:
   m_Children:
   - {fileID: 32224084}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1112,7 +1078,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1919275315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,7 +1154,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 403228191}
+      - m_Target: {fileID: 0}
         m_MethodName: StartUpHost
         m_Mode: 1
         m_Arguments:

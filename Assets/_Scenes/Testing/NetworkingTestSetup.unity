@@ -128,6 +128,10 @@ Prefab:
       propertyPath: HeroMinionSpawner
       value: 
       objectReference: {fileID: 156598, guid: e0ad773a730c6104ca0afef309440c9e, type: 2}
+    - target: {fileID: 11492174, guid: 27a7b883dc6104cbfbd00c1aec79bd60, type: 2}
+      propertyPath: OverseerMinionSpawner
+      value: 
+      objectReference: {fileID: 114362, guid: 6728d47573b5b594ea65c8275de89f22, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27a7b883dc6104cbfbd00c1aec79bd60, type: 2}
   m_IsPrefabParent: 0
