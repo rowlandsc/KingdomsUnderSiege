@@ -22,11 +22,14 @@ public class HeroMove : NetworkBehaviour {
 
     public NetworkPlayerInput PlayerInput;
 
+    private Rigidbody _rigidbody;
+
 	// Use this for initialization
 	void Start () {
 		ifMoving=false;
 		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
         PlayerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame
@@ -49,8 +52,9 @@ public class HeroMove : NetworkBehaviour {
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);
 
-			transform.Translate(moveDirection * Time.deltaTime* movespeed, Space.World);
-		}
+            //transform.Translate(moveDirection * Time.deltaTime* movespeed, Space.World);
+            _rigidbody.position += moveDirection * Time.deltaTime * movespeed;
+        }
 
 		if(PlayerInput.HeroMoveHorizontalInput < -1 * float.Epsilon && CanMove){
 
@@ -58,23 +62,26 @@ public class HeroMove : NetworkBehaviour {
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);
 
-			transform.Translate(-moveDirection * Time.deltaTime* sidespeed, Space.World);
-		}
+            //transform.Translate(-moveDirection * Time.deltaTime* sidespeed, Space.World);
+            _rigidbody.position += -moveDirection * Time.deltaTime * sidespeed;
+        }
 		if(PlayerInput.HeroMoveHorizontalInput > float.Epsilon && CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.right;
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);
 
-			transform.Translate(moveDirection * Time.deltaTime* sidespeed, Space.World);
-		}
+			//transform.Translate(moveDirection * Time.deltaTime* sidespeed, Space.World);
+            _rigidbody.position += moveDirection * Time.deltaTime * sidespeed;
+        }
 		if(PlayerInput.HeroMoveForwardInput < -1 * float.Epsilon && CanMove){
 			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);
 
-			transform.Translate(-moveDirection * Time.deltaTime* backwardspeed, Space.World);
-		}
+            //transform.Translate(-moveDirection * Time.deltaTime* backwardspeed, Space.World);
+            _rigidbody.position += -moveDirection * Time.deltaTime * backwardspeed;
+        }
         
 	}
 
