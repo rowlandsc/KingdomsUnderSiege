@@ -6,12 +6,12 @@ NavMeshAreas:
   serializedVersion: 2
   areas:
   - name: Walkable
-    cost: 1
+    cost: 6
   - name: Not Walkable
     cost: 1
   - name: Jump
     cost: 2
-  - name: 
+  - name: Path
     cost: 1
   - name: 
     cost: 1
