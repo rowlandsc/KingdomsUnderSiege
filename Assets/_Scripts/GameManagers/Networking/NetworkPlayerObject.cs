@@ -31,6 +31,13 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
 	private NetworkIdentity _networkIdentity;
 
+	public bool CheckLocalPlayer {
+		get {
+			return isLocalPlayer;
+		}
+	}
+
+
 	void Awake() {
 		DontDestroyOnLoad(this.gameObject);
 	}
@@ -79,6 +86,8 @@ public class NetworkPlayerObject : NetworkBehaviour {
 			} 
 		}
 	}
+
+
 
 	IEnumerator SpawnPlayer() {
 		while (NetworkSpawnManagers.Instance && !NetworkSpawnManagers.Instance.DoneLoading) {
