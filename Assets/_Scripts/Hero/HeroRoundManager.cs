@@ -10,6 +10,8 @@ public class HeroRoundManager : MonoBehaviour {
 	private bool cureent_status;
 	
 	private GameObject door;
+	private GameObject roundmanagerfinder;
+
 	// Use this for initialization
 	void Start () {
 		Cursor.visible = true;
@@ -21,31 +23,25 @@ public class HeroRoundManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		timer+=Time.deltaTime;
 
-		if(timer>=preround_time&&cureent_status==true){
-			cureent_status=false;
-			timer=0f;
+		if(roundmanagerfinder=GameObject.Find("RoundManager")){
+
+
+			//pre round
+			if(roundmanagerfinder.GetComponent<RoundManager>().IsPreround==true){
+				//close the door
+				door.SetActive(true);
+			}
+
+			//round
+			if(roundmanagerfinder.GetComponent<RoundManager>().IsRound==false){
+				//open the door
+				door.SetActive(false);
+			}
+
+
 		}
 
-		if(timer>=round_time&&cureent_status==false){
-			cureent_status=true;
-			timer=0f;
-		}
-
-
-
-		//pre-round
-		if(cureent_status==true){
-			//close the door
-			door.SetActive(true);
-		}
-
-		//round
-		if(cureent_status==false){
-			//open the door
-			door.SetActive(false);
-		}
 	}
 	
 }

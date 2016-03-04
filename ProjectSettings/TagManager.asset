@@ -21,6 +21,7 @@ TagManager:
   - Sword
   - ArchDamage
   - HeroUI
+  - RoundManager
   layers:
   - Default
   - TransparentFX
