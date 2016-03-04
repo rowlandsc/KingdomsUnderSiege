@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public class GearMenu : MonoBehaviour {
+public class GearMenu : NetworkBehaviour {
 
 	public float hpupgrade=50f;
 	public float mpupgrade=50f;
@@ -42,18 +43,22 @@ public class GearMenu : MonoBehaviour {
 	private GameObject effect_clone;
 
 
+	private NetworkPlayerObject owner;
+
+
 	// Use this for initialization
 	void Start () {
 		
 		actvate=false;
-
+		owner = this.gameObject.GetComponent<NetworkPlayerOwner>().Owner;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-	
+		if(!owner.isLocalPlayer) return;
+
 		finder=GameObject.FindGameObjectsWithTag("HeroUI");
 		for(int i=0;i<finder.Length;i++){
             if (finder[i].name == "GearSystem(Clone)") {

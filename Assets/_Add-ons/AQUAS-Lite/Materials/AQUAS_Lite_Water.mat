@@ -114,6 +114,13 @@ Material:
         second: 0.5
       data:
         first:
+<<<<<<< HEAD
+=======
+          name: _WaveSpeed
+        second: -40
+      data:
+        first:
+>>>>>>> origin/develop
           name: _Parallax
         second: 0.02
       data:
@@ -200,10 +207,6 @@ Material:
         first:
           name: _Refraction
         second: 0.478
-      data:
-        first:
-          name: _WaveSpeed
-        second: -40
       data:
         first:
           name: _FoamTiling

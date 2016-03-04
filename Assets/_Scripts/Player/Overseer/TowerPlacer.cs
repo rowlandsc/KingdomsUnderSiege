@@ -7,6 +7,7 @@ public class TowerPlacer : NetworkBehaviour {
     public static TowerPlacer Instance;
 
     public Map GameMap = null;
+    public OverseerCamera Cam;
     public List<Tower> TowerList;
     public GameObject TowerPlaceTesterPrefab = null;
     public GameObject TowerPlaceTester = null;
@@ -49,15 +50,15 @@ public class TowerPlacer : NetworkBehaviour {
                 }
             }
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Cam.Camera.ScreenPointToRay(Input.mousePosition);
             string layer = LayerMask.LayerToName(GameMap.gameObject.layer);
             LayerMask mask = LayerMask.GetMask(layer);
             RaycastHit hit;
-            Physics.Raycast(ray, out hit, Camera.main.transform.position.y * 4, mask);
+            Physics.Raycast(ray, out hit, Cam.transform.position.y * 4, mask);
             if (hit.collider != null) {
                 TowerPlaceLocation = hit.point;
             }
-            Debug.DrawRay(ray.origin, ray.direction * Camera.main.transform.position.y * 2, Color.green);
+            Debug.DrawRay(ray.origin, ray.direction * Cam.transform.position.y * 2, Color.green);
 
             TowerPlaceLocationValid = true;
             foreach (Tower t in TowerList) {
