@@ -4,7 +4,6 @@ using System.Collections;
 using UnityEditor;
 #endif
 
-[RequireComponent(typeof(Camera))]
 public class OverseerCamera : MonoBehaviour {
 
     public Map GameMap;
@@ -15,17 +14,20 @@ public class OverseerCamera : MonoBehaviour {
 
     public float ScrollSpeed = 50;
 
-    private Camera _camera;
+    public Camera Camera;
     public float _maxHeight = 0;
     public float _xMinBound = 0;
     public float _xMaxBound = 0;
     public float _zMinBound = 0;
     public float _zMaxBound = 0;
+
+    NetworkPlayerInput _playerInput;
     
     void Start() {
 		GameMap = Map.Instance;
         InitializeCamera();
         UpdateCameraBounds();
+        _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
     }
 
     void Update() {
@@ -38,12 +40,12 @@ public class OverseerCamera : MonoBehaviour {
 
         UpdateCameraBounds();
 
-        if (Mathf.Abs(InputManager.OverseerScrollHorizontal) > float.Epsilon) {
-            float newX = transform.position.x + InputManager.OverseerScrollHorizontal * ScrollSpeed * Time.deltaTime;
+        if (Mathf.Abs(_playerInput.OverseerHorizontalInput) > float.Epsilon) {
+            float newX = transform.position.x + _playerInput.OverseerHorizontalInput * ScrollSpeed * Time.deltaTime;
             transform.position = new Vector3(newX, transform.position.y, transform.position.z);
         }
-        if (Mathf.Abs(InputManager.OverseerScrollVertical) > float.Epsilon) {
-            float newZ = transform.position.z + InputManager.OverseerScrollVertical * ScrollSpeed * Time.deltaTime;
+        if (Mathf.Abs(_playerInput.OverseerVerticaleInput) > float.Epsilon) {
+            float newZ = transform.position.z + _playerInput.OverseerVerticaleInput * ScrollSpeed * Time.deltaTime;
             transform.position = new Vector3(transform.position.x, transform.position.y, newZ);
         }
 
@@ -62,13 +64,13 @@ public class OverseerCamera : MonoBehaviour {
     }
 
     public void InitializeCamera() {
-        _camera = GetComponent<Camera>();
+        //Camera = GetComponent<Camera>();
 		Debug.Log("Inititalizing overseer camera");
         Zoom = 1;
         if (GameMap) {
-            float vFOV = _camera.fieldOfView;
-            float radAngle = _camera.fieldOfView * Mathf.Deg2Rad;
-            float radHFOV = 2 * Mathf.Atan(Mathf.Tan(radAngle / 2) * _camera.aspect);
+            float vFOV = Camera.fieldOfView;
+            float radAngle = Camera.fieldOfView * Mathf.Deg2Rad;
+            float radHFOV = 2 * Mathf.Atan(Mathf.Tan(radAngle / 2) * Camera.aspect);
             float hFOV = Mathf.Rad2Deg * radHFOV;
             float hAngle = hFOV / 2;
 
@@ -83,9 +85,9 @@ public class OverseerCamera : MonoBehaviour {
 
     public void UpdateCameraBounds() {
         if (GameMap) {
-            float vFOV = _camera.fieldOfView;
-            float radAngle = _camera.fieldOfView * Mathf.Deg2Rad;
-            float radHFOV = 2 * Mathf.Atan(Mathf.Tan(radAngle / 2) * _camera.aspect);
+            float vFOV = Camera.fieldOfView;
+            float radAngle = Camera.fieldOfView * Mathf.Deg2Rad;
+            float radHFOV = 2 * Mathf.Atan(Mathf.Tan(radAngle / 2) * Camera.aspect);
             float hFOV = Mathf.Rad2Deg * radHFOV;
             float vAngle = vFOV / 2;
             float hAngle = hFOV / 2;

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class NetworkPlayerObject : NetworkBehaviour {
     
@@ -30,6 +31,13 @@ public class NetworkPlayerObject : NetworkBehaviour {
 	private UnityEngine.UI.Button _startButton;
 
 	private NetworkIdentity _networkIdentity;
+
+	public bool CheckLocalPlayer {
+		get {
+			return isLocalPlayer;
+		}
+	}
+
 
 	void Awake() {
 		DontDestroyOnLoad(this.gameObject);
@@ -79,6 +87,8 @@ public class NetworkPlayerObject : NetworkBehaviour {
 			} 
 		}
 	}
+
+
 
 	IEnumerator SpawnPlayer() {
 		while (NetworkSpawnManagers.Instance && !NetworkSpawnManagers.Instance.DoneLoading) {
@@ -169,7 +179,10 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
 	[ClientRpc]
 	public void RpcStartGame() {
-		Application.LoadLevel(2);
+        if (SceneManager.GetActiveScene().name == "SetupScreen")
+            SceneManager.LoadScene("GameScreen");
+        else
+            SceneManager.LoadScene("NetworkingTestScene");
 	}
 
     [ClientRpc]
