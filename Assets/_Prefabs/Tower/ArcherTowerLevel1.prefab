@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 127116, guid: d622217f53d5244309effb8cf35c4186, type: 2}
   range: 10
-  Arrowspeed: 100
+  Arrowspeed: 50
 --- !u!114 &11433524
 MonoBehaviour:
   m_ObjectHideFlags: 1
