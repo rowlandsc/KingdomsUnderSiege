@@ -10,7 +10,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/Testing/AlexScene.unity
   - enabled: 0
-    path: Assets/_Scenes/Game/HeroMainScene.unity
+    path: Assets/_Scenes/Testing/HeroMainScene.unity
   - enabled: 0
     path: Assets/_Scenes/Testing/ChenghaoScene.unity
   - enabled: 0
