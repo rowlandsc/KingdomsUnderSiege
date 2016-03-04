@@ -110,4 +110,24 @@ public class NetworkPlayerInput : NetworkBehaviour {
             return 0;
         }
     }
+
+    public float OverseerHorizontalInput {
+        get {
+            if (!isLocalPlayer) return 0;
+
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) return 1;
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) return -1;
+            return 0;
+        }
+    }
+
+    public float OverseerVerticaleInput {
+        get {
+            if (!isLocalPlayer) return 0;
+
+            if (Input.GetKey(KeyCode.D)) return -1;
+            if (Input.GetKey(KeyCode.A)) return 1;
+            return 0;
+        }
+    }
 }

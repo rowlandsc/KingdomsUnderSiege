@@ -6,7 +6,10 @@ public class Overseer : Player {
 	public OverseerCamera Cam;
 
 	void Start () {
-		Cam = Camera.main.gameObject.AddComponent<OverseerCamera>();
+        //Cam = Cam.gameObject.AddComponent<OverseerCamera>();
+        GameObject.Destroy(Camera.main.gameObject);
+        GameObject cam = Instantiate(PrefabCache.Instance.PrefabIndex["OverseerCamera"]);
+        cam.GetComponent<NetworkPlayerOwner>().Owner = GetComponent<NetworkPlayerObject>();
 
 		StartCoroutine(BuildPrefabs());
 	}
@@ -20,6 +23,7 @@ public class Overseer : Player {
 			yield return null;
 		}
 
-		GameObject.Instantiate(PrefabCache.Instance.PrefabIndex["OverseerTowerPlacer"]);
+		GameObject towerPlacer = Instantiate(PrefabCache.Instance.PrefabIndex["OverseerTowerPlacer"]);
+        towerPlacer.GetComponent<TowerPlacer>().Cam = GameObject.FindObjectOfType<OverseerCamera>();
 	}
 }
