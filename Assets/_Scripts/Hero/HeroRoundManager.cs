@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HeroRoundManager : MonoBehaviour {
 
@@ -11,10 +12,13 @@ public class HeroRoundManager : MonoBehaviour {
 	
 	private GameObject door;
 	private GameObject roundmanagerfinder;
+	private bool dopreround;
+	private GameObject[] player;
 
 	// Use this for initialization
 	void Start () {
 		Cursor.visible = true;
+		dopreround=true;
 		preround_time=5f;
 		round_time=10f;
 		timer=0;
@@ -24,17 +28,20 @@ public class HeroRoundManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
 		if(roundmanagerfinder=GameObject.Find("RoundManager")){
 
 
 			//pre round
-			if(roundmanagerfinder.GetComponent<RoundManager>().IsPreround==true){
+			if(roundmanagerfinder.GetComponent<RoundManager>().IsPreround()==true){
 				//close the door
 				door.SetActive(true);
+
+
 			}
 
 			//round
-			if(roundmanagerfinder.GetComponent<RoundManager>().IsRound==false){
+			if(roundmanagerfinder.GetComponent<RoundManager>().IsRound()==false){
 				//open the door
 				door.SetActive(false);
 			}
