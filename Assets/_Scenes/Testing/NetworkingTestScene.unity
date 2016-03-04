@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 2100000, guid: aac756ac953084b7fa75503b2cfea4c9, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 574be88ec3d7c40a7a29a99d798b897c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -201,6 +201,34 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0890fc82feff73447ae5833573cacbc5, type: 3}
   m_PrefabInternal: {fileID: 2065749577}
+--- !u!1 &196389101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 727237465}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 196389102}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &196389102
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 727237465}
+  m_GameObject: {fileID: 196389101}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 727237466}
+  m_Father: {fileID: 1508930554}
+  m_RootOrder: 3
 --- !u!4 &196699168 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0890fc82feff73447ae5833573cacbc5, type: 3}
@@ -1043,10 +1071,18 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b7b4f6344be547a1a25aaba4968cc9d, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &727237466 stripped
+--- !u!4 &727237466
 Transform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 727237465}
+  m_GameObject: {fileID: 1869932282}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 196389102}
+  m_RootOrder: 0
 --- !u!1001 &741636444
 Prefab:
   m_ObjectHideFlags: 0
@@ -1407,7 +1443,7 @@ Light:
   serializedVersion: 6
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2060,7 +2096,7 @@ Transform:
   - {fileID: 83778223}
   - {fileID: 1084255484}
   - {fileID: 311942214}
-  - {fileID: 727237466}
+  - {fileID: 196389102}
   - {fileID: 848654523}
   - {fileID: 1377048260}
   - {fileID: 1818753393}
@@ -2218,6 +2254,21 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 341ccf110cd280249b2c02da1f864a7d, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1869932282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 727237465}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 727237466}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &1877786566 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 341ccf110cd280249b2c02da1f864a7d, type: 3}
