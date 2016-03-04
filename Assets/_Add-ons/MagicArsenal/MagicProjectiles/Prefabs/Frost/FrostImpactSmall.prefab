@@ -2691,6 +2691,7 @@ GameObject:
   - 114: {fileID: 11427450}
   - 114: {fileID: 11422442}
   - 114: {fileID: 11438868}
+<<<<<<< HEAD
   - 114: {fileID: 11479248}
   - 114: {fileID: 11424758}
   - 114: {fileID: 11426942}
@@ -2732,6 +2733,10 @@ GameObject:
   - 114: {fileID: 11424330}
   - 114: {fileID: 11455900}
   - 114: {fileID: 11497600}
+=======
+  - 114: {fileID: 11442588}
+  - 114: {fileID: 11404720}
+>>>>>>> origin/develop
   m_Layer: 0
   m_Name: FrostImpactSmall
   m_TagString: Untagged
@@ -4363,6 +4368,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11404684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4501ed9c776be4f0da1e3adc144e99df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11404720
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -15539,6 +15555,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11442538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4501ed9c776be4f0da1e3adc144e99df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11442588
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class NetworkPlayerObject : NetworkBehaviour {
     
@@ -169,7 +170,10 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
 	[ClientRpc]
 	public void RpcStartGame() {
-		Application.LoadLevel(2);
+        if (SceneManager.GetActiveScene().name == "SetupScreen")
+            SceneManager.LoadScene("GameScreen");
+        else
+            SceneManager.LoadScene("NetworkingTestScene");
 	}
 
     [ClientRpc]
