@@ -9,7 +9,16 @@ public class NetworkPlayerInput : NetworkBehaviour {
 	void Start () {
         _networkPlayer = gameObject.GetComponent<NetworkPlayerObject>();
 	}
-	
+
+	public float CheckLocalPlayer {
+		get {
+			if (!isLocalPlayer) return 0;
+
+			return 1;
+		}
+	}
+
+
 	public float HeroMoveHorizontalInput {
         get {
             if (!isLocalPlayer) return 0;
