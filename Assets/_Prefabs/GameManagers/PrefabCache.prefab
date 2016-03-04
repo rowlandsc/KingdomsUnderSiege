@@ -80,6 +80,7 @@ MonoBehaviour:
     - HeroKnight
     - HeroMage
     - HeroUI
+    - OverseerCamera
     - OverseerTowerPlacer
     - TowerArcher1
     Prefabs:
@@ -89,6 +90,7 @@ MonoBehaviour:
     - {fileID: 163586, guid: 4dee2a0bd1f0d443bb2bbd8ddef7df89, type: 2}
     - {fileID: 159646, guid: cdfbff2d595d245aeb7f029e49ed732d, type: 2}
     - {fileID: 122128, guid: 49f9dc83d51fd47878a1c15ba6d18358, type: 2}
+    - {fileID: 188464, guid: 4331aa5599bfeb84d974854a27e4aa5f, type: 2}
     - {fileID: 130276, guid: e7ac62775e0c14235bd94b8a58fdc688, type: 2}
     - {fileID: 181652, guid: 3c495dd3c3f17ac43aab8e68ed15de81, type: 2}
 --- !u!1001 &100100000
