@@ -407,6 +407,85 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 341ccf110cd280249b2c02da1f864a7d, type: 3}
   m_IsPrefabParent: 0
+--- !u!1001 &241134123
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 426992, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 247.74641
+      objectReference: {fileID: 0}
+    - target: {fileID: 426992, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 46.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 426992, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 247.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 426992, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426992, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426992, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426992, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426992, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 426992, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 96.22839
+      objectReference: {fileID: 0}
+    - target: {fileID: 426992, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 96.22837
+      objectReference: {fileID: 0}
+    - target: {fileID: 426992, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 96.22837
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434916, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574882, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574882, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_Size.y
+      value: 0.016225997
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574882, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_Center.x
+      value: 0.00000016763806
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574882, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_Center.y
+      value: -0.0122128725
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574882, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+      propertyPath: m_Center.z
+      value: -0.000000037252903
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6434916, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &245339918
 Prefab:
   m_ObjectHideFlags: 0
@@ -535,7 +614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &311942214
 Transform:
   m_ObjectHideFlags: 0
@@ -1852,7 +1931,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1001 &949579526
 Prefab:
   m_ObjectHideFlags: 0
@@ -2753,7 +2832,7 @@ Transform:
   - {fileID: 846776209}
   - {fileID: 1250717049}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1001 &1324136997
 Prefab:
   m_ObjectHideFlags: 0

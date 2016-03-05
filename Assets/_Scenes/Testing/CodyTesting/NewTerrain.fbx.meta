@@ -1,16 +1,29 @@
 fileFormatVersion: 2
-guid: f998aa2cf36df431e8b03c8c7ff4c3f2
-timeCreated: 1457132591
-licenseType: Pro
+guid: d4ac0f09ac7f28047bda7ff22a8ef52f
+timeCreated: 1457154192
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Terrain:Mesh
-    9500000: //RootNode
+    100000: MinionNavArea
+    100002: //RootNode
+    100004: NewTerrain:pPlane1
+    100006: Surroundings
+    100008: Terrain1
+    400000: MinionNavArea
+    400002: //RootNode
+    400004: NewTerrain:pPlane1
+    400006: Surroundings
+    400008: Terrain1
+    2300000: MinionNavArea
+    2300002: NewTerrain:pPlane1
+    2300004: Surroundings
+    3300000: MinionNavArea
+    3300002: NewTerrain:pPlane1
+    3300004: Surroundings
+    4300000: NewTerrain:pPlane1
+    4300002: MinionNavArea
+    4300004: Surroundings
   materials:
     importMaterials: 1
     materialName: 0
@@ -69,7 +82,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
