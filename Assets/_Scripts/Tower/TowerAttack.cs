@@ -35,13 +35,11 @@ public class TowerAttack : MonoBehaviour {
 			if(target==null || Vector3.Distance(this.gameObject.transform.position,target.transform.position)>range) findTarget();
 			if(target!=null){
 
-
-
 				attack_=Instantiate(attack,this.gameObject.transform.position,Quaternion.identity)as GameObject;
 				attack_.GetComponent<TowerAttackHit>().tower = this.gameObject;
-				attack_.transform.DOMove(target.transform.position,(Vector3.Distance(this.gameObject.transform.position,target.transform.position)/Arrowspeed),false);
+                attack_.GetComponent<TowerAttackHit>().velocity = (target.transform.position - transform.position).normalized * Arrowspeed;
 
-				canAttack=false;
+                canAttack =false;
 			}
 			
 
