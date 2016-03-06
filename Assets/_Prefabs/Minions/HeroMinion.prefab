@@ -38,6 +38,7 @@ GameObject:
   - 114: {fileID: 11470912}
   - 114: {fileID: 11413902}
   - 114: {fileID: 11404498}
+  - 114: {fileID: 11444190}
   m_Layer: 8
   m_Name: HeroMinion
   m_TagString: Player
@@ -270,6 +271,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e64ded0bc35407d9700ed613b775bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11444190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 20
+  MagicPoints: 100
+  MAX_HealthPoints: 100
+  MAX_MagicPoints: 100
+  DefendePoints: 0
+  Worth: 100
+  haveMoney: 0
+  meleeDamageDealt: 5
+  secondDamageDealt: 12
+  superDamageDealt: 40
+  Health_Regen: 1
+  Magic_Regen: 1
+  damagePOP: {fileID: 0}
+  death: {fileID: 0}
 --- !u!114 &11453504
 MonoBehaviour:
   m_ObjectHideFlags: 1
