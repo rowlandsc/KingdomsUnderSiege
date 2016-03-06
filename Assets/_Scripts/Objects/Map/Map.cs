@@ -16,7 +16,8 @@ public class Map : MonoBehaviour {
         }
     }
 
-    public TerrainCollider Terrain;
+    public BoxCollider TerrainBounds;
+    public MeshCollider TerrainCollider;
     public int GridHeight = 50;
     public int GridWidth = 50;
     public float CellWidth = 1;
@@ -65,7 +66,7 @@ public class Map : MonoBehaviour {
     }
 
     public void UpdateGrid() {
-        if (Terrain) {
+        if (TerrainBounds) {
             Debug.Log("Updating grid...");
             ArrayUtility.Clear<Cell[]>(ref _grid);
 
@@ -96,20 +97,20 @@ public class Map : MonoBehaviour {
     public Vector3 GetMapPositionAtPoint(float x, float z) {
         float TEST_HEIGHT = 100;
 
-        if (x < Terrain.transform.position.x)
-            x = Terrain.transform.position.x;
-        if (x > Terrain.transform.position.x + Terrain.terrainData.size.x - .1f)
-            x = Terrain.transform.position.x + Terrain.terrainData.size.x - .1f;
-        if (z < Terrain.transform.position.z)
-            z = Terrain.transform.position.z;
-        if (z > Terrain.transform.position.z + Terrain.terrainData.size.z - .1f)
-            z = Terrain.transform.position.z + Terrain.terrainData.size.z - .1f;
+        if (x < TerrainBounds.transform.position.x)
+            x = TerrainBounds.transform.position.x;
+        if (x > TerrainBounds.transform.position.x + TerrainBounds.bounds.size.x - .1f)
+            x = TerrainBounds.transform.position.x + TerrainBounds.bounds.size.x - .1f;
+        if (z < TerrainBounds.transform.position.z)
+            z = TerrainBounds.transform.position.z;
+        if (z > TerrainBounds.transform.position.z + TerrainBounds.bounds.size.z - .1f)
+            z = TerrainBounds.transform.position.z + TerrainBounds.bounds.size.z - .1f;
 
-        if (Terrain) {
+        if (TerrainBounds) {
             Vector3 xzpos = transform.position + new Vector3(x, TEST_HEIGHT, z);
             Ray ray = new Ray(xzpos, Vector3.down);
             RaycastHit hit;
-            Terrain.Raycast(ray, out hit, TEST_HEIGHT * 2);
+            TerrainBounds.Raycast(ray, out hit, TEST_HEIGHT * 2);
 
             return hit.point;
         }

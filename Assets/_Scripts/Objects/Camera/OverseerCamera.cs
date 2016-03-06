@@ -74,8 +74,8 @@ public class OverseerCamera : MonoBehaviour {
             float hFOV = Mathf.Rad2Deg * radHFOV;
             float hAngle = hFOV / 2;
 
-            float mapWidth = GameMap.Terrain.GetComponent<Terrain>().terrainData.size.x;
-            float mapHeight = GameMap.Terrain.GetComponent<Terrain>().terrainData.size.z;
+            float mapWidth = GameMap.TerrainBounds.bounds.size.x;
+            float mapHeight = GameMap.TerrainBounds.bounds.size.z;
 
             _maxHeight = ((mapWidth / 2) / Mathf.Tan(Mathf.Deg2Rad * hAngle));
 
@@ -92,15 +92,15 @@ public class OverseerCamera : MonoBehaviour {
             float vAngle = vFOV / 2;
             float hAngle = hFOV / 2;
 
-            float mapWidth = GameMap.Terrain.GetComponent<Terrain>().terrainData.size.x;
-            float mapHeight = GameMap.Terrain.GetComponent<Terrain>().terrainData.size.z;
+            float mapWidth = GameMap.TerrainBounds.bounds.size.x;
+            float mapHeight = GameMap.TerrainBounds.bounds.size.z;
             float viewWidth = (transform.position.y * Mathf.Tan(Mathf.Deg2Rad * hAngle) * 2);
             float viewHeight = (transform.position.y * Mathf.Tan(Mathf.Deg2Rad * vAngle) * 2);
 
-            _xMinBound = GameMap.Terrain.transform.position.x + viewWidth / 2;
-            _xMaxBound = GameMap.Terrain.transform.position.x + mapWidth - viewWidth / 2;
-            _zMinBound = GameMap.Terrain.transform.position.z + viewHeight / 2;
-            _zMaxBound = GameMap.Terrain.transform.position.z + mapHeight - viewHeight / 2;
+            _xMinBound = GameMap.TerrainBounds.transform.position.x + viewWidth / 2;
+            _xMaxBound = GameMap.TerrainBounds.transform.position.x + mapWidth - viewWidth / 2;
+            _zMinBound = GameMap.TerrainBounds.transform.position.z + viewHeight / 2;
+            _zMaxBound = GameMap.TerrainBounds.transform.position.z + mapHeight - viewHeight / 2;
 
             if (_xMaxBound < _xMinBound) {
                 _xMinBound = (_xMinBound + _xMaxBound) / 2;
