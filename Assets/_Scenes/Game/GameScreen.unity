@@ -85,7 +85,7 @@ NavMeshSettings:
     minRegionArea: 2
     cellSize: 0.16666667
     manualCellSize: 0
-  m_NavMeshData: {fileID: 23800000, guid: 1cb39597de6db3a41b18b010400351a5, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 208d743c783205740847b8422d0bef4c, type: 2}
 --- !u!1001 &3396913
 Prefab:
   m_ObjectHideFlags: 0
@@ -9764,7 +9764,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 197614, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 117946, guid: 3994719a3fcc4ab4bb27fd121814a655, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -10285,7 +10285,7 @@ Transform:
   - {fileID: 741627965}
   - {fileID: 690749414}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
 --- !u!1001 &584251600
 Prefab:
   m_ObjectHideFlags: 0
@@ -12914,6 +12914,10 @@ Prefab:
     - target: {fileID: 400000, guid: ef768bd95f4570f4a9660649c3d26636, type: 3}
       propertyPath: m_LocalScale.z
       value: 15.641702
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ef768bd95f4570f4a9660649c3d26636, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef768bd95f4570f4a9660649c3d26636, type: 3}
@@ -21945,7 +21949,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1345029079
 GameObject:
   m_ObjectHideFlags: 0
