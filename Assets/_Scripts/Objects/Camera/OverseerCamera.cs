@@ -74,12 +74,12 @@ public class OverseerCamera : MonoBehaviour {
             float hFOV = Mathf.Rad2Deg * radHFOV;
             float hAngle = hFOV / 2;
 
-            float mapWidth = GameMap.TerrainBounds.bounds.size.x;
-            float mapHeight = GameMap.TerrainBounds.bounds.size.z;
+            float mapWidth = GameMap.TerrainBounds.bounds.size.z;
+            float mapHeight = GameMap.TerrainBounds.bounds.size.x;
 
             _maxHeight = ((mapWidth / 2) / Mathf.Tan(Mathf.Deg2Rad * hAngle));
 
-            transform.position = new Vector3(GameMap.transform.position.x + mapWidth / 2, GameMap.transform.position.y + _maxHeight, GameMap.transform.position.z + mapHeight / 2);
+            transform.position = new Vector3(GameMap.TerrainBounds.transform.position.x, GameMap.TerrainBounds.transform.position.y + _maxHeight, GameMap.TerrainBounds.transform.position.z);
         }
     }
 
@@ -92,15 +92,15 @@ public class OverseerCamera : MonoBehaviour {
             float vAngle = vFOV / 2;
             float hAngle = hFOV / 2;
 
-            float mapWidth = GameMap.TerrainBounds.bounds.size.x;
-            float mapHeight = GameMap.TerrainBounds.bounds.size.z;
+            float mapWidth = GameMap.TerrainBounds.bounds.size.z;
+            float mapHeight = GameMap.TerrainBounds.bounds.size.x;
             float viewWidth = (transform.position.y * Mathf.Tan(Mathf.Deg2Rad * hAngle) * 2);
             float viewHeight = (transform.position.y * Mathf.Tan(Mathf.Deg2Rad * vAngle) * 2);
 
-            _xMinBound = GameMap.TerrainBounds.transform.position.x + viewWidth / 2;
-            _xMaxBound = GameMap.TerrainBounds.transform.position.x + mapWidth - viewWidth / 2;
-            _zMinBound = GameMap.TerrainBounds.transform.position.z + viewHeight / 2;
-            _zMaxBound = GameMap.TerrainBounds.transform.position.z + mapHeight - viewHeight / 2;
+            _xMinBound = GameMap.TerrainBounds.transform.position.x - (mapHeight / 2) + viewHeight / 2;
+            _xMaxBound = GameMap.TerrainBounds.transform.position.x + (mapHeight / 2) - viewHeight / 2;
+            _zMinBound = GameMap.TerrainBounds.transform.position.z - (mapWidth / 2) + viewWidth / 2;
+            _zMaxBound = GameMap.TerrainBounds.transform.position.z + (mapWidth / 2) - viewWidth / 2;
 
             if (_xMaxBound < _xMinBound) {
                 _xMinBound = (_xMinBound + _xMaxBound) / 2;
