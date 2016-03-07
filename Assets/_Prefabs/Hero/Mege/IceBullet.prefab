@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf9c485cf310492682285c7855d5f89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ending: {fileID: 100010, guid: e92ac9ce273026a4ca5f316d45c57e63, type: 2}
+  ending: {fileID: 100012, guid: 9825718a75f7cfb428f2377f35d10ed5, type: 2}
   freeze_timer: 0
 --- !u!198 &19813010
 ParticleSystem:
