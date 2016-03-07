@@ -61,19 +61,23 @@ public class RoundManager : NetworkBehaviour{
      */
     public override void OnStartServer(){
         
-        // If it doesn't already exist, create it
-        // Otherwise destroy it
-        if (Instance == null){
-            Instance = this;
-        }
-        else{
-           // Destroy(this);
-        }
-
         if (isServer)
         {
             // Start the game
             this.StartGame();
+        }
+    }
+
+    void Awake()
+    {
+        // If it doesn't already exist, create it
+        // Otherwise destroy it
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else {
+            Destroy(this);
         }
     }
 
