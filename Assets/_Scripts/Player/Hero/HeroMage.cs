@@ -31,5 +31,7 @@ public class HeroMage : Hero {
 		_heroGearSystem=Instantiate(HeroGearSystemPrefab)as GameObject;
 
 		_heroCam.gameObject.GetComponent<TPSCamera>().ChangePlayer(mageObject);
-	}
+
+        mageObject.AddComponent<HeroFaceCamera>();
+    }
 }

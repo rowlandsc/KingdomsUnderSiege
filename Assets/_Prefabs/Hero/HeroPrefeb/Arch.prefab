@@ -11,7 +11,6 @@ GameObject:
   - 33: {fileID: 3373002}
   - 65: {fileID: 6513618}
   - 23: {fileID: 2326114}
-  - 114: {fileID: 11436576}
   - 114: {fileID: 11463818}
   - 114: {fileID: 11426140}
   - 114: {fileID: 11454666}
@@ -203,17 +202,6 @@ MonoBehaviour:
   cooldown: 1
   distance: 20
   timer: 0
---- !u!114 &11436576
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3e2bb99fec2b490db12fa18e8ece471, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11444318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -277,11 +265,11 @@ MonoBehaviour:
   m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
+  m_SyncSpin: 1
+  m_MovementTheshold: 0.000001
+  m_SnapThreshold: 0.1
   m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
+  m_InterpolateMovement: 3
 --- !u!114 &11487630
 MonoBehaviour:
   m_ObjectHideFlags: 1

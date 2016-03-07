@@ -161,7 +161,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 404092}
   - 114: {fileID: 11478508}
-  - 114: {fileID: 11440346}
   - 54: {fileID: 5406300}
   - 65: {fileID: 6538198}
   - 114: {fileID: 11481834}
@@ -954,18 +953,7 @@ MonoBehaviour:
   m_MovementTheshold: 0.000001
   m_SnapThreshold: 0.1
   m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
---- !u!114 &11440346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3e2bb99fec2b490db12fa18e8ece471, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_InterpolateMovement: 3
 --- !u!114 &11451264
 MonoBehaviour:
   m_ObjectHideFlags: 1

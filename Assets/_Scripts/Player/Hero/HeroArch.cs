@@ -31,5 +31,7 @@ public class HeroArch : Hero {
 		_heroGearSystem=Instantiate(HeroGearSystemPrefab)as GameObject;
 
 		_heroCam.gameObject.GetComponent<TPSCamera>().ChangePlayer(archObject);
+
+        archObject.AddComponent<HeroFaceCamera>();
 	}
 }

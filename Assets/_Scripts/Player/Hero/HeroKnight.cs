@@ -31,6 +31,8 @@ public class HeroKnight : Hero {
 		_heroGearSystem=Instantiate(HeroGearSystemPrefab)as GameObject;
 
 		_heroCam.gameObject.GetComponent<TPSCamera>().ChangePlayer(knightObject);
+
+        knightObject.AddComponent<HeroFaceCamera>();
 	}
 }
 
