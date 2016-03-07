@@ -185,7 +185,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
         else
             Debug.Log("Assigned authority? " + arch_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToServer));
 
-        RpcSetOwner(arch_Clone.GetComponent<NetworkIdentity>(), player)
+        RpcSetOwner(arch_Clone.GetComponent<NetworkIdentity>(), player);
 	}
 
 
