@@ -36,8 +36,9 @@ public class KnightSuper : MonoBehaviour {
 		normal_hero_size=this.gameObject.transform.localScale;
 		super_hero_size= normal_hero_size+new Vector3(12f, 12f, 12f);
 		super_clone_runonce=true;
+        _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
