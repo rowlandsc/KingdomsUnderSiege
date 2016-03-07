@@ -14,6 +14,7 @@ public class TimerText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this._timeLeft.text = RoundManager.Instance.CountDownTime.ToString();
+        if(RoundManager.Instance)
+            this._timeLeft.text = RoundManager.Instance.CountDownTime.ToString();
 	}
 }
