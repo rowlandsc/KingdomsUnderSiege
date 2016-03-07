@@ -15,7 +15,7 @@ public class HeroArch : Hero {
 	public IEnumerator BuildPrefabs() {
 		GameObject archObject = GameObject.Find("Arch(Clone)");
 		while (PrefabCache.Instance == null || !archObject) {
-			archObject = GameObject.Find("Mage(Clone)");
+			archObject = GameObject.Find("Arch(Clone)");
 			yield return null;
         }
         yield return new WaitForSeconds(0.1f);
