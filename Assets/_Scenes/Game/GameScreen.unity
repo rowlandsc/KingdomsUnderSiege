@@ -15877,7 +15877,7 @@ Light:
     m_Resolution: -1
     m_Strength: 1
     m_Bias: 0.05
-    m_NormalBias: 0.4
+    m_NormalBias: 0
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
@@ -17568,7 +17568,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 474830, guid: 141f5a226deb348a4ad4c4942b7cf863, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 214.6094
+      value: 412.2
       objectReference: {fileID: 0}
     - target: {fileID: 474830, guid: 141f5a226deb348a4ad4c4942b7cf863, type: 2}
       propertyPath: m_LocalRotation.x
