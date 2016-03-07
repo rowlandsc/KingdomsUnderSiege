@@ -13,6 +13,8 @@ public class MageMelee : MonoBehaviour {
 
 	private GameObject spellPosition;
 	private GameObject iceball_clone;
+
+    private NetworkPlayerInput _playerInput;
 	
 	// Use this for initialization
 	void Start () {
@@ -20,12 +22,13 @@ public class MageMelee : MonoBehaviour {
 		spellPosition = GameObject.Find("SpellPosition");
 		canAttack = true;
 		timer = cooldown;
-	}
+        _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 	
-		if(Input.GetMouseButtonDown(0)&&canAttack)
+		if(_playerInput.HeroMeleeAttackInputDown > 0 && canAttack)
 		{
 			canAttack = false;
 

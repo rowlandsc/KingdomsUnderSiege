@@ -20,7 +20,7 @@ public class HeroMove : NetworkBehaviour {
 	public bool ifMoving;
 	private Vector3 curPos, LastPos;
 
-    public NetworkPlayerInput PlayerInput;
+    private NetworkPlayerInput _playerInput;
 
     private Rigidbody _rigidbody;
 
@@ -28,7 +28,7 @@ public class HeroMove : NetworkBehaviour {
 	void Start () {
 		ifMoving=false;
 		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
-        PlayerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+        _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
         _rigidbody = GetComponent<Rigidbody>();
     }
 	
@@ -46,7 +46,7 @@ public class HeroMove : NetworkBehaviour {
 		}
 		LastPos = curPos;
 
-        if(PlayerInput.HeroMoveForwardInput > float.Epsilon && CanMove){
+        if(_playerInput.HeroMoveForwardInput > float.Epsilon && CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
@@ -56,7 +56,7 @@ public class HeroMove : NetworkBehaviour {
             _rigidbody.position += moveDirection * Time.deltaTime * movespeed;
         }
 
-		if(PlayerInput.HeroMoveHorizontalInput < -1 * float.Epsilon && CanMove){
+		if(_playerInput.HeroMoveHorizontalInput < -1 * float.Epsilon && CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.right;
 			moveDirection.y = 0.0f;
@@ -65,7 +65,7 @@ public class HeroMove : NetworkBehaviour {
             //transform.Translate(-moveDirection * Time.deltaTime* sidespeed, Space.World);
             _rigidbody.position += -moveDirection * Time.deltaTime * sidespeed;
         }
-		if(PlayerInput.HeroMoveHorizontalInput > float.Epsilon && CanMove){
+		if(_playerInput.HeroMoveHorizontalInput > float.Epsilon && CanMove){
 
 			Vector3 moveDirection = Maincamera.transform.right;
 			moveDirection.y = 0.0f;
@@ -74,7 +74,7 @@ public class HeroMove : NetworkBehaviour {
 			//transform.Translate(moveDirection * Time.deltaTime* sidespeed, Space.World);
             _rigidbody.position += moveDirection * Time.deltaTime * sidespeed;
         }
-		if(PlayerInput.HeroMoveForwardInput < -1 * float.Epsilon && CanMove){
+		if(_playerInput.HeroMoveForwardInput < -1 * float.Epsilon && CanMove){
 			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);

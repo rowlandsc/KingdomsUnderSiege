@@ -16,7 +16,7 @@ public class ArchSecond : MonoBehaviour {
 
 	private GameObject electric_clone;
 
-
+    private NetworkPlayerInput _playerInput;
 
 	// Use this for initialization
 	void Start () {
@@ -24,12 +24,13 @@ public class ArchSecond : MonoBehaviour {
 		canAttack = true;
 		timer = cooldown;
 
-	}
+        _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+    }
 
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetMouseButtonDown(1)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
+		if(_playerInput.HeroMeleeChargeAttackInputDown > 0 && canAttack && this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
 		{
 			canAttack = false;
 

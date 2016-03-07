@@ -19,6 +19,8 @@ public class MageSuper : MonoBehaviour {
 	private GameObject super1_;
 	private GameObject superBallanim_;
 
+    private NetworkPlayerInput _playerInput;
+
 	//FX
 	public GameObject superAnim1;
 	public GameObject superBallanim;
@@ -30,12 +32,13 @@ public class MageSuper : MonoBehaviour {
 		timer=cooldown;
 		real_spelltime=0f;
 		canAttack=true;
-	}
+        _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 	
-		if(Input.GetKeyDown(KeyCode.R)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use)){
+		if(_playerInput.HeroMeleeSuperInputDown > 0 && canAttack && this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use)){
 
 			canAttack=false;
 			HeroMove.DisableMove();

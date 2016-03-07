@@ -18,6 +18,8 @@ public class MegeSecond : MonoBehaviour {
 
 	private GameObject icebullet_clone1,icebullet_clone2,icebullet_clone3,icebullet_clone4,icebullet_clone5;
 
+    private NetworkPlayerInput _playerInput;
+
 	//FX
 	public GameObject charingAnim;
 	public GameObject charingAnim2;
@@ -50,22 +52,19 @@ public class MegeSecond : MonoBehaviour {
 		anim_3_once=true;
 
 		size_attack= Screen.width/15;
-	}
+        _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-
-	
-		if(Input.GetMouseButtonDown(1)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
+        if(_playerInput.HeroMeleeChargeAttackInputDown > 0 && canAttack && this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
 		{
 			chargingAnim_ = Instantiate(charingAnim, this.gameObject.transform.position-new Vector3(0,0.2f,0), transform.rotation) as GameObject;
 			chargingAnim_.transform.parent = this.gameObject.transform;
 		}
 
-
-		if(Input.GetMouseButton(1)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
+        if(_playerInput.HeroMeleeChargeAttackInput > 0 && canAttack && this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
 		{
-
 			holdingtime += Time.deltaTime;
 
 			//charing make the bullets different
@@ -99,9 +98,7 @@ public class MegeSecond : MonoBehaviour {
 
 		}
 
-
-
-		if(Input.GetMouseButtonUp(1)&&canAttack){
+		if(_playerInput.HeroMeleeChargeAttackInputUp > 0 && canAttack){
 			this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
 
 			anim_2_once=true;
@@ -124,7 +121,8 @@ public class MegeSecond : MonoBehaviour {
 				if (Physics.Raycast(ray1, out hit1,Mathf.Infinity,layerMask))  {  
 					if(hit1.transform.gameObject.tag!="Player"){
 						icebullet_clone1 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray1.direction)) as GameObject;
-						icebullet_clone1.transform.DOMove(hit1.point,0.4f,false);}
+						icebullet_clone1.transform.DOMove(hit1.point,0.4f,false);
+                    }
 				} 
 
 			if(bullet_shot>=3){

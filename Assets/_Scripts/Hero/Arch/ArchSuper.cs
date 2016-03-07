@@ -23,6 +23,8 @@ public class ArchSuper : MonoBehaviour {
 
 	private GameObject spellPosition;
 
+    private NetworkPlayerInput _playerInput;
+
 	// Use this for initialization
 	void Start () {
 		spellPosition = GameObject.Find("SpellPosition_arch");
@@ -31,12 +33,13 @@ public class ArchSuper : MonoBehaviour {
 		SuperActivate=false;
 		effect_apply=true;
 		timer = cooldown;
-	}
+        _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 	
-		if(Input.GetKeyDown(KeyCode.R)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use)){
+		if(_playerInput.HeroMeleeSuperInputDown > 0 && canAttack && this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use)){
 		
 			canAttack = false;
 			SuperActivate=true;
@@ -50,19 +53,13 @@ public class ArchSuper : MonoBehaviour {
 			HeroMove.DisableMove();
 
 			if(effect_apply){
-
-
-
-				superFx_clone = Instantiate(superFx, this.gameObject.transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 0f))) as GameObject;
+                superFx_clone = Instantiate(superFx, this.gameObject.transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 0f))) as GameObject;
 				superFx_clone.transform.parent=this.gameObject.transform;
 
 				effect_apply=false;
-
-
 			}
 
 			this.gameObject.GetComponent<Rigidbody>().useGravity=false;
-
 
 			if(Input.GetMouseButtonDown(0)&&shot_times_left>0){
 				shot_times_left-=1;

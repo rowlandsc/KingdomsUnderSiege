@@ -14,26 +14,25 @@ public class KnightMelee : MonoBehaviour {
 	private GameObject Maincamera;
 	private GameObject sword;
 	private Animator anim;
-	
-	// Use this for initialization
-	void Start () {
-		
 
+    private NetworkPlayerInput _playerInput;
+
+    // Use this for initialization
+    void Start () {
 		canAttack = true;
 		timer = cooldown;
 		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
-
-	}
+        _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
 		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
 
-		if(Input.GetMouseButtonDown(0)&&canAttack)
+		if(_playerInput.HeroMeleeAttackInputDown > 0 && canAttack)
 		{
 			canAttack = false;
-		
 
 			sword = GameObject.Find("HeroKnightSwordV01");
 			anim = sword.gameObject.GetComponentInChildren<Animator>();
@@ -42,7 +41,6 @@ public class KnightMelee : MonoBehaviour {
 			anim_clone = Instantiate(anim_, this.transform.position,Quaternion.Euler(0,Maincamera.transform.eulerAngles.y,0)) as GameObject;
 			anim_clone.transform.parent=this.gameObject.transform;
 			anim_clone.AddComponent<DestoryAfter3second>();
-
 		}
 		
 		if(!canAttack){
@@ -51,12 +49,7 @@ public class KnightMelee : MonoBehaviour {
 				canAttack = true;	
 				timer = cooldown;
 			}
-		}
-		
-		
-		
-		
-		
+		}		
 	}
 
 	public float gettimer(){

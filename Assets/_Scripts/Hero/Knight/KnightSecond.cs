@@ -18,9 +18,11 @@ public class KnightSecond : MonoBehaviour {
 
 	private GameObject Maincamera;
 
+    private NetworkPlayerInput _playerInput;
 
-	//FX
-	public GameObject effect_fire;
+
+    //FX
+    public GameObject effect_fire;
 	private GameObject effect_fire_clone;
 	private bool effect_fire_clone_runonce;
 
@@ -35,14 +37,15 @@ public class KnightSecond : MonoBehaviour {
 		movespeed = gameObject.GetComponent<HeroMove>().movespeed;
 		knightsecond_Activate=false;
 		effect_fire_clone_runonce=true;
-	}
+        _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 	
 		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
 
-		if(Input.GetMouseButton(1)&&canAttack&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
+		if(_playerInput.HeroMeleeChargeAttackInput > 0 && canAttack && this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
 		{
 			knightsecond_Activate=true;
 
@@ -52,7 +55,6 @@ public class KnightSecond : MonoBehaviour {
 				timer_for_max_effect=0;
 				canAttack=false;
 			}
-
 		}
 
 		if(Input.GetMouseButtonUp(1)&&knightsecond_Activate)
@@ -99,5 +101,5 @@ public class KnightSecond : MonoBehaviour {
 		return cooldown;
 	}
 		
-	}
+}
 

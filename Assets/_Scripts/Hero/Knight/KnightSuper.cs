@@ -19,8 +19,10 @@ public class KnightSuper : MonoBehaviour {
 	private Vector3 normal_hero_size;
 	private Vector3 super_hero_size;
 
-	//FX
-	public GameObject super;
+    private NetworkPlayerInput _playerInput;
+
+    //FX
+    public GameObject super;
 	private bool super_clone_runonce;
 
 	// Use this for initialization
@@ -40,7 +42,7 @@ public class KnightSuper : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if(Input.GetKeyDown(KeyCode.R)&&canAttack&&!super_activation&&this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use)){
+		if(_playerInput.HeroMeleeSuperInputDown > 0 && canAttack && !super_activation && this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use)){
 			super_activation=true;
 			this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
 		}

@@ -14,18 +14,21 @@ public class ArchMelee : MonoBehaviour {
 	private GameObject arch_clone;
 	private GameObject spellPosition;
 
+    private NetworkPlayerInput _playerInput;
+
 	// Use this for initialization
 	void Start () {
 		
 		spellPosition = GameObject.Find("SpellPosition_arch");
 		canAttack = true;
 		timer = cooldown;
-	}
+        _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
-		if(Input.GetMouseButtonDown(0)&&canAttack&&!this.gameObject.GetComponent<ArchSuper>().SuperActivate)
+		if(_playerInput.HeroMeleeAttackInput > 0 && canAttack && !this.gameObject.GetComponent<ArchSuper>().SuperActivate)
 		{
 			canAttack = false;
 			
