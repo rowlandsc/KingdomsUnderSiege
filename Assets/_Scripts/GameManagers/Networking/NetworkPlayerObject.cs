@@ -148,7 +148,6 @@ public class NetworkPlayerObject : NetworkBehaviour {
         mage_Clone.gameObject.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
         NetworkServer.Spawn(mage_Clone);
-        mage_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToServer);
 
         RpcSetOwner(mage_Clone.GetComponent<NetworkIdentity>(), player);
 	}
@@ -161,7 +160,6 @@ public class NetworkPlayerObject : NetworkBehaviour {
         knight_Clone.gameObject.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
         NetworkServer.Spawn(knight_Clone);
-        Debug.Log("Assigned authority? " + knight_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToClient));
 
         RpcSetOwner(knight_Clone.GetComponent<NetworkIdentity>(), player);
     }
@@ -174,7 +172,6 @@ public class NetworkPlayerObject : NetworkBehaviour {
         arch_Clone.gameObject.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
         NetworkServer.Spawn(arch_Clone);
-        arch_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToServer);
 
         RpcSetOwner(arch_Clone.GetComponent<NetworkIdentity>(), player);
 	}
@@ -192,6 +189,9 @@ public class NetworkPlayerObject : NetworkBehaviour {
     public void RpcSetOwner(NetworkIdentity obj, NetworkIdentity owner) {
         Debug.Log("Setting network player owner of " + obj.gameObject.name + " to " + owner.gameObject.name);
         obj.gameObject.GetComponent<NetworkPlayerOwner>().Owner = owner.gameObject.GetComponent<NetworkPlayerObject>();
-
+        if (owner.connectionToClient != null)
+            Debug.Log("Assigned authority? " + obj.AssignClientAuthority(owner.connectionToClient));
+        else
+            Debug.Log("Assigned authority? " + obj.AssignClientAuthority(owner.connectionToServer));
     }
 }
