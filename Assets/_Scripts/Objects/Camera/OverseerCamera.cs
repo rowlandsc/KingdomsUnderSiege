@@ -6,13 +6,11 @@ using UnityEditor;
 
 public class OverseerCamera : MonoBehaviour {
 
+    public static OverseerCamera Instance = null;
+
     public Map GameMap;
     public float MaxZoom = 8;
     public float ZoomSpeed = 8;
-
-    public float Zoom = 1;
-
-    public float ScrollSpeed = 50;
 
     public Camera Camera;
     public float _maxHeight = 0;
@@ -21,7 +19,29 @@ public class OverseerCamera : MonoBehaviour {
     public float _zMinBound = 0;
     public float _zMaxBound = 0;
 
+    public float Zoom = 1;
+
+    public float ScrollSpeed = 50;
+    public float PanSpeed = 5;
+    public Vector3 PanCurrentVelocity = Vector2.zero;
+    public float PanFriction = .95f;
+
+    private bool _dragPanning = false;
+    private Vector3 _dragPanStartPoint = Vector3.zero;
+    private Vector3 _dragPanStartPosition = Vector3.zero;
+    private Vector3 _lastDragPoint = Vector3.zero;
+
     NetworkPlayerInput _playerInput;
+
+    void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        }
+        else {
+            Debug.LogWarning("Duplicate OverseerCamera detected");
+            Destroy(this);
+        }
+    }
     
     void Start() {
 		GameMap = Map.Instance;
@@ -31,8 +51,8 @@ public class OverseerCamera : MonoBehaviour {
     }
 
     void Update() {
-        if (Mathf.Abs(InputManager.OverseerZoom) > float.Epsilon) {
-            Zoom += (InputManager.OverseerZoom / Mathf.Abs(InputManager.OverseerZoom)) * ZoomSpeed * Time.deltaTime;
+        if (Mathf.Abs(InputManager.Instance.OverseerZoom) > float.Epsilon) {
+            Zoom += (InputManager.Instance.OverseerZoom / Mathf.Abs(InputManager.Instance.OverseerZoom)) * ZoomSpeed * Time.deltaTime;
             if (Zoom > MaxZoom) Zoom = MaxZoom;
             if (Zoom < 1) Zoom = 1;
         }
@@ -49,17 +69,58 @@ public class OverseerCamera : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, transform.position.y, newZ);
         }
 
+        if (!_dragPanning) {
+            if (InputManager.Instance.CameraDragPanDown) {
+                _dragPanning = true;
+                _dragPanStartPoint = InputManager.Instance.ClickPositionViewport;
+                _dragPanStartPosition = transform.position;
+                _lastDragPoint = _dragPanStartPoint;
+            }
+        }
+
+        if (_dragPanning) {
+            _dragPanning = !InputManager.Instance.CameraDragPanUp;
+
+            if (!_dragPanning) {
+                Vector3 currentDragPoint = InputManager.Instance.ClickPositionViewport;
+                PanCurrentVelocity = _lastDragPoint - currentDragPoint;
+                PanCurrentVelocity.x = PanCurrentVelocity.x * Mathf.Abs(transform.position.z * Camera.aspect);
+                PanCurrentVelocity.y = PanCurrentVelocity.y * Mathf.Abs(transform.position.z);
+            }
+        }
+        if (_dragPanning) {
+            Vector3 currentDragPoint = InputManager.Instance.ClickPositionViewport;
+
+            Vector3 jump = _dragPanStartPoint - currentDragPoint;
+            jump.x = jump.x * Mathf.Abs(transform.position.z * Camera.aspect);
+            jump.y = jump.y * Mathf.Abs(transform.position.z);
+            transform.position = _dragPanStartPosition + jump;
+            _lastDragPoint = currentDragPoint;
+        }
+        else {
+            transform.position += new Vector3(PanCurrentVelocity.x, PanCurrentVelocity.y, 0);
+            PanCurrentVelocity = PanCurrentVelocity * PanFriction;
+
+            Vector2 pan = InputManager.Instance.CameraEdgePan;
+
+            transform.position = new Vector3(transform.position.x + PanSpeed * Time.deltaTime * pan.x, transform.position.y + PanSpeed * Time.deltaTime * pan.y, transform.position.z);
+        }
+
         if (transform.position.x > _xMaxBound) {
             transform.position = new Vector3(_xMaxBound, transform.position.y, transform.position.z);
+            if (PanCurrentVelocity.x > 0) PanCurrentVelocity.x = 0;
         }
         if (transform.position.x < _xMinBound) {
             transform.position = new Vector3(_xMinBound, transform.position.y, transform.position.z);
+            if (PanCurrentVelocity.x < 0) PanCurrentVelocity.x = 0;
         }
         if (transform.position.z > _zMaxBound) {
             transform.position = new Vector3(transform.position.x, transform.position.y, _zMaxBound);
+            if (PanCurrentVelocity.z > 0) PanCurrentVelocity.z = 0;
         }
         if (transform.position.z < _zMinBound) {
             transform.position = new Vector3(transform.position.x, transform.position.y, _zMinBound);
+            if (PanCurrentVelocity.z < 0) PanCurrentVelocity.z = 0;
         }
     }
 
