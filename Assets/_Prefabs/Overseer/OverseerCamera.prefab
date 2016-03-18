@@ -121,16 +121,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameMap: {fileID: 0}
-  MaxZoom: 8
+  MaxZoom: 4
   ZoomSpeed: 8
-  Zoom: 2.4693391
-  ScrollSpeed: 50
   Camera: {fileID: 2087470}
   _maxHeight: 243.66307
   _xMinBound: 101.24166
   _xMaxBound: 398.75833
   _zMinBound: 56.970276
   _zMaxBound: 443.02972
+  Zoom: 2.4693391
+  ScrollSpeed: 50
+  EdgePanEnabled: 0
+  EdgePanVerticalBuffer: 0.25
+  EdgePanHorizontalBuffer: 0.25
+  PanSpeed: 100
+  PanCurrentVelocity: {x: 0, y: 0, z: 0}
+  PanFriction: 0.95
 --- !u!114 &11437706
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,9 +4,6 @@ using System.Collections;
 public class InputManager : MonoBehaviour {
 
     public static InputManager Instance = null;
-    public bool EdgePanEnabled = false;
-    public float EdgePanVerticalBuffer = 0.1f;
-    public float EdgePanHorizontalBuffer = 0.1f;
 
     void Awake() {
         if (!Instance) {
@@ -33,49 +30,50 @@ public class InputManager : MonoBehaviour {
         }
     }
 
-    public Vector3 ClickPositionPixel {
+    public Vector3 OverseerClickPositionPixel {
         get {
-            return Input.mousePosition;
+            return new Vector3(Input.mousePosition.x, 0, Input.mousePosition.y);
         }
     }
 
-    public Vector3 ClickPositionWorldspace {
+    public Vector3 OverseerClickPositionViewport {
         get {
-            return OverseerCamera.Instance.Camera.ScreenToWorldPoint(Input.mousePosition);
-        }
-    }
-
-    public Vector3 ClickPositionViewport {
-        get {
-            return OverseerCamera.Instance.Camera.ScreenToViewportPoint(Input.mousePosition);
-        }
-    }
-
-    public Vector2 CameraEdgePan {
-        get {
-            int screenWidth = Camera.main.pixelWidth;
-            int screenHeight = Camera.main.pixelHeight;
+            int screenWidth = OverseerCamera.Instance.Camera.pixelWidth;
+            int screenHeight = OverseerCamera.Instance.Camera.pixelHeight;
 
             if (screenWidth <= 0 || screenHeight <= 0) return new Vector2(0, 0);
 
             Vector3 mouseScreenPos = Input.mousePosition;
-            Vector3 mousePos = new Vector3(mouseScreenPos.x / screenWidth, mouseScreenPos.y / screenHeight, 1);
+            return new Vector3(mouseScreenPos.y / screenWidth, 1, 1 - mouseScreenPos.x / screenHeight);
+        }
+    }
+
+    public Vector3 CameraEdgePan {
+        get {
+            int screenWidth = OverseerCamera.Instance.Camera.pixelWidth;
+            int screenHeight = OverseerCamera.Instance.Camera.pixelHeight;
+
+            if (screenWidth <= 0 || screenHeight <= 0) return new Vector2(0, 0);
+
+            Vector3 mouseScreenPos = Input.mousePosition;
+            Vector3 mousePos = new Vector3(mouseScreenPos.x / screenWidth, 1, mouseScreenPos.y / screenHeight);
             float x = 0;
-            float y = 0;
+            float z = 0;
 
             Debug.Log(mousePos);
 
-            if (mousePos.x < EdgePanHorizontalBuffer)
-                x = -1 * (EdgePanHorizontalBuffer - mousePos.x) / Instance.EdgePanHorizontalBuffer;
-            else if (mousePos.x > 1 - Instance.EdgePanHorizontalBuffer)
-                x = (1 - ((1 - mousePos.x) / Instance.EdgePanHorizontalBuffer));
+            if (mousePos.x < OverseerCamera.Instance.EdgePanHorizontalBuffer)
+                z = (OverseerCamera.Instance.EdgePanHorizontalBuffer - mousePos.x) / OverseerCamera.Instance.EdgePanHorizontalBuffer;
+            else if (mousePos.x > 1 - OverseerCamera.Instance.EdgePanHorizontalBuffer)
+                z = -1 * (1 - ((1 - mousePos.x) / OverseerCamera.Instance.EdgePanHorizontalBuffer));
 
-            if (mousePos.y < EdgePanVerticalBuffer)
-                y = -1 * (EdgePanVerticalBuffer - mousePos.y) / Instance.EdgePanVerticalBuffer;
-            else if (mousePos.y > 1 - Instance.EdgePanVerticalBuffer)
-                y = (1 - ((1 - mousePos.y) / Instance.EdgePanVerticalBuffer));
+            if (mousePos.z < OverseerCamera.Instance.EdgePanVerticalBuffer)
+                x = -1 * (OverseerCamera.Instance.EdgePanVerticalBuffer - mousePos.z) / OverseerCamera.Instance.EdgePanVerticalBuffer;
+            else if (mousePos.z > 1 - OverseerCamera.Instance.EdgePanVerticalBuffer)
+                x = (1 - ((1 - mousePos.z) / OverseerCamera.Instance.EdgePanVerticalBuffer));
 
-            return new Vector2(x * x * (x > 0 ? 1 : -1), y * y * (y > 0 ? 1 : -1));
+            // Return square of distance to edge, scaled positive or negative depending on where the mouse is
+            return new Vector3(x * x * (x > 0 ? 1 : -1), 0, z * z * (z > 0 ? 1 : -1));
         }
     }
 
@@ -93,10 +91,10 @@ public class InputManager : MonoBehaviour {
 
 
     public void MouseOnScreen() {
-        EdgePanEnabled = true;
+        OverseerCamera.Instance.EdgePanEnabled = true;
     }
 
     public void MouseOffScreen() {
-        EdgePanEnabled = false;
+        OverseerCamera.Instance.EdgePanEnabled = false;
     }
 }

@@ -22,6 +22,10 @@ public class OverseerCamera : MonoBehaviour {
     public float Zoom = 1;
 
     public float ScrollSpeed = 50;
+
+    public bool EdgePanEnabled = false;
+    public float EdgePanVerticalBuffer = 0.1f;
+    public float EdgePanHorizontalBuffer = 0.1f;
     public float PanSpeed = 5;
     public Vector3 PanCurrentVelocity = Vector2.zero;
     public float PanFriction = .95f;
@@ -72,7 +76,7 @@ public class OverseerCamera : MonoBehaviour {
         if (!_dragPanning) {
             if (InputManager.Instance.CameraDragPanDown) {
                 _dragPanning = true;
-                _dragPanStartPoint = InputManager.Instance.ClickPositionViewport;
+                _dragPanStartPoint = InputManager.Instance.OverseerClickPositionViewport;
                 _dragPanStartPosition = transform.position;
                 _lastDragPoint = _dragPanStartPoint;
             }
@@ -82,28 +86,30 @@ public class OverseerCamera : MonoBehaviour {
             _dragPanning = !InputManager.Instance.CameraDragPanUp;
 
             if (!_dragPanning) {
-                Vector3 currentDragPoint = InputManager.Instance.ClickPositionViewport;
+                Vector3 currentDragPoint = InputManager.Instance.OverseerClickPositionViewport;
                 PanCurrentVelocity = _lastDragPoint - currentDragPoint;
                 PanCurrentVelocity.x = PanCurrentVelocity.x * Mathf.Abs(transform.position.z * Camera.aspect);
-                PanCurrentVelocity.y = PanCurrentVelocity.y * Mathf.Abs(transform.position.z);
+                PanCurrentVelocity.z = PanCurrentVelocity.z * Mathf.Abs(transform.position.z);
+
+                PanCurrentVelocity = PanCurrentVelocity * (.1f + (1 - Zoom / MaxZoom) * .9f);
+            }
+            else {
+                Vector3 currentDragPoint = InputManager.Instance.OverseerClickPositionViewport;
+
+                Vector3 jump = _dragPanStartPoint - currentDragPoint;
+                jump.x = jump.x * Mathf.Abs(transform.position.y * Camera.aspect);
+                jump.z = jump.z * Mathf.Abs(transform.position.y);
+                transform.position = _dragPanStartPosition + jump;
+                _lastDragPoint = currentDragPoint;
             }
         }
-        if (_dragPanning) {
-            Vector3 currentDragPoint = InputManager.Instance.ClickPositionViewport;
-
-            Vector3 jump = _dragPanStartPoint - currentDragPoint;
-            jump.x = jump.x * Mathf.Abs(transform.position.z * Camera.aspect);
-            jump.y = jump.y * Mathf.Abs(transform.position.z);
-            transform.position = _dragPanStartPosition + jump;
-            _lastDragPoint = currentDragPoint;
-        }
         else {
-            transform.position += new Vector3(PanCurrentVelocity.x, PanCurrentVelocity.y, 0);
+            transform.position += new Vector3(PanCurrentVelocity.x, 0, PanCurrentVelocity.z);
             PanCurrentVelocity = PanCurrentVelocity * PanFriction;
 
-            Vector2 pan = InputManager.Instance.CameraEdgePan;
+            Vector3 pan = InputManager.Instance.CameraEdgePan;
 
-            transform.position = new Vector3(transform.position.x + PanSpeed * Time.deltaTime * pan.x, transform.position.y + PanSpeed * Time.deltaTime * pan.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + PanSpeed * Time.deltaTime * pan.x, transform.position.y, transform.position.z + PanSpeed * Time.deltaTime * pan.z);
         }
 
         if (transform.position.x > _xMaxBound) {
