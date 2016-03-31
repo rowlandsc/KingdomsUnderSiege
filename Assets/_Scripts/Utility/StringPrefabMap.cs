@@ -20,6 +20,14 @@ public class StringPrefabMap  {
         Prefabs = new List<GameObject>();
     }
 
+    public StringPrefabMap(StringPrefabMap orig) {
+        PrefabNames = new List<string>();
+        Prefabs = new List<GameObject>();
+
+        PrefabNames.AddRange(orig.PrefabNames);
+        Prefabs.AddRange(orig.Prefabs);
+    }
+
     int Find(string key) {
         if (PrefabNames.Count == 0) return -1;
 
