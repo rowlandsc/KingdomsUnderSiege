@@ -1,26 +1,60 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class ProfileSystem : MonoBehaviour {
 
-	public float healthPoints=100f;
-	public float MagicPoints=100f;
-	public float MAX_HealthPoints=100;
-	public float MAX_MagicPoints=100;
+
+    public List<ProfileEffect> CurrentEffects = new List<ProfileEffect>();
+
+    public float baseHealthPoints = 100f;
+	public float HealthPoints {
+        get {
+            return baseHealthPoints;
+        }
+    }
+
+    public float baseMagicPoints = 100f;
+	public float MagicPoints {
+        get {
+            return baseMagicPoints;
+        }
+    }
+
+    public float baseMaxHealthPoints = 100f;
+	public float MAX_HealthPoints {
+        get {
+            float maxHealthPoints = baseMaxHealthPoints;
+            for (int i=0; i<CurrentEffects.Count; i++) {
+                maxHealthPoints += CurrentEffects[i].MaxHealthPointsChange;
+            }
+            return maxHealthPoints;
+        }
+    }
+
+    public float baseMaxMagicPoints = 100f;
+    public float MAX_MagicPoints {
+        get {
+            float maxMagicPoints = baseMaxMagicPoints;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                maxMagicPoints += CurrentEffects[i].MaxMagicPointsChange;
+            }
+            return maxMagicPoints;
+        }
+    }
 
 
 	//the defendpoints max is 100
-	public float DefendePoints=0f;
+	public float DefendPoints=0f;
 	public float Worth=100f;
 	public float haveMoney=0f;
 
-	public float meleeDamageDealt=5f;
-	public float secondDamageDealt=12f;
-	public float superDamageDealt=40f;
+	public float MeleeDamageDealt=5f;
+	public float SecondDamageDealt=12f;
+	public float SuperDamageDealt=40f;
 
-	public float Health_Regen=1f;
-	public float Magic_Regen=1f;
+	public float HealthRegen=1f;
+	public float MagicRegen=1f;
 
 	private float timer;
 	public GameObject damagePOP;
@@ -48,12 +82,12 @@ public class ProfileSystem : MonoBehaviour {
 	void Update () {
 
 
-		if(healthPoints>MAX_HealthPoints){
-			healthPoints=MAX_HealthPoints;
+		if(baseHealthPoints > MAX_HealthPoints){
+            baseHealthPoints = MAX_HealthPoints;
 		}
 
 
-		if(healthPoints<=0){
+		if(HealthPoints<=0){
 
 			//death_ = Instantiate(death_, this.transform.position, Quaternion.identity) as GameObject;
 			//death_.AddComponent<DestoryselfAfterfewsecond>();
@@ -69,15 +103,15 @@ public class ProfileSystem : MonoBehaviour {
 			}
 		}
 
-		if(healthPoints<MAX_HealthPoints){
+		if(baseHealthPoints < MAX_HealthPoints){
 			
-			healthPoints+=Health_Regen*0.01f;
+			baseHealthPoints += HealthRegen * Time.deltaTime;
 
 		}
 
-		if(MagicPoints<MAX_MagicPoints){
-			
-			MagicPoints+=Magic_Regen*0.01f;
+		if(baseMaxMagicPoints < MAX_MagicPoints){
+
+            baseMaxMagicPoints += MagicRegen * Time.deltaTime;
 
 		}
 
@@ -86,9 +120,9 @@ public class ProfileSystem : MonoBehaviour {
 
 		if(herodie){
 
-			if(this.gameObject.name=="Mage(Clone)") Mage_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,meleeDamageDealt,secondDamageDealt,superDamageDealt,DefendePoints,Health_Regen,Magic_Regen,haveMoney);
-			if(this.gameObject.name=="Knight(Clone)") Knight_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,meleeDamageDealt,secondDamageDealt,superDamageDealt,DefendePoints,Health_Regen,Magic_Regen,haveMoney);
-			if(this.gameObject.name=="Arch(Clone)") Arch_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,meleeDamageDealt,secondDamageDealt,superDamageDealt,DefendePoints,Health_Regen,Magic_Regen,haveMoney);
+			if(this.gameObject.name=="Mage(Clone)") Mage_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
+			if(this.gameObject.name=="Knight(Clone)") Knight_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
+			if(this.gameObject.name=="Arch(Clone)") Arch_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
 		}
 			
 	}
@@ -97,11 +131,11 @@ public class ProfileSystem : MonoBehaviour {
 
 
 	public void getDamage(float damage){
-		healthPoints = healthPoints - damage*(1- DefendePoints/200);
+		baseHealthPoints = HealthPoints - damage*(1- DefendPoints/200);
 	}
 
 	public void useMagic(float mp){
-		MagicPoints = MagicPoints - mp;
+		baseMaxMagicPoints = MagicPoints - mp;
 	}
 
 	public bool MPenough(float mp){
@@ -111,8 +145,8 @@ public class ProfileSystem : MonoBehaviour {
 
 	public bool KillAndGains(float damage){
 
-		if(damage>=healthPoints){
-			healthPoints=0f;
+		if(damage>=HealthPoints){
+			baseHealthPoints = 0f;
 			return true;}
 		else{
 			getDamage(damage);
@@ -121,66 +155,66 @@ public class ProfileSystem : MonoBehaviour {
 	}
 
 	public void AddHealth(float value){
-		MAX_HealthPoints=MAX_HealthPoints+value;
+		baseMaxHealthPoints = baseMaxHealthPoints + value;
 	}
 
 	public void AddMagic(float value){
-		MAX_MagicPoints+=value;
+		baseMaxMagicPoints += value;
 	}
 
 	public void AddArmor(float value){
-		DefendePoints+=value;
+		DefendPoints+=value;
 	}
 
 	public void AddMeleeDamage(float value){
-		meleeDamageDealt+=value;
+		MeleeDamageDealt+=value;
 	}
 
 	public void AddSecondDamage(float value){
-		secondDamageDealt+=value;
+		SecondDamageDealt+=value;
 	}
 
 	public void AddSuperDamage(float value){
-		superDamageDealt+=value;
+		SuperDamageDealt+=value;
 	}
 
 	public void AddDamage(float value){
-		meleeDamageDealt+=value*0.09f;
-		secondDamageDealt+=value*0.22f;
-		superDamageDealt+=value*0.69f;
+		MeleeDamageDealt+=value*0.09f;
+		SecondDamageDealt+=value*0.22f;
+		SuperDamageDealt+=value*0.69f;
 	
 	}
 
 	public void AddHealthReco(float value){
-		Health_Regen+=value;
+		HealthRegen+=value;
 	}
 
 	public void AddMagicReco(float value){
-		Magic_Regen+=value;
+		MagicRegen+=value;
 	}
 
 	public float returnArmor(){
-		return DefendePoints;
+		return DefendPoints;
 	}
 
 	public float returnMeleeDamage(){
-		return meleeDamageDealt;
+		return MeleeDamageDealt;
 	}
 
 	public float returnSecondDamage(){
-		return secondDamageDealt;
+		return SecondDamageDealt;
 	}
 
 	public float returnSuperDamage(){
-		return superDamageDealt;
+		return SuperDamageDealt;
 	}
 
 	public float returnHR(){
-		return Health_Regen;
+		return HealthRegen;
 	}
 
 	public float returnMR(){
-		return Magic_Regen;
+		return MagicRegen;
 	}
 
 	public bool useMoney(float value){
@@ -194,18 +228,20 @@ public class ProfileSystem : MonoBehaviour {
 
 	public void inital(float maxhp, float maxmp, float meleedamage, float seconddamage, float superdamage, float armor, float hre, float mre, float money){
 		
-		MAX_HealthPoints=maxhp;
-		MAX_MagicPoints=maxmp;
+		baseMaxHealthPoints=maxhp;
+		baseMaxMagicPoints=maxmp;
+        baseHealthPoints = baseMaxHealthPoints;
+        baseMagicPoints = baseMaxMagicPoints;
 
-		DefendePoints=armor;
+		DefendPoints=armor;
 		haveMoney=money;
 
-		meleeDamageDealt=meleedamage;
-		secondDamageDealt=seconddamage;
-		superDamageDealt=superdamage;
+		MeleeDamageDealt=meleedamage;
+		SecondDamageDealt=seconddamage;
+		SuperDamageDealt=superdamage;
 
-		Health_Regen=hre;
-		Magic_Regen=mre;
+		HealthRegen=hre;
+		MagicRegen=mre;
 	}
 
 

@@ -43,7 +43,7 @@ public class SecondHit : MonoBehaviour {
 
 			if(col.gameObject.GetComponent<ProfileSystem>()){
 
-				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().superDamageDealt))
+				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().SuperDamageDealt))
 				{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
 
 			}

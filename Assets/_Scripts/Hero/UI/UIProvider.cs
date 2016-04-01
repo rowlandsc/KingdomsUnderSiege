@@ -65,7 +65,7 @@ public class UIProvider : MonoBehaviour {
 			SecondIcon = GameObject.Find("UISecond");
 			SuperIcon = GameObject.Find("UISuper");
 
-			hp = this.gameObject.GetComponent<ProfileSystem>().healthPoints;
+			hp = this.gameObject.GetComponent<ProfileSystem>().HealthPoints;
 			mp = this.gameObject.GetComponent<ProfileSystem>().MagicPoints;
 			money = this.gameObject.GetComponent<ProfileSystem>().haveMoney;
 			Max_hp = this.gameObject.GetComponent<ProfileSystem>().MAX_HealthPoints;
