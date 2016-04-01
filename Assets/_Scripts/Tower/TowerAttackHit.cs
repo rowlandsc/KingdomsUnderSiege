@@ -35,7 +35,7 @@ public class TowerAttackHit : MonoBehaviour {
 
 			if(col.gameObject.GetComponent<ProfileSystem>()){
 
-				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(tower.GetComponent<ProfileSystem>().meleeDamageDealt))
+				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(tower.GetComponent<ProfileSystem>().MeleeDamageDealt))
 				{tower.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
 
 			}}

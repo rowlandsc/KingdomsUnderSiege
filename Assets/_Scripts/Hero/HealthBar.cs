@@ -21,7 +21,7 @@ public class HealthBar : MonoBehaviour {
 		this.transform.forward = new Vector3(transform.position.x-camera.position.x , 0, transform.position.z-camera.position.z);
 
 		if(GetComponentInParent<ProfileSystem>()){
-			ratio = ((GetComponentInParent<ProfileSystem>().healthPoints)/(GetComponentInParent<ProfileSystem>().MAX_HealthPoints))*defalut_ratio;}
+			ratio = ((GetComponentInParent<ProfileSystem>().HealthPoints)/(GetComponentInParent<ProfileSystem>().MAX_HealthPoints))*defalut_ratio;}
 
 		Vector3 temp = this.transform.localScale;
 		temp.x = -1*ratio;
