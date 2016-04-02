@@ -7,9 +7,9 @@ public class HeroMove : NetworkBehaviour {
 
 
 
-	public float movespeed=1.5f;
-	public float backwardspeed=1.0f;
-	public float sidespeed=1.2f;
+	public float movespeedMult = 1f;
+	public float backwardspeedMult = 0.66f;
+	public float sidespeedMult = 0.8f;
 
 	static public bool CanMove=true;
 
@@ -21,6 +21,7 @@ public class HeroMove : NetworkBehaviour {
 	private Vector3 curPos, LastPos;
 
     private NetworkPlayerInput _playerInput;
+    private ProfileSystem _profileSystem;
 
     private Rigidbody _rigidbody;
 
@@ -30,6 +31,7 @@ public class HeroMove : NetworkBehaviour {
 		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
         _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
         _rigidbody = GetComponent<Rigidbody>();
+        _profileSystem = GetComponent<ProfileSystem>();
     }
 	
 	// Update is called once per frame
@@ -53,7 +55,7 @@ public class HeroMove : NetworkBehaviour {
 			Vector3.Normalize(moveDirection);
 
             //transform.Translate(moveDirection * Time.deltaTime* movespeed, Space.World);
-            _rigidbody.position += moveDirection * Time.deltaTime * movespeed;
+            _rigidbody.position += moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * movespeedMult;
         }
 
 		if(_playerInput.HeroMoveHorizontalInput < -1 * float.Epsilon && CanMove){
@@ -63,7 +65,7 @@ public class HeroMove : NetworkBehaviour {
 			Vector3.Normalize(moveDirection);
 
             //transform.Translate(-moveDirection * Time.deltaTime* sidespeed, Space.World);
-            _rigidbody.position += -moveDirection * Time.deltaTime * sidespeed;
+            _rigidbody.position += -moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * sidespeedMult;
         }
 		if(_playerInput.HeroMoveHorizontalInput > float.Epsilon && CanMove){
 
@@ -72,7 +74,7 @@ public class HeroMove : NetworkBehaviour {
 			Vector3.Normalize(moveDirection);
 
 			//transform.Translate(moveDirection * Time.deltaTime* sidespeed, Space.World);
-            _rigidbody.position += moveDirection * Time.deltaTime * sidespeed;
+            _rigidbody.position += moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * sidespeedMult;
         }
 		if(_playerInput.HeroMoveForwardInput < -1 * float.Epsilon && CanMove){
 			Vector3 moveDirection = Maincamera.transform.forward;
@@ -80,7 +82,7 @@ public class HeroMove : NetworkBehaviour {
 			Vector3.Normalize(moveDirection);
 
             //transform.Translate(-moveDirection * Time.deltaTime* backwardspeed, Space.World);
-            _rigidbody.position += -moveDirection * Time.deltaTime * backwardspeed;
+            _rigidbody.position += -moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * backwardspeedMult;
         }
         
 	}

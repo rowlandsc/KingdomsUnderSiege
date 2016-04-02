@@ -34,7 +34,7 @@ public class KnightSecond : MonoBehaviour {
 		timer = cooldown;
 		timer_for_max_effect=0f;
 		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
-		movespeed = gameObject.GetComponent<HeroMove>().movespeed;
+		movespeed = gameObject.GetComponent<ProfileSystem>().MoveSpeed;
 		knightsecond_Activate=false;
 		effect_fire_clone_runonce=true;
         _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
