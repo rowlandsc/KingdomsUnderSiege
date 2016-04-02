@@ -7,6 +7,12 @@ public class ProfileSystem : NetworkBehaviour {
     [SerializeField]
     public ProfileEffectList CurrentEffects = new ProfileEffectList();
 
+    [SyncVar]
+    public bool IsDead = false;
+    [SyncVar]
+    NetworkInstanceId Killer = NetworkInstanceId.Invalid;
+
+    [SyncVar]
     public float baseHealthPoints = 100f;
     public float HealthPoints {
         get {
@@ -14,6 +20,7 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
     public float baseMagicPoints = 100f;
     public float MagicPoints {
         get {
@@ -21,6 +28,7 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
     public float baseMaxHealthPoints = 100f;
     public float MaxHealthPoints {
         get {
@@ -35,6 +43,7 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
     public float baseMaxMagicPoints = 100f;
     public float MaxMagicPoints {
         get {
@@ -51,10 +60,14 @@ public class ProfileSystem : NetworkBehaviour {
 
 
     //the defendpoints max is 100
+    [SyncVar]
     public float DefendPoints = 0f;
+    [SyncVar]
     public float Worth = 100f;
+    [SyncVar]
     public float haveMoney = 0f;
 
+    [SyncVar]
     public float baseMeleeDamageDealt = 5f;
     public float MeleeDamageDealt {
         get {
@@ -68,6 +81,7 @@ public class ProfileSystem : NetworkBehaviour {
             return meleeDamage;
         }
     }
+    [SyncVar]
     public float baseSecondDamageDealt = 12f; 
     public float SecondDamageDealt {
         get {
@@ -81,6 +95,7 @@ public class ProfileSystem : NetworkBehaviour {
             return secondDamage;
         }
     }
+    [SyncVar]
     public float baseSuperDamageDealt=40f;
     public float SuperDamageDealt {
         get {
@@ -95,6 +110,7 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
     public float baseHealthRegen = 1f;
     public float HealthRegen {
         get {
@@ -108,7 +124,8 @@ public class ProfileSystem : NetworkBehaviour {
             return healthRegen;
         }
     }
-	public float baseMagicRegen=1f;
+    [SyncVar]
+    public float baseMagicRegen=1f;
     public float MagicRegen {
         get {
             float magicRegen = baseMagicRegen;
@@ -122,6 +139,7 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
     public float baseMoveSpeed=1.5f;
     public float MoveSpeed {
         get {
@@ -160,6 +178,7 @@ public class ProfileSystem : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!KUSNetworkManager.HostPlayer.isLocalPlayer) return;
         
         UpdateEffects();
 
@@ -219,6 +238,11 @@ public class ProfileSystem : NetworkBehaviour {
             baseHealthRegen += effect.HealthRegenAdd;
             baseMagicRegen *= effect.MagicRegenMult;
             baseMagicRegen += effect.MagicRegenAdd;
+
+            if (baseHealthPoints < 0 && !IsDead) {
+                IsDead = true;
+                Killer = effect.InflicterID;
+            }
         }
         else {
             CurrentEffects.Add(effect);
@@ -237,6 +261,12 @@ public class ProfileSystem : NetworkBehaviour {
                 // Update health/magic damage over time
                 baseHealthPoints += CurrentEffects[i].HealthPointsAdd * Time.deltaTime;
                 baseMagicPoints += CurrentEffects[i].MagicPointsAdd * Time.deltaTime;
+
+                if (baseHealthPoints < 0 && !IsDead) {
+                    Killer = CurrentEffects[i].InflicterID;
+                    IsDead = true;
+                    break;
+                }
             }
         }
     }

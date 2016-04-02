@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.Networking;
 
 public class ArchMelee : MonoBehaviour {
 
@@ -44,8 +45,9 @@ public class ArchMelee : MonoBehaviour {
 			
 				if(real_distance<=distance){
 					arch_clone = Instantiate(arch, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
-						arch_clone.transform.DOMove(hit.point,0.3f,false);
-					}
+                    arch_clone.GetComponent<ArchMeleeHit>().Initialize(GetComponent<NetworkIdentity>());
+					arch_clone.transform.DOMove(hit.point,0.3f,false);
+				}
 				else{
 					canAttack = true;
 				}
