@@ -57,6 +57,7 @@ public class RoundManager : NetworkBehaviour{
 
     [SyncVar]
     private bool _isFirstPreround=false;
+    private GameObject _door;
    
     /**
      * Called when a new instance of the RoundManager is created.
@@ -78,6 +79,7 @@ public class RoundManager : NetworkBehaviour{
         if (Instance == null)
         {
             this.RoundEvents = new Dictionary<string, UnityEvent>();
+            this._door = GameObject.Find("2partDoor");
             Instance = this;
         }
         else {
@@ -106,6 +108,7 @@ public class RoundManager : NetworkBehaviour{
 
         // Set the timer
         this.CountDownTime = this.PreroundTime;
+        _door.SetActive(true);
 
         // Set booleans correctly
         this._isPreround = true;
@@ -127,6 +130,7 @@ public class RoundManager : NetworkBehaviour{
     private IEnumerator StartRound(){
 
         RoundManager.TriggerEvent("PreroundEnded");
+        _door.SetActive(false);
 
         // Update the round number
         ++this.RoundNumber;
@@ -162,6 +166,7 @@ public class RoundManager : NetworkBehaviour{
      */
     private IEnumerator StartFirstPreround(){
 
+        _door.SetActive(true);
         // Update the preround number
         ++this.PreroundNumber;
 

@@ -10,7 +10,7 @@ public class ProfileSystem : NetworkBehaviour {
     [SyncVar]
     public bool IsDead = false;
     [SyncVar]
-    NetworkInstanceId Killer = NetworkInstanceId.Invalid;
+    public NetworkInstanceId Killer = NetworkInstanceId.Invalid;
 
     [SyncVar]
     public float baseHealthPoints = 100f;
@@ -197,7 +197,7 @@ public class ProfileSystem : NetworkBehaviour {
 				this.gameObject.GetComponent<DragonAI>().NowState = 2;
 			}
 			else{
-				Destroy(this.gameObject);
+                GetComponent<IKillable>().OnDeath();
 			}
 		}
 

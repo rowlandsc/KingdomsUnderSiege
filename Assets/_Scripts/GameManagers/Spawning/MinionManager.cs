@@ -21,11 +21,6 @@ public class MinionManager : NetworkBehaviour {
         }
     }
 
-	// Use this for initialization
-	void Start () {
-        
-    }
-
     public static void AddActiveMinion(GameObject minion)
     {
         MinionManager.Instance.ActiveMinions.Add(minion);

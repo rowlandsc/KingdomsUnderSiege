@@ -10,7 +10,7 @@ using System.Collections;
  * The basic Minion implementation.
  * Has a basic melee attack.
  */
-public class Minion_Basic : MonoBehaviour, IMinion_Attack {
+public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable {
 
     /**
      * Private Variables
@@ -58,7 +58,8 @@ public class Minion_Basic : MonoBehaviour, IMinion_Attack {
             this.gameObject.transform.LookAt(target);
 
             // Do the attack damage
-            target.gameObject.GetComponent<Health>().HitPoints -= this._stats.AttackPower;
+            ProfileEffect hitEffect = new ProfileEffect(NetworkInstanceId.Invalid, healthPointsAdd: -1 * GetComponent<ProfileSystem>().MeleeDamageDealt);
+            KUSNetworkManager.HostPlayer.CmdAddProfileEffect(target.GetComponent<NetworkIdentity>(), hitEffect);
 
             if (target == null){
                 this._navMeshAgent.SetDestination(this._endTarget.position);
@@ -91,7 +92,7 @@ public class Minion_Basic : MonoBehaviour, IMinion_Attack {
 
     void Update()
     {
-        if(this.GetComponent<Health>().HitPoints <= float.Epsilon)
+        if(this.GetComponent<ProfileSystem>().HealthPoints <= float.Epsilon)
         {
             OnDeath();
         }
@@ -102,6 +103,22 @@ public class Minion_Basic : MonoBehaviour, IMinion_Attack {
         MinionManager.RemoveActiveMinion(this.gameObject);
 
         //TODO: ADD GOLD
+        NetworkInstanceId killer = this.GetComponent<ProfileSystem>().Killer;
+        if(killer != NetworkInstanceId.Invalid)
+        {
+            if (isServer)
+            {
+                GameObject player = NetworkServer.FindLocalObject(killer);
+                player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>().AddGold(25);
+                Debug.Log("ADDED 25 gold");
+            }
+            else
+            {
+                GameObject player = ClientScene.FindLocalObject(killer);
+                player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>().AddGold(25);
+                Debug.Log("ADDED 25 gold");
+            }
+        }
 
         // Unsubscribe
         RoundManager.RemoveListener("RoundEnded", OnDeath);
