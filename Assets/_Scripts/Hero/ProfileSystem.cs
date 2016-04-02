@@ -1,28 +1,142 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.Networking;
 
-public class ProfileSystem : MonoBehaviour {
+public class ProfileSystem : NetworkBehaviour {
 
-	public float healthPoints=100f;
-	public float MagicPoints=100f;
-	public float MAX_HealthPoints=100;
-	public float MAX_MagicPoints=100;
+    [SerializeField]
+    public ProfileEffectList CurrentEffects = new ProfileEffectList();
+
+    public float baseHealthPoints = 100f;
+    public float HealthPoints {
+        get {
+            return baseHealthPoints;
+        }
+    }
+
+    public float baseMagicPoints = 100f;
+    public float MagicPoints {
+        get {
+            return baseMagicPoints;
+        }
+    }
+
+    public float baseMaxHealthPoints = 100f;
+    public float MaxHealthPoints {
+        get {
+            float maxHealthPoints = baseMaxHealthPoints;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                maxHealthPoints *= CurrentEffects[i].MaxHealthPointsMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                maxHealthPoints += CurrentEffects[i].MaxHealthPointsAdd;
+            }
+            return maxHealthPoints;
+        }
+    }
+
+    public float baseMaxMagicPoints = 100f;
+    public float MaxMagicPoints {
+        get {
+            float maxMagicPoints = baseMaxMagicPoints;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                maxMagicPoints *= CurrentEffects[i].MaxMagicPointsMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                maxMagicPoints += CurrentEffects[i].MaxMagicPointsAdd;
+            }
+            return maxMagicPoints;
+        }
+    }
 
 
-	//the defendpoints max is 100
-	public float DefendePoints=0f;
-	public float Worth=100f;
-	public float haveMoney=0f;
+    //the defendpoints max is 100
+    public float DefendPoints = 0f;
+    public float Worth = 100f;
+    public float haveMoney = 0f;
 
-	public float meleeDamageDealt=5f;
-	public float secondDamageDealt=12f;
-	public float superDamageDealt=40f;
+    public float baseMeleeDamageDealt = 5f;
+    public float MeleeDamageDealt {
+        get {
+            float meleeDamage = baseMeleeDamageDealt;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                meleeDamage *= CurrentEffects[i].MeleeDamageDealtMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                meleeDamage += CurrentEffects[i].MeleeDamageDealtAdd;
+            }
+            return meleeDamage;
+        }
+    }
+    public float baseSecondDamageDealt = 12f; 
+    public float SecondDamageDealt {
+        get {
+            float secondDamage = baseSecondDamageDealt;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                secondDamage *= CurrentEffects[i].SecondDamageDealtMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                secondDamage += CurrentEffects[i].SecondDamageDealtAdd;
+            }
+            return secondDamage;
+        }
+    }
+    public float baseSuperDamageDealt=40f;
+    public float SuperDamageDealt {
+        get {
+            float superDamage = baseSuperDamageDealt;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                superDamage *= CurrentEffects[i].SuperDamageDealtMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                superDamage += CurrentEffects[i].SuperDamageDealtAdd;
+            }
+            return superDamage;
+        }
+    }
 
-	public float Health_Regen=1f;
-	public float Magic_Regen=1f;
+    public float baseHealthRegen = 1f;
+    public float HealthRegen {
+        get {
+            float healthRegen = baseHealthRegen;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                healthRegen *= CurrentEffects[i].HealthRegenMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                healthRegen += CurrentEffects[i].HealthRegenAdd;
+            }
+            return healthRegen;
+        }
+    }
+	public float baseMagicRegen=1f;
+    public float MagicRegen {
+        get {
+            float magicRegen = baseMagicRegen;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                magicRegen *= CurrentEffects[i].MagicRegenMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                magicRegen += CurrentEffects[i].MagicRegenAdd;
+            }
+            return magicRegen;
+        }
+    }
 
-	private float timer;
+    public float baseMoveSpeed=1.5f;
+    public float MoveSpeed {
+        get {
+            float moveSpeed = baseMoveSpeed;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                moveSpeed *= CurrentEffects[i].MoveSpeedMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                moveSpeed += CurrentEffects[i].MoveSpeedAdd;
+            }
+            return moveSpeed;
+        }
+    }
+
+    private float timer;
 	public GameObject damagePOP;
 	private GameObject damagePOP_;
 
@@ -46,16 +160,15 @@ public class ProfileSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
+        UpdateEffects();
 
-
-		if(healthPoints>MAX_HealthPoints){
-			healthPoints=MAX_HealthPoints;
+        if(baseHealthPoints > MaxHealthPoints){
+            baseHealthPoints = MaxHealthPoints;
 		}
 
-
-		if(healthPoints<=0){
-
-			//death_ = Instantiate(death_, this.transform.position, Quaternion.identity) as GameObject;
+        if(HealthPoints<=0){
+            //death_ = Instantiate(death_, this.transform.position, Quaternion.identity) as GameObject;
 			//death_.AddComponent<DestoryselfAfterfewsecond>();
 			if(this.gameObject.tag=="Player"){
 				herodie = true;
@@ -69,39 +182,71 @@ public class ProfileSystem : MonoBehaviour {
 			}
 		}
 
-		if(healthPoints<MAX_HealthPoints){
-			
-			healthPoints+=Health_Regen*0.01f;
-
+		if(baseHealthPoints < MaxHealthPoints){
+			baseHealthPoints += HealthRegen * Time.deltaTime;
 		}
 
-		if(MagicPoints<MAX_MagicPoints){
-			
-			MagicPoints+=Magic_Regen*0.01f;
-
+		if(baseMaxMagicPoints < MaxMagicPoints){
+            baseMaxMagicPoints += MagicRegen * Time.deltaTime;
 		}
-
-
-
 
 		if(herodie){
-
-			if(this.gameObject.name=="Mage(Clone)") Mage_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,meleeDamageDealt,secondDamageDealt,superDamageDealt,DefendePoints,Health_Regen,Magic_Regen,haveMoney);
-			if(this.gameObject.name=="Knight(Clone)") Knight_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,meleeDamageDealt,secondDamageDealt,superDamageDealt,DefendePoints,Health_Regen,Magic_Regen,haveMoney);
-			if(this.gameObject.name=="Arch(Clone)") Arch_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MAX_HealthPoints,MAX_MagicPoints,meleeDamageDealt,secondDamageDealt,superDamageDealt,DefendePoints,Health_Regen,Magic_Regen,haveMoney);
+			if(this.gameObject.name=="Mage(Clone)") Mage_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MaxHealthPoints,MaxMagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
+			if(this.gameObject.name=="Knight(Clone)") Knight_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MaxHealthPoints,MaxMagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
+			if(this.gameObject.name=="Arch(Clone)") Arch_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MaxHealthPoints,MaxMagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
 		}
 			
 	}
 
+    public void AddEffect(ProfileEffect effect) {
+        if (effect.StartingDuration == ProfileEffect.INSTANT) {
+            baseHealthPoints += effect.HealthPointsAdd;
+            baseMagicPoints += effect.MagicPointsAdd;
 
+            baseMaxHealthPoints *= effect.MaxHealthPointsMult;
+            baseMaxHealthPoints += effect.MaxHealthPointsAdd;
+            baseMaxMagicPoints *= effect.MaxMagicPointsMult;
+            baseMaxMagicPoints += effect.MaxMagicPointsAdd;
 
+            baseMeleeDamageDealt *= effect.MeleeDamageDealtMult;
+            baseMeleeDamageDealt += effect.MeleeDamageDealtAdd;
+            baseSecondDamageDealt *= effect.SecondDamageDealtMult;
+            baseSecondDamageDealt += effect.SecondDamageDealtAdd;
+            baseSuperDamageDealt *= effect.SuperDamageDealtMult;
+            baseSuperDamageDealt += effect.SuperDamageDealtAdd;
+
+            baseHealthRegen *= effect.HealthRegenMult;
+            baseHealthRegen += effect.HealthRegenAdd;
+            baseMagicRegen *= effect.MagicRegenMult;
+            baseMagicRegen += effect.MagicRegenAdd;
+        }
+        else {
+            CurrentEffects.Add(effect);
+        }
+    }
+
+    void UpdateEffects() {
+        for (int i=CurrentEffects.Count - 1; i>=0; i--) {
+            ProfileEffect countdownEffect = new ProfileEffect(CurrentEffects[i]);
+            countdownEffect.RemainingDuration -= Time.deltaTime;
+            CurrentEffects[i] = countdownEffect;
+            if (CurrentEffects[i].RemainingDuration <= 0) {
+                CurrentEffects.RemoveAt(i);
+            }
+            else {
+                // Update health/magic damage over time
+                baseHealthPoints += CurrentEffects[i].HealthPointsAdd * Time.deltaTime;
+                baseMagicPoints += CurrentEffects[i].MagicPointsAdd * Time.deltaTime;
+            }
+        }
+    }
 
 	public void getDamage(float damage){
-		healthPoints = healthPoints - damage*(1- DefendePoints/200);
+		baseHealthPoints = HealthPoints - damage*(1- DefendPoints/200);
 	}
 
 	public void useMagic(float mp){
-		MagicPoints = MagicPoints - mp;
+		baseMaxMagicPoints = MagicPoints - mp;
 	}
 
 	public bool MPenough(float mp){
@@ -111,8 +256,8 @@ public class ProfileSystem : MonoBehaviour {
 
 	public bool KillAndGains(float damage){
 
-		if(damage>=healthPoints){
-			healthPoints=0f;
+		if(damage>=HealthPoints){
+			baseHealthPoints = 0f;
 			return true;}
 		else{
 			getDamage(damage);
@@ -121,66 +266,65 @@ public class ProfileSystem : MonoBehaviour {
 	}
 
 	public void AddHealth(float value){
-		MAX_HealthPoints=MAX_HealthPoints+value;
+		baseMaxHealthPoints = baseMaxHealthPoints + value;
 	}
 
 	public void AddMagic(float value){
-		MAX_MagicPoints+=value;
+		baseMaxMagicPoints += value;
 	}
 
 	public void AddArmor(float value){
-		DefendePoints+=value;
+		DefendPoints+=value;
 	}
 
 	public void AddMeleeDamage(float value){
-		meleeDamageDealt+=value;
+		baseMeleeDamageDealt+=value;
 	}
 
 	public void AddSecondDamage(float value){
-		secondDamageDealt+=value;
+        baseSecondDamageDealt += value;
 	}
 
 	public void AddSuperDamage(float value){
-		superDamageDealt+=value;
+        baseSuperDamageDealt += value;
 	}
 
 	public void AddDamage(float value){
-		meleeDamageDealt+=value*0.09f;
-		secondDamageDealt+=value*0.22f;
-		superDamageDealt+=value*0.69f;
-	
+        baseMeleeDamageDealt += value*0.09f;
+        baseSecondDamageDealt += value*0.22f;
+        baseSuperDamageDealt += value*0.69f;	
 	}
 
 	public void AddHealthReco(float value){
-		Health_Regen+=value;
+        baseHealthRegen += value;
 	}
 
 	public void AddMagicReco(float value){
-		Magic_Regen+=value;
+        baseMagicRegen += value;
 	}
 
 	public float returnArmor(){
-		return DefendePoints;
+		return DefendPoints;
 	}
 
 	public float returnMeleeDamage(){
-		return meleeDamageDealt;
+		return MeleeDamageDealt;
 	}
 
 	public float returnSecondDamage(){
-		return secondDamageDealt;
+		return SecondDamageDealt;
 	}
 
 	public float returnSuperDamage(){
-		return superDamageDealt;
+		return SuperDamageDealt;
 	}
 
 	public float returnHR(){
-		return Health_Regen;
+		return HealthRegen;
 	}
 
 	public float returnMR(){
-		return Magic_Regen;
+		return MagicRegen;
 	}
 
 	public bool useMoney(float value){
@@ -194,18 +338,20 @@ public class ProfileSystem : MonoBehaviour {
 
 	public void inital(float maxhp, float maxmp, float meleedamage, float seconddamage, float superdamage, float armor, float hre, float mre, float money){
 		
-		MAX_HealthPoints=maxhp;
-		MAX_MagicPoints=maxmp;
+		baseMaxHealthPoints=maxhp;
+		baseMaxMagicPoints=maxmp;
+        baseHealthPoints = baseMaxHealthPoints;
+        baseMagicPoints = baseMaxMagicPoints;
 
-		DefendePoints=armor;
+		DefendPoints=armor;
 		haveMoney=money;
 
-		meleeDamageDealt=meleedamage;
-		secondDamageDealt=seconddamage;
-		superDamageDealt=superdamage;
+        baseMeleeDamageDealt = meleedamage;
+        baseSecondDamageDealt = seconddamage;
+        baseSuperDamageDealt = superdamage;
 
-		Health_Regen=hre;
-		Magic_Regen=mre;
+        baseHealthRegen = hre;
+        baseMagicRegen = mre;
 	}
 
 

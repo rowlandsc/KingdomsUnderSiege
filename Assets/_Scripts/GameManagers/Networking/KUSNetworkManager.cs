@@ -5,13 +5,22 @@ using UnityEngine.UI;
 
 public class KUSNetworkManager : NetworkManager {
 
-	public int Port = 48084;
+    public static NetworkPlayerObject HostPlayer {
+        get {
+            PlayerController player = singleton.client.connection.playerControllers[0];
+            return player.gameObject.GetComponent<NetworkPlayerObject>();
+        }
+    }
+
+    public int Port = 48084;
 	public InputField IPInputField;
 	public Button HostGameButton;
 	public Button JoinGameButton;
 	public Button DisconnectButton;
 
-    public void Start() {
+    
+
+    void Start() {
         FindStartButtons();
     }
 
@@ -63,5 +72,4 @@ public class KUSNetworkManager : NetworkManager {
         IPInputField = GameObject.Find("IPInputField").GetComponent<InputField>();
         SetUpMenuSceneButtons();
     }
-
 }

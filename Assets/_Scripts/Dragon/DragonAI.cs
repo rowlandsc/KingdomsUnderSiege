@@ -64,7 +64,7 @@ public class DragonAI : MonoBehaviour {
 		
 			if(Vector3.Distance(transform.position,HeroChoose.transform.position)<AI_ATTACT_DISTANCE){
 
-				this.gameObject.GetComponent<ProfileSystem>().Health_Regen=0;
+				this.gameObject.GetComponent<ProfileSystem>().baseHealthRegen=0;
 				this.transform.LookAt(HeroChoose.transform);
 
 				if(canAttack&&attacktimes<=4){
@@ -84,7 +84,7 @@ public class DragonAI : MonoBehaviour {
 
 			}else{
 
-				this.gameObject.GetComponent<ProfileSystem>().Health_Regen=200;
+				this.gameObject.GetComponent<ProfileSystem>().baseHealthRegen=200;
 
 				if(NowState!=STATE_HOME){
 

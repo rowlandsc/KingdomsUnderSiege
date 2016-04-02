@@ -37,7 +37,7 @@ public class ArchMeleeHit : MonoBehaviour {
 			ending.AddComponent<DestoryselfAfterfewsecond>();
 
 			if(col.gameObject.GetComponent<ProfileSystem>()){
-			if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().meleeDamageDealt))
+			if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().MeleeDamageDealt))
 			{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
 		
 			}

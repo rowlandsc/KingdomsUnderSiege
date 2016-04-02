@@ -60,8 +60,6 @@ public class InputManager : MonoBehaviour {
             float x = 0;
             float z = 0;
 
-            Debug.Log(mousePos);
-
             if (mousePos.x < OverseerCamera.Instance.EdgePanHorizontalBuffer)
                 z = (OverseerCamera.Instance.EdgePanHorizontalBuffer - mousePos.x) / OverseerCamera.Instance.EdgePanHorizontalBuffer;
             else if (mousePos.x > 1 - OverseerCamera.Instance.EdgePanHorizontalBuffer)
