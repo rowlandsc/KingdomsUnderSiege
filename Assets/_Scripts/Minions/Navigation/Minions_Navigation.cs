@@ -34,14 +34,4 @@ public class Minions_Navigation : MonoBehaviour {
     public Transform getTarget(){
         return this._endTarget;
     }
-
-    void Update(){
-        if (RoundManager.Instance)
-        {
-            if (RoundManager.Instance.IsPreround())
-            {
-                Destroy(this.gameObject);
-            }
-        }
-    }
 }

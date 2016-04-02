@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
 [RequireComponent (typeof(Minion_Stats))]
@@ -30,7 +31,18 @@ public class Minion_Basic : MonoBehaviour, IMinion_Attack {
         this._navMeshAgent = GetComponent<NavMeshAgent>();
         this._state = GetComponent<Minions_State>();
         this._endTarget = GameObject.Find(GetComponent<Minions_Navigation>().MoveTarget).transform;
-	}
+        MinionManager.AddActiveMinion(this.gameObject);
+    }
+
+    void OnEnable()
+    {
+        RoundManager.AddListener("RoundEnded", OnDeath);
+    }
+
+    void OnDisable()
+    {
+        RoundManager.RemoveListener("RoundEnded", OnDeath);
+    }
 
     /**
      * The way the Minion attacks. 
@@ -65,11 +77,35 @@ public class Minion_Basic : MonoBehaviour, IMinion_Attack {
         else {
             if (this.gameObject != null){
                 // Start pursuing the main target again
-                this._navMeshAgent.SetDestination(this._endTarget.position);
+                try
+                {
+                    this._navMeshAgent.SetDestination(this._endTarget.position);
+                }
+                catch { }
 
                 //Set state to walking
                 this._state.State = MINION_STATE.WALKING;
             }
         }
+    }
+
+    void Update()
+    {
+        if(this.GetComponent<Health>().HitPoints <= float.Epsilon)
+        {
+            OnDeath();
+        }
+    }
+
+    public void OnDeath()
+    {
+        MinionManager.RemoveActiveMinion(this.gameObject);
+
+        //TODO: ADD GOLD
+
+        // Unsubscribe
+        RoundManager.RemoveListener("RoundEnded", OnDeath);
+
+        Destroy(this.gameObject);
     }
 }

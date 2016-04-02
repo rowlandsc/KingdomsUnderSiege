@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Networking;
 
 /**
@@ -34,7 +36,7 @@ public class RoundManager : NetworkBehaviour{
      */
     public static RoundManager Instance = null;
     public float RoundTime = 120f, PreroundTime = 30f, FirstPreroundTime = 120f, NumberOfRounds = 10f;
-
+    public Dictionary<string, UnityEvent> RoundEvents;
     [SyncVar]
     public float CountDownTime = 120f;
     public float RoundNumber = 0f, PreroundNumber = 0f;
@@ -74,6 +76,7 @@ public class RoundManager : NetworkBehaviour{
         // Otherwise destroy it
         if (Instance == null)
         {
+            this.RoundEvents = new Dictionary<string, UnityEvent>();
             Instance = this;
         }
         else {
@@ -93,6 +96,9 @@ public class RoundManager : NetworkBehaviour{
      * the clock appropriately. When finished, will start a round.
      */
     private IEnumerator StartPreround(){
+
+
+        RoundManager.TriggerEvent("RoundEnded");
 
         // Update what preround it is
         ++this.PreroundNumber;
@@ -118,6 +124,8 @@ public class RoundManager : NetworkBehaviour{
      * a preround or end the game.
      */
     private IEnumerator StartRound(){
+
+        RoundManager.TriggerEvent("PreroundEnded");
 
         // Update the round number
         ++this.RoundNumber;
@@ -228,5 +236,38 @@ public class RoundManager : NetworkBehaviour{
      */
     public bool IsFirstPreround(){
         return this._isFirstPreround;
+    }
+
+    public static void AddListener(string eventName, UnityAction listener)
+    {
+        UnityEvent thisEvent = null;
+        if(RoundManager.Instance.RoundEvents.TryGetValue(eventName, out thisEvent))
+        {
+            thisEvent.AddListener(listener);
+        }
+        else
+        {
+            thisEvent = new UnityEvent();
+            thisEvent.AddListener(listener);
+            RoundManager.Instance.RoundEvents.Add(eventName, thisEvent);
+        }
+    }
+
+    public static void RemoveListener(string eventName, UnityAction listener)
+    {
+        UnityEvent thisEvent = null;
+        if(RoundManager.Instance.RoundEvents.TryGetValue(eventName, out thisEvent))
+        {
+            thisEvent.RemoveListener(listener);
+        }
+    }
+
+    public static void TriggerEvent(string eventName)
+    {
+        UnityEvent thisEvent = null;
+        if(RoundManager.Instance.RoundEvents.TryGetValue(eventName, out thisEvent))
+        {
+            thisEvent.Invoke();
+        }
     }
 }

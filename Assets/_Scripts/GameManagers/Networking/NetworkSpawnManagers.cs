@@ -6,7 +6,7 @@ public class NetworkSpawnManagers : NetworkBehaviour {
 
 	public static NetworkSpawnManagers Instance;
 
-    public GameObject RoundManager, PrefabCache, HeroMinionSpawner, OverseerMinionSpawner;
+    public GameObject RoundManager, PrefabCache, HeroMinionSpawner, OverseerMinionSpawner, MinionManager;
 	public bool DoneLoading = false;
 
 	void Awake() {
@@ -37,6 +37,9 @@ public class NetworkSpawnManagers : NetworkBehaviour {
 
                 GameObject overseerMinionSpawner = (GameObject)Instantiate(this.OverseerMinionSpawner, new Vector3(250.72f, 19.996f, 299.36f), Quaternion.identity);
                 NetworkServer.Spawn(overseerMinionSpawner);
+
+                GameObject minionManager = (GameObject)Instantiate(this.MinionManager);
+                NetworkServer.Spawn(minionManager);
 
 				DoneLoading = true;
 			}
