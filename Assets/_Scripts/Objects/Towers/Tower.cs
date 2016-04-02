@@ -19,4 +19,8 @@ public class Tower : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void OnDestroy() {
+        TowerPlacer.Instance.TowerList.Remove(this);
+    }
 }

@@ -38,7 +38,7 @@ public class ArchMeleeHit : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider col){
 
-		if(col.gameObject.tag!="Player"){
+		if(col.tag == "OverseerPlayer") {
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
 			ending.AddComponent<DestoryselfAfterfewsecond>();
 

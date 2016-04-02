@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.Networking;
 
 public class MegeSecond : MonoBehaviour {
 
@@ -121,58 +122,61 @@ public class MegeSecond : MonoBehaviour {
 				if (Physics.Raycast(ray1, out hit1,Mathf.Infinity,layerMask))  {  
 					if(hit1.transform.gameObject.tag!="Player"){
 						icebullet_clone1 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray1.direction)) as GameObject;
+                        icebullet_clone1.GetComponent<SecondHit>().Initialize(GetComponent<NetworkIdentity>());
 						icebullet_clone1.transform.DOMove(hit1.point,0.4f,false);
                     }
 				} 
 
 			if(bullet_shot>=3){
-
-				
-					Ray ray2 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2-size_attack,Screen.height/2,0));
-					Ray ray3 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+size_attack,Screen.height/2,0));
+				Ray ray2 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2-size_attack,Screen.height/2,0));
+				Ray ray3 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+size_attack,Screen.height/2,0));
 				RaycastHit hit2,hit3;
 
-				
-					if (Physics.Raycast(ray2, out hit2,Mathf.Infinity,layerMask))  {  
+				if (Physics.Raycast(ray2, out hit2,Mathf.Infinity,layerMask))  {  
 					if(hit2.transform.gameObject.tag!="Player"){
-							icebullet_clone2 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray2.direction)) as GameObject;
-						icebullet_clone2.transform.DOMove(hit2.point,0.3f,false);}
-				} 
-					if (Physics.Raycast(ray3, out hit3,Mathf.Infinity,layerMask))  {  
+						icebullet_clone2 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray2.direction)) as GameObject;
+                        icebullet_clone2.GetComponent<SecondHit>().Initialize(GetComponent<NetworkIdentity>());
+                        icebullet_clone2.transform.DOMove(hit2.point,0.3f,false);
+                    }
+			    } 
+				if (Physics.Raycast(ray3, out hit3,Mathf.Infinity,layerMask))  {  
 					if(hit3.transform.gameObject.tag!="Player"){
-							icebullet_clone3 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray3.direction)) as GameObject;
-						icebullet_clone3.transform.DOMove(hit3.point,0.4f,false);}
+						icebullet_clone3 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray3.direction)) as GameObject;
+                        icebullet_clone3.GetComponent<SecondHit>().Initialize(GetComponent<NetworkIdentity>());
+                        icebullet_clone3.transform.DOMove(hit3.point,0.4f,false);
+                    }
 				} 
 
 				if(bullet_shot>=5){
-
-
-						Ray ray4 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2-2*size_attack,Screen.height/2,0));
-						Ray ray5 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+2*size_attack,Screen.height/2,0));
+					Ray ray4 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2-2*size_attack,Screen.height/2,0));
+					Ray ray5 = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2+2*size_attack,Screen.height/2,0));
 					RaycastHit hit4,hit5;
 
-						if (Physics.Raycast(ray4, out hit4,Mathf.Infinity,layerMask))  {  
+					if (Physics.Raycast(ray4, out hit4,Mathf.Infinity,layerMask))  {  
 						if(hit4.transform.gameObject.tag!="Player"){
-								icebullet_clone4 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray4.direction)) as GameObject;
-							icebullet_clone4.transform.DOMove(hit4.point,0.5f,false);}
+							icebullet_clone4 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray4.direction)) as GameObject;
+                            icebullet_clone4.GetComponent<SecondHit>().Initialize(GetComponent<NetworkIdentity>());
+                            icebullet_clone4.transform.DOMove(hit4.point,0.5f,false);
+                        }
 					} 
-						if (Physics.Raycast(ray5, out hit5,Mathf.Infinity,layerMask))  {  
+					if (Physics.Raycast(ray5, out hit5,Mathf.Infinity,layerMask))  {  
 						if(hit5.transform.gameObject.tag!="Player"){
-								icebullet_clone5 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray5.direction)) as GameObject;
-							icebullet_clone5.transform.DOMove(hit5.point,0.5f,false);}
-					} 
+							icebullet_clone5 = Instantiate(icebullet, spellPosition.transform.position, Quaternion.LookRotation(ray5.direction)) as GameObject;
+                            icebullet_clone5.GetComponent<SecondHit>().Initialize(GetComponent<NetworkIdentity>());
+                            icebullet_clone5.transform.DOMove(hit5.point,0.5f,false);}
+					    } 
 							
-				}
-				
+				    }
+			    }
 			}
-			}
+
 			Startcooldown=true;
 		}
 
 		if(Startcooldown){
 			
-				canAttack=false;
-				cooldown_timer-=Time.deltaTime;
+			canAttack=false;
+			cooldown_timer-=Time.deltaTime;
 
 			if(cooldown_timer<0){
 				bullet_shot=0;

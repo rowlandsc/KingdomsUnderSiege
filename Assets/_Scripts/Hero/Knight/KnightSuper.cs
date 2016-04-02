@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 public class KnightSuper : MonoBehaviour {
 
@@ -20,6 +21,7 @@ public class KnightSuper : MonoBehaviour {
 	private Vector3 super_hero_size;
 
     private NetworkPlayerInput _playerInput;
+    private NetworkIdentity _netId;
 
     //FX
     public GameObject super;
@@ -37,7 +39,7 @@ public class KnightSuper : MonoBehaviour {
 		super_hero_size= normal_hero_size+new Vector3(12f, 12f, 12f);
 		super_clone_runonce=true;
         _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
-
+        _netId = GetComponent<NetworkIdentity>();
     }
 	
 	// Update is called once per frame
@@ -56,10 +58,16 @@ public class KnightSuper : MonoBehaviour {
 				ending_.transform.parent=this.gameObject.transform;
 
 				this.gameObject.transform.localScale =super_hero_size;
-				this.gameObject.GetComponent<ProfileSystem>().AddMeleeDamage(20);
+                /*this.gameObject.GetComponent<ProfileSystem>().AddMeleeDamage(20);
 				this.gameObject.GetComponent<ProfileSystem>().AddSecondDamage(30);
 				this.gameObject.GetComponent<ProfileSystem>().AddSuperDamage(0);
-				this.gameObject.GetComponent<ProfileSystem>().AddArmor(100);
+				this.gameObject.GetComponent<ProfileSystem>().AddArmor(100);*/
+
+                ProfileEffect superEffect = new ProfileEffect(_netId.netId, 
+                    startingDuration: duration,
+                    meleeDamageMult: 3, 
+                    secondDamageMult: 3);
+                KUSNetworkManager.HostPlayer.CmdAddProfileEffect(_netId, superEffect);
 
 				super_clone_runonce=false;
 			}
@@ -72,10 +80,10 @@ public class KnightSuper : MonoBehaviour {
 				canAttack=false;
 
 				this.gameObject.transform.localScale =normal_hero_size;
-				this.gameObject.GetComponent<ProfileSystem>().AddMeleeDamage(-20);
+				/*this.gameObject.GetComponent<ProfileSystem>().AddMeleeDamage(-20);
 				this.gameObject.GetComponent<ProfileSystem>().AddSecondDamage(-30);
 				this.gameObject.GetComponent<ProfileSystem>().AddSuperDamage(0);
-				this.gameObject.GetComponent<ProfileSystem>().AddArmor(-100);
+				this.gameObject.GetComponent<ProfileSystem>().AddArmor(-100);*/
 
 				super_clone_runonce=true;
 				Destroy(ending_);

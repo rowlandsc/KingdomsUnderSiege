@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.Networking;
 
 public class MageMelee : MonoBehaviour {
 
@@ -46,7 +47,8 @@ public class MageMelee : MonoBehaviour {
 				if(real_distance<=distance){
 					iceball_clone = Instantiate(iceball, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
 				    	iceball_clone.transform.DOMove(hit.point,real_distance/40f,false);
-				   }
+                    iceball_clone.GetComponent<Meleehit>().Initialize(GetComponent<NetworkIdentity>());
+				}
 				else{
 					canAttack=true;
 				}

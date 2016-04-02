@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.Networking;
 
 public class MageSuper : MonoBehaviour {
 
@@ -50,21 +51,23 @@ public class MageSuper : MonoBehaviour {
 			{
 				print ("find one");
 				superBallanim_ = Instantiate(superBallanim, this.transform.position+new Vector3(0,500,0), this.transform.rotation) as GameObject;
+                superBallanim.GetComponent<SuperHit>().Initialize(GetComponent<NetworkIdentity>());
 				superBallanim_.transform.DOLocalMove(hits[i].transform.position+new Vector3(0,-2f,-0),3f,false);
 
 			}
 
 			for(int i = 0; i < 40; i++)
 			{
-			superBallanim_ = Instantiate(superBallanim, this.transform.position+new Vector3(0,500,0), this.transform.rotation) as GameObject;
-			superBallanim_.transform.DOLocalMove(this.gameObject.transform.position+new Vector3(Random.Range(-20F, 20F),-10f,Random.Range(-20F, 20F)),Random.Range(2F, 7F),false);
+		        superBallanim_ = Instantiate(superBallanim, this.transform.position+new Vector3(0,500,0), this.transform.rotation) as GameObject;
+                superBallanim_.GetComponent<SuperHit>().Initialize(GetComponent<NetworkIdentity>());
+		        superBallanim_.transform.DOLocalMove(this.gameObject.transform.position+new Vector3(Random.Range(-20F, 20F),-10f,Random.Range(-20F, 20F)),Random.Range(2F, 7F),false);
 			}
 
 
 
 
 			super1_ = Instantiate(superAnim1, this.transform.position-new Vector3(0,0.4f,0), this.transform.rotation) as GameObject;
-
+            super1_.GetComponent<SuperHit>().Initialize(GetComponent<NetworkIdentity>());
 		}
 
 		if(!canAttack){

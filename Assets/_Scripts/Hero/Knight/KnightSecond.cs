@@ -74,6 +74,7 @@ public class KnightSecond : MonoBehaviour {
 
 			if(effect_fire_clone_runonce){
 				effect_fire_clone= Instantiate(effect_fire, this.transform.position, transform.rotation)as GameObject;
+                effect_fire_clone.GetComponent<KnightSecondHit>().Initialize(GetComponent<UnityEngine.Networking.NetworkIdentity>());
 				effect_fire_clone.transform.parent=this.gameObject.transform;
 				effect_fire_clone_runonce=false;
 			}

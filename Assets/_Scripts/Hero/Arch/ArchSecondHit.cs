@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.Networking;
 
 public class ArchSecondHit : MonoBehaviour {
 
@@ -9,17 +9,22 @@ public class ArchSecondHit : MonoBehaviour {
 	public GameObject ending;
 	private GameObject ending_;
 
-	private GameObject player;
+    public NetworkIdentity Archer;
+    private ProfileSystem archerStats;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		effect_time=10f;
 		timer=effect_time;
-		player=GameObject.FindGameObjectWithTag("Player");
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void Initialize(NetworkIdentity archer) {
+        Archer = archer;
+        archerStats = archer.GetComponent<ProfileSystem>();
+    }
+
+    // Update is called once per frame
+    void Update () {
 		timer-=Time.deltaTime;
 		if(timer<=0f){
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
@@ -32,13 +37,19 @@ public class ArchSecondHit : MonoBehaviour {
 
 		if(col.tag=="OverseerPlayer"){
 
-			if(col.gameObject.GetComponent<ProfileSystem>()){
+            /*if(col.gameObject.GetComponent<ProfileSystem>()){
 
 				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().SecondDamageDealt*0.02f))
 				{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
 
-			}
-		}
+			}*/
+
+            ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
+            if (colProfile) {
+                ProfileEffect hitEffect = new ProfileEffect(Archer.netId, healthPointsAdd: -1 * archerStats.SecondDamageDealt);
+                KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);
+            }
+        }
 			
 	}
 

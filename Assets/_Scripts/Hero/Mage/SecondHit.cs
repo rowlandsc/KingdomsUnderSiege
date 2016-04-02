@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 public class SecondHit : MonoBehaviour {
 
@@ -9,9 +10,10 @@ public class SecondHit : MonoBehaviour {
 	private float kill_time;
 	static public float FreezeTime;
 
-	private GameObject player;
+    public NetworkIdentity Mage;
+    private ProfileSystem mageStats;
 
-	private GameObject hit;
+    private GameObject hit;
 	private float memory_saving_timer;
 	public float freeze_timer;
 
@@ -21,11 +23,15 @@ public class SecondHit : MonoBehaviour {
 		FreezeTime=5f;
 		memory_saving_timer=0f;
 		freeze_timer=0f;
-		player=GameObject.FindGameObjectWithTag("Player");
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void Initialize(NetworkIdentity mage) {
+        Mage = mage;
+        mageStats = mage.GetComponent<ProfileSystem>();
+    }
+
+    // Update is called once per frame
+    void Update () {
 		memory_saving_timer+=Time.deltaTime;
 
 		if(memory_saving_timer>=kill_time){
@@ -41,14 +47,19 @@ public class SecondHit : MonoBehaviour {
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
 			ending.AddComponent<DestoryselfAfterfewsecond>();
 
-			if(col.gameObject.GetComponent<ProfileSystem>()){
+            /*if(col.gameObject.GetComponent<ProfileSystem>()){
 
 				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().SuperDamageDealt))
 				{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
 
-			}
+			}*/
+            ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
+            if (colProfile) {
+                ProfileEffect hitEffect = new ProfileEffect(Mage.netId, healthPointsAdd: -1 * mageStats.SecondDamageDealt);
+                KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);
+            }
 
-			Destroy(this.gameObject);}
+            Destroy(this.gameObject);}
 	}
 
 	void FreezeEffect(GameObject temp){

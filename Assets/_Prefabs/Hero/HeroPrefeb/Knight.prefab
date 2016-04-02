@@ -1014,11 +1014,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f1da8b9e10b4fadb6c76c7c1d5988a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 4
-  backwardspeed: 2
-  sidespeed: 3
+  movespeedMult: 1
+  backwardspeedMult: 0.66
+  sidespeedMult: 0.8
   ifMoving: 0
-  PlayerInput: {fileID: 0}
 --- !u!114 &11481834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1064,18 +1063,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
-  MagicPoints: 100
-  MAX_HealthPoints: 100
-  MAX_MagicPoints: 100
-  DefendePoints: 0
+  IsDead: 0
+  baseHealthPoints: 100
+  baseMagicPoints: 100
+  baseMaxHealthPoints: 100
+  baseMaxMagicPoints: 100
+  DefendPoints: 0
   Worth: 100
   haveMoney: 5000
-  meleeDamageDealt: 5
-  secondDamageDealt: 12
-  superDamageDealt: 0
-  Health_Regen: 1
-  Magic_Regen: 1
+  baseMeleeDamageDealt: 5
+  baseSecondDamageDealt: 12
+  baseSuperDamageDealt: 40
+  baseHealthRegen: 1
+  baseMagicRegen: 1
+  baseMoveSpeed: 4
   damagePOP: {fileID: 0}
   death: {fileID: 0}
 --- !u!1001 &100100000

@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 public class KnightSecondHit : MonoBehaviour {
 
-	private GameObject player;
+    public NetworkIdentity Knight;
+    private ProfileSystem knightStats;
 
-	// Use this for initialization
-	void Start () {
-		player=GameObject.Find("Knight(Clone)");
+    // Use this for initialization
+    void Start () {
+		
 	}
 
-	// Update is called once per frame
-	void Update () {
+    public void Initialize(NetworkIdentity knight) {
+        Knight = knight;
+        knightStats = knight.GetComponent<ProfileSystem>();
+    }
+
+    // Update is called once per frame
+    void Update () {
 
 	}
 
@@ -20,12 +27,18 @@ public class KnightSecondHit : MonoBehaviour {
 		if(col.tag=="OverseerPlayer"){
 
 
-				if(col.gameObject.GetComponent<ProfileSystem>()){
+            /*if(col.gameObject.GetComponent<ProfileSystem>()){
 
-				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().SecondDamageDealt*0.05f))
-					{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}}
+            if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().SecondDamageDealt*0.05f))
+                {player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}}
+                */
 
-		}
+            ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
+            if (colProfile) {
+                ProfileEffect hitEffect = new ProfileEffect(Knight.netId, healthPointsAdd: -1 * knightStats.SecondDamageDealt * Time.deltaTime);
+                KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);
+            }
+        }
 
 
 	}
