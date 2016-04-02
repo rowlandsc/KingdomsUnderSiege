@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentEffects: []
+  IsDead: 0
   baseHealthPoints: 100
   baseMagicPoints: 100
   baseMaxHealthPoints: 100
@@ -572,6 +572,7 @@ MonoBehaviour:
   baseSuperDamageDealt: 40
   baseHealthRegen: 1
   baseMagicRegen: 1
+  baseMoveSpeed: 5
   damagePOP: {fileID: 0}
   death: {fileID: 0}
 --- !u!114 &11423102
@@ -653,9 +654,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f1da8b9e10b4fadb6c76c7c1d5988a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 5
-  backwardspeed: 2
-  sidespeed: 3
+  movespeedMult: 1
+  backwardspeedMult: 0.66
+  sidespeedMult: 0.8
   ifMoving: 0
 --- !u!114 &11472240
 MonoBehaviour:

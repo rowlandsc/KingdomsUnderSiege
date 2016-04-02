@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.Networking;
 
 public class ArchSuper : MonoBehaviour {
 	
@@ -71,6 +72,7 @@ public class ArchSuper : MonoBehaviour {
 
 					if(hit.transform.gameObject.tag!="Player"){
 						superbullet_clone = Instantiate(superbullet, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
+                        superbullet_clone.GetComponent<ArchSuperHit>().Initialize(GetComponent<NetworkIdentity>());
 						superbullet_clone.transform.DOMove(hit.point,1f,false);
 					}
 				} 

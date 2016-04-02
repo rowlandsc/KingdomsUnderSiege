@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using DG.Tweening;
 
@@ -48,6 +49,7 @@ public class ArchSecond : MonoBehaviour {
 				if(real_distance<=distance){
 					this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
 					electric_clone = Instantiate(electric, hit.point, Quaternion.LookRotation(ray.direction)) as GameObject;
+                    electric_clone.GetComponent<ArchSecondHit>().Initialize(GetComponent<NetworkIdentity>());
 				}
 				else{
 					canAttack = true;
