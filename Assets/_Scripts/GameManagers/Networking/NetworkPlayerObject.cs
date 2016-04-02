@@ -101,21 +101,17 @@ public class NetworkPlayerObject : NetworkBehaviour {
 		else if(Type == PlayerType.HERO) {
 			if(Class == PlayerClass.MAGE){
 				_player = gameObject.AddComponent<HeroMage>();
-				PlayerController player = NetworkManager.singleton.client.connection.playerControllers[0];
-				player.gameObject.GetComponent<NetworkPlayerObject>().CmdCreateHeroMagePlayer(_networkIdentity);
+				KUSNetworkManager.HostPlayer.CmdCreateHeroMagePlayer(_networkIdentity);
 
 			}
 			if(Class == PlayerClass.KNIGHT){
 				_player = gameObject.AddComponent<HeroKnight>();
-				PlayerController player = NetworkManager.singleton.client.connection.playerControllers[0];
-				player.gameObject.GetComponent<NetworkPlayerObject>().CmdCreateHeroKnightPlayer(_networkIdentity);
+				KUSNetworkManager.HostPlayer.CmdCreateHeroKnightPlayer(_networkIdentity);
 
 			}
 			if(Class == PlayerClass.ARCHER){
 				_player = gameObject.AddComponent<HeroArch>();
-				PlayerController player = NetworkManager.singleton.client.connection.playerControllers[0];
-				player.gameObject.GetComponent<NetworkPlayerObject>().CmdCreateHeroArchPlayer(_networkIdentity);
-
+				KUSNetworkManager.HostPlayer.CmdCreateHeroArchPlayer(_networkIdentity);
 			}
 		}
 	}
@@ -188,8 +184,16 @@ public class NetworkPlayerObject : NetworkBehaviour {
         RpcSetOwner(arch_Clone.GetComponent<NetworkIdentity>(), player);
 	}
 
+    [Command]
+    public void CmdAddProfileEffect(NetworkIdentity obj, ProfileEffect effect) {
+        Debug.Log("Server Command Called add effect to " + obj.gameObject.name);
+        obj.GetComponent<ProfileSystem>().CurrentEffects.Add(effect);
+    }
 
-	[ClientRpc]
+
+
+
+    [ClientRpc]
 	public void RpcStartGame() {
         if (SceneManager.GetActiveScene().name == "SetupScreen")
             SceneManager.LoadScene("GameScreen");

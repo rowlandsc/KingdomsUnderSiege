@@ -68,8 +68,8 @@ public class UIProvider : MonoBehaviour {
 			hp = this.gameObject.GetComponent<ProfileSystem>().HealthPoints;
 			mp = this.gameObject.GetComponent<ProfileSystem>().MagicPoints;
 			money = this.gameObject.GetComponent<ProfileSystem>().haveMoney;
-			Max_hp = this.gameObject.GetComponent<ProfileSystem>().MAX_HealthPoints;
-			Max_mp = this.gameObject.GetComponent<ProfileSystem>().MAX_MagicPoints;
+			Max_hp = this.gameObject.GetComponent<ProfileSystem>().MaxHealthPoints;
+			Max_mp = this.gameObject.GetComponent<ProfileSystem>().MaxMagicPoints;
 
 			if(this.gameObject.name=="Mage"||this.gameObject.name=="Mage(Clone)")
 			{
@@ -111,8 +111,8 @@ public class UIProvider : MonoBehaviour {
 			SuperIcon.GetComponent<RawImage>().texture = super_icon;
 
 
-			UIhp.GetComponent<Slider>().value = hp/(this.gameObject.GetComponent<ProfileSystem>().MAX_HealthPoints);
-			UImp.GetComponent<Slider>().value = mp/(this.gameObject.GetComponent<ProfileSystem>().MAX_MagicPoints);
+			UIhp.GetComponent<Slider>().value = hp/(this.gameObject.GetComponent<ProfileSystem>().MaxHealthPoints);
+			UImp.GetComponent<Slider>().value = mp/(this.gameObject.GetComponent<ProfileSystem>().MaxMagicPoints);
 	
 			UIMoney.GetComponent<Text>().text = money.ToString();
 

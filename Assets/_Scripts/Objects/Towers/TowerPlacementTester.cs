@@ -78,8 +78,7 @@ public class TowerPlacementTester : NetworkBehaviour
 
     public void PlaceTower()
     {
-        PlayerController player = NetworkManager.singleton.client.connection.playerControllers[0];
-        player.gameObject.GetComponent<NetworkPlayerObject>().CmdPlaceTower(TowerToPlaceID, transform.position);
+        KUSNetworkManager.HostPlayer.CmdPlaceTower(TowerToPlaceID, transform.position);
     }
 
     /*[Command]
