@@ -17,6 +17,7 @@ public class TowerPlacer : NetworkBehaviour {
     public string TowerToPlaceID = "TowerArcher1";
 
     private bool _lastTowerPlaceModeOn = false;
+    private bool _canPlaceTowers = true;
 
     void Awake() {
         if (Instance == null) {
@@ -27,6 +28,18 @@ public class TowerPlacer : NetworkBehaviour {
         }
     }
 
+    void OnEnable()
+    {
+        RoundManager.AddListener("RoundEnded", CanPlaceTowers);
+        RoundManager.AddListener("PreroundEnded", CannotPlaceTowers);
+    }
+
+    void OnDisable()
+    {
+        RoundManager.RemoveListener("RoundEnded", CanPlaceTowers);
+        RoundManager.RemoveListener("PreroundEnded", CannotPlaceTowers);
+    }
+
     void Start()
     {
         this.GameMap = GameObject.Find("Map").GetComponent<Map>();
@@ -34,7 +47,7 @@ public class TowerPlacer : NetworkBehaviour {
 	
 	void Update() {
         
-        if (Input.GetKeyUp(KeyCode.Space)) {
+        if (Input.GetKeyUp(KeyCode.Space) && this._canPlaceTowers) {
             TowerPlaceModeOn = !TowerPlaceModeOn;
         }
 
@@ -87,5 +100,16 @@ public class TowerPlacer : NetworkBehaviour {
         }
 
         _lastTowerPlaceModeOn = TowerPlaceModeOn;
+    }
+
+    void CanPlaceTowers()
+    {
+        this._canPlaceTowers = true;
+    }
+
+    void CannotPlaceTowers()
+    {
+        this._canPlaceTowers = false;
+        this.TowerPlaceModeOn = false;
     }
 }
