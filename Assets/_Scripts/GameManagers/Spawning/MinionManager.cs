@@ -12,6 +12,7 @@ public class MinionManager : NetworkBehaviour {
     {
         if(Instance == null)
         {
+            ActiveMinions = new ArrayList();
             Instance = this;
         }
         else
@@ -22,7 +23,7 @@ public class MinionManager : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ActiveMinions = new ArrayList();
+        
     }
 
     public static void AddActiveMinion(GameObject minion)
