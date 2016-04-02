@@ -12,6 +12,8 @@ public struct ProfileEffect {
     public const float INSTANT = -1;
     public const float FOREVER = float.MaxValue;
 
+    public NetworkInstanceId InflicterID;
+
     public float StartingDuration;
     public float RemainingDuration;
 
@@ -37,11 +39,13 @@ public struct ProfileEffect {
     public float MoveSpeedMult;
     public float MoveSpeedAdd;
 
-    public ProfileEffect(float startingDuration = INSTANT, float healthPointsAdd = 0, float magicPointsAdd = 0, 
+    public ProfileEffect(NetworkInstanceId inflicterID, float startingDuration = INSTANT, float healthPointsAdd = 0, float magicPointsAdd = 0, 
         float maxHealthPointsMult = 1, float maxHealthPointsAdd = 0, float maxMagicPointsMult = 1, float maxMagicPointsAdd = 0,
         float meleeDamageMult = 1, float meleeDamageAdd = 0, float secondDamageMult = 1, float secondDamageAdd = 0,
         float superDamageMult = 1, float superDamageAdd = 0, float healthRegenMult = 1, float healthRegenAdd = 0,
         float magicRegenMult = 1, float magicRegenAdd = 0, float moveSpeedMult = 0, float moveSpeedAdd = 0) {
+
+        InflicterID = inflicterID;
 
         StartingDuration = startingDuration;
         RemainingDuration = startingDuration;
@@ -69,6 +73,8 @@ public struct ProfileEffect {
         MoveSpeedAdd = moveSpeedAdd;
     }
     public ProfileEffect(ProfileEffect original) {
+        InflicterID = original.InflicterID;
+
         StartingDuration = original.StartingDuration;
         RemainingDuration = original.RemainingDuration;
 

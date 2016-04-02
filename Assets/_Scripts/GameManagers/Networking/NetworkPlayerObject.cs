@@ -187,7 +187,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
     [Command]
     public void CmdAddProfileEffect(NetworkIdentity obj, ProfileEffect effect) {
         Debug.Log("Server Command Called add effect to " + obj.gameObject.name);
-        obj.GetComponent<ProfileSystem>().CurrentEffects.Add(effect);
+        obj.GetComponent<ProfileSystem>().AddEffect(effect);
     }
 
 
