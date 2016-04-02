@@ -30,6 +30,7 @@ public class RoundManager : NetworkBehaviour{
      * FirstPreroundTime - How long the first pre-round should last.
      * NumberOfRounds - The number of rounds the game should have.
      * CountDownTime - The time left on the clock to count down.
+     * RoundEvents - A dictionary to hold events based on rounds ending/starting.
      * RoundNumber - The current round number the game is on.
      * PreroundNumber - The current preround number the game is on.
      * NextPhase - What the next phase will be of the game.
@@ -238,13 +239,28 @@ public class RoundManager : NetworkBehaviour{
         return this._isFirstPreround;
     }
 
+    /// <summary>
+    /// Adds a listener to the event dictionary
+    /// </summary>
+    /// <param name="eventName">Name of the event the listener should be added to</param>
+    /// <param name="listener">The listener added to the dictionary</param>
     public static void AddListener(string eventName, UnityAction listener)
     {
+        if(!eventName.Equals("RoundEnded") && !eventName.Equals("PreroundEnded"))
+        {
+            Debug.LogError("Only RoundEnded and PreroundEnded events can be registered here");
+            return;
+        }
+
         UnityEvent thisEvent = null;
+
+        // If the eventName already exists in the dictionary, add the listener to that event
         if(RoundManager.Instance.RoundEvents.TryGetValue(eventName, out thisEvent))
         {
             thisEvent.AddListener(listener);
         }
+
+        // Otherwise add a new event to the dictionary and add the listener to it
         else
         {
             thisEvent = new UnityEvent();
@@ -253,18 +269,43 @@ public class RoundManager : NetworkBehaviour{
         }
     }
 
+    /// <summary>
+    /// Removes a listener from an event in the dictionary
+    /// </summary>
+    /// <param name="eventName">The event to remove the listener from</param>
+    /// <param name="listener">The listener to be removed</param>
     public static void RemoveListener(string eventName, UnityAction listener)
     {
+        if (!eventName.Equals("RoundEnded") && !eventName.Equals("PreroundEnded"))
+        {
+            Debug.LogError("Only RoundEnded and PreroundEnded events can be unregistered here");
+            return;
+        }
+
         UnityEvent thisEvent = null;
+
+        // Check to make sure the event exists, then remove the listener from it
         if(RoundManager.Instance.RoundEvents.TryGetValue(eventName, out thisEvent))
         {
             thisEvent.RemoveListener(listener);
         }
     }
 
+    /// <summary>
+    /// Triggers and event in the RoundEvent dictionary
+    /// </summary>
+    /// <param name="eventName">The name of the event to be triggered</param>
     public static void TriggerEvent(string eventName)
     {
+        if (!eventName.Equals("RoundEnded") && !eventName.Equals("PreroundEnded"))
+        {
+            Debug.LogError("Only RoundEnded and PreroundEnded events can be triggered here");
+            return;
+        }
+
         UnityEvent thisEvent = null;
+
+        // Make sure the event exists, then trigger it.
         if(RoundManager.Instance.RoundEvents.TryGetValue(eventName, out thisEvent))
         {
             thisEvent.Invoke();
