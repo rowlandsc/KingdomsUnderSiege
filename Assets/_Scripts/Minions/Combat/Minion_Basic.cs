@@ -89,34 +89,24 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable {
             }
         }
     }
-
-    void Update()
-    {
-        if(this.GetComponent<ProfileSystem>().HealthPoints <= float.Epsilon)
-        {
-            OnDeath();
-        }
-    }
-
+    
     public void OnDeath()
     {
         MinionManager.RemoveActiveMinion(this.gameObject);
-
-        //TODO: ADD GOLD
+        
         NetworkInstanceId killer = this.GetComponent<ProfileSystem>().Killer;
         if(killer != NetworkInstanceId.Invalid)
         {
+            ProfileSystem ps = this.GetComponent<ProfileSystem>();
             if (isServer)
             {
                 GameObject player = NetworkServer.FindLocalObject(killer);
-                player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>().AddGold(25);
-                Debug.Log("ADDED 25 gold");
+                player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>().AddGold((int)ps.Worth);
             }
             else
             {
                 GameObject player = ClientScene.FindLocalObject(killer);
-                player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>().AddGold(25);
-                Debug.Log("ADDED 25 gold");
+                player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>().AddGold((int)ps.Worth);
             }
         }
 
