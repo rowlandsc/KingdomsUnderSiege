@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129686}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.0562, z: 0}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
   m_LocalScale: {x: -0.024534008, y: 0.0024534005, z: 0.0004904972}
   m_Children: []
   m_Father: {fileID: 442170}
@@ -267,12 +267,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDead: 0
+  Worth: 1000
   baseHealthPoints: 100
   baseMagicPoints: 100
   baseMaxHealthPoints: 100
   baseMaxMagicPoints: 100
   DefendPoints: 0
-  Worth: 1000
   haveMoney: 0
   baseMeleeDamageDealt: 5
   baseSecondDamageDealt: 12
@@ -280,6 +280,9 @@ MonoBehaviour:
   baseHealthRegen: 0
   baseMagicRegen: 0
   baseMoveSpeed: 0
+  baseAttackSpeed: 0.75
+  baseAttackFrequency: 2
+  baseAttackRange: 15
   damagePOP: {fileID: 0}
   death: {fileID: 0}
 --- !u!114 &11473872
