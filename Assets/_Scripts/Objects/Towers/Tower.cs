@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tower : MonoBehaviour {
+public class Tower : MonoBehaviour, IKillable {
 
     public float Radius = 2;
 
@@ -22,5 +22,9 @@ public class Tower : MonoBehaviour {
 
     void OnDestroy() {
         TowerPlacer.Instance.TowerList.Remove(this);
+    }
+
+    public void OnDeath() {
+
     }
 }

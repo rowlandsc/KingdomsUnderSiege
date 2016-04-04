@@ -154,6 +154,51 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
+    public float baseAttackSpeed = 1.5f;
+    public float AttackSpeed {
+        get {
+            float attackSpeed = baseAttackSpeed;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackSpeed *= CurrentEffects[i].AttackSpeedMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackSpeed += CurrentEffects[i].AttackSpeedAdd;
+            }
+            return attackSpeed;
+        }
+    }
+
+    [SyncVar]
+    public float baseAttackFrequency = 1.0f;
+    public float AttackFrequency {
+        get {
+            float attackFrequency = baseAttackFrequency;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackFrequency *= CurrentEffects[i].AttackFrequencyMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackFrequency += CurrentEffects[i].AttackFrequencyAdd;
+            }
+            return attackFrequency;
+        }
+    }
+
+    [SyncVar]
+    public float baseAttackRange = 1.0f;
+    public float AttackRange {
+        get {
+            float attackRange = baseAttackRange;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackRange *= CurrentEffects[i].AttackRangeMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackRange += CurrentEffects[i].AttackRangeAdd;
+            }
+            return attackRange;
+        }
+    }
+
     private float timer;
 	public GameObject damagePOP;
 	private GameObject damagePOP_;
