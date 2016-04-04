@@ -13,6 +13,8 @@ public class ArchSuperHit : MonoBehaviour {
     private float kill_time;
 	private float memory_saving_timer;
 
+	public Vector3 velocity;
+
 	// Use this for initialization
 	void Start () {
 		kill_time=10f;
@@ -34,6 +36,8 @@ public class ArchSuperHit : MonoBehaviour {
 			Destroy(this.gameObject);
 
 		}
+
+		transform.position += velocity;
 	}
 
 	void OnTriggerEnter(Collider col){

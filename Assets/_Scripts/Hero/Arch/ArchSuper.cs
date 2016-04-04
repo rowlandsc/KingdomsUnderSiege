@@ -73,7 +73,7 @@ public class ArchSuper : MonoBehaviour {
 					if(hit.transform.gameObject.tag!="Player"){
 						superbullet_clone = Instantiate(superbullet, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
                         superbullet_clone.GetComponent<ArchSuperHit>().Initialize(GetComponent<NetworkIdentity>());
-						superbullet_clone.transform.DOMove(hit.point,1f,false);
+						superbullet_clone.GetComponent<ArchSuperHit>().velocity = (hit.point - transform.position).normalized*0.9f;
 					}
 				} 
 			}

@@ -7,7 +7,6 @@ public class MageMelee : MonoBehaviour {
 
 	public GameObject iceball;
 	public float cooldown=0.5f;
-	private float distance=30f;
 
 	private bool canAttack;
 	public float timer;
@@ -46,7 +45,7 @@ public class MageMelee : MonoBehaviour {
 
 				iceball_clone = Instantiate(iceball, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;    	
                 iceball_clone.GetComponent<Meleehit>().Initialize(GetComponent<NetworkIdentity>());
-				iceball_clone.GetComponent<Meleehit>().velocity = (hit.point - transform.position).normalized;
+				iceball_clone.GetComponent<Meleehit>().velocity = (hit.point - transform.position).normalized*0.5f;
 
 
 			} 

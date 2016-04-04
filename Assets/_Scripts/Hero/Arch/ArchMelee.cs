@@ -46,7 +46,7 @@ public class ArchMelee : MonoBehaviour {
 				if(real_distance<=distance){
 					arch_clone = Instantiate(arch, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
                     arch_clone.GetComponent<ArchMeleeHit>().Initialize(GetComponent<NetworkIdentity>());
-					arch_clone.transform.DOMove(hit.point,0.3f,false);
+					arch_clone.GetComponent<ArchMeleeHit>().velocity = (hit.point - transform.position).normalized*1.0f;
 				}
 				else{
 					canAttack = true;
