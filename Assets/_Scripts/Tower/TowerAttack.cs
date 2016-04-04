@@ -36,7 +36,7 @@ public class TowerAttack : MonoBehaviour {
 			if(target!=null){
 
 				attack_=Instantiate(attack,this.gameObject.transform.position,Quaternion.identity)as GameObject;
-				attack_.GetComponent<TowerAttackHit>().tower = this.gameObject;
+				attack_.GetComponent<TowerAttackHit>().Tower = this.gameObject;
                 attack_.GetComponent<TowerAttackHit>().velocity = (target.transform.position - transform.position).normalized * Arrowspeed;
 
                 canAttack =false;
