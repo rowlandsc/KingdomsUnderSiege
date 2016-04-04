@@ -539,7 +539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989ea01cd8ac84a4ba360513aa7e9eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ending: {fileID: 122736, guid: 37777342c5e9ebe4183d67d0adc33e94, type: 2}
+  ending: {fileID: 100014, guid: 996e4a22c7736e8478dae94d281f18bf, type: 2}
+  Archer: {fileID: 0}
 --- !u!135 &13582542
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -8097,6 +8098,10 @@ Prefab:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ending
+      value: 
+      objectReference: {fileID: 100014, guid: 996e4a22c7736e8478dae94d281f18bf, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159590}

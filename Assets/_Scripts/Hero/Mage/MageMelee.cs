@@ -42,16 +42,12 @@ public class MageMelee : MonoBehaviour {
 
 
 			if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))  {  
-				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.point); 
-				  
-				if(real_distance<=distance){
-					iceball_clone = Instantiate(iceball, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
-				    	iceball_clone.transform.DOMove(hit.point,real_distance/40f,false);
-                    iceball_clone.GetComponent<Meleehit>().Initialize(GetComponent<NetworkIdentity>());
-				}
-				else{
-					canAttack=true;
-				}
+				
+
+				iceball_clone = Instantiate(iceball, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;    	
+                iceball_clone.GetComponent<Meleehit>().Initialize(GetComponent<NetworkIdentity>());
+				iceball_clone.GetComponent<Meleehit>().velocity = (hit.point - transform.position).normalized;
+
 
 			} 
 		}
