@@ -13,6 +13,9 @@ public class ProfileSystem : NetworkBehaviour {
     public NetworkInstanceId Killer = NetworkInstanceId.Invalid;
 
     [SyncVar]
+    public float Worth = 100f;
+
+    [SyncVar]
     public float baseHealthPoints = 100f;
     public float HealthPoints {
         get {
@@ -62,8 +65,6 @@ public class ProfileSystem : NetworkBehaviour {
     //the defendpoints max is 100
     [SyncVar]
     public float DefendPoints = 0f;
-    [SyncVar]
-    public float Worth = 100f;
     [SyncVar]
     public float haveMoney = 0f;
 
