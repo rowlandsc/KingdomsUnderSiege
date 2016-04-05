@@ -376,8 +376,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989ea01cd8ac84a4ba360513aa7e9eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ending: {fileID: 100014, guid: 996e4a22c7736e8478dae94d281f18bf, type: 2}
+  ending: {fileID: 100010, guid: 57f5b3ee00e6f21418a92edfce249494, type: 2}
   Archer: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!135 &13582542
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -6443,7 +6444,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: ending
       value: 
-      objectReference: {fileID: 100014, guid: 996e4a22c7736e8478dae94d281f18bf, type: 2}
+      objectReference: {fileID: 100010, guid: 57f5b3ee00e6f21418a92edfce249494, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159590}

@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Networking;
+using DG.Tweening;
 
 public class ProfileSystem : NetworkBehaviour {
+
+
 
     [SerializeField]
     public ProfileEffectList CurrentEffects = new ProfileEffectList();
@@ -203,6 +206,8 @@ public class ProfileSystem : NetworkBehaviour {
     private float timer;
 	public GameObject damagePOP;
 	private GameObject damagePOP_;
+	string herorespwn_words = "";
+	float herorespwn_timer = 10f;
 
 	//FX
 	public GameObject death;
@@ -212,6 +217,7 @@ public class ProfileSystem : NetworkBehaviour {
 	private GameObject Mage_birthplace;
 	private GameObject Knight_birthplace;
 	private GameObject Arch_birthplace;
+	private GameObject deathPoint;
 
 
 	// Use this for initialization
@@ -220,6 +226,7 @@ public class ProfileSystem : NetworkBehaviour {
 		Mage_birthplace=GameObject.Find("MageSummonPoint");
 		Knight_birthplace =GameObject.Find("KnightSummonPoint");
 		Arch_birthplace =GameObject.Find("ArchSummonPoint");
+		deathPoint = GameObject.Find("DeathPoint");
 	}
 	
 	// Update is called once per frame
@@ -237,7 +244,9 @@ public class ProfileSystem : NetworkBehaviour {
 			//death_.AddComponent<DestoryselfAfterfewsecond>();
 			if(this.gameObject.tag=="Player"){
 				herodie = true;
-				Destroy(this.gameObject);
+				this.gameObject.transform.DOMove(deathPoint.transform.position,0.5f,false);
+				this.gameObject.GetComponent<Rigidbody>().useGravity=false;
+
 			}
 			else if(this.gameObject.name=="ChaDragon"){
 				this.gameObject.GetComponent<DragonAI>().NowState = 2;
@@ -245,6 +254,10 @@ public class ProfileSystem : NetworkBehaviour {
 			else{
                 GetComponent<IKillable>().OnDeath();
 			}
+		}
+
+		if(herodie){
+			respawn();
 		}
 
 		if(baseHealthPoints < MaxHealthPoints){
@@ -255,13 +268,43 @@ public class ProfileSystem : NetworkBehaviour {
 			baseMagicPoints += MagicRegen * Time.deltaTime;
 		}
 
-		if(herodie){
-			if(this.gameObject.name=="Mage(Clone)") Mage_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MaxHealthPoints,MaxMagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
-			if(this.gameObject.name=="Knight(Clone)") Knight_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MaxHealthPoints,MaxMagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
-			if(this.gameObject.name=="Arch(Clone)") Arch_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MaxHealthPoints,MaxMagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
+
+			
+	}
+
+	public void respawn(){
+
+		herorespwn_timer-=Time.deltaTime;
+		herorespwn_words = "Respawn in " + ((int) Mathf.Round (herorespwn_timer)).ToString() + " seconds"; 
+
+		if(herorespwn_timer<0){
+
+			if(this.gameObject.name=="Mage(Clone)"){
+				this.gameObject.transform.DOMove(Mage_birthplace.transform.position,0.1f,false);
+			}
+
+			else if(this.gameObject.name=="Knight(Clone)"){
+				this.gameObject.transform.DOMove(Knight_birthplace.transform.position,0.1f,false);
+			}
+
+			else if(this.gameObject.name=="Archer(Clone)"){
+				this.gameObject.transform.DOMove(Arch_birthplace.transform.position,0.1f,false);
+			}
+
+			this.gameObject.GetComponent<Rigidbody>().useGravity=true;
+			herorespwn_timer=10f;
+			herodie=false;
+			baseHealthPoints = MaxHealthPoints;
+			baseMagicPoints = MaxMagicPoints;
+
 		}
 			
 	}
+
+	void OnGUI() {
+		if(herodie) {GUI.Label(new Rect(Screen.width/2-Screen.width/8, Screen.height/2, 1000, 1000), herorespwn_words);}
+	}
+
 
     public void AddEffect(ProfileEffect effect) {
         if (effect.StartingDuration == ProfileEffect.INSTANT) {

@@ -54,7 +54,7 @@ public class TowerAttack : MonoBehaviour {
 
 	public void findTarget(){
 
-		GameObject[] targetList = GameObject.FindGameObjectsWithTag("Player");
+		GameObject[] targetList = GameObject.FindGameObjectsWithTag("HeroPlayer");
         target = null;
 		for(int i=0;i<targetList.Length;i++){
 			if(Vector3.Distance(this.gameObject.transform.position,targetList[i].transform.position)<range){
