@@ -41,7 +41,7 @@ GameObject:
   - 114: {fileID: 11444190}
   m_Layer: 8
   m_Name: HeroMinion
-  m_TagString: Player
+  m_TagString: HeroPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

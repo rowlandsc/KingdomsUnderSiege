@@ -274,7 +274,7 @@ MonoBehaviour:
   baseMaxMagicPoints: 100
   DefendPoints: 0
   haveMoney: 0
-  baseMeleeDamageDealt: 5
+  baseMeleeDamageDealt: 50
   baseSecondDamageDealt: 12
   baseSuperDamageDealt: 40
   baseHealthRegen: 0
