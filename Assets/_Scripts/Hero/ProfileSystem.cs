@@ -251,8 +251,8 @@ public class ProfileSystem : NetworkBehaviour {
 			baseHealthPoints += HealthRegen * Time.deltaTime;
 		}
 
-		if(baseMaxMagicPoints < MaxMagicPoints){
-            baseMaxMagicPoints += MagicRegen * Time.deltaTime;
+		if(baseMagicPoints < MaxMagicPoints){
+			baseMagicPoints += MagicRegen * Time.deltaTime;
 		}
 
 		if(herodie){
@@ -322,7 +322,7 @@ public class ProfileSystem : NetworkBehaviour {
 	}
 
 	public void useMagic(float mp){
-		baseMaxMagicPoints = MagicPoints - mp;
+		baseMagicPoints = MagicPoints - mp;
 	}
 
 	public bool MPenough(float mp){

@@ -12,6 +12,8 @@ public class ArchMeleeHit : MonoBehaviour {
 
     private float kill_time;
 	private float memory_saving_timer;
+
+	public Vector3 velocity;
 	
 	// Use this for initialization
 	void Start () {
@@ -34,6 +36,8 @@ public class ArchMeleeHit : MonoBehaviour {
 			Destroy(this.gameObject);
 			
 		}
+
+		transform.position += velocity;
 	}
 	
 	void OnTriggerEnter(Collider col){
