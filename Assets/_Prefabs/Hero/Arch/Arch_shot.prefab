@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5487d2bd645b84246b70a0bd18cb080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ending: {fileID: 156488, guid: dea1f08dc19ca07458e689ec70311e5d, type: 2}
+  ending: {fileID: 100010, guid: 02966b5acd2e50a499ae031073be3f34, type: 2}
   Archer: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!198 &19815164
@@ -4872,6 +4872,10 @@ Prefab:
       propertyPath: m_Mass
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ending
+      value: 
+      objectReference: {fileID: 100010, guid: 02966b5acd2e50a499ae031073be3f34, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 123532}

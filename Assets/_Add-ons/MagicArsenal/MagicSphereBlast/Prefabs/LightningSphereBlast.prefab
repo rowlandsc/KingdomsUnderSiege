@@ -50,6 +50,8 @@ GameObject:
   - 114: {fileID: 11450664}
   - 114: {fileID: 11470048}
   - 114: {fileID: 11465942}
+  - 114: {fileID: 11479346}
+  - 114: {fileID: 11474262}
   m_Layer: 0
   m_Name: LightningSphereBlast
   m_TagString: Untagged
@@ -263,6 +265,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11470048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4501ed9c776be4f0da1e3adc144e99df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11474262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4501ed9c776be4f0da1e3adc144e99df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11479346
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
