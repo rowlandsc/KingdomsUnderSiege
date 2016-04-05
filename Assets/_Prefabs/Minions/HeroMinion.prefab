@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fed150b1d4d2cd40b6363486641dd8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DetectionRange: 8
+  DetectionRange: 20
   TargetEnemy:
     serializedVersion: 2
     m_Bits: 512

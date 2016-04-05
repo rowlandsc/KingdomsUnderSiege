@@ -55,7 +55,7 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable {
         // If the target is still alive
         if (target != null) {
             
-            if(Mathf.Abs(this.transform.position.magnitude - target.transform.position.magnitude) <= _ps.AttackRange)
+            if(Vector3.Distance(this.transform.position, target.transform.position) <= _ps.AttackRange)
             {
                 this.gameObject.transform.LookAt(target);
 
