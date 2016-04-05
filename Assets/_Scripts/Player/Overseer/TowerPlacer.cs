@@ -47,20 +47,22 @@ public class TowerPlacer : NetworkBehaviour {
 	
 	void Update() {
         
-        if (Input.GetKeyUp(KeyCode.Space) && this._canPlaceTowers) {
-            TowerPlaceModeOn = !TowerPlaceModeOn;
-        }
+        //if (Input.GetKeyUp(KeyCode.Space) && this._canPlaceTowers) {
+        //    TowerPlaceModeOn = !TowerPlaceModeOn;
+        //}
 
         if (TowerPlaceModeOn) {
-            if (!TowerPlaceTester) {
-                TowerPlaceTester = Instantiate(TowerPlaceTesterPrefab);
-                TowerPlaceTester.GetComponent<TowerPlacementTester>().Init(GameMap, TowerToPlaceID);              
-            }
 
             if (!_lastTowerPlaceModeOn) {
                 foreach (Tower t in TowerList) {
                     t.GetComponent<MapCircleDrawer>().SetCircleVisible(true);
                 }
+            }
+
+            if (!TowerPlaceTester) {
+                TowerPlaceTester = Instantiate(TowerPlaceTesterPrefab);
+                TowerPlaceTester.GetComponent<TowerPlacementTester>().Init(GameMap, TowerToPlaceID);
+                return;              
             }
 
             Ray ray = Cam.Camera.ScreenPointToRay(Input.mousePosition);
@@ -83,7 +85,7 @@ public class TowerPlacer : NetworkBehaviour {
             }
 
             if (Input.GetMouseButtonUp(0)) {
-                if (TowerPlaceLocationValid) {
+                if (hit.collider != null && TowerPlaceLocationValid) {
                     TowerPlaceTester.GetComponent<TowerPlacementTester>().PlaceTower();
                     //tower.GetComponent<MapCircleDrawer>().UpdateCircle();
                     //TowerList.Add(tower);
@@ -100,6 +102,16 @@ public class TowerPlacer : NetworkBehaviour {
         }
 
         _lastTowerPlaceModeOn = TowerPlaceModeOn;
+    }
+
+    public void StartPlacingTower(string towerID) {
+        TowerPlaceModeOn = true;
+        TowerToPlaceID = towerID;
+    }
+
+    public void StopPlacingTower() {
+        TowerPlaceModeOn = false;
+        TowerToPlaceID = "";
     }
 
     void CanPlaceTowers()
