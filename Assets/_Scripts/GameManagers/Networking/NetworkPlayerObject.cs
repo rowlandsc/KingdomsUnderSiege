@@ -124,6 +124,8 @@ public class NetworkPlayerObject : NetworkBehaviour {
         tower.transform.position = position;
         //tower.transform.rotation = transform.rotation;
         NetworkServer.Spawn(tower.gameObject);
+
+        RpcSetOwner(tower.GetComponent<NetworkIdentity>(), player);
     }
 
 	[Command]
