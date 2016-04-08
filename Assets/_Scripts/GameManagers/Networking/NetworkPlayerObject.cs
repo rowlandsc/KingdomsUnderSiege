@@ -118,7 +118,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
 
     [Command]
-    public void CmdPlaceTower(string prefabID, Vector3 position) {  
+    public void CmdPlaceTower(NetworkIdentity player, string prefabID, Vector3 position) {  
         Debug.Log("Server Command Called " + prefabID + " " + position);
         Tower tower = GameObject.Instantiate(PrefabCache.Instance.PrefabIndex[prefabID]).GetComponent<Tower>();
         tower.transform.position = position;

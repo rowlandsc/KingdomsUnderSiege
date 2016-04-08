@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 public class Overseer : Player {
 
@@ -26,6 +27,7 @@ public class Overseer : Player {
         GameObject towerPlacerGO = Instantiate(PrefabCache.Instance.PrefabIndex["OverseerTowerPlacer"]);
         TowerPlacer towerPlacer = towerPlacerGO.GetComponent<TowerPlacer>();
         towerPlacer.Cam = cam.GetComponent<OverseerCamera>();
+        towerPlacer.OverseerPlayer = GetComponent<NetworkIdentity>();
         GameObject overseerUI = Instantiate(PrefabCache.Instance.PrefabIndex["OverseerUI"]);
         overseerUI.transform.FindChild("TowerMenu").GetComponent<OverseerTowerMenuUI>().TowerPlacer = towerPlacer;
 	}

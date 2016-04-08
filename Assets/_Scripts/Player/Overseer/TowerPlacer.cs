@@ -15,6 +15,7 @@ public class TowerPlacer : NetworkBehaviour {
     public bool TowerPlaceLocationValid = true;
     public Vector3 TowerPlaceLocation;
     public string TowerToPlaceID = "TowerArcher1";
+    public NetworkIdentity OverseerPlayer;
 
     private bool _lastTowerPlaceModeOn = false;
     private bool _canPlaceTowers = true;
@@ -86,7 +87,7 @@ public class TowerPlacer : NetworkBehaviour {
 
             if (Input.GetMouseButtonUp(0)) {
                 if (hit.collider != null && TowerPlaceLocationValid) {
-                    TowerPlaceTester.GetComponent<TowerPlacementTester>().PlaceTower();
+                    TowerPlaceTester.GetComponent<TowerPlacementTester>().PlaceTower(OverseerPlayer);
                     //tower.GetComponent<MapCircleDrawer>().UpdateCircle();
                     //TowerList.Add(tower);
                     TowerPlaceModeOn = false;

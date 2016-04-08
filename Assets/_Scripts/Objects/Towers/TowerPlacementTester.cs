@@ -76,9 +76,9 @@ public class TowerPlacementTester : NetworkBehaviour
     }
 
 
-    public void PlaceTower()
+    public void PlaceTower(NetworkIdentity player)
     {
-        KUSNetworkManager.HostPlayer.CmdPlaceTower(TowerToPlaceID, transform.position);
+        KUSNetworkManager.HostPlayer.CmdPlaceTower(player, TowerToPlaceID, transform.position);
     }
 
     /*[Command]
