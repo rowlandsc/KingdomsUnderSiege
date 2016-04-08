@@ -39,7 +39,7 @@ public class NetworkPlayerStats : NetworkBehaviour {
     /// <returns>True if the player has enough, false if they don't</returns>
     public bool HasEnough(int amountNeeded)
     {
-        if (this.Gold - amountNeeded > 0)
+        if (this.Gold - amountNeeded >= 0)
             return true;
         else
             return false;
