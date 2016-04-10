@@ -1,0 +1,115 @@
+fileFormatVersion: 2
+guid: 48d1d6d9b33c71a4a90c1ed4ee88ca25
+timeCreated: 1460251004
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: HeroMageHat
+    100002: HeroMageHead
+    100004: HeroMageLeftHand
+    100006: HeroMageLeftLeg
+    100008: HeroMageRightHand
+    100010: HeroMageRightLeg
+    100012: HeroMageRobe
+    100014: //RootNode
+    100016: MageHeroFace
+    100018: HeroMageFace
+    400000: HeroMageHat
+    400002: HeroMageHead
+    400004: HeroMageLeftHand
+    400006: HeroMageLeftLeg
+    400008: HeroMageRightHand
+    400010: HeroMageRightLeg
+    400012: HeroMageRobe
+    400014: //RootNode
+    400016: MageHeroFace
+    400018: HeroMageFace
+    2300000: HeroMageHat
+    2300002: HeroMageLeftHand
+    2300004: HeroMageLeftLeg
+    2300006: HeroMageRightHand
+    2300008: HeroMageRightLeg
+    2300010: HeroMageRobe
+    2300012: MageHeroFace
+    2300014: HeroMageFace
+    3300000: HeroMageHat
+    3300002: HeroMageLeftHand
+    3300004: HeroMageLeftLeg
+    3300006: HeroMageRightHand
+    3300008: HeroMageRightLeg
+    3300010: HeroMageRobe
+    3300012: MageHeroFace
+    3300014: HeroMageFace
+    4300000: HeroMageRobe
+    4300002: HeroMageLeftLeg
+    4300004: HeroMageRightLeg
+    4300006: HeroMageLeftHand
+    4300008: HeroMageRightHand
+    4300010: HeroMageHat
+    4300012: MageHeroFace
+    4300014: HeroMageFace
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 50
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
