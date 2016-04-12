@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
-public class TowerAttack : MonoBehaviour {
+public class MortarTowerAttack : MonoBehaviour {
 
 
 	public GameObject attack;
@@ -34,8 +34,9 @@ public class TowerAttack : MonoBehaviour {
 			if(target==null || Vector3.Distance(this.gameObject.transform.position,target.transform.position) > profile.AttackRange) findTarget();
 			if(target!=null){
                 attack_=Instantiate(attack,this.gameObject.transform.position,Quaternion.identity)as GameObject;
-				attack_.GetComponent<TowerAttackHit>().Tower = this.gameObject;
-                attack_.GetComponent<TowerAttackHit>().velocity = (target.transform.position - transform.position).normalized * profile.AttackSpeed;
+				attack_.GetComponent<MortarTowerHit>().Tower = this.gameObject;
+				attack_.GetComponent<MortarTowerHit>().canShot = true;
+				attack_.GetComponent<MortarTowerHit>().hitPosition = target.transform.position;
 
                 canAttack =false;
 			}

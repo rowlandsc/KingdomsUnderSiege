@@ -11,16 +11,22 @@ public class MortarTowerHit : MonoBehaviour {
 	private float kill_time;
 	private float memory_saving_timer;
 
-    public float hitPositionX;
-    public float hitPositionY;
+	public bool canShot = false;
+	public Vector3 hitPosition;
 
-    float localpositionX;
-    floar localpositionY;
+    private float hitPositionX;
+	private float hitPositionY;
+	private float hitPositionZ;
+
+    private float localpositionX;
+	private float localpositionZ;
 
     // Use this for initialization
     void Start () {
 		kill_time=10f;
 		memory_saving_timer=0f;
+		localpositionX = this.gameObject.transform.position.x;
+		localpositionZ = this.gameObject.transform.position.z;
 	}
 	
 	// Update is called once per frame
@@ -31,10 +37,23 @@ public class MortarTowerHit : MonoBehaviour {
 			Destroy(this.gameObject);
 		}
 
-        localpositionX
+		while(canShot){
+
+			hitPositionX = hitPosition.x;
+			hitPositionY = hitPosition.y;
+			hitPositionZ = hitPosition.z;
+
+			Sequence mySequence = DOTween.Sequence();
+			mySequence.Append(this.transform.DOMove(new Vector3((localpositionX+hitPositionX)/2,20f,(localpositionZ+hitPositionZ)/2 ),2f,false));
+			mySequence.Append(this.transform.DOMove(new Vector3(hitPositionX,hitPositionY-5f,hitPositionZ),2f,false));
+
+
+			canShot = false;
+		}
+        
 
        
-        this.transform.DOMove(new Vector3())
+       
 	}
 
 	void OnTriggerEnter(Collider col){
