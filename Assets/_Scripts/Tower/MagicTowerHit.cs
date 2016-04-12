@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class TowerAttackHit : MonoBehaviour {
+public class MagicTowerAttackHit : MonoBehaviour {
 
 	public GameObject Tower ;
     private ProfileSystem towerStats;

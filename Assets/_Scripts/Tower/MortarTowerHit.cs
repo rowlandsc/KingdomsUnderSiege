@@ -37,7 +37,7 @@ public class MortarTowerHit : MonoBehaviour {
 			Destroy(this.gameObject);
 		}
 
-		while(canShot){
+		if(canShot){
 
 			hitPositionX = hitPosition.x;
 			hitPositionY = hitPosition.y;

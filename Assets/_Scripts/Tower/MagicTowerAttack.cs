@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
-public class TowerAttack : MonoBehaviour {
+public class MagicTowerAttack : MonoBehaviour {
 
 
 	public GameObject attack;
