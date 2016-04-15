@@ -118,10 +118,11 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
 
     [Command]
-    public void CmdPlaceTower(NetworkIdentity player, string prefabID, Vector3 position) {  
+    public void CmdPlaceTower(NetworkIdentity player, string prefabID, Vector3 position, Quaternion rotation) {  
         Debug.Log("Server Command Called " + prefabID + " " + position);
         Tower tower = GameObject.Instantiate(PrefabCache.Instance.PrefabIndex[prefabID]).GetComponent<Tower>();
         tower.transform.position = position;
+        tower.transform.rotation = rotation;
         //tower.transform.rotation = transform.rotation;
         NetworkServer.Spawn(tower.gameObject);
 
