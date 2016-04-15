@@ -12,6 +12,7 @@ public class TowerPlacementTester : NetworkBehaviour
     public string TowerToPlaceID = "TowerArcher1";
     public Material ValidMaterial = null;
     public Material InvalidMaterial = null;
+    public float RotateSpeed = 180;
 
     private MeshFilter _meshFilter;
     private MeshRenderer _meshRenderer;
@@ -28,13 +29,16 @@ public class TowerPlacementTester : NetworkBehaviour
         _mapCircleDrawer = GetComponent<MapCircleDrawer>();
 
         TowerToPlaceID = towerID;
-        _meshFilter.mesh = PrefabCache.Instance.PrefabIndex[TowerToPlaceID].GetComponent<MeshFilter>().sharedMesh;
+        GameObject prefab = PrefabCache.Instance.PrefabIndex[TowerToPlaceID];
+        /*_meshFilter.mesh = GetComponent<MeshFilter>().sharedMesh;
         Material[] matlist = PrefabCache.Instance.PrefabIndex[TowerToPlaceID].GetComponent<MeshRenderer>().sharedMaterials;
         for (int i = 0; i < matlist.Length; i++)
         {
             matlist.SetValue(ValidMaterial, i);
         }
-        _meshRenderer.sharedMaterials = matlist;
+        _meshRenderer.sharedMaterials = matlist;*/
+
+        GenerateMeshFromPrefab(prefab.transform, transform);
 
         _mapCircleDrawer.CircleRadius = PrefabCache.Instance.PrefabIndex[TowerToPlaceID].GetComponent<Tower>().Radius;
         _mapCircleDrawer.GameMap = GameMap;
@@ -42,8 +46,40 @@ public class TowerPlacementTester : NetworkBehaviour
         transform.localScale = PrefabCache.Instance.PrefabIndex[TowerToPlaceID].transform.localScale;
     }
 
+    public void GenerateMeshFromPrefab(Transform prefabToCopy, Transform corObj) {
+        MeshRenderer mr = prefabToCopy.gameObject.GetComponent<MeshRenderer>();
+        MeshFilter mf = prefabToCopy.gameObject.GetComponent<MeshFilter>();
+        if (mr != null && mf != null) {
+            MeshFilter thisMf = corObj.GetComponent<MeshFilter>();
+            if (thisMf == null) thisMf = corObj.gameObject.AddComponent<MeshFilter>();
+            MeshRenderer thisMr = corObj.GetComponent<MeshRenderer>();
+            if (thisMr == null) thisMr = corObj.gameObject.AddComponent<MeshRenderer>();
+
+            thisMf.mesh = mf.sharedMesh;
+
+            Material[] matlist = mr.sharedMaterials;
+            for (int i = 0; i < matlist.Length; i++) {
+                matlist.SetValue(ValidMaterial, i);
+            }
+            thisMr.sharedMaterials = matlist;
+        }
+
+        for (int i=0; i<prefabToCopy.childCount; i++) {
+            Transform prefabChild = prefabToCopy.GetChild(i);
+            GameObject newChild = new GameObject(prefabChild.name);
+            newChild.transform.SetParent(corObj);
+            newChild.transform.localPosition = prefabChild.localPosition;
+            newChild.transform.localScale = prefabChild.localScale;
+            GenerateMeshFromPrefab(prefabChild, newChild.transform);
+        }
+    }
+
     void Update()
     {
+        if (InputManager.Instance.OverseerRotateTower) {
+            transform.Rotate(0, RotateSpeed * Time.deltaTime, 0);
+        }
+
         if (TowerPlacer.Instance.TowerPlaceModeOn)
         {
             transform.position = TowerPlacer.Instance.TowerPlaceLocation;
@@ -78,7 +114,7 @@ public class TowerPlacementTester : NetworkBehaviour
 
     public void PlaceTower(NetworkIdentity player)
     {
-        KUSNetworkManager.HostPlayer.CmdPlaceTower(player, TowerToPlaceID, transform.position);
+        KUSNetworkManager.HostPlayer.CmdPlaceTower(player, TowerToPlaceID, transform.position, transform.rotation);
     }
 
     /*[Command]

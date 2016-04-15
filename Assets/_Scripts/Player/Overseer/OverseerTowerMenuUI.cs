@@ -44,10 +44,12 @@ public class OverseerTowerMenuUI : MonoBehaviour {
 
     public void OnSelectMortarButton() {
         TowerPlacer.StopPlacingTower();
+        TowerPlacer.StartPlacingTower("TowerMortar1");
     }
 
     public void OnSelectMageButton() {
         TowerPlacer.StopPlacingTower();
+        TowerPlacer.StartPlacingTower("TowerMagic1");
     }
 
     IEnumerator SlideOut() {

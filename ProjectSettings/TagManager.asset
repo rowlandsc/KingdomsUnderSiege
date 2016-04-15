@@ -42,8 +42,8 @@ TagManager:
   - UI
   - EnemyDamage
   - Environment
-  - 
-  - 
+  - MapPlayArea
+  - BaseWalls
   - 
   - 
   - 
