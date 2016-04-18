@@ -51,8 +51,8 @@ MonoBehaviour:
   m_PlayerPrefab: {fileID: 168786, guid: 2e9b001f6f0548f4b8242a3ff7103693, type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
-  m_OfflineScene: 
-  m_OnlineScene: 
+  m_OfflineScene: StartScreen
+  m_OnlineScene: SetupScreen
   m_SpawnPrefabs:
   - {fileID: 168786, guid: 2e9b001f6f0548f4b8242a3ff7103693, type: 2}
   - {fileID: 195394, guid: e3bc9e526d416114997692f8544ec6d2, type: 2}
@@ -63,7 +63,7 @@ MonoBehaviour:
   - {fileID: 163586, guid: 4dee2a0bd1f0d443bb2bbd8ddef7df89, type: 2}
   - {fileID: 124412, guid: 330b7a1afefae8e4cbfc2a975aa61d50, type: 2}
   - {fileID: 135998, guid: 8c617c95d17c80448a2ae0dd6ecb1119, type: 2}
-  - {fileID: 114362, guid: 6728d47573b5b594ea65c8275de89f22, type: 2}
+  - {fileID: 177232, guid: f5717d3a335e3c34a96c633602211092, type: 2}
   - {fileID: 156598, guid: e0ad773a730c6104ca0afef309440c9e, type: 2}
   - {fileID: 137770, guid: 6b1bdb2d589c0cb4681c94b274d86245, type: 2}
   m_CustomConfig: 1
