@@ -32,8 +32,8 @@ public class NetworkSpawnManagers : NetworkBehaviour {
 				GameObject prefabCache = Instantiate (this.PrefabCache);
 				NetworkServer.Spawn (prefabCache);
 
-                GameObject heroMinionSpawner1 = (GameObject) Instantiate(this.HeroMinionSpawner, new Vector3(214f, 21f, 282.6f), Quaternion.identity);
-                GameObject heroMinionSpawner2 = (GameObject)Instantiate(this.HeroMinionSpawner, new Vector3(283f, 21f, 282.6f), Quaternion.identity);
+                GameObject heroMinionSpawner1 = (GameObject) Instantiate(this.HeroMinionSpawner, new Vector3(275.3f, 22.67f, 290.5f), Quaternion.identity);
+                GameObject heroMinionSpawner2 = (GameObject)Instantiate(this.HeroMinionSpawner, new Vector3(200f, 22.67f, 290.5f), Quaternion.identity);
                 NetworkServer.Spawn(heroMinionSpawner1);
                 NetworkServer.Spawn(heroMinionSpawner2);
 
