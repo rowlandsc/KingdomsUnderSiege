@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 6d7ba00e406554344a26a6beb257b31b
-timeCreated: 1460758340
+guid: 898bd66d4bfed4ea8bf80661b4770e58
+timeCreated: 1461017959
 licenseType: Pro
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: OverseerMinionSpawner
+    4300000: HeroMinionSpawner
   materials:
     importMaterials: 1
     materialName: 0
