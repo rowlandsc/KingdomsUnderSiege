@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11441798}
   - 114: {fileID: 11432704}
   - 114: {fileID: 11457582}
+  - 114: {fileID: 11487000}
   m_Layer: 0
   m_Name: Overseer
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.2597713, y: -29.8761673, z: -5.18138885}
+  m_LocalPosition: {x: 14.259771, y: -29.876167, z: -5.181389}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,6 +43,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameMap: {fileID: 0}
+  Cam: {fileID: 0}
   TowerList: []
   TowerPlaceTesterPrefab: {fileID: 118888, guid: a6d427c314d7957468c5ecdd509a1550,
     type: 2}
@@ -49,8 +51,10 @@ MonoBehaviour:
   TowerPlaceModeOn: 0
   TowerPlaceLocationValid: 1
   TowerPlaceLocation: {x: 0, y: 0, z: 0}
-  TowerToPlace: {fileID: 181652, guid: 3c495dd3c3f17ac43aab8e68ed15de81, type: 2}
-  TestSphere: {fileID: 0}
+  TowerToPlaceID: TowerArcher1
+  OverseerPlayer: {fileID: 0}
+  _overseerTowerMarker: {fileID: 0}
+  _heroTowerMarker: {fileID: 0}
 --- !u!114 &11441798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -62,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c6ace3bc7f3423479329a98876f9818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cam: {fileID: 0}
 --- !u!114 &11457582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +99,23 @@ MonoBehaviour:
     i15: 122
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11487000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d5d725a08d1274429e33f05d61ee203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameMap: {fileID: 0}
+  OverseerPlayer: {fileID: 0}
+  Cam: {fileID: 0}
+  TowerUpgradeModeOn: 0
+  SelectedTower: {fileID: 0}
+  TowerPlacer: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
