@@ -24,7 +24,7 @@ GameObject:
   - 114: {fileID: 11489452}
   m_Layer: 12
   m_Name: Mage
-  m_TagString: Player
+  m_TagString: HeroPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,12 +199,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDead: 0
+  Worth: 100
   baseHealthPoints: 100
   baseMagicPoints: 100
   baseMaxHealthPoints: 100
   baseMaxMagicPoints: 100
   DefendPoints: 0
-  Worth: 100
   haveMoney: 5000
   baseMeleeDamageDealt: 5
   baseSecondDamageDealt: 12
@@ -212,6 +212,9 @@ MonoBehaviour:
   baseHealthRegen: 1
   baseMagicRegen: 1
   baseMoveSpeed: 4
+  baseAttackSpeed: 1.5
+  baseAttackFrequency: 1
+  baseAttackRange: 1
   damagePOP: {fileID: 0}
   death: {fileID: 0}
 --- !u!114 &11432236
