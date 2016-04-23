@@ -31,6 +31,7 @@ public class HeroObject : NetworkBehaviour, IKillable {
     {
         this.gameObject.transform.DOMove(deathPoint.transform.position, 0.5f, false);
         this.gameObject.GetComponent<Rigidbody>().useGravity = false;
+        _ps.baseHealthPoints = _ps.MaxHealthPoints;
         NetworkPlayerOwner playerOwner = this.GetComponent<NetworkPlayerOwner>();
         NetworkPlayerStats stats = playerOwner.Owner.GetComponent<NetworkPlayerStats>();
         stats.AddDeath();
