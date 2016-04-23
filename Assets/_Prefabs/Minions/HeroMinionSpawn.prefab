@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11475872}
   - 114: {fileID: 11498420}
   - 114: {fileID: 11456850}
+  - 65: {fileID: 6509112}
   m_Layer: 8
   m_Name: HeroMinionSpawner
   m_TagString: HeroPlayer
@@ -129,6 +130,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105698}
   m_Mesh: {fileID: 4300000, guid: 898bd66d4bfed4ea8bf80661b4770e58, type: 3}
+--- !u!65 &6509112
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.535369, y: 1.9112258, z: 2.462259}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11421638
 MonoBehaviour:
   m_ObjectHideFlags: 1
