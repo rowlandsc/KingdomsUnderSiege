@@ -31,7 +31,7 @@ public class HeroObject : NetworkBehaviour, IKillable {
     {
         this.gameObject.transform.DOMove(deathPoint.transform.position, 0.5f, false);
         this.gameObject.GetComponent<Rigidbody>().useGravity = false;
-        this.GetComponent<NetworkPlayerStats>().AddDeath();
+        this.GetComponent<NetworkPlayerOwner>().GetComponent<NetworkPlayerStats>().AddDeath();
         if (_ps.Killer != NetworkInstanceId.Invalid)
         {
             if (isServer)
