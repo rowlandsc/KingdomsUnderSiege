@@ -21,7 +21,7 @@ public class PrefabCacheEditor : Editor {
             bool deleted = GUILayout.Button("Delete");
             if (deleted) {
                 change = "Removed key '" + keylist[i] + "'";
-                editedPrefabMap.Remove(keylist[i]);
+                editedPrefabMap.Remove(i);
                 GUI.changed = true;
             }
             else {

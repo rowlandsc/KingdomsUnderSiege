@@ -2,15 +2,18 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class Tower : NetworkBehaviour, IKillable {
+public class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelectable {
 
     public float Radius = 2;
+
+    public GameObject GameObject {
+        get { return gameObject; }
+    }
 
     private MapCircleDrawer _mapCircleDrawer = null;
     private ProfileSystem _towerStats;
 
 	void Start () {
-        TowerPlacer.Instance.TowerList.Add(this);
         _mapCircleDrawer = GetComponent<MapCircleDrawer>();
         _mapCircleDrawer.GameMap = Map.Instance;
         _mapCircleDrawer.CircleRadius = Radius;
@@ -18,13 +21,19 @@ public class Tower : NetworkBehaviour, IKillable {
         _mapCircleDrawer.SetCircleVisible(false);
         this._towerStats = GetComponent<ProfileSystem>();
     }
-	
-	void Update () {
+
+    void OnEnable() {
+        TowerPlacer.Instance.TowerList.Add(this);
+        RegisterAsSelectable();
+    }
+
+    void Update () {
 	
 	}
 
-    void OnDestroy() {
+    void OnDisable() {
         TowerPlacer.Instance.TowerList.Remove(this);
+        UnregisterAsSelectable();
     }
 
     public void OnDeath() {
@@ -48,5 +57,16 @@ public class Tower : NetworkBehaviour, IKillable {
         }
 
         Destroy(this.gameObject);
+    }
+
+    public void RegisterAsSelectable() {
+        ObjectSelector.Selectables.Add(this);
+    }
+    public void UnregisterAsSelectable() {
+        ObjectSelector.Selectables.Remove(this);
+    }
+    
+    public Collider GetSelectionCollider() {
+        return GetComponent<Collider>();
     }
 }
