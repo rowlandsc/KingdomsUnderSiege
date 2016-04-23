@@ -48,7 +48,7 @@ public class InputManager : MonoBehaviour {
         }
     }
 
-    public bool OverseerSelectTower {
+    public bool OverseerSelect {
         get {
             return Input.GetMouseButton(0);
         }

@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11407966}
   - 114: {fileID: 11423600}
   m_Layer: 0
-  m_Name: TowerUpgrader
+  m_Name: ObjectSelector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,8 +75,7 @@ MonoBehaviour:
   GameMap: {fileID: 0}
   OverseerPlayer: {fileID: 0}
   Cam: {fileID: 0}
-  TowerUpgradeModeOn: 0
-  SelectedTower: {fileID: 0}
+  SelectedObject: {fileID: 0}
   TowerPlacer: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:

@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 252.17033, y: 21.998507, z: 111.55562}
+  m_LocalPosition: {x: 275.15656, y: 19.819057, z: 264.2818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,6 +81,7 @@ MonoBehaviour:
     - HeroMage
     - HeroUI
     - OverseerCamera
+    - OverseerObjectSelector
     - OverseerTowerPlacer
     - OverseerTowerUpgrader
     - OverseerUI
@@ -95,6 +96,7 @@ MonoBehaviour:
     - {fileID: 159646, guid: cdfbff2d595d245aeb7f029e49ed732d, type: 2}
     - {fileID: 122128, guid: 49f9dc83d51fd47878a1c15ba6d18358, type: 2}
     - {fileID: 188464, guid: 4331aa5599bfeb84d974854a27e4aa5f, type: 2}
+    - {fileID: 130276, guid: 4794ad71281fc4e43827236381e6328f, type: 2}
     - {fileID: 130276, guid: e7ac62775e0c14235bd94b8a58fdc688, type: 2}
     - {fileID: 130276, guid: 4794ad71281fc4e43827236381e6328f, type: 2}
     - {fileID: 130880, guid: e97faf6136f71774ca330ecd83eb83d7, type: 2}
