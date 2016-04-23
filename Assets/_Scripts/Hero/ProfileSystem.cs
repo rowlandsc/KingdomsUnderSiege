@@ -243,9 +243,8 @@ public class ProfileSystem : NetworkBehaviour {
             //death_ = Instantiate(death_, this.transform.position, Quaternion.identity) as GameObject;
 			//death_.AddComponent<DestoryselfAfterfewsecond>();
 			if(this.gameObject.tag=="Player"){
-				herodie = true;
-				this.gameObject.transform.DOMove(deathPoint.transform.position,0.5f,false);
-				this.gameObject.GetComponent<Rigidbody>().useGravity=false;
+				
+				
 
 			}
 			else if(this.gameObject.name=="ChaDragon"){
@@ -254,28 +253,6 @@ public class ProfileSystem : NetworkBehaviour {
 			else{
                 GetComponent<IKillable>().OnDeath();
 			}
-		}
-
-		if(herodie){
-            this.GetComponent<NetworkPlayerStats>().AddDeath();
-            if(this.Killer != NetworkInstanceId.Invalid)
-            {
-                if (isServer)
-                {
-                    GameObject player = NetworkServer.FindLocalObject(this.Killer);
-                    NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
-                    playerStats.AddGold((int)this.Worth);
-                    playerStats.AddHeroKill();
-                }
-                else
-                {
-                    GameObject player = ClientScene.FindLocalObject(this.Killer);
-                    NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
-                    playerStats.AddGold((int)this.Worth);
-                    playerStats.AddHeroKill();
-                }
-            }
-			respawn();
 		}
 
 		if(baseHealthPoints < MaxHealthPoints){
@@ -287,35 +264,6 @@ public class ProfileSystem : NetworkBehaviour {
 		}
 
 
-			
-	}
-
-	public void respawn(){
-
-		herorespwn_timer-=Time.deltaTime;
-		herorespwn_words = "Respawn in " + ((int) Mathf.Round (herorespwn_timer)).ToString() + " seconds"; 
-
-		if(herorespwn_timer<0){
-
-			if(this.gameObject.name=="Mage(Clone)"){
-				this.gameObject.transform.DOMove(Mage_birthplace.transform.position,0.1f,false);
-			}
-
-			else if(this.gameObject.name=="Knight(Clone)"){
-				this.gameObject.transform.DOMove(Knight_birthplace.transform.position,0.1f,false);
-			}
-
-			else if(this.gameObject.name=="Archer(Clone)"){
-				this.gameObject.transform.DOMove(Arch_birthplace.transform.position,0.1f,false);
-			}
-
-			this.gameObject.GetComponent<Rigidbody>().useGravity=true;
-			herorespwn_timer=10f;
-			herodie=false;
-			baseHealthPoints = MaxHealthPoints;
-			baseMagicPoints = MaxMagicPoints;
-
-		}
 			
 	}
 
