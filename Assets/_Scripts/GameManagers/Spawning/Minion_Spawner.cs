@@ -46,7 +46,7 @@ public class Minion_Spawner : NetworkBehaviour, IKillable {
     void Start(){
         this._roundManager = RoundManager.Instance;
 
-        if (isServer)
+        if (KUSNetworkManager.LocalPlayer.isServer)
         {
             // Start spawn cycle
             StartCoroutine(PREROUND_WAIT);
