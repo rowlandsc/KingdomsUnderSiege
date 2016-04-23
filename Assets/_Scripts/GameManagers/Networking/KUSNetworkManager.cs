@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 public class KUSNetworkManager : NetworkManager {
 
+    static NetworkPlayerObject _overseerPlayer = null;
+    static NetworkPlayerObject _archerPlayer = null;
+    static NetworkPlayerObject _knightPlayer = null;
+    static NetworkPlayerObject _magePlayer = null;
     public static NetworkPlayerObject HostPlayer {
         get {
             PlayerController player = singleton.client.connection.playerControllers[0];
@@ -22,6 +26,67 @@ public class KUSNetworkManager : NetworkManager {
             return null;
         }
     }
+    public static NetworkPlayerObject OverseerPlayer {
+        get {
+            if (_overseerPlayer) return _overseerPlayer;
+
+            List<PlayerController> playerControllers = singleton.client.connection.playerControllers;
+            for (int i = 0; i < playerControllers.Count; i++) {
+                NetworkPlayerObject netobj = playerControllers[i].unetView.gameObject.GetComponent<NetworkPlayerObject>();
+                if (netobj.Class == NetworkPlayerObject.PlayerClass.OVERSEER) {
+                    _overseerPlayer = netobj;
+                    break;
+                }
+            }
+            return _overseerPlayer;
+        }
+    }
+    public static NetworkPlayerObject ArcherPlayer {
+        get {
+            if (_archerPlayer) return _archerPlayer;
+
+            List<PlayerController> playerControllers = singleton.client.connection.playerControllers;
+            for (int i = 0; i < playerControllers.Count; i++) {
+                NetworkPlayerObject netobj = playerControllers[i].unetView.gameObject.GetComponent<NetworkPlayerObject>();
+                if (netobj.Class == NetworkPlayerObject.PlayerClass.ARCHER) {
+                    _archerPlayer = netobj;
+                    break;
+                }
+            }
+            return _archerPlayer;
+        }
+    }
+    public static NetworkPlayerObject KnightPlayer {
+        get {
+            if (_knightPlayer) return _knightPlayer;
+
+            List<PlayerController> playerControllers = singleton.client.connection.playerControllers;
+            for (int i = 0; i < playerControllers.Count; i++) {
+                NetworkPlayerObject netobj = playerControllers[i].unetView.gameObject.GetComponent<NetworkPlayerObject>();
+                if (netobj.Class == NetworkPlayerObject.PlayerClass.KNIGHT) {
+                    _knightPlayer = netobj;
+                    break;
+                }
+            }
+            return _knightPlayer;
+        }
+    }
+    public static NetworkPlayerObject MagePlayer {
+        get {
+            if (_magePlayer) return _magePlayer;
+
+            List<PlayerController> playerControllers = singleton.client.connection.playerControllers;
+            for (int i = 0; i < playerControllers.Count; i++) {
+                NetworkPlayerObject netobj = playerControllers[i].unetView.gameObject.GetComponent<NetworkPlayerObject>();
+                if (netobj.Class == NetworkPlayerObject.PlayerClass.MAGE) {
+                    _magePlayer = netobj;
+                    break;
+                }
+            }
+            return _magePlayer;
+        }
+    }
+
 
     public int Port = 48084;
 	public InputField IPInputField;
