@@ -45,8 +45,11 @@ public class Minion_Spawner : NetworkBehaviour {
     void Start(){
         this._roundManager = RoundManager.Instance;
 
-        // Start spawn cycle
-        StartCoroutine(PREROUND_WAIT);
+        if (isServer)
+        {
+            // Start spawn cycle
+            StartCoroutine(PREROUND_WAIT);
+        }
     }
 
     /**
