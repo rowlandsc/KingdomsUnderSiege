@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984040fe1ae2b36458d8e71d1d6b1d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Minion: {fileID: 124412, guid: 330b7a1afefae8e4cbfc2a975aa61d50, type: 2}
+  Minion: {fileID: 108838, guid: a1a02cae7337df0428c115a6bde484e3, type: 2}
   SpawnPoint: {fileID: 435974}
   NumberToSpawn: 5
   SpawnDelay: 20

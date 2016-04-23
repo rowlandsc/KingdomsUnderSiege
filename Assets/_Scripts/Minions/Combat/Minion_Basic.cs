@@ -103,12 +103,16 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable {
             if (isServer)
             {
                 GameObject player = NetworkServer.FindLocalObject(this._ps.Killer);
-                player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>().AddGold((int)this._ps.Worth);
+                NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+                playerStats.AddGold((int)this._ps.Worth);
+                playerStats.AddMinionKill();
             }
             else
             {
                 GameObject player = ClientScene.FindLocalObject(this._ps.Killer);
-                player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>().AddGold((int)this._ps.Worth);
+                NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+                playerStats.AddGold((int)this._ps.Worth);
+                playerStats.AddMinionKill();
             }
         }
 

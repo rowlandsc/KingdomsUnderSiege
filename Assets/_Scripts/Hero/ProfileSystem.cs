@@ -257,6 +257,24 @@ public class ProfileSystem : NetworkBehaviour {
 		}
 
 		if(herodie){
+            this.GetComponent<NetworkPlayerStats>().AddDeath();
+            if(this.Killer != NetworkInstanceId.Invalid)
+            {
+                if (isServer)
+                {
+                    GameObject player = NetworkServer.FindLocalObject(this.Killer);
+                    NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+                    playerStats.AddGold((int)this.Worth);
+                    playerStats.AddHeroKill();
+                }
+                else
+                {
+                    GameObject player = ClientScene.FindLocalObject(this.Killer);
+                    NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+                    playerStats.AddGold((int)this.Worth);
+                    playerStats.AddHeroKill();
+                }
+            }
 			respawn();
 		}
 

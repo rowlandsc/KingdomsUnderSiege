@@ -34,12 +34,16 @@ public class Tower : NetworkBehaviour, IKillable {
             if (isServer)
             {
                 GameObject player = NetworkServer.FindLocalObject(this._towerStats.Killer);
-                player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>().AddGold((int)this._towerStats.Worth);
+                NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+                playerStats.AddGold((int)this._towerStats.Worth);
+                playerStats.AddTowerKill();
             }
             else
             {
                 GameObject player = ClientScene.FindLocalObject(this._towerStats.Killer);
-                player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>().AddGold((int)this._towerStats.Worth);
+                NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+                playerStats.AddGold((int)this._towerStats.Worth);
+                playerStats.AddTowerKill();
             }
         }
 

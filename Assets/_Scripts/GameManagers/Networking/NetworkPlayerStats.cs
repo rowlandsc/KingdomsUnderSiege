@@ -8,10 +8,110 @@ public class NetworkPlayerStats : NetworkBehaviour {
     public int Gold = 0;
 
     [SyncVar]
-    public int Kills = 0;
+    public int MinionKills = 0;
+
+    [SyncVar]
+    public int HeroKills = 0;
 
     [SyncVar]
     public int Deaths = 0;
+
+    [SyncVar]
+    public int TowersPlaced = 0;
+
+    [SyncVar]
+    public int TowersDestroyed = 0;
+
+    [SyncVar]
+    public int GoldSpent = 0;
+
+    [SyncVar]
+    public int TotalGoldEarned = 0;
+
+    /// <summary>
+    /// Add a tower kill for the player
+    /// </summary>
+    public void AddTowerKill()
+    {
+        this.TowersDestroyed++;
+    }
+
+    /// <summary>
+    /// Add a tower kill for a player
+    /// </summary>
+    /// <param name="player">player that got the tower kill</param>
+    public static void AddTowerKill(NetworkPlayerObject player)
+    {
+        player.GetComponent<NetworkPlayerStats>().AddTowerKill();
+    }
+
+    /// <summary>
+    /// Add a tower placed for the player
+    /// </summary>
+    public void AddTowerPlaced()
+    {
+        this.TowersPlaced++;
+    }
+
+    /// <summary>
+    /// Add a tower placed for a player
+    /// </summary>
+    /// <param name="player">The player to add to</param>
+    public static void AddTowerPlaced(NetworkPlayerObject player)
+    {
+        player.GetComponent<NetworkPlayerStats>().AddTowerPlaced();
+    }
+
+    /// <summary>
+    /// Add a death for the player
+    /// </summary>
+    public void AddDeath()
+    {
+        this.Deaths++;
+    }
+
+    /// <summary>
+    /// Add a death to a player
+    /// </summary>
+    /// <param name="player">The player to add a death to</param>
+    public static void AddDeath(NetworkPlayerObject player)
+    {
+        player.GetComponent<NetworkPlayerStats>().AddDeath();
+    }
+
+    /// <summary>
+    /// Incremet the kills for the player
+    /// </summary>
+    public void AddMinionKill()
+    {
+        this.MinionKills++;
+    }
+
+    /// <summary>
+    /// Increment the kills for a player
+    /// </summary>
+    /// <param name="player">The player who got the kill</param>
+    public static void AddMinionKill(NetworkPlayerObject player)
+    {
+        player.GetComponent<NetworkPlayerStats>().AddMinionKill();
+    }
+
+    /// <summary>
+    /// Increment the hero kills for the player
+    /// </summary>
+    public void AddHeroKill()
+    {
+        this.HeroKills++;
+    }
+
+    /// <summary>
+    /// Increment the hero kills for a player
+    /// </summary>
+    /// <param name="player">The player who got the hero kill</param>
+    public static void AddHeroKill(NetworkPlayerObject player)
+    {
+        player.GetComponent<NetworkPlayerStats>().AddHeroKill();
+    }
 
     /// <summary>
     /// A function to add gold to a player's gold count
@@ -20,6 +120,7 @@ public class NetworkPlayerStats : NetworkBehaviour {
     public void AddGold(int amount)
     {
         this.Gold += amount;
+        this.TotalGoldEarned += amount;
     }
 
     /// <summary>
@@ -54,6 +155,7 @@ public class NetworkPlayerStats : NetworkBehaviour {
         if (HasEnough(amount))
         {
             SubtractGold(amount);
+            this.GoldSpent += amount;
             return true;
         }
         else
@@ -61,6 +163,7 @@ public class NetworkPlayerStats : NetworkBehaviour {
             return false;
         }
     }
+
     /// <summary>
     /// A function to add gold to a player's gold count
     /// </summary>
