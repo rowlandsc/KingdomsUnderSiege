@@ -23,6 +23,7 @@ TagManager:
   - HeroUI
   - RoundManager
   - HeroPlayer
+  - HeroStructure
   layers:
   - Default
   - TransparentFX
@@ -44,7 +45,7 @@ TagManager:
   - Environment
   - MapPlayArea
   - BaseWalls
-  - 
+  - HeroStructure
   - 
   - 
   - 

@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using System;
 
 /**
  * A class for managing the Minion spawner.
  */
-public class Minion_Spawner : NetworkBehaviour {
+public class Minion_Spawner : NetworkBehaviour, IKillable {
 
     /**
      * Constants Description
@@ -134,5 +135,13 @@ public class Minion_Spawner : NetworkBehaviour {
                 StartCoroutine(PREROUND_WAIT);
             }
         }
+    }
+
+    public void OnDeath()
+    {
+        NetworkPlayerObject player = KUSNetworkManager.OverseerPlayer;
+        player.GetComponent<NetworkPlayerStats>().AddGold(1000);
+
+        Destroy(this.gameObject);
     }
 }
