@@ -107,6 +107,7 @@ GameObject:
   - 114: {fileID: 11423102}
   - 114: {fileID: 11413038}
   - 54: {fileID: 5495304}
+  - 114: {fileID: 11490980}
   m_Layer: 12
   m_Name: Arch
   m_TagString: HeroPlayer
@@ -728,6 +729,17 @@ MonoBehaviour:
   second_icon: {fileID: 2800000, guid: de226bd492b80a041899eee9937a2c37, type: 3}
   super_icon: {fileID: 2800000, guid: eeff49e051316944dad15296f8e68e1b, type: 3}
   enable: 1
+--- !u!114 &11490980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e715f8e43a684f5408d98fe6b4cba476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
