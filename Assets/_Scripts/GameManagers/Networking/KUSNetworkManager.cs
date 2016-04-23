@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class KUSNetworkManager : NetworkManager {
 
@@ -9,6 +10,16 @@ public class KUSNetworkManager : NetworkManager {
         get {
             PlayerController player = singleton.client.connection.playerControllers[0];
             return player.gameObject.GetComponent<NetworkPlayerObject>();
+        }
+    }
+    public static NetworkPlayerObject LocalPlayer {
+        get {
+            List<PlayerController> playerControllers = singleton.client.connection.playerControllers;
+            for (int i=0; i<playerControllers.Count; i++) {
+                if (playerControllers[i].unetView.isLocalPlayer)
+                    return playerControllers[i].gameObject.GetComponent<NetworkPlayerObject>();
+            }
+            return null;
         }
     }
 

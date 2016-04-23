@@ -12,6 +12,7 @@ public class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelectable {
 
     private MapCircleDrawer _mapCircleDrawer = null;
     private ProfileSystem _towerStats;
+    private bool _localPlayerIsOverseer = false;
 
 	void Start () {
         _mapCircleDrawer = GetComponent<MapCircleDrawer>();
@@ -24,6 +25,9 @@ public class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelectable {
 
     void OnEnable() {
         TowerPlacer.Instance.TowerList.Add(this);
+        if (KUSNetworkManager.LocalPlayer.Class == NetworkPlayerObject.PlayerClass.OVERSEER) {
+            _localPlayerIsOverseer = true;
+        }
         RegisterAsSelectable();
     }
 
@@ -60,10 +64,10 @@ public class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelectable {
     }
 
     public void RegisterAsSelectable() {
-        ObjectSelector.Selectables.Add(this);
+        if (_localPlayerIsOverseer) ObjectSelector.Selectables.Add(this);
     }
     public void UnregisterAsSelectable() {
-        ObjectSelector.Selectables.Remove(this);
+        if (_localPlayerIsOverseer) ObjectSelector.Selectables.Remove(this);
     }
     
     public Collider GetSelectionCollider() {
