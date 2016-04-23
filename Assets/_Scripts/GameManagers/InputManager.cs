@@ -48,6 +48,12 @@ public class InputManager : MonoBehaviour {
         }
     }
 
+    public bool OverseerSelectTower {
+        get {
+            return Input.GetMouseButton(0);
+        }
+    }
+
     public bool OverseerRotateTower {
         get {
             return Input.GetMouseButton(1);

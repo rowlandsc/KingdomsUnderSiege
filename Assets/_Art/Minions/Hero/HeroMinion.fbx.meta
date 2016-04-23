@@ -1,15 +1,42 @@
 fileFormatVersion: 2
-guid: 96a6040a9137c4086b65bf31ea7c9e6d
-timeCreated: 1448697475
-licenseType: Free
+guid: 019b55bc24d974b22a6efe922880a478
+timeCreated: 1461026137
+licenseType: Pro
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
+    100002: HeroMinionBody
+    100004: HeroMinionHead
+    100006: HeroMinionLeftHand
+    100008: HeroMinionLeftLeg
+    100010: HeroMinionRightHand
+    100012: HeroMinionRightLeg
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: EnemyMinionV01Combined
+    400002: HeroMinionBody
+    400004: HeroMinionHead
+    400006: HeroMinionLeftHand
+    400008: HeroMinionLeftLeg
+    400010: HeroMinionRightHand
+    400012: HeroMinionRightLeg
+    2300000: HeroMinionBody
+    2300002: HeroMinionHead
+    2300004: HeroMinionLeftHand
+    2300006: HeroMinionLeftLeg
+    2300008: HeroMinionRightHand
+    2300010: HeroMinionRightLeg
+    3300000: HeroMinionBody
+    3300002: HeroMinionHead
+    3300004: HeroMinionLeftHand
+    3300006: HeroMinionLeftLeg
+    3300008: HeroMinionRightHand
+    3300010: HeroMinionRightLeg
+    4300000: HeroMinionBody
+    4300002: HeroMinionHead
+    4300004: HeroMinionRightLeg
+    4300006: HeroMinionLeftLeg
+    4300008: HeroMinionRightHand
+    4300010: HeroMinionLeftHand
   materials:
     importMaterials: 1
     materialName: 0
@@ -33,7 +60,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 50
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
