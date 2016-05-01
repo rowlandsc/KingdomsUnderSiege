@@ -15,6 +15,9 @@ public class TowerPlacer : NetworkBehaviour {
     public bool TowerPlaceLocationValid = true;
     public Vector3 TowerPlaceLocation;
     public string TowerToPlaceID = "TowerArcher1";
+    public string ArcherTowerID = "TowerArcher1";
+    public string MortarTowerID = "TowerMortar1";
+    public string MageTowerID = "TowerMagic1";
     public NetworkIdentity OverseerPlayer;
 
     private Transform _towerParent = null;
@@ -22,6 +25,44 @@ public class TowerPlacer : NetworkBehaviour {
     public Transform _heroTowerMarker = null;
     private bool _lastTowerPlaceModeOn = false;
     private bool _canPlaceTowers = true;
+
+
+    private float archerTowerCost = 0;
+    private float mortarTowerCost = 0;
+    private float mageTowerCost = 0;
+    private NetworkPlayerStats overseerStats;
+
+    public bool CanPlaceTowers {
+        get {
+            return _canPlaceTowers;
+        }
+    }
+    public bool CanPlaceArcherTower {
+        get {
+            int overseerGold = overseerStats.Gold;
+            return (CanPlaceTowers && (overseerGold >= archerTowerCost));
+        }
+    }
+    public bool CanPlaceMortarTower {
+        get {
+            int overseerGold = overseerStats.Gold;
+            return (CanPlaceTowers && (overseerGold >= mortarTowerCost));
+        }
+    }
+    public bool CanPlaceMageTower {
+        get {
+            int overseerGold = overseerStats.Gold;
+            return (CanPlaceTowers && (overseerGold >= mageTowerCost));
+        }
+    }
+    public bool CanPlaceCurrentTower {
+        get {
+            if (TowerToPlaceID == ArcherTowerID) return CanPlaceArcherTower;
+            if (TowerToPlaceID == MortarTowerID) return CanPlaceMortarTower;
+            if (TowerToPlaceID == MageTowerID) return CanPlaceMageTower;
+            return true;
+        }
+    }
 
 
     void Awake() {
@@ -32,17 +73,18 @@ public class TowerPlacer : NetworkBehaviour {
            // Destroy(this);
         }
     }
+    
 
     void OnEnable()
     {
-        RoundManager.AddListener("RoundEnded", CanPlaceTowers);
-        RoundManager.AddListener("PreroundEnded", CannotPlaceTowers);
+        RoundManager.AddListener("RoundEnded", SetCanPlaceTowers);
+        RoundManager.AddListener("PreroundEnded", SetCannotPlaceTowers);
     }
 
     void OnDisable()
     {
-        RoundManager.RemoveListener("RoundEnded", CanPlaceTowers);
-        RoundManager.RemoveListener("PreroundEnded", CannotPlaceTowers);
+        RoundManager.RemoveListener("RoundEnded", SetCanPlaceTowers);
+        RoundManager.RemoveListener("PreroundEnded", SetCannotPlaceTowers);
     }
 
     void Start()
@@ -51,6 +93,11 @@ public class TowerPlacer : NetworkBehaviour {
         _towerParent = GameObject.Find("Towers").transform;
         _overseerTowerMarker = _towerParent.FindChild("OverseerBaseMarker");
         _heroTowerMarker = _towerParent.FindChild("HeroBaseMarker");
+
+        overseerStats = KUSNetworkManager.LocalPlayer.GetComponent<NetworkPlayerStats>();
+        archerTowerCost = PrefabCache.Instance.PrefabIndex[ArcherTowerID].GetComponent<ProfileSystem>().Worth;
+        mortarTowerCost = PrefabCache.Instance.PrefabIndex[MortarTowerID].GetComponent<ProfileSystem>().Worth;
+        mageTowerCost = PrefabCache.Instance.PrefabIndex[MageTowerID].GetComponent<ProfileSystem>().Worth;
     }
 	
 	void Update() {
@@ -60,6 +107,10 @@ public class TowerPlacer : NetworkBehaviour {
         //}
 
         if (TowerPlaceModeOn) {
+            if (!CanPlaceCurrentTower) {
+                StopPlacingTower();
+                return;
+            }
 
             if (!_lastTowerPlaceModeOn) {
                 foreach (Tower t in TowerList) {
@@ -137,12 +188,12 @@ public class TowerPlacer : NetworkBehaviour {
         TowerToPlaceID = "";
     }
 
-    void CanPlaceTowers()
+    void SetCanPlaceTowers()
     {
         this._canPlaceTowers = true;
     }
 
-    void CannotPlaceTowers()
+    void SetCannotPlaceTowers()
     {
         this._canPlaceTowers = false;
         this.TowerPlaceModeOn = false;

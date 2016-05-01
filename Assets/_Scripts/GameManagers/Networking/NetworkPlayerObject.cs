@@ -123,6 +123,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
         Tower tower = GameObject.Instantiate(PrefabCache.Instance.PrefabIndex[prefabID]).GetComponent<Tower>();
         tower.transform.position = position;
         tower.transform.rotation = rotation;
+        player.gameObject.GetComponent<NetworkPlayerStats>().Gold -= PrefabCache.Instance.PrefabIndex[prefabID].GetComponent<ProfileSystem>().Worth;
         //tower.transform.rotation = transform.rotation;
         NetworkServer.Spawn(tower.gameObject);
 

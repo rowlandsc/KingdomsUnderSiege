@@ -14,6 +14,7 @@ public class OverseerTowerMenuUI : MonoBehaviour {
 
     public TowerPlacer TowerPlacer;
 
+
     private bool slidOut = false;
 
 	void Start () {
@@ -21,10 +22,14 @@ public class OverseerTowerMenuUI : MonoBehaviour {
         ArcherTowerButton.onClick.AddListener(OnSelectArcherButton);
         MortarTowerButton.onClick.AddListener(OnSelectMortarButton);
         MageTowerButton.onClick.AddListener(OnSelectMageButton);
-	}
+
+        
+    }
 	
 	void Update () {
-	    
+        ArcherTowerButton.interactable = TowerPlacer.CanPlaceArcherTower;
+        MortarTowerButton.interactable = TowerPlacer.CanPlaceMortarTower;
+        MageTowerButton.interactable = TowerPlacer.CanPlaceMageTower;
 	}
 
     public void OnSelectShowButton() {
@@ -39,17 +44,17 @@ public class OverseerTowerMenuUI : MonoBehaviour {
 
     public void OnSelectArcherButton() {
         TowerPlacer.StopPlacingTower();
-        TowerPlacer.StartPlacingTower("TowerArcher1");
+        TowerPlacer.StartPlacingTower(TowerPlacer.ArcherTowerID);
     }
 
     public void OnSelectMortarButton() {
         TowerPlacer.StopPlacingTower();
-        TowerPlacer.StartPlacingTower("TowerMortar1");
+        TowerPlacer.StartPlacingTower(TowerPlacer.MortarTowerID);
     }
 
     public void OnSelectMageButton() {
         TowerPlacer.StopPlacingTower();
-        TowerPlacer.StartPlacingTower("TowerMagic1");
+        TowerPlacer.StartPlacingTower(TowerPlacer.MageTowerID);
     }
 
     IEnumerator SlideOut() {

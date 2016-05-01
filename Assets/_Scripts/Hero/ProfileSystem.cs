@@ -16,7 +16,7 @@ public class ProfileSystem : NetworkBehaviour {
     public NetworkInstanceId Killer = NetworkInstanceId.Invalid;
 
     [SyncVar]
-    public float Worth = 100f;
+    public int Worth = 100;
 
     [SyncVar]
     public float baseHealthPoints = 100f;
