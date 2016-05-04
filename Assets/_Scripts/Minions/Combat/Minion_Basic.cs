@@ -10,7 +10,7 @@ using System.Collections;
  * The basic Minion implementation.
  * Has a basic melee attack.
  */
-public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable {
+public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectSelector.ISelectable {
 
     /**
      * Private Variables
@@ -37,11 +37,13 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable {
     void OnEnable()
     {
         RoundManager.AddListener("RoundEnded", OnDeath);
+        RegisterAsSelectable();
     }
 
     void OnDisable()
     {
         RoundManager.RemoveListener("RoundEnded", OnDeath);
+        UnregisterAsSelectable();
     }
 
     /**
@@ -120,5 +122,21 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable {
         RoundManager.RemoveListener("RoundEnded", OnDeath);
 
         Destroy(this.gameObject);
+    }
+
+
+    public GameObject GameObject {
+        get { return gameObject; }
+    }
+
+    public void RegisterAsSelectable() {
+        if (KUSNetworkManager.LocalPlayer.Class == NetworkPlayerObject.PlayerClass.OVERSEER) ObjectSelector.Selectables.Add(this);
+    }
+    public void UnregisterAsSelectable() {
+        if (KUSNetworkManager.LocalPlayer.Class == NetworkPlayerObject.PlayerClass.OVERSEER) ObjectSelector.Selectables.Remove(this);
+    }
+
+    public Collider GetSelectionCollider() {
+        return GetComponent<Collider>();
     }
 }

@@ -104,6 +104,7 @@ public class TowerPlacementTester : NetworkBehaviour
             {
                 _mapCircleDrawer.SetCircleVisible(true);
             }
+            _mapCircleDrawer.CirclePosition = transform.position;
             _mapCircleDrawer.UpdateCircle();
         }
         else {

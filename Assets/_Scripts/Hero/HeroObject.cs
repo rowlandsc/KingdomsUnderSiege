@@ -3,7 +3,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using DG.Tweening;
 
-public class HeroObject : NetworkBehaviour, IKillable {
+public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectable {
     private GameObject Mage_birthplace;
     private GameObject Knight_birthplace;
     private GameObject Arch_birthplace;
@@ -80,5 +80,20 @@ public class HeroObject : NetworkBehaviour, IKillable {
         _ps.baseHealthPoints = _ps.MaxHealthPoints;
         _ps.baseMagicPoints = _ps.MaxMagicPoints;
 
+    }
+
+    public GameObject GameObject {
+        get { return gameObject; }
+    }
+
+    public void RegisterAsSelectable() {
+        if (KUSNetworkManager.LocalPlayer.Class == NetworkPlayerObject.PlayerClass.OVERSEER) ObjectSelector.Selectables.Add(this);
+    }
+    public void UnregisterAsSelectable() {
+        if (KUSNetworkManager.LocalPlayer.Class == NetworkPlayerObject.PlayerClass.OVERSEER) ObjectSelector.Selectables.Remove(this);
+    }
+
+    public Collider GetSelectionCollider() {
+        return GetComponent<Collider>();
     }
 }

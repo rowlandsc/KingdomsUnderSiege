@@ -18,6 +18,7 @@ public class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelectable {
         _mapCircleDrawer = GetComponent<MapCircleDrawer>();
         _mapCircleDrawer.GameMap = Map.Instance;
         _mapCircleDrawer.CircleRadius = Radius;
+        _mapCircleDrawer.CirclePosition = transform.position;
         _mapCircleDrawer.UpdateCircle();
         _mapCircleDrawer.SetCircleVisible(false);
         this._towerStats = GetComponent<ProfileSystem>();

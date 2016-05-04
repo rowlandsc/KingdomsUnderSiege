@@ -24,6 +24,7 @@ public class ObjectSelector : NetworkBehaviour {
     public GameObject SelectedObject = null;
     public TowerPlacer TowerPlacer = null;
 
+    private MapCircleDrawer _mapCircleDrawer;
 
     void Awake() {
         if (Instance == null) {
@@ -37,6 +38,9 @@ public class ObjectSelector : NetworkBehaviour {
     void Start() {
         this.GameMap = GameObject.Find("Map").GetComponent<Map>();
         TowerPlacer = TowerPlacer.Instance;
+        _mapCircleDrawer = GetComponent<MapCircleDrawer>();
+        _mapCircleDrawer.GameMap = Map.Instance;
+        _mapCircleDrawer.SetCircleVisible(false);
     }
 
     void Update() {
@@ -47,18 +51,34 @@ public class ObjectSelector : NetworkBehaviour {
                 RaycastHit hit;
                 Physics.Raycast(ray, out hit, Cam.transform.position.y * 4);
 
+                bool found = false;
                 for (int i = 0; i < Selectables.Count; i++) {
                     Collider towerCol = Selectables[i].GetSelectionCollider();
                     if (hit.collider == towerCol) {
                         Selected = Selectables[i];
+                        _mapCircleDrawer.CircleRadius = Selected.GetSelectionCollider().bounds.extents.magnitude;
+                        found = true;
                         break;
                     }
+                }
+                if (!found) {
+                    Selected = null;
+                    SelectedObject = null;
+                    _mapCircleDrawer.SetCircleVisible(false);
                 }
             }
         }
 
         SelectedObject = (Selected != null) ? Selected.GameObject : null ;
         
+        if (SelectedObject != null) {
+            _mapCircleDrawer.SetCircleVisible(true);
+            _mapCircleDrawer.CirclePosition = SelectedObject.transform.position;
+            _mapCircleDrawer.UpdateCircle();
+        }
+        else {
+            _mapCircleDrawer.SetCircleVisible(false);
+        }
     }
 
     void OnDrawGizmos() {

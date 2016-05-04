@@ -4,6 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(LineRenderer))]
 public class MapCircleDrawer : MonoBehaviour {
     public Map GameMap;
+    public Vector3 CirclePosition = new Vector3(0, 0, 0);
     public float CircleThetaScale = 0.01f;
     public float CircleRadius = 0f;
     public Color CircleColor;
@@ -30,8 +31,8 @@ public class MapCircleDrawer : MonoBehaviour {
                 theta += (2.0f * Mathf.PI * CircleThetaScale);
                 float x = CircleRadius * Mathf.Cos(theta);
                 float z = CircleRadius * Mathf.Sin(theta);
-                x += gameObject.transform.position.x;
-                z += gameObject.transform.position.z;
+                x += CirclePosition.x;
+                z += CirclePosition.z;
                 pos = GameMap.GetMapPositionAtPoint(x, z) + PositionOffset;
                 _lineRenderer.SetPosition(i, pos);
             }
