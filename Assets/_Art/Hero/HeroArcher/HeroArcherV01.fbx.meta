@@ -12,6 +12,16 @@ ModelImporter:
     100008: HeroArcherRightHand
     100010: HeroArcherRightLeg
     100012: //RootNode
+    100014: HeroArcher
+    100016: HeroKnight
+    100018: HeroKnightBody
+    100020: HeroKnightHead
+    100022: HeroKnightLeftHand
+    100024: HeroKnightleftLeg
+    100026: HeroKnightRightHand
+    100028: HeroKnightRightLeg
+    100030: ShoulderLeft
+    100032: ShoulderRight
     400000: HeroArcherBody
     400002: HeroArcherHead
     400004: HeroArcherLeftHand
@@ -19,24 +29,58 @@ ModelImporter:
     400008: HeroArcherRightHand
     400010: HeroArcherRightLeg
     400012: //RootNode
+    400014: HeroArcher
+    400016: HeroKnight
+    400018: HeroKnightBody
+    400020: HeroKnightHead
+    400022: HeroKnightLeftHand
+    400024: HeroKnightleftLeg
+    400026: HeroKnightRightHand
+    400028: HeroKnightRightLeg
+    400030: ShoulderLeft
+    400032: ShoulderRight
     2300000: HeroArcherBody
     2300002: HeroArcherHead
     2300004: HeroArcherLeftHand
     2300006: HeroArcherLeftLeg
     2300008: HeroArcherRightHand
     2300010: HeroArcherRightLeg
+    2300012: HeroKnightBody
+    2300014: HeroKnightHead
+    2300016: HeroKnightLeftHand
+    2300018: HeroKnightleftLeg
+    2300020: HeroKnightRightHand
+    2300022: HeroKnightRightLeg
+    2300024: ShoulderLeft
+    2300026: ShoulderRight
     3300000: HeroArcherBody
     3300002: HeroArcherHead
     3300004: HeroArcherLeftHand
     3300006: HeroArcherLeftLeg
     3300008: HeroArcherRightHand
     3300010: HeroArcherRightLeg
+    3300012: HeroKnightBody
+    3300014: HeroKnightHead
+    3300016: HeroKnightLeftHand
+    3300018: HeroKnightleftLeg
+    3300020: HeroKnightRightHand
+    3300022: HeroKnightRightLeg
+    3300024: ShoulderLeft
+    3300026: ShoulderRight
     4300000: HeroArcherHead
     4300002: HeroArcherBody
     4300004: HeroArcherLeftHand
     4300006: HeroArcherRightHand
     4300008: HeroArcherRightLeg
     4300010: HeroArcherLeftLeg
+    4300012: HeroKnightHead
+    4300014: HeroKnightBody
+    4300016: ShoulderRight
+    4300018: ShoulderLeft
+    4300020: HeroKnightleftLeg
+    4300022: HeroKnightRightHand
+    4300024: HeroKnightLeftHand
+    4300026: HeroKnightRightLeg
   materials:
     importMaterials: 1
     materialName: 0
@@ -61,7 +105,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 50
+    globalScale: 55
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
