@@ -15,6 +15,8 @@ GameObject:
   - 114: {fileID: 11456850}
   - 65: {fileID: 6509112}
   - 54: {fileID: 5433992}
+  - 114: {fileID: 11413860}
+  - 65: {fileID: 6579190}
   m_Layer: 20
   m_Name: HeroMinionSpawner
   m_TagString: HeroStructure
@@ -158,6 +160,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.535369, y: 1.9112258, z: 2.462259}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6579190
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.535369, y: 1.9112258, z: 2.462259}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11413860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a832f0a9ff9df4c4ea0ef66ddf705cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11421638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,10 +227,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDead: 0
-  Worth: 100
-  baseHealthPoints: 100
+  Worth: 1000
+  baseHealthPoints: 200
   baseMagicPoints: 100
-  baseMaxHealthPoints: 100
+  baseMaxHealthPoints: 200
   baseMaxMagicPoints: 100
   DefendPoints: 0
   haveMoney: 0

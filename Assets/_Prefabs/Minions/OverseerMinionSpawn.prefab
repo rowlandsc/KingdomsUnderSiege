@@ -12,9 +12,12 @@ GameObject:
   - 23: {fileID: 2331718}
   - 114: {fileID: 11428494}
   - 114: {fileID: 11448680}
-  m_Layer: 0
+  - 114: {fileID: 11429722}
+  - 114: {fileID: 11421838}
+  - 65: {fileID: 6567150}
+  m_Layer: 9
   m_Name: OverseerMinionSpawner 1
-  m_TagString: Untagged
+  m_TagString: OverseerPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +46,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456528}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,6 +131,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137882}
   m_Mesh: {fileID: 4300000, guid: 6d7ba00e406554344a26a6beb257b31b, type: 3}
+--- !u!65 &6567150
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137882}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.540373, y: 1.8577338, z: 2.2948015}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11421838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDead: 0
+  Worth: 1000
+  baseHealthPoints: 500
+  baseMagicPoints: 100
+  baseMaxHealthPoints: 500
+  baseMaxMagicPoints: 100
+  DefendPoints: 0
+  haveMoney: 0
+  baseMeleeDamageDealt: 5
+  baseSecondDamageDealt: 12
+  baseSuperDamageDealt: 40
+  baseHealthRegen: 0
+  baseMagicRegen: 1
+  baseMoveSpeed: 1.5
+  baseAttackSpeed: 1.5
+  baseAttackFrequency: 1
+  baseAttackRange: 1
+  damagePOP: {fileID: 0}
+  death: {fileID: 0}
 --- !u!114 &11425146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,6 +237,19 @@ MonoBehaviour:
     i15: 146
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &11429722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfe8977e1cc39e45b97d1820a9ce1b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDead: 0
+  RespawnTime: 100
 --- !u!114 &11448680
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6,7 +6,7 @@ using System;
 /**
  * A class for managing the Minion spawner.
  */
-public class Minion_Spawner : NetworkBehaviour, IKillable {
+public class Minion_Spawner : NetworkBehaviour {
 
     /**
      * Constants Description
@@ -135,13 +135,5 @@ public class Minion_Spawner : NetworkBehaviour, IKillable {
                 StartCoroutine(PREROUND_WAIT);
             }
         }
-    }
-
-    public void OnDeath()
-    {
-        NetworkPlayerObject player = KUSNetworkManager.OverseerPlayer;
-        player.GetComponent<NetworkPlayerStats>().AddGold(1000);
-
-        Destroy(this.gameObject);
     }
 }

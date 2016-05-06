@@ -25,6 +25,8 @@ GameObject:
   - 4: {fileID: 448132}
   - 114: {fileID: 11442602}
   - 114: {fileID: 11492438}
+  - 114: {fileID: 11415744}
+  - 114: {fileID: 11487604}
   m_Layer: 8
   m_Name: HeroMinionSpawner
   m_TagString: GameController
@@ -57,6 +59,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 448132}
   m_RootOrder: 0
+--- !u!114 &11415744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a832f0a9ff9df4c4ea0ef66ddf705cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11442602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,6 +86,36 @@ MonoBehaviour:
   NumberToSpawn: 5
   SpawnDelay: 20
   TimeBetweenMinions: 1
+--- !u!114 &11487604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDead: 0
+  Worth: 1000
+  baseHealthPoints: 300
+  baseMagicPoints: 100
+  baseMaxHealthPoints: 100
+  baseMaxMagicPoints: 100
+  DefendPoints: 0
+  haveMoney: 0
+  baseMeleeDamageDealt: 5
+  baseSecondDamageDealt: 12
+  baseSuperDamageDealt: 40
+  baseHealthRegen: 0.2
+  baseMagicRegen: 1
+  baseMoveSpeed: 1.5
+  baseAttackSpeed: 1.5
+  baseAttackFrequency: 1
+  baseAttackRange: 1
+  damagePOP: {fileID: 0}
+  death: {fileID: 0}
 --- !u!114 &11492438
 MonoBehaviour:
   m_ObjectHideFlags: 1
