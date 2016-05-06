@@ -13,6 +13,9 @@ public class ObjectSelector : NetworkBehaviour {
         Collider GetSelectionCollider();
     }
 
+    public delegate void dNewSelection(GameObject selectedObject);
+    public static event dNewSelection eOnNewSelection;
+
     public static ObjectSelector Instance;
     public static List<ISelectable> Selectables = new List<ISelectable>();
 
@@ -47,6 +50,7 @@ public class ObjectSelector : NetworkBehaviour {
 
         if (!TowerPlacer.TowerPlaceModeOn) {
             if (InputManager.Instance.OverseerSelect) {
+                GameObject oldSelection = SelectedObject;
                 Ray ray = Cam.Camera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 Physics.Raycast(ray, out hit, Cam.transform.position.y * 4);
@@ -65,6 +69,13 @@ public class ObjectSelector : NetworkBehaviour {
                     Selected = null;
                     SelectedObject = null;
                     _mapCircleDrawer.SetCircleVisible(false);
+                }
+                else {
+                    SelectedObject = Selected.GameObject;
+                }
+
+                if (SelectedObject != oldSelection) {
+                    if (eOnNewSelection != null) eOnNewSelection(SelectedObject);
                 }
             }
         }
