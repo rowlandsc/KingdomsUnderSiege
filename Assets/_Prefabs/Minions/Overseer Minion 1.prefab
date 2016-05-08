@@ -640,7 +640,7 @@ MonoBehaviour:
   DetectionRange: 20
   TargetEnemy:
     serializedVersion: 2
-    m_Bits: 1048832
+    m_Bits: 1052928
 --- !u!114 &11469342
 MonoBehaviour:
   m_ObjectHideFlags: 1
