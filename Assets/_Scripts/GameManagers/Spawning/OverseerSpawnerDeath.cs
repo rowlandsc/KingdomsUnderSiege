@@ -8,6 +8,11 @@ public class OverseerSpawnerDeath : NetworkBehaviour, IKillable {
     public bool isDead = false;
     public int RespawnTime = 100;
 
+
+    public delegate void Died();
+    public static event Died spawnerDied;
+    public static event Died spawnerRespawned;
+
 	public void OnDeath()
     {
         int goldAmount = GetComponent<ProfileSystem>().Worth;
@@ -30,6 +35,7 @@ public class OverseerSpawnerDeath : NetworkBehaviour, IKillable {
 
             this.isDead = true;
             GetComponent<ProfileSystem>().baseHealthPoints = 1000f;
+            spawnerDied();
             StartCoroutine(respawnTimer());
         }
     }
@@ -39,6 +45,7 @@ public class OverseerSpawnerDeath : NetworkBehaviour, IKillable {
         yield return new WaitForSeconds(RespawnTime);
         this.isDead = false;
         GetComponent<ProfileSystem>().baseHealthPoints = GetComponent<ProfileSystem>().MaxHealthPoints;
+        spawnerRespawned();
     }
     
 }
