@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 275.15656, y: 19.819057, z: 264.2818}
+  m_LocalPosition: {x: 540.4023, y: 339.68433, z: -226.5406}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,6 +84,7 @@ MonoBehaviour:
     - OverseerObjectSelector
     - OverseerTowerPlacer
     - OverseerTowerUpgrader
+    - OverseerTowerUpgradeUI
     - OverseerUI
     - TowerArcher1
     - TowerMagic1
@@ -99,6 +100,7 @@ MonoBehaviour:
     - {fileID: 130276, guid: 4794ad71281fc4e43827236381e6328f, type: 2}
     - {fileID: 130276, guid: e7ac62775e0c14235bd94b8a58fdc688, type: 2}
     - {fileID: 130276, guid: 4794ad71281fc4e43827236381e6328f, type: 2}
+    - {fileID: 105636, guid: af81f9f92b96e6247adda433c2465f52, type: 2}
     - {fileID: 130880, guid: e97faf6136f71774ca330ecd83eb83d7, type: 2}
     - {fileID: 181652, guid: 3c495dd3c3f17ac43aab8e68ed15de81, type: 2}
     - {fileID: 113450, guid: 9e40221467735c14d8f1284ea8e9639a, type: 2}

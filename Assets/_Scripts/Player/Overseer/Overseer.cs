@@ -34,5 +34,7 @@ public class Overseer : Player {
         objectSelector.OverseerPlayer = towerPlacer.OverseerPlayer;
         GameObject overseerUI = Instantiate(PrefabCache.Instance.PrefabIndex["OverseerUI"]);
         overseerUI.transform.FindChild("TowerMenu").GetComponent<OverseerTowerMenuUI>().TowerPlacer = towerPlacer;
-	}
+        GameObject overseerTowerUpgradeUI = Instantiate(PrefabCache.Instance.PrefabIndex["OverseerTowerUpgradeUI"]);
+        overseerTowerUpgradeUI.GetComponent<OverseerTowerUpgradeUI>().ObjectSelector = objectSelector;
+    }
 }
