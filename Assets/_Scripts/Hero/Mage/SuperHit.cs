@@ -38,28 +38,31 @@ public class SuperHit : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 
 
-		if(col.tag!="IceBullet"&&col.tag!="Player"&&col.tag!="HealthBar"){
+		if(col.tag!="IceBullet"&&col.tag!="HeroPlayer"&&col.tag!="HealthBar"){
 			
-		ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-		ending.AddComponent<DestoryselfAfterfewsecond>();
+			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
+			ending.AddComponent<DestoryselfAfterfewsecond>();
+				
+				if(col.GetComponent<Testmove>()){
+						col.GetComponent<Testmove>().canMove=true;
+				}
 
-		if(col.GetComponent<Testmove>())
-		{col.GetComponent<Testmove>().canMove=true;}
+	            /*if(col.gameObject.GetComponent<ProfileSystem>()){
 
-            /*if(col.gameObject.GetComponent<ProfileSystem>()){
+	                if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().SuperDamageDealt))
+	                {player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
 
-                if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().SuperDamageDealt))
-                {player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
+	            }*/
 
-            }*/
-            ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
-            if (colProfile) {
-                ProfileEffect hitEffect = new ProfileEffect(Mage.netId, healthPointsAdd: -1 * mageStats.SuperDamageDealt);
-                KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);
-            }
+				ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
+	            if (colProfile) {
+	                ProfileEffect hitEffect = new ProfileEffect(Mage.netId, healthPointsAdd: -1 * mageStats.SuperDamageDealt);
+	                KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);
+	            }
 
-            Destroy(this.gameObject);
-		}
+	            Destroy(this.gameObject);
+			}
+
 		
 	}
 	

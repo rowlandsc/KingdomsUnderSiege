@@ -1005,7 +1005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 6
-  distance: 20
+  distance: 40
   mp_use: 10
   holdingtime: 3
   cooldown_timer: 0
@@ -4164,6 +4164,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: haveMoney
       value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: distance
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

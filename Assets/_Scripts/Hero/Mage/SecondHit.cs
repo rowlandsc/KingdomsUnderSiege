@@ -43,7 +43,7 @@ public class SecondHit : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
 		
 
-		if(col.gameObject.tag!="Player"&&col.gameObject.tag!="IceBullet"){
+		if(col.gameObject.tag!="HeroPlayer"&&col.gameObject.tag!="IceBullet"){
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
 			ending.AddComponent<DestoryselfAfterfewsecond>();
 

@@ -7,7 +7,7 @@ public class ArchMelee : MonoBehaviour {
 
 	public GameObject arch;
 	public float cooldown=0.5f;
-	public float distance=30f;
+	public float distance=50f;
 	
 	private bool canAttack;
 	public float timer;

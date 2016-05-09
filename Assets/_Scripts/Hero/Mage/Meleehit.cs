@@ -44,7 +44,7 @@ public class Meleehit : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider col){
 
-        if (col.gameObject.tag != "Player") {
+		if (col.gameObject.tag != "HeroPlayer") {
             ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
             ending.AddComponent<DestoryselfAfterfewsecond>();
 

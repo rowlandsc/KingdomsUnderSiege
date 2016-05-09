@@ -42,9 +42,7 @@ public class ArchSuperHit : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col){
 
-
-
-		if(col.gameObject.tag!="Player" && col.gameObject.name!="SpinningLightning(Clone)"){
+		if(col.gameObject.tag!="HeroPlayer" && col.gameObject.name!="SpinningLightning(Clone)"){
 		    ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
 		    ending.AddComponent<DestoryselfAfterfewsecond>();
 
