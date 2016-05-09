@@ -65,7 +65,7 @@ public class OverseerTowerUpgradeUI : MonoBehaviour {
             SpeedField.text = profileSystem.AttackSpeed.ToString();
             FrequencyField.text = profileSystem.AttackFrequency.ToString();
             RangeField.text = profileSystem.AttackRange.ToString();
-
+            
         }
         else {
             MenuRect.gameObject.SetActive(false);
