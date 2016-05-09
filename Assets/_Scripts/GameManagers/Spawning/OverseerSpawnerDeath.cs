@@ -22,6 +22,6 @@ public class OverseerSpawnerDeath : NetworkBehaviour, IKillable {
                 NetworkPlayerStats.AddGold(KUSNetworkManager.ArcherPlayer, goldAmount);
             }
 
-            Destroy(this.gameObject);
+        Destroy(this.gameObject.transform.parent.gameObject);
     }    
 }
