@@ -35,30 +35,36 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 
     public void OnDeath()
     {
-        this.gameObject.transform.DOMove(deathPoint.transform.position, 0.5f, false);
-        this.gameObject.GetComponent<Rigidbody>().useGravity = false;
-        _ps.baseHealthPoints = _ps.MaxHealthPoints;
-        NetworkPlayerOwner playerOwner = this.GetComponent<NetworkPlayerOwner>();
-        NetworkPlayerStats stats = playerOwner.Owner.GetComponent<NetworkPlayerStats>();
-        stats.AddDeath();
-        if (_ps.Killer != NetworkInstanceId.Invalid)
-        {
-            if (isServer)
-            {
-                GameObject player = NetworkServer.FindLocalObject(_ps.Killer);
-                NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
-                playerStats.AddGold((int)_ps.Worth);
-                playerStats.AddHeroKill();
-            }
-            else
-            {
-                GameObject player = ClientScene.FindLocalObject(_ps.Killer);
-                NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
-                playerStats.AddGold((int)_ps.Worth);
-                playerStats.AddHeroKill();
-            }
-        }
-        StartCoroutine(respawn());
+		if(_playerInput.CheckLocalPlayer != 1) {
+			
+		} else {
+			
+			this.gameObject.transform.DOMove(deathPoint.transform.position, 0.5f, false);
+			this.gameObject.GetComponent<Rigidbody>().useGravity = false;
+			_ps.baseHealthPoints = _ps.MaxHealthPoints;
+			NetworkPlayerOwner playerOwner = this.GetComponent<NetworkPlayerOwner>();
+			NetworkPlayerStats stats = playerOwner.Owner.GetComponent<NetworkPlayerStats>();
+			stats.AddDeath();
+			if (_ps.Killer != NetworkInstanceId.Invalid)
+			{
+				if (isServer)
+				{
+					GameObject player = NetworkServer.FindLocalObject(_ps.Killer);
+					NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+					playerStats.AddGold((int)_ps.Worth);
+					playerStats.AddHeroKill();
+				}
+				else
+				{
+					GameObject player = ClientScene.FindLocalObject(_ps.Killer);
+					NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+					playerStats.AddGold((int)_ps.Worth);
+					playerStats.AddHeroKill();
+				}
+			}
+			StartCoroutine(respawn());
+		}
+        
     }
 
     public IEnumerator respawn()
