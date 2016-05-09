@@ -12,6 +12,7 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 
     string herorespwn_words = "";
     float herorespwn_timer = 10f;
+	bool herodie = false;
 
     // Use this for initialization
     void Start () {
@@ -29,6 +30,7 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 
     public void OnDeath()
     {
+		herodie = true;
         this.gameObject.transform.DOMove(deathPoint.transform.position, 0.5f, false);
         this.gameObject.GetComponent<Rigidbody>().useGravity = false;
         _ps.baseHealthPoints = _ps.MaxHealthPoints;
@@ -57,6 +59,7 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 
     public IEnumerator respawn()
     {
+		herodie = false;
         herorespwn_words = "Respawn in " + ((int)Mathf.Round(herorespwn_timer)).ToString() + " seconds";
         yield return new WaitForSeconds(herorespwn_timer);
 
@@ -96,4 +99,11 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
     public Collider GetSelectionCollider() {
         return GetComponent<Collider>();
     }
+
+	void OnGUI() {
+		if (herodie ==  true) {
+			GUI.Label(new Rect(Screen.width/2-Screen.width/8, Screen.height/2, 1000, 1000), herorespwn_words);
+		}
+	}
+
 }
