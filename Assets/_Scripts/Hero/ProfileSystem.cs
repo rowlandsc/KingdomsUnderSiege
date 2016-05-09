@@ -240,19 +240,7 @@ public class ProfileSystem : NetworkBehaviour {
 		}
 
         if(HealthPoints<=0){
-            //death_ = Instantiate(death_, this.transform.position, Quaternion.identity) as GameObject;
-			//death_.AddComponent<DestoryselfAfterfewsecond>();
-			if(this.gameObject.tag=="Player"){
-				
-				
-
-			}
-			else if(this.gameObject.name=="ChaDragon"){
-				this.gameObject.GetComponent<DragonAI>().NowState = 2;
-			}
-			else{
-                GetComponent<IKillable>().OnDeath();
-			}
+           GetComponent<IKillable>().OnDeath();
 		}
 
 		if(baseHealthPoints < MaxHealthPoints){
@@ -267,9 +255,6 @@ public class ProfileSystem : NetworkBehaviour {
 			
 	}
 
-	void OnGUI() {
-		if(herodie) {GUI.Label(new Rect(Screen.width/2-Screen.width/8, Screen.height/2, 1000, 1000), herorespwn_words);}
-	}
 
 
     public void AddEffect(ProfileEffect effect) {

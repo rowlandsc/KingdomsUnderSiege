@@ -25,6 +25,7 @@ TagManager:
   - HeroPlayer
   - HeroStructure
   - OverseerStructure
+  - DeathCount
   layers:
   - Default
   - TransparentFX

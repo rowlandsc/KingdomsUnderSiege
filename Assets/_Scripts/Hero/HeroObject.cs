@@ -2,6 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectable {
     private GameObject Mage_birthplace;
@@ -13,6 +14,8 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
     string herorespwn_words = "";
     float herorespwn_timer = 10f;
 	bool herodie = false;
+	private NetworkPlayerInput _playerInput;
+	public Text words = null;
 
     // Use this for initialization
     void Start () {
@@ -21,6 +24,8 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
         Arch_birthplace = GameObject.Find("ArchSummonPoint");
         deathPoint = GameObject.Find("DeathPoint");
         _ps = GetComponent<ProfileSystem>();
+		_playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+		words = GameObject.FindGameObjectWithTag("DeathCount").GetComponent<Text>();
     }
 	
 	// Update is called once per frame
@@ -30,7 +35,6 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 
     public void OnDeath()
     {
-		herodie = true;
         this.gameObject.transform.DOMove(deathPoint.transform.position, 0.5f, false);
         this.gameObject.GetComponent<Rigidbody>().useGravity = false;
         _ps.baseHealthPoints = _ps.MaxHealthPoints;
@@ -59,23 +63,26 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 
     public IEnumerator respawn()
     {
-		herodie = false;
         herorespwn_words = "Respawn in " + ((int)Mathf.Round(herorespwn_timer)).ToString() + " seconds";
+		DeathCount();
         yield return new WaitForSeconds(herorespwn_timer);
 
         if (this.gameObject.name == "Mage(Clone)")
         {
             this.gameObject.transform.DOMove(Mage_birthplace.transform.position, 0.1f, false);
+			UnDeathCount();
         }
 
         else if (this.gameObject.name == "Knight(Clone)")
         {
             this.gameObject.transform.DOMove(Knight_birthplace.transform.position, 0.1f, false);
+			UnDeathCount();
         }
 
         else if (this.gameObject.name == "Archer(Clone)")
         {
             this.gameObject.transform.DOMove(Arch_birthplace.transform.position, 0.1f, false);
+			UnDeathCount();
         }
 
         this.gameObject.GetComponent<Rigidbody>().useGravity = true;
@@ -101,9 +108,19 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
     }
 
 	void OnGUI() {
-		if (herodie ==  true) {
-			GUI.Label(new Rect(Screen.width/2-Screen.width/8, Screen.height/2, 1000, 1000), herorespwn_words);
+		if (this.herodie ==  true && _playerInput.CheckLocalPlayer == 1) {
+			print("hero DE");
 		}
+	}
+
+	void DeathCount() {
+		if (_playerInput.CheckLocalPlayer == 1) {
+			words.text = "You died, respawn in 10 sec";
+		}
+	}
+
+	void UnDeathCount() {
+		words.text = "";
 	}
 
 }
