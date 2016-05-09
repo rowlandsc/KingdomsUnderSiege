@@ -26,4 +26,8 @@ public class EndGame : MonoBehaviour {
 		words.text = "Overseer Win";
 	}
 
+	void backToStart() {
+		Application.LoadLevel(0);
+	}
+
 }
