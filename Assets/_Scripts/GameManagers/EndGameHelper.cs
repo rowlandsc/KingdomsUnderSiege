@@ -39,7 +39,10 @@ public class EndGameHelper : MonoBehaviour {
 
 	IEnumerator WaitForSpawnerLoad() { 
 	
-		yield return new WaitForSeconds(5);
+		while(GameObject.Find("HeroMinionSpawn(Clone)") == null)
+        {
+            yield return new WaitForSeconds(1);
+        }
 	
 	}
 }
