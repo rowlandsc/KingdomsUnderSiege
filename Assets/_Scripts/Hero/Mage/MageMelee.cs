@@ -27,7 +27,7 @@ public class MageMelee : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 		if(_playerInput.HeroMeleeAttackInputDown > 0 && canAttack)
 		{
 			canAttack = false;

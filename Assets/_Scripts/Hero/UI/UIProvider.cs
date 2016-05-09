@@ -67,7 +67,7 @@ public class UIProvider : MonoBehaviour {
 
 			hp = this.gameObject.GetComponent<ProfileSystem>().HealthPoints;
 			mp = this.gameObject.GetComponent<ProfileSystem>().MagicPoints;
-			money = this.gameObject.GetComponent<ProfileSystem>().haveMoney;
+			money = KUSNetworkManager.LocalPlayer.GetComponent<NetworkPlayerStats>().Gold;
 			Max_hp = this.gameObject.GetComponent<ProfileSystem>().MaxHealthPoints;
 			Max_mp = this.gameObject.GetComponent<ProfileSystem>().MaxMagicPoints;
 
@@ -109,7 +109,6 @@ public class UIProvider : MonoBehaviour {
 			MeleeIcon.GetComponent<RawImage>().texture = melee_icon;
 			SecondIcon.GetComponent<RawImage>().texture = second_icon;
 			SuperIcon.GetComponent<RawImage>().texture = super_icon;
-
 
 			UIhp.GetComponent<Slider>().value = hp/(this.gameObject.GetComponent<ProfileSystem>().MaxHealthPoints);
 			UImp.GetComponent<Slider>().value = mp/(this.gameObject.GetComponent<ProfileSystem>().MaxMagicPoints);
