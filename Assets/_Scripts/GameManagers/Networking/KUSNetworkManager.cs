@@ -30,11 +30,11 @@ public class KUSNetworkManager : NetworkManager {
         get {
             if (_overseerPlayer) return _overseerPlayer;
 
-            List<PlayerController> playerControllers = singleton.client.connection.playerControllers;
-            for (int i = 0; i < playerControllers.Count; i++) {
-                NetworkPlayerObject netobj = playerControllers[i].unetView.gameObject.GetComponent<NetworkPlayerObject>();
+            NetworkPlayerObject[] playerControllers = GameObject.FindObjectsOfType<NetworkPlayerObject>();
+            for (int i = 0; i < playerControllers.Length; i++) {
+                NetworkPlayerObject netobj = playerControllers[i];
                 if (netobj.Class == NetworkPlayerObject.PlayerClass.OVERSEER) {
-                    _overseerPlayer = netobj;
+                    _magePlayer = netobj;
                     break;
                 }
             }
@@ -45,11 +45,11 @@ public class KUSNetworkManager : NetworkManager {
         get {
             if (_archerPlayer) return _archerPlayer;
 
-            List<PlayerController> playerControllers = singleton.client.connection.playerControllers;
-            for (int i = 0; i < playerControllers.Count; i++) {
-                NetworkPlayerObject netobj = playerControllers[i].unetView.gameObject.GetComponent<NetworkPlayerObject>();
+            NetworkPlayerObject[] playerControllers = GameObject.FindObjectsOfType<NetworkPlayerObject>();
+            for (int i = 0; i < playerControllers.Length; i++) {
+                NetworkPlayerObject netobj = playerControllers[i];
                 if (netobj.Class == NetworkPlayerObject.PlayerClass.ARCHER) {
-                    _archerPlayer = netobj;
+                    _magePlayer = netobj;
                     break;
                 }
             }
@@ -60,11 +60,11 @@ public class KUSNetworkManager : NetworkManager {
         get {
             if (_knightPlayer) return _knightPlayer;
 
-            List<PlayerController> playerControllers = singleton.client.connection.playerControllers;
-            for (int i = 0; i < playerControllers.Count; i++) {
-                NetworkPlayerObject netobj = playerControllers[i].unetView.gameObject.GetComponent<NetworkPlayerObject>();
+            NetworkPlayerObject[] playerControllers = GameObject.FindObjectsOfType<NetworkPlayerObject>();
+            for (int i = 0; i < playerControllers.Length; i++) {
+                NetworkPlayerObject netobj = playerControllers[i];
                 if (netobj.Class == NetworkPlayerObject.PlayerClass.KNIGHT) {
-                    _knightPlayer = netobj;
+                    _magePlayer = netobj;
                     break;
                 }
             }
