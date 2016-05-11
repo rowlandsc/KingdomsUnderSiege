@@ -8,7 +8,7 @@ public class OverseerSpawnerDeath : NetworkBehaviour, IKillable {
 	public void OnDeath()
     {
         int goldAmount = GetComponent<ProfileSystem>().Worth;
-        KUSNetworkManager.HostPlayer.CmdAddGoldToHeros(goldAmount);
+        KUSNetworkManager.HostPlayer.RpcAddGoldToHeros(goldAmount);
 
         Destroy(this.gameObject);
     }    
