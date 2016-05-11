@@ -119,7 +119,7 @@ public class NetworkPlayerStats : NetworkBehaviour {
     /// <param name="amount">The amount of gold to add</param>
     public void AddGold(int amount)
     {
-        KUSNetworkManager.HostPlayer.CmdUpdateGold(this.gameObject.GetComponent<NetworkIdentity>(), this.Gold + amount);
+        this.Gold += amount;
         this.TotalGoldEarned += amount;
     }
 
