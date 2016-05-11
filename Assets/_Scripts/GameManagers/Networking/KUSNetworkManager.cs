@@ -75,9 +75,9 @@ public class KUSNetworkManager : NetworkManager {
         get {
             if (_magePlayer) return _magePlayer;
 
-            List<PlayerController> playerControllers = singleton.client.connection.playerControllers;
-            for (int i = 0; i < playerControllers.Count; i++) {
-                NetworkPlayerObject netobj = playerControllers[i].unetView.gameObject.GetComponent<NetworkPlayerObject>();
+            NetworkPlayerObject[] playerControllers = GameObject.FindObjectsOfType<NetworkPlayerObject>();
+            for (int i = 0; i < playerControllers.Length; i++) {
+                NetworkPlayerObject netobj = playerControllers[i];
                 if (netobj.Class == NetworkPlayerObject.PlayerClass.MAGE) {
                     _magePlayer = netobj;
                     break;
