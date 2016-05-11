@@ -192,7 +192,23 @@ public class NetworkPlayerObject : NetworkBehaviour {
     public void CmdAddProfileEffect(NetworkIdentity obj, ProfileEffect effect) {
         if(obj) obj.GetComponent<ProfileSystem>().AddEffect(effect);
     }
-        
+    
+    [Command]
+    public void CmdAddGold(int amount)
+    {
+        if (KUSNetworkManager.KnightPlayer != null)
+        {
+            NetworkPlayerStats.AddGold(KUSNetworkManager.KnightPlayer, amount);
+        }
+        if (KUSNetworkManager.MagePlayer != null)
+        {
+            NetworkPlayerStats.AddGold(KUSNetworkManager.MagePlayer, amount);
+        }
+        if (KUSNetworkManager.ArcherPlayer != null)
+        {
+            NetworkPlayerStats.AddGold(KUSNetworkManager.ArcherPlayer, amount);
+        }
+    }    
 
     [ClientRpc]
 	public void RpcStartGame() {
