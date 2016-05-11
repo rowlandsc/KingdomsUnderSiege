@@ -29,11 +29,6 @@ GameObject:
   - 4: {fileID: 431844}
   - 33: {fileID: 3346430}
   - 23: {fileID: 2331718}
-  - 114: {fileID: 11428494}
-  - 114: {fileID: 11448680}
-  - 114: {fileID: 11429722}
-  - 114: {fileID: 11421838}
-  - 65: {fileID: 6567150}
   m_Layer: 9
   m_Name: OverseerMinionSpawner 1
   m_TagString: OverseerPlayer
@@ -50,6 +45,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 427400}
   - 114: {fileID: 11425146}
+  - 114: {fileID: 11440070}
+  - 114: {fileID: 11414314}
+  - 114: {fileID: 11489984}
+  - 65: {fileID: 6501336}
+  - 114: {fileID: 11495464}
   m_Layer: 0
   m_Name: OverseerMinionSpawn
   m_TagString: OverseerPlayer
@@ -79,7 +79,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 222.04768, y: 22.908289, z: 148.4425}
+  m_LocalPosition: {x: 234.92, y: 22.736324, z: 193.5763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 431844}
@@ -196,17 +196,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137882}
   m_Mesh: {fileID: 4300000, guid: 6d7ba00e406554344a26a6beb257b31b, type: 3}
---- !u!65 &6567150
+--- !u!65 &6501336
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137882}
+  m_GameObject: {fileID: 177232}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.540373, y: 1.8577338, z: 2.2948015}
+  m_Size: {x: 7, y: 6, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6596140
 BoxCollider:
@@ -220,36 +220,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11421838
+--- !u!114 &11414314
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137882}
+  m_GameObject: {fileID: 177232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 984040fe1ae2b36458d8e71d1d6b1d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDead: 0
-  Worth: 1000
-  baseHealthPoints: 500
-  baseMagicPoints: 100
-  baseMaxHealthPoints: 500
-  baseMaxMagicPoints: 100
-  DefendPoints: 0
-  haveMoney: 0
-  baseMeleeDamageDealt: 5
-  baseSecondDamageDealt: 12
-  baseSuperDamageDealt: 40
-  baseHealthRegen: 0
-  baseMagicRegen: 1
-  baseMoveSpeed: 1.5
-  baseAttackSpeed: 1.5
-  baseAttackFrequency: 1
-  baseAttackRange: 1
-  damagePOP: {fileID: 0}
-  death: {fileID: 0}
+  Minion: {fileID: 108838, guid: a1a02cae7337df0428c115a6bde484e3, type: 2}
+  SpawnPoint: {fileID: 456528}
+  NumberToSpawn: 5
+  SpawnDelay: 20
+  TimeBetweenMinions: 1
 --- !u!114 &11425146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,65 +268,36 @@ MonoBehaviour:
     i15: 146
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &11428494
+--- !u!114 &11440070
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137882}
+  m_GameObject: {fileID: 177232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 245
-    i1: 113
-    i2: 125
-    i3: 58
-    i4: 51
-    i5: 94
-    i6: 60
-    i7: 52
-    i8: 169
-    i9: 108
-    i10: 99
-    i11: 54
-    i12: 2
-    i13: 33
-    i14: 16
-    i15: 146
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
---- !u!114 &11429722
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecfe8977e1cc39e45b97d1820a9ce1b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11448680
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 984040fe1ae2b36458d8e71d1d6b1d1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Minion: {fileID: 108838, guid: a1a02cae7337df0428c115a6bde484e3, type: 2}
-  SpawnPoint: {fileID: 456528}
-  NumberToSpawn: 5
-  SpawnDelay: 20
-  TimeBetweenMinions: 1
+  IsDead: 0
+  Worth: 1000
+  baseHealthPoints: 500
+  baseMagicPoints: 100
+  baseMaxHealthPoints: 500
+  baseMaxMagicPoints: 100
+  DefendPoints: 0
+  haveMoney: 0
+  baseMeleeDamageDealt: 5
+  baseSecondDamageDealt: 12
+  baseSuperDamageDealt: 40
+  baseHealthRegen: 0
+  baseMagicRegen: 1
+  baseMoveSpeed: 1.5
+  baseAttackSpeed: 1.5
+  baseAttackFrequency: 1
+  baseAttackRange: 1
+  damagePOP: {fileID: 0}
+  death: {fileID: 0}
 --- !u!114 &11458748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -352,6 +309,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e64ded0bc35407d9700ed613b775bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11489984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfe8977e1cc39e45b97d1820a9ce1b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11495464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.09090909
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

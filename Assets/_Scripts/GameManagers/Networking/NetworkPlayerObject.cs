@@ -190,11 +190,20 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
     [Command]
     public void CmdAddProfileEffect(NetworkIdentity obj, ProfileEffect effect) {
-        obj.GetComponent<ProfileSystem>().AddEffect(effect);
+        if(obj) obj.GetComponent<ProfileSystem>().AddEffect(effect);
     }
 
-
-
+    [Command]
+    public void CmdUpdateGold(NetworkIdentity obj, int newValue)
+    {
+        
+        if (obj)
+        {
+            Debug.Log("Gold Update Called");
+            obj.GetComponent<NetworkPlayerStats>().Gold = newValue;
+        }
+    }
+    
 
     [ClientRpc]
 	public void RpcStartGame() {

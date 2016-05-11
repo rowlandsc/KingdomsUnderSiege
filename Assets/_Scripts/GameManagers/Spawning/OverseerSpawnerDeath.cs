@@ -7,7 +7,7 @@ public class OverseerSpawnerDeath : NetworkBehaviour, IKillable {
     
 	public void OnDeath()
     {
-        int goldAmount = GetComponent<ProfileSystem>().Worth;
+            int goldAmount = GetComponent<ProfileSystem>().Worth;
 
             if (KUSNetworkManager.KnightPlayer != null)
             {
@@ -22,6 +22,6 @@ public class OverseerSpawnerDeath : NetworkBehaviour, IKillable {
                 NetworkPlayerStats.AddGold(KUSNetworkManager.ArcherPlayer, goldAmount);
             }
 
-        Destroy(this.gameObject.transform.parent.gameObject);
+            Destroy(this.gameObject);
     }    
 }
