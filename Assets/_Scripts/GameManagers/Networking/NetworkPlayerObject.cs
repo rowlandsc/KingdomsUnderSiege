@@ -194,13 +194,13 @@ public class NetworkPlayerObject : NetworkBehaviour {
     }
     
     [Command]
-    public void CmdAddGoldToHeros(int amount)
+    public void CmdAddGold(int amount)
     {
-        RpcAddGoldToHeros(amount);
+        RpcGoldAddGold(amount);
     }
     
     [ClientRpc]    
-    public void RpcAddGoldToHeros(int amount)
+    public void RpcGoldAddGold(int amount)
     {
         if (KUSNetworkManager.LocalPlayer != null && KUSNetworkManager.LocalPlayer.gameObject.GetComponent<NetworkPlayerObject>().Class != PlayerClass.OVERSEER)
         {
