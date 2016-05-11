@@ -194,21 +194,19 @@ public class NetworkPlayerObject : NetworkBehaviour {
     }
     
     [Command]
-    public void CmdAddGold(int amount)
+    public void CmdAddGoldToHeros(int amount)
     {
-        if (KUSNetworkManager.KnightPlayer != null)
+        RpcAddGoldToHeros(amount);
+    }
+    
+    [ClientRpc]    
+    public void RpcAddGoldToHeros(int amount)
+    {
+        if (KUSNetworkManager.LocalPlayer != null && KUSNetworkManager.LocalPlayer.gameObject.GetComponent<NetworkPlayerObject>().Class != PlayerClass.OVERSEER)
         {
-            NetworkPlayerStats.AddGold(KUSNetworkManager.KnightPlayer, amount);
+            NetworkPlayerStats.AddGold(KUSNetworkManager.LocalPlayer, amount);
         }
-        if (KUSNetworkManager.MagePlayer != null)
-        {
-            NetworkPlayerStats.AddGold(KUSNetworkManager.MagePlayer, amount);
-        }
-        if (KUSNetworkManager.ArcherPlayer != null)
-        {
-            NetworkPlayerStats.AddGold(KUSNetworkManager.ArcherPlayer, amount);
-        }
-    }    
+    }
 
     [ClientRpc]
 	public void RpcStartGame() {
