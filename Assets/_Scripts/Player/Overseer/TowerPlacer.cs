@@ -163,7 +163,6 @@ public class TowerPlacer : NetworkBehaviour {
                     //tower.GetComponent<MapCircleDrawer>().UpdateCircle();
                     //TowerList.Add(tower);
                     TowerPlaceModeOn = false;
-                    OverseerPlayer.GetComponent<NetworkPlayerStats>().AddTowerPlaced();
                 }
             }
         }
