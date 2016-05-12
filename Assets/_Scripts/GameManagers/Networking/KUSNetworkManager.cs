@@ -34,7 +34,7 @@ public class KUSNetworkManager : NetworkManager {
             for (int i = 0; i < playerControllers.Length; i++) {
                 NetworkPlayerObject netobj = playerControllers[i];
                 if (netobj.Class == NetworkPlayerObject.PlayerClass.OVERSEER) {
-                    _magePlayer = netobj;
+                    _overseerPlayer = netobj;
                     break;
                 }
             }
@@ -49,7 +49,7 @@ public class KUSNetworkManager : NetworkManager {
             for (int i = 0; i < playerControllers.Length; i++) {
                 NetworkPlayerObject netobj = playerControllers[i];
                 if (netobj.Class == NetworkPlayerObject.PlayerClass.ARCHER) {
-                    _magePlayer = netobj;
+                    _archerPlayer = netobj;
                     break;
                 }
             }
@@ -64,7 +64,7 @@ public class KUSNetworkManager : NetworkManager {
             for (int i = 0; i < playerControllers.Length; i++) {
                 NetworkPlayerObject netobj = playerControllers[i];
                 if (netobj.Class == NetworkPlayerObject.PlayerClass.KNIGHT) {
-                    _magePlayer = netobj;
+                    _knightPlayer = netobj;
                     break;
                 }
             }
