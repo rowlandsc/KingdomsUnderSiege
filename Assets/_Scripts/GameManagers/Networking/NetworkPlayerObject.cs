@@ -193,6 +193,14 @@ public class NetworkPlayerObject : NetworkBehaviour {
     public void CmdAddProfileEffect(NetworkIdentity obj, ProfileEffect effect) {
         if(obj) obj.GetComponent<ProfileSystem>().AddEffect(effect);
     }
+
+    [Command]
+    public void CmdArcherMelee(NetworkIdentity archer, Vector3 position, Quaternion rotation, Vector3 velocity) {
+        GameObject arch_clone = Instantiate(PrefabCache.Instance.PrefabIndex["ArcherMeleeObj"], position, rotation) as GameObject;
+        arch_clone.GetComponent<ArchMeleeHit>().Initialize(archer);
+        arch_clone.GetComponent<ArchMeleeHit>().velocity = velocity;
+        NetworkServer.Spawn(arch_clone);
+    }
     
     [ClientRpc]
 	public void RpcStartGame() {

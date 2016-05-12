@@ -41,10 +41,11 @@ public class ArchMeleeHit : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider col){
+        if (!KUSNetworkManager.LocalPlayer.isServer) return;
 
 		if (col.gameObject.tag != "HeroPlayer") {
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-			ending.AddComponent<DestoryselfAfterfewsecond>();
+            NetworkServer.Spawn(ending_);
 
             /*if(col.gameObject.GetComponent<ProfileSystem>()){
 			if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().MeleeDamageDealt))

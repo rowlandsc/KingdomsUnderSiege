@@ -74,6 +74,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabIndex:
     PrefabNames:
+    - ArcherMeleeObj
+    - ArcherSecondObj
+    - ArcherSuperObj
     - HeroArch
     - HeroCamera
     - HeroGearSystem
@@ -90,6 +93,9 @@ MonoBehaviour:
     - TowerMagic1
     - TowerMortar1
     Prefabs:
+    - {fileID: 123532, guid: fd27a154a1ba744c3bf485d156dbe2f1, type: 2}
+    - {fileID: 191426, guid: 3b20f5a51bb754b9886e99e50f75b526, type: 2}
+    - {fileID: 159590, guid: 9bd9f045889064f08a898b72511021df, type: 2}
     - {fileID: 152332, guid: bf05d0b104cab43a0966b667acafcd63, type: 2}
     - {fileID: 138842, guid: 1f4f3b10cfa4142338bac8c5a57f8e53, type: 2}
     - {fileID: 147068, guid: 14a5a5c6c8c824b32842b1739672346d, type: 2}
