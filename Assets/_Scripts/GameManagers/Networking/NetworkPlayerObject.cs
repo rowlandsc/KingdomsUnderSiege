@@ -128,6 +128,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
         NetworkServer.Spawn(tower.gameObject);
 
         RpcSetOwner(tower.GetComponent<NetworkIdentity>(), player);
+        player.gameObject.GetComponent<NetworkPlayerStats>().AddTowerPlaced();
     }
 
 	[Command]
@@ -193,21 +194,6 @@ public class NetworkPlayerObject : NetworkBehaviour {
         if(obj) obj.GetComponent<ProfileSystem>().AddEffect(effect);
     }
     
-    [Command]
-    public void CmdAddGold(int amount)
-    {
-        RpcGoldAddGold(amount);
-    }
-    
-    [ClientRpc]    
-    public void RpcGoldAddGold(int amount)
-    {
-        if (KUSNetworkManager.LocalPlayer != null && KUSNetworkManager.LocalPlayer.gameObject.GetComponent<NetworkPlayerObject>().Class != PlayerClass.OVERSEER)
-        {
-            NetworkPlayerStats.AddGold(KUSNetworkManager.LocalPlayer, amount);
-        }
-    }
-
     [ClientRpc]
 	public void RpcStartGame() {
         if (SceneManager.GetActiveScene().name == "SetupScreen")
