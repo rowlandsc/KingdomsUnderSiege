@@ -24,6 +24,7 @@ public class OverseerCamera : MonoBehaviour {
     public float ScrollSpeed = 50;
 
     public bool EdgePanEnabled = false;
+    public bool EdgePanOnlyWhenOnWindow = true;
     public float EdgePanVerticalBuffer = 0.1f;
     public float EdgePanHorizontalBuffer = 0.1f;
     public float PanSpeed = 5;
@@ -108,6 +109,10 @@ public class OverseerCamera : MonoBehaviour {
             PanCurrentVelocity = PanCurrentVelocity * PanFriction;
 
             Vector3 pan = InputManager.Instance.CameraEdgePan;
+            if (EdgePanOnlyWhenOnWindow) {
+                if (Mathf.Abs(pan.x) >= 1) pan.x = 0;
+                if (Mathf.Abs(pan.y) >= 1) pan.y = 0;
+            }
 
             transform.position = new Vector3(transform.position.x + PanSpeed * Time.deltaTime * pan.x, transform.position.y, transform.position.z + PanSpeed * Time.deltaTime * pan.z);
         }
