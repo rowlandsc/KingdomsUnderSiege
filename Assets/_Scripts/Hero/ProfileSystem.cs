@@ -240,11 +240,7 @@ public class ProfileSystem : NetworkBehaviour {
 		}
 
         if(HealthPoints<=0){
-           GetComponent<IKillable>().OnDeath();
-		}
-
-		if(HealthPoints<=-1){
-			GetComponent<IKillable>().OnDeath();
+			this.gameObject.GetComponent<IKillable>().OnDeath();
 		}
 
 		if(baseHealthPoints < MaxHealthPoints){
