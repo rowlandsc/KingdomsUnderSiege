@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 248.69096, y: 19.93368, z: 189.28024}
+  m_LocalPosition: {x: 244.60712, y: 19.931026, z: 191.24796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,6 +87,9 @@ MonoBehaviour:
     - KnightMeleeObj
     - KnightSecondObj
     - KnightSuperObj
+    - MageCharging1
+    - MageCharging2
+    - MageCharging3
     - MageMeleeObj
     - MageMeleeObject
     - MageSecondObj
@@ -113,6 +116,9 @@ MonoBehaviour:
     - {fileID: 158764, guid: bacba2637742d7a4ebe841de05a162e7, type: 2}
     - {fileID: 100004, guid: c5ca2afdf2ef1a44c8b4533a325ac426, type: 2}
     - {fileID: 100012, guid: 4563c5af9cecaa944979cfd368c4a20d, type: 2}
+    - {fileID: 100000, guid: 693ba256a66552d45ad5f1573a79c339, type: 2}
+    - {fileID: 157990, guid: 47dbd2408801086468589d7dff4fc748, type: 2}
+    - {fileID: 100000, guid: d22528d5c9d588b40a098c082c1b2bf7, type: 2}
     - {fileID: 182594, guid: e546559c4a25d41df8add6cb2ffdc534, type: 2}
     - {fileID: 182594, guid: e546559c4a25d41df8add6cb2ffdc534, type: 2}
     - {fileID: 128786, guid: 6f81d365ec00a4e1abd2f2ec85f5a7dd, type: 2}

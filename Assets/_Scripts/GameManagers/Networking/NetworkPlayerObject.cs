@@ -292,8 +292,9 @@ public class NetworkPlayerObject : NetworkBehaviour {
     [Command]
     public void CmdMageCharging(NetworkIdentity mage, string chargingName, Vector3 position, Quaternion rotation)
     {
-        GameObject chargingAnim_ = Instantiate(PrefabCache.Instance.PrefabIndex[chargingName], this.gameObject.transform.position - new Vector3(0, 0.2f, 0), transform.rotation) as GameObject;
-        chargingAnim_.transform.parent = mage.transform;
+        GameObject chargingAnim_ = Instantiate(PrefabCache.Instance.PrefabIndex[chargingName], position, rotation) as GameObject;
+        chargingAnim_.transform.parent = mage.gameObject.transform;
+        NetworkServer.Spawn(chargingAnim_);
     }
     
     [ClientRpc]

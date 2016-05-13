@@ -48,6 +48,7 @@ public class SecondHit : MonoBehaviour {
 
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
             NetworkServer.Spawn(ending_);
+
             /*if(col.gameObject.GetComponent<ProfileSystem>()){
 
 				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().SuperDamageDealt))

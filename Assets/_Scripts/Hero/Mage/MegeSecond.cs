@@ -61,10 +61,13 @@ public class MegeSecond : MonoBehaviour {
     {
         if (_playerInput.HeroMeleeChargeAttackInputDown > 0 && canAttack && this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
         {
-            chargingAnim_ = Instantiate(charingAnim, this.gameObject.transform.position - new Vector3(0, 0.2f, 0), transform.rotation) as GameObject;
-            chargingAnim_.transform.parent = this.gameObject.transform;
+            KUSNetworkManager.HostPlayer.CmdMageCharging(
+                GetComponent<NetworkIdentity>(),
+                "MageCharging1",
+                this.gameObject.transform.position - new Vector3(0, 0.2f, 0),
+                transform.rotation);
         }
-
+        
         if (_playerInput.HeroMeleeChargeAttackInput > 0 && canAttack && this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use))
         {
             holdingtime += Time.deltaTime;
@@ -79,8 +82,11 @@ public class MegeSecond : MonoBehaviour {
                 {
                     if (anim_2_once)
                     {
-                        chargingAnim2_ = Instantiate(charingAnim2, this.gameObject.transform.position - new Vector3(0, 0.2f, 0), transform.rotation) as GameObject;
-                        chargingAnim2_.transform.parent = this.gameObject.transform;
+                        KUSNetworkManager.HostPlayer.CmdMageCharging(
+                            GetComponent<NetworkIdentity>(),
+                            "MageCharging2",
+                            this.gameObject.transform.position - new Vector3(0, 0.2f, 0),
+                            transform.rotation);
                         anim_2_once = false;
                     }
 
@@ -90,8 +96,11 @@ public class MegeSecond : MonoBehaviour {
                     {
                         if (anim_3_once)
                         {
-                            chargingAnim3_ = Instantiate(charingAnim3, this.gameObject.transform.position - new Vector3(0, 0.2f, 0), transform.rotation) as GameObject;
-                            chargingAnim3_.transform.parent = this.gameObject.transform;
+                            KUSNetworkManager.HostPlayer.CmdMageCharging(
+                                GetComponent<NetworkIdentity>(),
+                                "MageCharging3",
+                                this.gameObject.transform.position - new Vector3(0, 0.2f, 0),
+                                transform.rotation);
                             anim_3_once = false;
                         }
 
@@ -110,9 +119,13 @@ public class MegeSecond : MonoBehaviour {
             anim_2_once = true;
             anim_3_once = true;
 
-            Destroy(chargingAnim_);
-            Destroy(chargingAnim2_);
-            Destroy(chargingAnim3_);
+            GameObject charging1 = GameObject.Find("MageCharging1(Clone)");
+            GameObject charging2 = GameObject.Find("MageCharging2(Clone)");
+            GameObject charging3 = GameObject.Find("MageCharging3(Clone)");
+
+            if(charging1) Destroy(charging1);
+            if(charging2) Destroy(charging2);
+            if(charging3) Destroy(charging3);
 
             holdingtime = 0;
 
