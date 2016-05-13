@@ -37,11 +37,12 @@ public class SuperHit : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider col){
 
+        if (!KUSNetworkManager.LocalPlayer.isServer) return;
 
 		if(col.tag!="IceBullet"&&col.tag!="HeroPlayer"&&col.tag!="HealthBar"){
 			
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-			ending.AddComponent<DestoryselfAfterfewsecond>();
+            NetworkServer.Spawn(ending_);
 				
 				if(col.GetComponent<Testmove>()){
 						col.GetComponent<Testmove>().canMove=true;

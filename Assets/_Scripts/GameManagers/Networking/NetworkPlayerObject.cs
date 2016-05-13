@@ -296,6 +296,27 @@ public class NetworkPlayerObject : NetworkBehaviour {
         chargingAnim_.transform.parent = mage.gameObject.transform;
         NetworkServer.Spawn(chargingAnim_);
     }
+
+    [Command]
+    public void CmdMageSuper(NetworkIdentity mage, Vector3 position, Quaternion rotation, Vector3 moveTo, float time)
+    {
+        GameObject superBallanim_ = Instantiate(
+            PrefabCache.Instance.PrefabIndex["MageSuper"],
+            position,
+            rotation) as GameObject;
+
+        superBallanim_.GetComponent<SuperHit>().Initialize(mage);
+        superBallanim_.transform.DOLocalMove(moveTo, time, false);
+        NetworkServer.Spawn(superBallanim_);
+    }
+
+    [Command]
+    public void CmdMageSuperAnim(NetworkIdentity mage, Vector3 position, Quaternion rotation)
+    {
+        GameObject super1_ = Instantiate(PrefabCache.Instance.PrefabIndex["MageSuper1"], position, rotation) as GameObject;
+        super1_.GetComponent<SuperHit>().Initialize(mage);
+        NetworkServer.Spawn(super1_);
+    }
     
     [ClientRpc]
 	public void RpcStartGame() {

@@ -49,25 +49,26 @@ public class MageSuper : MonoBehaviour {
 	
 			for(int i = 0; i < hits.Length; i++)
 			{
-				print ("find one");
-				superBallanim_ = Instantiate(superBallanim, this.transform.position+new Vector3(0,500,0), this.transform.rotation) as GameObject;
-                superBallanim.GetComponent<SuperHit>().Initialize(GetComponent<NetworkIdentity>());
-				superBallanim_.transform.DOLocalMove(hits[i].transform.position+new Vector3(0,-2f,-0),3f,false);
+                KUSNetworkManager.HostPlayer.CmdMageSuper(
+                    GetComponent<NetworkIdentity>(),
+                    this.transform.position + new Vector3(0, 500, 0),
+                    this.transform.rotation,
+                    hits[i].transform.position + new Vector3(0, -2f, -0),
+                    3f);
 
 			}
 
 			for(int i = 0; i < 40; i++)
 			{
-		        superBallanim_ = Instantiate(superBallanim, this.transform.position+new Vector3(0,500,0), this.transform.rotation) as GameObject;
-                superBallanim_.GetComponent<SuperHit>().Initialize(GetComponent<NetworkIdentity>());
-		        superBallanim_.transform.DOLocalMove(this.gameObject.transform.position+new Vector3(Random.Range(-20F, 20F),-10f,Random.Range(-20F, 20F)),Random.Range(2F, 7F),false);
-			}
-
-
-
-
-			super1_ = Instantiate(superAnim1, this.transform.position-new Vector3(0,0.4f,0), this.transform.rotation) as GameObject;
-            super1_.GetComponent<SuperHit>().Initialize(GetComponent<NetworkIdentity>());
+                KUSNetworkManager.HostPlayer.CmdMageSuper(
+                    GetComponent<NetworkIdentity>(),
+                    this.transform.position + new Vector3(0, 500, 0),
+                    this.transform.rotation,
+                    this.gameObject.transform.position + new Vector3(Random.Range(-20F, 20F), -10f, Random.Range(-20F, 20F)),
+                    Random.Range(2F, 7F));
+            }
+            KUSNetworkManager.HostPlayer.CmdMageSuperAnim(GetComponent<NetworkIdentity>(), this.transform.position - new Vector3(0, 0.4f, 0), this.transform.rotation);
+            
 		}
 
 		if(!canAttack){
