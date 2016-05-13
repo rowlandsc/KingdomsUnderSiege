@@ -298,6 +298,17 @@ public class NetworkPlayerObject : NetworkBehaviour {
     }
 
     [Command]
+    public void CmdMageSecondFxDestroy()
+    {
+        GameObject superfx1 = GameObject.Find("MageCharging1(Clone)");
+        GameObject superfx2 = GameObject.Find("MageCharging2(Clone)");
+        GameObject superfx3 = GameObject.Find("MageCharging3(Clone)");
+        if (superfx1 != null) Destroy(superfx1);
+        if (superfx2 != null) Destroy(superfx2);
+        if (superfx3 != null) Destroy(superfx3);
+    }
+
+    [Command]
     public void CmdMageSuper(NetworkIdentity mage, Vector3 position, Quaternion rotation, Vector3 moveTo, float time)
     {
         GameObject superBallanim_ = Instantiate(

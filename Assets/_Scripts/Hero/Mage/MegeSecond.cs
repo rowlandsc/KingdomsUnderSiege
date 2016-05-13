@@ -119,13 +119,7 @@ public class MegeSecond : MonoBehaviour {
             anim_2_once = true;
             anim_3_once = true;
 
-            GameObject charging1 = GameObject.Find("MageCharging1(Clone)");
-            GameObject charging2 = GameObject.Find("MageCharging2(Clone)");
-            GameObject charging3 = GameObject.Find("MageCharging3(Clone)");
-
-            if(charging1) Destroy(charging1);
-            if(charging2) Destroy(charging2);
-            if(charging3) Destroy(charging3);
+            KUSNetworkManager.HostPlayer.CmdMageSecondFxDestroy();
 
             holdingtime = 0;
 
