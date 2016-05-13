@@ -35,10 +35,6 @@ public class KnightMelee : MonoBehaviour {
 		{
 			canAttack = false;
 
-			sword = GameObject.Find("HeroKnightSwordV01");
-			anim = sword.gameObject.GetComponentInChildren<Animator>();
-			anim.Play("UseSword");
-
 			anim_clone = Instantiate(anim_, this.transform.position,Quaternion.Euler(0,Maincamera.transform.eulerAngles.y,0)) as GameObject;
             anim_clone.GetComponent<KnightMeleeHit>().Initialize(GetComponent<NetworkIdentity>());
 			anim_clone.transform.parent=this.gameObject.transform;
