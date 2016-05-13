@@ -6,6 +6,9 @@ using DG.Tweening;
 public class MortarTowerHit : MonoBehaviour {
 
 	public GameObject Tower ;
+    public float SplashDamageRadius = 4f;
+    public LayerMask LayersEffectedBySplash;
+
     private ProfileSystem towerStats;
 
 	private float kill_time;
@@ -57,20 +60,17 @@ public class MortarTowerHit : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col){
+        Debug.Log("Collided with " + col.gameObject.name);
+        Collider[] splashObjects = Physics.OverlapSphere(transform.position, this.SplashDamageRadius, this.LayersEffectedBySplash);
 
-		if(col.gameObject.tag!="OverseerPlayer"){
-            /*if(col.gameObject.GetComponent<ProfileSystem>()) {
-                if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(tower.GetComponent<ProfileSystem>().MeleeDamageDealt))
-				{
-                    tower.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;
-                }
-			}*/
-
+        for(int i = 0; i < splashObjects.Length; i++)
+        {
             towerStats = Tower.GetComponent<ProfileSystem>();
-            ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
-            if (colProfile) {
+            ProfileSystem colProfile = splashObjects[i].gameObject.GetComponent<ProfileSystem>();
+            if (colProfile)
+            {
                 ProfileEffect hitEffect = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId, healthPointsAdd: -1 * towerStats.MeleeDamageDealt);
-                KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);
+                KUSNetworkManager.HostPlayer.CmdAddProfileEffect(splashObjects[i].GetComponent<NetworkIdentity>(), hitEffect);
             }
         }
 

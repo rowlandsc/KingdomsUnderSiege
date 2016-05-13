@@ -66,11 +66,11 @@ public class MortarTowerAttack : MonoBehaviour {
 		for(int i=0;i<targetList.Length;i++){
             Vector2 direction = new Vector2(targetList[i].transform.position.x, targetList[i].transform.position.z) - new Vector2(transform.position.x, transform.position.z);
             float angle = Vector2.Angle(new Vector2(transform.forward.x, transform.forward.z), direction);
-            Debug.Log(angle + " " + Vector3.Distance(this.gameObject.transform.position, targetList[i].transform.position));
             if (Vector3.Distance(this.gameObject.transform.position,targetList[i].transform.position) < range && 
                 angle <= 50){
-
+                
 				target = targetList[i];
+                Debug.Log("Found " + target.gameObject.name);
 				break;
 			}
 		}
