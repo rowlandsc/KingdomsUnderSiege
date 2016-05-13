@@ -220,6 +220,13 @@ public class NetworkPlayerObject : NetworkBehaviour {
         icebullet_clone1.transform.DOMove(hitpoint.point, 0.4f, false);
         NetworkServer.Spawn(icebullet_clone1);
     }
+
+    [Command]
+    public void CmdMageCharging(NetworkIdentity mage, string chargingName, Vector3 position, Quaternion rotation)
+    {
+        GameObject chargingAnim_ = Instantiate(PrefabCache.Instance.PrefabIndex[chargingName], this.gameObject.transform.position - new Vector3(0, 0.2f, 0), transform.rotation) as GameObject;
+        chargingAnim_.transform.parent = mage.transform;
+    }
     
     [ClientRpc]
 	public void RpcStartGame() {
