@@ -63,8 +63,10 @@ GameObject:
   - 23: {fileID: 2355156}
   - 54: {fileID: 5482704}
   - 114: {fileID: 11431886}
+  - 114: {fileID: 11488092}
+  - 114: {fileID: 11449850}
   m_Layer: 14
-  m_Name: Iceball
+  m_Name: MageMelee
   m_TagString: IceBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,6 +369,58 @@ MonoBehaviour:
   ending: {fileID: 171178, guid: 4e845b2a2f67c424d95d2f46ec589f9f, type: 2}
   Mage: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &11449850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &11488092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 229
+    i1: 70
+    i2: 85
+    i3: 156
+    i4: 74
+    i5: 37
+    i6: 212
+    i7: 29
+    i8: 248
+    i9: 173
+    i10: 214
+    i11: 203
+    i12: 47
+    i13: 253
+    i14: 197
+    i15: 52
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!135 &13514804
 SphereCollider:
   m_ObjectHideFlags: 1

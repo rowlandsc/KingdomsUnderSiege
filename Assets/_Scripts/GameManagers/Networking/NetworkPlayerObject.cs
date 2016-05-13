@@ -201,6 +201,14 @@ public class NetworkPlayerObject : NetworkBehaviour {
         arch_clone.GetComponent<ArchMeleeHit>().velocity = velocity;
         NetworkServer.Spawn(arch_clone);
     }
+
+    [Command]
+    public void CmdMageMelee(NetworkIdentity mage, Vector3 position, Quaternion rotation, Vector3 velocity)
+    {
+        GameObject iceball_clone = Instantiate(PrefabCache.Instance.PrefabIndex["MageMeleeObj"], position, rotation) as GameObject;
+        iceball_clone.GetComponent<Meleehit>().Initialize(mage);
+        iceball_clone.GetComponent<Meleehit>().velocity = velocity;
+    }
     
     [ClientRpc]
 	public void RpcStartGame() {

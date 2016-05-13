@@ -40,14 +40,8 @@ public class MageMelee : MonoBehaviour {
 			layerMask = ~layerMask;
 
 
-			if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))  {  
-				
-
-				iceball_clone = Instantiate(iceball, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;    	
-                iceball_clone.GetComponent<Meleehit>().Initialize(GetComponent<NetworkIdentity>());
-				iceball_clone.GetComponent<Meleehit>().velocity = (hit.point - transform.position).normalized*0.5f;
-
-
+			if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))  {
+                KUSNetworkManager.HostPlayer.CmdMageMelee(GetComponent<NetworkIdentity>(), spellPosition.transform.position, Quaternion.LookRotation(ray.direction), (hit.point - transform.position).normalized * 0.5f);
 			} 
 		}
 
