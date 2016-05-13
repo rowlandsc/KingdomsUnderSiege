@@ -793,6 +793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e715f8e43a684f5408d98fe6b4cba476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  words: {fileID: 0}
 --- !u!114 &11406970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -920,7 +921,7 @@ MonoBehaviour:
   mp_use: 10
   timer: 0
   knightsecond_Activate: 0
-  effect_fire: {fileID: 100004, guid: 18a6b21b686693646907f4f8278ae8cf, type: 2}
+  effect_fire: {fileID: 100004, guid: c5ca2afdf2ef1a44c8b4533a325ac426, type: 2}
 --- !u!114 &11478508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -947,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3413e9e8695416a89a3d7b1a9d341d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim_: {fileID: 158764, guid: d3ea60607b1ce414a9416c252b7fd89f, type: 2}
+  anim_: {fileID: 158764, guid: bacba2637742d7a4ebe841de05a162e7, type: 2}
   cooldown: 0.5
   canAttack: 0
   timer: 0
@@ -962,14 +963,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80093cb9bc8794952a85ae89e82283f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ending: {fileID: 100012, guid: 657af2b0577f5924ab20cf6492bd309e, type: 2}
+  ending: {fileID: 100012, guid: 4563c5af9cecaa944979cfd368c4a20d, type: 2}
   mp_use: 40
   cooldown: 30
   duration: 10
   canAttack: 0
   timer: 0
   super_activation: 0
-  super: {fileID: 100004, guid: 18a6b21b686693646907f4f8278ae8cf, type: 2}
+  super: {fileID: 100004, guid: c5ca2afdf2ef1a44c8b4533a325ac426, type: 2}
 --- !u!114 &11499560
 MonoBehaviour:
   m_ObjectHideFlags: 1

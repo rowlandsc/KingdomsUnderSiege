@@ -24,6 +24,8 @@ public class KnightSecondHit : MonoBehaviour {
 
 	void OnTriggerStay(Collider col){
 
+        if (!KUSNetworkManager.LocalPlayer.isServer) return;
+
 		if(col.tag=="OverseerPlayer"){
 
 

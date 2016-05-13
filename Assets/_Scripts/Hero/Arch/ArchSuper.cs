@@ -86,8 +86,8 @@ public class ArchSuper : MonoBehaviour {
 			if(skytime<=0||shot_times_left<=0){
 				this.gameObject.GetComponent<Rigidbody>().useGravity=true;
 				SuperActivate=false;
-				Destroy(superFx_clone);
-				effect_apply=true;
+                KUSNetworkManager.HostPlayer.CmdArcherSuperDestroy();
+                effect_apply =true;
 				skytime=10f;
 				shot_times_left=3;
 			}
