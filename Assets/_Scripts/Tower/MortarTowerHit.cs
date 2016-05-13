@@ -44,8 +44,8 @@ public class MortarTowerHit : MonoBehaviour {
 			hitPositionZ = hitPosition.z;
 
 			Sequence mySequence = DOTween.Sequence();
-			mySequence.Append(this.transform.DOMove(new Vector3((localpositionX+hitPositionX)/2,20f,(localpositionZ+hitPositionZ)/2 ),2f,false));
-			mySequence.Append(this.transform.DOMove(new Vector3(hitPositionX,hitPositionY-5f,hitPositionZ),2f,false));
+			mySequence.Append(this.transform.DOMove(new Vector3((localpositionX+hitPositionX)/2,70f,(localpositionZ+hitPositionZ)/2 ),3f,false));
+			mySequence.Append(this.transform.DOMove(new Vector3(hitPositionX,hitPositionY-1f,hitPositionZ),2f,false));
 
 
 			canShot = false;
