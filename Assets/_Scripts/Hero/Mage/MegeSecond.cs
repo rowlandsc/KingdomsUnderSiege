@@ -207,22 +207,23 @@ public class MegeSecond : MonoBehaviour {
 
                 Startcooldown = true;
             }
-
-            if (Startcooldown)
-            {
-
-                canAttack = false;
-                cooldown_timer -= Time.deltaTime;
-
-                if (cooldown_timer < 0)
-                {
-                    bullet_shot = 0;
-                    canAttack = true;
-                    Startcooldown = false;
-                    cooldown_timer = cooldown;
-                }
-            }
+				
         }
+
+		if (Startcooldown)
+		{
+
+			canAttack = false;
+			cooldown_timer -= Time.deltaTime;
+
+			if (cooldown_timer < 0)
+			{
+				bullet_shot = 0;
+				canAttack = true;
+				Startcooldown = false;
+				cooldown_timer = cooldown;
+			}
+		}
     }
 
 
