@@ -15,7 +15,8 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
     float herorespwn_timer = 10f;
 	bool herodie = false;
 	private NetworkPlayerInput _playerInput;
-	public Text words = null;
+	private Text words = null;
+	private GameObject DeathScreen = null;
 
     // Use this for initialization
     void Start () {
@@ -26,6 +27,7 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
         _ps = GetComponent<ProfileSystem>();
 		_playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
 		words = GameObject.FindGameObjectWithTag("DeathCount").GetComponent<Text>();
+		DeathScreen = GameObject.FindGameObjectWithTag("DeathScreen");
     }
 	
 	// Update is called once per frame
@@ -122,11 +124,14 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 	void DeathCount() {
 		if (_playerInput.CheckLocalPlayer == 1) {
 			words.text = "You died, respawn in 10 sec";
+			DeathScreen.GetComponent<RawImage>().enabled = true;
 		}
 	}
 
 	void UnDeathCount() {
 		words.text = "";
+		DeathScreen.SetActive(false);
+		DeathScreen.GetComponent<RawImage>().enabled = false;
 	}
 
 }
