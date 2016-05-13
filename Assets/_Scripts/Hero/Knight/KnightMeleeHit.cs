@@ -24,7 +24,9 @@ public class KnightMeleeHit : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col){
-		
+
+        if (!KUSNetworkManager.LocalPlayer.isServer) return;
+
 		bool canAttack=!gameObject.GetComponentInParent<KnightMelee>().canAttack;
 
 		if(canAttack){

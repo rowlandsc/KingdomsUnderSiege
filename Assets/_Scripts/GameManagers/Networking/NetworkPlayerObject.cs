@@ -197,11 +197,79 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
     [Command]
     public void CmdArcherMelee(NetworkIdentity archer, Vector3 position, Quaternion rotation, Vector3 velocity) {
-        GameObject arch_clone = Instantiate(PrefabCache.Instance.PrefabIndex["ArcherMeleeObj"], position, rotation) as GameObject;
-        arch_clone.GetComponent<ArchMeleeHit>().Initialize(archer);
-        arch_clone.GetComponent<ArchMeleeHit>().velocity = velocity;
-        NetworkServer.Spawn(arch_clone);
+        GameObject arrow_clone = Instantiate(PrefabCache.Instance.PrefabIndex["ArcherMeleeObj"], position, rotation) as GameObject;
+        arrow_clone.GetComponent<ArchMeleeHit>().Initialize(archer);
+        arrow_clone.GetComponent<ArchMeleeHit>().velocity = velocity;
+        NetworkServer.Spawn(arrow_clone);
     }
+
+    [Command]
+    public void CmdArcherSecond(NetworkIdentity archer, Vector3 position, Quaternion rotation) {
+        GameObject proj_clone = Instantiate(PrefabCache.Instance.PrefabIndex["ArcherSecondObj"], position, rotation) as GameObject;
+        proj_clone.GetComponent<ArchSecondHit>().Initialize(archer);
+        NetworkServer.Spawn(proj_clone);
+    }
+
+    [Command]
+    public void CmdArcherSuperStart(NetworkIdentity archer, Vector3 position, Quaternion rotation) {
+        GameObject fx_clone = Instantiate(PrefabCache.Instance.PrefabIndex["ArcherSuperFXObj"], position, rotation) as GameObject;
+        fx_clone.transform.SetParent(archer.transform);
+        fx_clone.name = "ArcherSuperFx";
+        NetworkServer.Spawn(fx_clone);
+    }
+
+    [Command]
+    public void CmdArcherSuperDestroy() {
+        GameObject superfx = GameObject.Find("ArcherSuperFx");
+        if (superfx != null) Destroy(superfx);
+    }
+
+    [Command]
+    public void CmdArcherSuper(NetworkIdentity archer, Vector3 position, Quaternion rotation, Vector3 velocity) {
+        GameObject proj_clone = Instantiate(PrefabCache.Instance.PrefabIndex["ArcherSuperObj"], position, rotation) as GameObject;
+        proj_clone.GetComponent<ArchSuperHit>().Initialize(archer);
+        proj_clone.GetComponent<ArchSuperHit>().velocity = velocity;
+        NetworkServer.Spawn(proj_clone);
+    }
+
+    [Command]
+    public void CmdKnightMelee(NetworkIdentity knight, Vector3 position, Quaternion rotation) {
+        GameObject knightMelee = Instantiate(PrefabCache.Instance.PrefabIndex["KnightMeleeObj"], position, rotation) as GameObject;
+        knightMelee.GetComponent<KnightMeleeHit>().Initialize(knight);
+        knightMelee.transform.parent = knight.transform;
+        knightMelee.AddComponent<DestoryAfter3second>();
+        NetworkServer.Spawn(knightMelee);
+    }
+
+    [Command]
+    public void CmdKnightSecond(NetworkIdentity knight, Vector3 position, Quaternion rotation) {
+        GameObject knightSecond = Instantiate(PrefabCache.Instance.PrefabIndex["KnightSecondObj"], position, rotation) as GameObject;
+        knightSecond.GetComponent<KnightSecondHit>().Initialize(knight);
+        knightSecond.transform.parent = knight.transform;
+        knightSecond.name = "KnightSecondFX";
+        NetworkServer.Spawn(knightSecond);
+    }
+
+    [Command]
+    public void CmdKnightSecondDestroy() {
+        GameObject secondfx = GameObject.Find("KnightSecondFX");
+        if (secondfx != null) Destroy(secondfx);
+    }
+
+    [Command]
+    public void CmdKnightSuper(NetworkIdentity knight, Vector3 position, Quaternion rotation) {
+        GameObject knightSuper = Instantiate(PrefabCache.Instance.PrefabIndex["KnightSuperObj"], position, rotation) as GameObject;
+        knightSuper.transform.parent = knight.transform;
+        knightSuper.name = "KnightSuperFX";
+        NetworkServer.Spawn(knightSuper);
+    }
+
+    [Command]
+    public void CmdKnightSuperDestroy() {
+        GameObject superfx = GameObject.Find("KnightSuperFX");
+        if (superfx != null) Destroy(superfx);
+    }
+
 
     [Command]
     public void CmdMageMelee(NetworkIdentity mage, Vector3 position, Quaternion rotation, Vector3 velocity)

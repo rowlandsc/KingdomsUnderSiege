@@ -17,6 +17,7 @@ public class KnightMelee : MonoBehaviour {
 	private Animator anim;
 
     private NetworkPlayerInput _playerInput;
+    private NetworkIdentity _netid;
 
     // Use this for initialization
     void Start () {
@@ -24,6 +25,7 @@ public class KnightMelee : MonoBehaviour {
 		timer = cooldown;
 		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
         _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+        _netid = GetComponent<NetworkIdentity>();
     }
 	
 	// Update is called once per frame
@@ -35,10 +37,7 @@ public class KnightMelee : MonoBehaviour {
 		{
 			canAttack = false;
 
-			anim_clone = Instantiate(anim_, this.transform.position,Quaternion.Euler(0,Maincamera.transform.eulerAngles.y,0)) as GameObject;
-            anim_clone.GetComponent<KnightMeleeHit>().Initialize(GetComponent<NetworkIdentity>());
-			anim_clone.transform.parent=this.gameObject.transform;
-			anim_clone.AddComponent<DestoryAfter3second>();
+            KUSNetworkManager.HostPlayer.CmdKnightMelee(_netid, transform.position, Quaternion.Euler(0, Maincamera.transform.eulerAngles.y, 0));
 		}
 		
 		if(!canAttack){

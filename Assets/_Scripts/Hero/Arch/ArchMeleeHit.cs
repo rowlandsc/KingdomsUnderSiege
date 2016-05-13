@@ -31,8 +31,11 @@ public class ArchMeleeHit : MonoBehaviour {
 		memory_saving_timer+=Time.deltaTime;
 		
 		if(memory_saving_timer>=1f){
-			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-			ending_.AddComponent<DestoryselfAfterfewsecond>();
+            if (KUSNetworkManager.LocalPlayer.isServer) {
+                ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
+                ending_.AddComponent<DestoryselfAfterfewsecond>();
+                NetworkServer.Spawn(ending_);
+            }
 			Destroy(this.gameObject);
 			
 		}

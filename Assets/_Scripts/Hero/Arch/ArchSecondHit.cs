@@ -27,13 +27,17 @@ public class ArchSecondHit : MonoBehaviour {
     void Update () {
 		timer-=Time.deltaTime;
 		if(timer<=0f){
-			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-			ending_.AddComponent<DestoryselfAfterfewsecond>();
+            if (KUSNetworkManager.LocalPlayer.isServer) {
+                ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
+                ending_.AddComponent<DestoryselfAfterfewsecond>();
+                NetworkServer.Spawn(ending_);
+            }
 			Destroy(this.gameObject);
 		}
 	}
 
 	void OnTriggerStay(Collider col){
+        if (!KUSNetworkManager.LocalPlayer.isServer) return;
 
 		if(col.tag=="OverseerPlayer"){
 

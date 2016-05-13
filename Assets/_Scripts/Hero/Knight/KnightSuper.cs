@@ -54,8 +54,9 @@ public class KnightSuper : MonoBehaviour {
 			//apply hero_increased_effect here
 			if(super_clone_runonce){
 
-				ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-				ending_.transform.parent=this.gameObject.transform;
+                //ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
+                //ending_.transform.parent=this.gameObject.transform;
+                KUSNetworkManager.HostPlayer.CmdKnightSuper(_netId, transform.position, Quaternion.identity);
 
 				this.gameObject.transform.localScale =super_hero_size;
                 /*this.gameObject.GetComponent<ProfileSystem>().AddMeleeDamage(20);
@@ -86,7 +87,7 @@ public class KnightSuper : MonoBehaviour {
 				this.gameObject.GetComponent<ProfileSystem>().AddArmor(-100);*/
 
 				super_clone_runonce=true;
-				Destroy(ending_);
+                KUSNetworkManager.HostPlayer.CmdKnightSuperDestroy();
 
 			}
 		}
