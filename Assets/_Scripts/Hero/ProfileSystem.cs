@@ -243,6 +243,10 @@ public class ProfileSystem : NetworkBehaviour {
            GetComponent<IKillable>().OnDeath();
 		}
 
+		if(HealthPoints<=-1){
+			GetComponent<IKillable>().OnDeath();
+		}
+
 		if(baseHealthPoints < MaxHealthPoints){
 			baseHealthPoints += HealthRegen * Time.deltaTime;
 		}
