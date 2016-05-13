@@ -127,7 +127,7 @@ public class MegeSecond : MonoBehaviour {
                 RaycastHit hit1;
                 if (Physics.Raycast(ray1, out hit1, Mathf.Infinity, layerMask))
                 {
-                    if (hit1.transform.gameObject.tag != "Player")
+					if (hit1.transform.gameObject.tag != "HeroPlayer")
                     {
                         KUSNetworkManager.HostPlayer.CmdMageSecond(
                             GetComponent<NetworkIdentity>(),
@@ -145,7 +145,7 @@ public class MegeSecond : MonoBehaviour {
 
                     if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, layerMask))
                     {
-                        if (hit2.transform.gameObject.tag != "Player")
+						if (hit2.transform.gameObject.tag != "HeroPlayer")
                         {
                             KUSNetworkManager.HostPlayer.CmdMageSecond(
                             GetComponent<NetworkIdentity>(),
@@ -156,7 +156,7 @@ public class MegeSecond : MonoBehaviour {
                     }
                     if (Physics.Raycast(ray3, out hit3, Mathf.Infinity, layerMask))
                     {
-                        if (hit3.transform.gameObject.tag != "Player")
+						if (hit3.transform.gameObject.tag != "HeroPlayer")
                         {
                             KUSNetworkManager.HostPlayer.CmdMageSecond(
                             GetComponent<NetworkIdentity>(),
@@ -174,7 +174,7 @@ public class MegeSecond : MonoBehaviour {
 
                         if (Physics.Raycast(ray4, out hit4, Mathf.Infinity, layerMask))
                         {
-                            if (hit4.transform.gameObject.tag != "Player")
+							if (hit4.transform.gameObject.tag != "HeroPlayer")
                             {
                                 KUSNetworkManager.HostPlayer.CmdMageSecond(
                                 GetComponent<NetworkIdentity>(),
@@ -185,7 +185,7 @@ public class MegeSecond : MonoBehaviour {
                         }
                         if (Physics.Raycast(ray5, out hit5, Mathf.Infinity, layerMask))
                         {
-                            if (hit5.transform.gameObject.tag != "Player")
+                            if (hit5.transform.gameObject.tag != "HeroPlayer")
                             {
                                 KUSNetworkManager.HostPlayer.CmdMageSecond(
                                 GetComponent<NetworkIdentity>(),
