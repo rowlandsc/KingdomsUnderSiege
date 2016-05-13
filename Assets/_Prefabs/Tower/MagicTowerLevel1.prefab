@@ -59,6 +59,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &160984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 433106}
+  - 33: {fileID: 3396056}
+  - 65: {fileID: 6578386}
+  - 23: {fileID: 2379448}
+  - 114: {fileID: 11435132}
+  m_Layer: 9
+  m_Name: HealthBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &433106
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160984}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 3.908309, z: 0}
+  m_LocalScale: {x: -1.2267, y: 0.122670025, z: 0.024524853}
+  m_Children: []
+  m_Father: {fileID: 465422}
+  m_RootOrder: 2
 --- !u!4 &461784
 Transform:
   m_ObjectHideFlags: 1
@@ -78,11 +109,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 258.56635, y: 20.75, z: 188.62}
+  m_LocalPosition: {x: 260.26694, y: 19.933382, z: 185.93535}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 470196}
   - {fileID: 461784}
+  - {fileID: 433106}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &470196
@@ -151,6 +183,32 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!23 &2379448
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160984}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: bf91359f9163c45ab82a9a1f15951891, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!33 &3369154
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -165,6 +223,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129744}
   m_Mesh: {fileID: 4300004, guid: c7e21dcf97e4b4edab86fc2d22c08dff, type: 3}
+--- !u!33 &3396056
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160984}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &6565818
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -177,6 +242,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5635537, y: 1.7667619, z: 1.4850345}
   m_Center: {x: -0.059265137, y: 0.49492264, z: -0.06640625}
+--- !u!65 &6578386
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11420154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,6 +330,17 @@ MonoBehaviour:
     i15: 154
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &11435132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e64ded0bc35407d9700ed613b775bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11438346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -265,6 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameMap: {fileID: 0}
+  CirclePosition: {x: 0, y: 0, z: 0}
   CircleThetaScale: 0.01
   CircleRadius: 0
   CircleColor: {r: 0, g: 0, b: 0, a: 1}
@@ -314,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameMap: {fileID: 0}
+  CirclePosition: {x: 0, y: 0, z: 0}
   CircleThetaScale: 0.01
   CircleRadius: 0
   CircleColor: {r: 0, g: 0, b: 0, a: 0}

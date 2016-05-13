@@ -31,7 +31,13 @@ public class MortarTowerAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(canAttack){
-			if(target==null || Vector3.Distance(this.gameObject.transform.position,target.transform.position) > profile.AttackRange) findTarget();
+            Vector2 direction = (target != null) ? new Vector2(target.transform.position.x, target.transform.position.z) - new Vector2(transform.position.x, transform.position.z) : Vector2.zero;
+            if (target==null || 
+                Vector3.Distance(this.gameObject.transform.position,target.transform.position) > profile.AttackRange ||
+                Vector2.Angle(new Vector2(transform.forward.x, transform.forward.z), direction) > 50)
+
+                findTarget();
+
 			if(target!=null){
                 attack_=Instantiate(attack,this.gameObject.transform.position,Quaternion.identity)as GameObject;
 				attack_.GetComponent<MortarTowerHit>().Tower = this.gameObject;
@@ -58,7 +64,12 @@ public class MortarTowerAttack : MonoBehaviour {
 		GameObject[] targetList = GameObject.FindGameObjectsWithTag("HeroPlayer");
         target = null;
 		for(int i=0;i<targetList.Length;i++){
-			if(Vector3.Distance(this.gameObject.transform.position,targetList[i].transform.position)<range){
+            Vector2 direction = new Vector2(targetList[i].transform.position.x, targetList[i].transform.position.z) - new Vector2(transform.position.x, transform.position.z);
+            float angle = Vector2.Angle(new Vector2(transform.forward.x, transform.forward.z), direction);
+            Debug.Log(angle + " " + Vector3.Distance(this.gameObject.transform.position, targetList[i].transform.position));
+            if (Vector3.Distance(this.gameObject.transform.position,targetList[i].transform.position) < range && 
+                angle <= 50){
+
 				target = targetList[i];
 				break;
 			}

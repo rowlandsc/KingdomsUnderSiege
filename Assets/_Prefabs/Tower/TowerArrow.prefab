@@ -45,6 +45,8 @@ GameObject:
   - 23: {fileID: 2328356}
   - 114: {fileID: 11466908}
   - 65: {fileID: 6595762}
+  - 114: {fileID: 11418096}
+  - 114: {fileID: 11430556}
   m_Layer: 0
   m_Name: TowerArrow
   m_TagString: Untagged
@@ -391,6 +393,58 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &11418096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 214
+    i1: 34
+    i2: 33
+    i3: 127
+    i4: 83
+    i5: 213
+    i6: 36
+    i7: 67
+    i8: 9
+    i9: 239
+    i10: 251
+    i11: 140
+    i12: 243
+    i13: 92
+    i14: 65
+    i15: 134
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &11430556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &11466908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -402,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfa6ed4270cb437e88ad0aabc2906de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 0}
+  Tower: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!198 &19801756
 ParticleSystem:
