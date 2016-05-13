@@ -42,10 +42,10 @@ public class MagicTowerAttackHit : MonoBehaviour {
 			towerStats = Tower.GetComponent<ProfileSystem>();
 			ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
 			if (colProfile) {
-				ProfileEffect slowdown = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId, moveSpeedAdd: -1 * 0.5f, startingDuration: 3);
+				//ProfileEffect slowdown = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId, moveSpeedAdd: -1 * 0.5f, startingDuration: 3);
 				ProfileEffect hitEffect = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId, healthPointsAdd: -1 * towerStats.SecondDamageDealt);
 				KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);
-				KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), slowdown);
+				//KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), slowdown);
 			}
 		}
 
