@@ -39,7 +39,7 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 			
 		} else {
 			
-			this.gameObject.transform.DOMove(deathPoint.transform.position, 0.5f, false);
+			this.gameObject.transform.position = deathPoint.transform.position;
 			this.gameObject.GetComponent<Rigidbody>().useGravity = false;
 			_ps.baseHealthPoints = _ps.MaxHealthPoints;
 			NetworkPlayerOwner playerOwner = this.GetComponent<NetworkPlayerOwner>();
@@ -75,19 +75,19 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 
         if (this.gameObject.name == "Mage(Clone)")
         {
-            this.gameObject.transform.DOMove(Mage_birthplace.transform.position, 0.1f, false);
+            this.gameObject.transform.position = Mage_birthplace.transform.position;
 			UnDeathCount();
         }
 
         else if (this.gameObject.name == "Knight(Clone)")
         {
-            this.gameObject.transform.DOMove(Knight_birthplace.transform.position, 0.1f, false);
+            this.gameObject.transform.position = Knight_birthplace.transform.position;
 			UnDeathCount();
         }
 
         else if (this.gameObject.name == "Archer(Clone)")
         {
-            this.gameObject.transform.DOMove(Arch_birthplace.transform.position, 0.1f, false);
+            this.gameObject.transform.position = Arch_birthplace.transform.position;
 			UnDeathCount();
         }
 
@@ -95,7 +95,7 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 
         _ps.baseHealthPoints = _ps.MaxHealthPoints;
         _ps.baseMagicPoints = _ps.MaxMagicPoints;
-
+        
     }
 
     public GameObject GameObject {
