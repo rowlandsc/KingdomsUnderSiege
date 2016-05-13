@@ -197,11 +197,34 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
     [Command]
     public void CmdArcherMelee(NetworkIdentity archer, Vector3 position, Quaternion rotation, Vector3 velocity) {
-        GameObject arch_clone = Instantiate(PrefabCache.Instance.PrefabIndex["ArcherMeleeObj"], position, rotation) as GameObject;
-        arch_clone.GetComponent<ArchMeleeHit>().Initialize(archer);
-        arch_clone.GetComponent<ArchMeleeHit>().velocity = velocity;
-        NetworkServer.Spawn(arch_clone);
+        GameObject arrow_clone = Instantiate(PrefabCache.Instance.PrefabIndex["ArcherMeleeObj"], position, rotation) as GameObject;
+        arrow_clone.GetComponent<ArchMeleeHit>().Initialize(archer);
+        arrow_clone.GetComponent<ArchMeleeHit>().velocity = velocity;
+        NetworkServer.Spawn(arrow_clone);
     }
+
+    [Command]
+    public void CmdArcherSecond(NetworkIdentity archer, Vector3 position, Quaternion rotation) {
+        GameObject proj_clone = Instantiate(PrefabCache.Instance.PrefabIndex["ArcherSecondObj"], position, rotation) as GameObject;
+        proj_clone.GetComponent<ArchMeleeHit>().Initialize(archer);
+        NetworkServer.Spawn(proj_clone);
+    }
+
+    [Command]
+    public void CmdArcherSuperStart(NetworkIdentity archer, Vector3 position, Quaternion rotation) {
+        GameObject fx_clone = Instantiate(PrefabCache.Instance.PrefabIndex["ArcherSuperFXObj"], position, rotation) as GameObject;
+        fx_clone.transform.SetParent(archer.transform);
+        NetworkServer.Spawn(fx_clone);
+    }
+
+    [Command]
+    public void CmdArcherSuper(NetworkIdentity archer, Vector3 position, Quaternion rotation, Vector3 velocity) {
+        GameObject proj_clone = Instantiate(PrefabCache.Instance.PrefabIndex["ArcherSuperObj"], position, rotation) as GameObject;
+        proj_clone.GetComponent<ArchSuperHit>().Initialize(archer);
+        proj_clone.GetComponent<ArchSuperHit>().velocity = velocity;
+        NetworkServer.Spawn(proj_clone);
+    }
+
 
     [Command]
     public void CmdMageMelee(NetworkIdentity mage, Vector3 position, Quaternion rotation, Vector3 velocity)

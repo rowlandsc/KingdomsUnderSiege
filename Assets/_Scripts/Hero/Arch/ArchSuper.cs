@@ -25,6 +25,7 @@ public class ArchSuper : MonoBehaviour {
 	private GameObject spellPosition;
 
     private NetworkPlayerInput _playerInput;
+    private NetworkIdentity _netid;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +36,7 @@ public class ArchSuper : MonoBehaviour {
 		effect_apply=true;
 		timer = cooldown;
         _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+        _netid = GetComponent<NetworkIdentity>();
     }
 	
 	// Update is called once per frame
@@ -54,8 +56,9 @@ public class ArchSuper : MonoBehaviour {
 			HeroMove.DisableMove();
 
 			if(effect_apply){
-                superFx_clone = Instantiate(superFx, this.gameObject.transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 0f))) as GameObject;
-				superFx_clone.transform.parent=this.gameObject.transform;
+                //superFx_clone = Instantiate(superFx, this.gameObject.transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 0f))) as GameObject;
+                //superFx_clone.transform.parent=this.gameObject.transform;
+                KUSNetworkManager.HostPlayer.CmdArcherSuperStart(_netid, transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 0f)));
 
 				effect_apply=false;
 			}

@@ -31,8 +31,11 @@ public class ArchSuperHit : MonoBehaviour {
 		memory_saving_timer+=Time.deltaTime;
 
 		if(memory_saving_timer>=kill_time){
-			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-			ending_.AddComponent<DestoryselfAfterfewsecond>();
+            if (KUSNetworkManager.LocalPlayer.isServer) {
+                ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
+                ending_.AddComponent<DestoryselfAfterfewsecond>();
+                NetworkServer.Spawn(ending_);
+            }
 			Destroy(this.gameObject);
 
 		}
@@ -41,10 +44,12 @@ public class ArchSuperHit : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col){
+        if (!KUSNetworkManager.LocalPlayer.isServer) return;
 
 		if(col.gameObject.tag!="HeroPlayer" && col.gameObject.name!="SpinningLightning(Clone)"){
 		    ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-		    ending.AddComponent<DestoryselfAfterfewsecond>();
+		    ending_.AddComponent<DestoryselfAfterfewsecond>();
+            NetworkServer.Spawn(ending_);
 
             /*if(col.gameObject.GetComponent<ProfileSystem>()){
 
