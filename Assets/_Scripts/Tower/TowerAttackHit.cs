@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using System;
 
-public class TowerAttackHit : MonoBehaviour {
+public class TowerAttackHit : MonoBehaviour, IShootable {
 
 	public GameObject Tower ;
     private ProfileSystem towerStats;
@@ -12,8 +13,16 @@ public class TowerAttackHit : MonoBehaviour {
 
     public Vector3 velocity;
 
-	// Use this for initialization
-	void Start () {
+    public string PrefabCacheId
+    {
+        get
+        {
+            return "ArcherTowerShot";
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
 		kill_time=10f;
 		memory_saving_timer=0f;
 	}

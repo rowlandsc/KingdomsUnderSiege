@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 246.09702, y: 19.932201, z: 190.4711}
+  m_LocalPosition: {x: 299.5902, y: 19.855204, z: 178.37186}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,6 +78,7 @@ MonoBehaviour:
     - ArcherSecondObj
     - ArcherSuperFXObj
     - ArcherSuperObj
+    - ArcherTowerShot
     - HeroArch
     - HeroCamera
     - HeroGearSystem
@@ -95,6 +96,8 @@ MonoBehaviour:
     - MageSecondObj
     - MageSuper
     - MageSuper1
+    - MagicTowerShot
+    - MortarTowerShot
     - OverseerCamera
     - OverseerObjectSelector
     - OverseerTowerPlacer
@@ -109,6 +112,7 @@ MonoBehaviour:
     - {fileID: 191426, guid: 3b20f5a51bb754b9886e99e50f75b526, type: 2}
     - {fileID: 190812, guid: caf5a9b5e02ec9a479a06ce204c7ce51, type: 2}
     - {fileID: 159590, guid: 9bd9f045889064f08a898b72511021df, type: 2}
+    - {fileID: 127116, guid: d622217f53d5244309effb8cf35c4186, type: 2}
     - {fileID: 152332, guid: bf05d0b104cab43a0966b667acafcd63, type: 2}
     - {fileID: 138842, guid: 1f4f3b10cfa4142338bac8c5a57f8e53, type: 2}
     - {fileID: 147068, guid: 14a5a5c6c8c824b32842b1739672346d, type: 2}
@@ -126,6 +130,8 @@ MonoBehaviour:
     - {fileID: 128786, guid: 6f81d365ec00a4e1abd2f2ec85f5a7dd, type: 2}
     - {fileID: 177348, guid: 5552ac4de08a64011b4dc08fd93fbba8, type: 2}
     - {fileID: 127662, guid: a08d5e50b58ddf64d8429f3087fc49b6, type: 2}
+    - {fileID: 127116, guid: 0f646d651eb2a4a0594b226b14516837, type: 2}
+    - {fileID: 171542, guid: 002c295ac9d10f54785efd362736262a, type: 2}
     - {fileID: 188464, guid: 4331aa5599bfeb84d974854a27e4aa5f, type: 2}
     - {fileID: 130276, guid: 4794ad71281fc4e43827236381e6328f, type: 2}
     - {fileID: 130276, guid: e7ac62775e0c14235bd94b8a58fdc688, type: 2}

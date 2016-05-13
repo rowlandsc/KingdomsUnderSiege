@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -33,10 +34,14 @@ public class TowerAttack : MonoBehaviour {
 		if(canAttack){
 			if(target==null || Vector3.Distance(this.gameObject.transform.position,target.transform.position) > profile.AttackRange) findTarget();
 			if(target!=null){
-                attack_=Instantiate(attack,this.gameObject.transform.position,Quaternion.identity)as GameObject;
-				attack_.GetComponent<TowerAttackHit>().Tower = this.gameObject;
-                attack_.GetComponent<TowerAttackHit>().velocity = (target.transform.position - transform.position).normalized * profile.AttackSpeed;
 
+                KUSNetworkManager.HostPlayer.CmdTowerAttack(
+                    GetComponent<NetworkIdentity>(),
+                    attack.GetComponent<IShootable>().PrefabCacheId,
+                    this.gameObject.transform.position,
+                    Quaternion.identity,
+                    (target.transform.position - transform.position).normalized * profile.AttackSpeed);
+                               
                 canAttack =false;
 			}
 		}

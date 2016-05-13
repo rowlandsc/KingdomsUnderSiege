@@ -328,7 +328,22 @@ public class NetworkPlayerObject : NetworkBehaviour {
         super1_.GetComponent<SuperHit>().Initialize(mage);
         NetworkServer.Spawn(super1_);
     }
-    
+
+    [Command]
+    public void CmdTowerAttack(NetworkIdentity tower, string towerAttackType, Vector3 position, Quaternion rotation, Vector3 velocity)
+    {
+        GameObject attack_ = Instantiate(
+           PrefabCache.Instance.PrefabIndex[towerAttackType],
+           position, 
+           rotation) as GameObject;
+
+        attack_.GetComponent<TowerAttackHit>().Tower = tower.gameObject;
+        attack_.GetComponent<TowerAttackHit>().velocity = velocity;
+
+        NetworkServer.Spawn(attack_);
+
+    }
+
     [ClientRpc]
 	public void RpcStartGame() {
         if (SceneManager.GetActiveScene().name == "SetupScreen")

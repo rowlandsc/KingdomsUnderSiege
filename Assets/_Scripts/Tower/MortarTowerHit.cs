@@ -2,8 +2,9 @@
 using System.Collections;
 using UnityEngine.Networking;
 using DG.Tweening;
+using System;
 
-public class MortarTowerHit : MonoBehaviour {
+public class MortarTowerHit : MonoBehaviour, IShootable {
 
 	public GameObject Tower ;
     public float SplashDamageRadius = 4f;
@@ -23,6 +24,14 @@ public class MortarTowerHit : MonoBehaviour {
 
     private float localpositionX;
 	private float localpositionZ;
+
+    public string PrefabCacheId
+    {
+        get
+        {
+            return "MortarTowerShot";
+        }
+    }
 
     // Use this for initialization
     void Start () {

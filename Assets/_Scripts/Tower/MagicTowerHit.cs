@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using System;
 
-public class MagicTowerAttackHit : MonoBehaviour {
+public class MagicTowerAttackHit : MonoBehaviour, IShootable {
 
 	public GameObject Tower ;
 	private ProfileSystem towerStats;
@@ -12,8 +13,16 @@ public class MagicTowerAttackHit : MonoBehaviour {
 
 	public Vector3 velocity;
 
-	// Use this for initialization
-	void Start () {
+    public string PrefabCacheId
+    {
+        get
+        {
+            return "MagicTowerShot";
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
 		kill_time=10f;
 		memory_saving_timer=0f;
 	}

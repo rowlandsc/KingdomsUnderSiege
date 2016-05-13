@@ -46,6 +46,8 @@ GameObject:
   - 23: {fileID: 2328356}
   - 114: {fileID: 11431556}
   - 135: {fileID: 13515336}
+  - 114: {fileID: 11497870}
+  - 114: {fileID: 11444204}
   m_Layer: 0
   m_Name: TowerMagic
   m_TagString: Untagged
@@ -353,6 +355,58 @@ MonoBehaviour:
   attack: {fileID: 0}
   range: 0
   Arrowspeed: 0
+--- !u!114 &11444204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &11497870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 15
+    i1: 100
+    i2: 109
+    i3: 101
+    i4: 30
+    i5: 178
+    i6: 164
+    i7: 160
+    i8: 89
+    i9: 75
+    i10: 34
+    i11: 107
+    i12: 20
+    i13: 81
+    i14: 104
+    i15: 55
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!135 &13515336
 SphereCollider:
   m_ObjectHideFlags: 1
