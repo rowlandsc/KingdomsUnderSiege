@@ -79,7 +79,7 @@ public class RoundManager : NetworkBehaviour{
         if (Instance == null)
         {
             this.RoundEvents = new Dictionary<string, UnityEvent>();
-            this._door = GameObject.Find("2partDoor");
+            this._door = GameObject.Find("HeroDoor");
             Instance = this;
         }
         else {
