@@ -9,7 +9,7 @@ public class EndGame : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		Cursor.visible = true;
 		if (heroWin == 1) {
 			HeroWin();
 		} else if (heroWin == 2) {
