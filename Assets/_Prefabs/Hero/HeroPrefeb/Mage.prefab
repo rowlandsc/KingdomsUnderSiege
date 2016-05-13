@@ -155,6 +155,7 @@ GameObject:
   - 114: {fileID: 11436536}
   - 114: {fileID: 11489452}
   - 114: {fileID: 11417484}
+  - 114: {fileID: 11423142}
   m_Layer: 12
   m_Name: Mage
   m_TagString: HeroPlayer
@@ -961,6 +962,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e715f8e43a684f5408d98fe6b4cba476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11423142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a31428cac12d472db850183120435a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11425084
