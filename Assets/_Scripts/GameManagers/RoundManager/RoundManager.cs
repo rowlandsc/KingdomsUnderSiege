@@ -82,8 +82,8 @@ public class RoundManager : NetworkBehaviour{
             this._door = GameObject.Find("HeroDoor");
             Instance = this;
         }
-        else {
-            Destroy(this);
+		else {
+			Destroy(this);
         }
     }
 
