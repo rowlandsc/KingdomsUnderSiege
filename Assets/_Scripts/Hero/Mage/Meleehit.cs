@@ -31,8 +31,10 @@ public class Meleehit : MonoBehaviour {
 		memory_saving_timer+=Time.deltaTime;
 		
 		if(memory_saving_timer>=kill_time){
+            if (!KUSNetworkManager.LocalPlayer.isServer) return;
+
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-			ending.AddComponent<DestoryselfAfterfewsecond>();
+            NetworkServer.Spawn(ending_);
 			Destroy(this.gameObject);
 
 

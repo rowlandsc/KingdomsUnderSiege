@@ -2,6 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class NetworkPlayerObject : NetworkBehaviour {
     
@@ -209,6 +210,15 @@ public class NetworkPlayerObject : NetworkBehaviour {
         iceball_clone.GetComponent<Meleehit>().Initialize(mage);
         iceball_clone.GetComponent<Meleehit>().velocity = velocity;
         NetworkServer.Spawn(iceball_clone);
+    }
+
+    [Command]
+    public void CmdMageSecond(NetworkIdentity mage, Vector3 position, Quaternion rotation, RaycastHit hitpoint)
+    {
+        GameObject icebullet_clone1 = Instantiate(PrefabCache.Instance.PrefabIndex["MageSecondObj"], position, rotation) as GameObject;
+        icebullet_clone1.GetComponent<SecondHit>().Initialize(mage);
+        icebullet_clone1.transform.DOMove(hitpoint.point, 0.4f, false);
+        NetworkServer.Spawn(icebullet_clone1);
     }
     
     [ClientRpc]

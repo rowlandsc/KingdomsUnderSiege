@@ -44,9 +44,10 @@ public class SecondHit : MonoBehaviour {
 		
 
 		if(col.gameObject.tag!="HeroPlayer"&&col.gameObject.tag!="IceBullet"){
-			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-			ending.AddComponent<DestoryselfAfterfewsecond>();
+            if (!KUSNetworkManager.LocalPlayer.isServer) return;
 
+			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
+            NetworkServer.Spawn(ending_);
             /*if(col.gameObject.GetComponent<ProfileSystem>()){
 
 				if(col.gameObject.GetComponent<ProfileSystem>().KillAndGains(player.GetComponent<ProfileSystem>().SuperDamageDealt))

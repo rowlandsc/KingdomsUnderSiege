@@ -46,8 +46,10 @@ GameObject:
   - 23: {fileID: 2348818}
   - 114: {fileID: 11470382}
   - 54: {fileID: 5475674}
+  - 114: {fileID: 11463782}
+  - 114: {fileID: 11424134}
   m_Layer: 0
-  m_Name: IceBullet
+  m_Name: MageSecond
   m_TagString: IceBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,6 +379,58 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11424134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &11463782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 111
+    i1: 129
+    i2: 211
+    i3: 101
+    i4: 236
+    i5: 0
+    i6: 164
+    i7: 225
+    i8: 171
+    i9: 210
+    i10: 242
+    i11: 236
+    i12: 133
+    i13: 245
+    i14: 167
+    i15: 221
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11470382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -388,7 +442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf9c485cf310492682285c7855d5f89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ending: {fileID: 100012, guid: 9825718a75f7cfb428f2377f35d10ed5, type: 2}
+  ending: {fileID: 133256, guid: 6d2322417202a7644a937c13038aa011, type: 2}
+  Mage: {fileID: 0}
   freeze_timer: 0
 --- !u!198 &19813010
 ParticleSystem:

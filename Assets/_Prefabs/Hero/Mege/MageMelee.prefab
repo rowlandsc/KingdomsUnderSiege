@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e328607fbb4874b8e9a0cec9d4c4efb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ending: {fileID: 171178, guid: 4e845b2a2f67c424d95d2f46ec589f9f, type: 2}
+  ending: {fileID: 163546, guid: 821d1742514c3254583ed2625405a496, type: 2}
   Mage: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &11449850

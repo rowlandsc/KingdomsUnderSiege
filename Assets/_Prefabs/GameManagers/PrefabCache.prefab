@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 241.19272, y: 19.943659, z: 188.65042}
+  m_LocalPosition: {x: 248.69096, y: 19.93368, z: 189.28024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,6 +85,7 @@ MonoBehaviour:
     - HeroUI
     - MageMeleeObj
     - MageMeleeObject
+    - MageSecondObj
     - OverseerCamera
     - OverseerObjectSelector
     - OverseerTowerPlacer
@@ -106,6 +107,7 @@ MonoBehaviour:
     - {fileID: 122128, guid: 49f9dc83d51fd47878a1c15ba6d18358, type: 2}
     - {fileID: 182594, guid: e546559c4a25d41df8add6cb2ffdc534, type: 2}
     - {fileID: 182594, guid: e546559c4a25d41df8add6cb2ffdc534, type: 2}
+    - {fileID: 128786, guid: 6f81d365ec00a4e1abd2f2ec85f5a7dd, type: 2}
     - {fileID: 188464, guid: 4331aa5599bfeb84d974854a27e4aa5f, type: 2}
     - {fileID: 130276, guid: 4794ad71281fc4e43827236381e6328f, type: 2}
     - {fileID: 130276, guid: e7ac62775e0c14235bd94b8a58fdc688, type: 2}
