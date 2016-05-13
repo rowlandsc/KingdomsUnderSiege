@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameMap: {fileID: 0}
+  CirclePosition: {x: 0, y: 0, z: 0}
   CircleThetaScale: 0.01
   CircleRadius: 0
   CircleColor: {r: 0, g: 0, b: 0, a: 1}
@@ -287,7 +288,7 @@ MonoBehaviour:
   baseMaxMagicPoints: 100
   DefendPoints: 0
   haveMoney: 0
-  baseMeleeDamageDealt: 50
+  baseMeleeDamageDealt: 5
   baseSecondDamageDealt: 12
   baseSuperDamageDealt: 40
   baseHealthRegen: 0
@@ -419,6 +420,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SendInterval
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseMeleeDamageDealt
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseSecondDamageDealt
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

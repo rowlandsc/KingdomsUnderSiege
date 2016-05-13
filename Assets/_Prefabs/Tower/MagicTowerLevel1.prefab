@@ -273,7 +273,7 @@ MonoBehaviour:
   baseMaxMagicPoints: 100
   DefendPoints: 0
   haveMoney: 0
-  baseMeleeDamageDealt: 50
+  baseMeleeDamageDealt: 5
   baseSecondDamageDealt: 12
   baseSuperDamageDealt: 40
   baseHealthRegen: 0
@@ -466,7 +466,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: baseMeleeDamageDealt
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113450}
