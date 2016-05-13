@@ -32,7 +32,7 @@ public class ArchSuperHit : MonoBehaviour {
 
 		if(memory_saving_timer>=kill_time){
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-			ending.AddComponent<DestoryselfAfterfewsecond>();
+			ending_.AddComponent<DestoryselfAfterfewsecond>();
 			Destroy(this.gameObject);
 
 		}

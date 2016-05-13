@@ -32,7 +32,7 @@ public class ArchMeleeHit : MonoBehaviour {
 		
 		if(memory_saving_timer>=1f){
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-			ending.AddComponent<DestoryselfAfterfewsecond>();
+			ending_.AddComponent<DestoryselfAfterfewsecond>();
 			Destroy(this.gameObject);
 			
 		}

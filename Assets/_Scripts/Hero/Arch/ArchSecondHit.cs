@@ -28,7 +28,7 @@ public class ArchSecondHit : MonoBehaviour {
 		timer-=Time.deltaTime;
 		if(timer<=0f){
 			ending_ = Instantiate(ending, this.transform.position, Quaternion.identity) as GameObject;
-			ending.AddComponent<DestoryselfAfterfewsecond>();
+			ending_.AddComponent<DestoryselfAfterfewsecond>();
 			Destroy(this.gameObject);
 		}
 	}

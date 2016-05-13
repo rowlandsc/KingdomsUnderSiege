@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect_time: 10
-  ending: {fileID: 100004, guid: 21620a5f3bbf2e74590767acc11b0086, type: 2}
+  ending: {fileID: 100004, guid: 02502074d89dc104491ab98cb71490a4, type: 2}
   Archer: {fileID: 0}
 --- !u!114 &11418140
 MonoBehaviour:
