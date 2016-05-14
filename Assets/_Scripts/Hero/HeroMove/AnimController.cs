@@ -13,7 +13,7 @@ public class AnimController : MonoBehaviour {
 	void Update()
 	{
 		ifmoving = gameObject.GetComponentInParent<HeroMove>().ifMoving;
-		animator.SetBool("IfMoving",ifmoving);
+
 		
 	}
 }

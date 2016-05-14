@@ -53,10 +53,10 @@ public class RoundManager : NetworkBehaviour{
     private bool _isRound = false;
 
     [SyncVar]
-    private bool _isPreround = false;
+    private bool _isPreround = true;
 
     [SyncVar]
-    private bool _isFirstPreround=false;
+    private bool _isFirstPreround=true;
     private GameObject _door;
    
     /**
@@ -67,8 +67,7 @@ public class RoundManager : NetworkBehaviour{
         
         if (isServer)
         {
-            // Start the game
-            this.StartGame();
+            StartCoroutine(DoorLock());
         }
     }
 
@@ -79,7 +78,7 @@ public class RoundManager : NetworkBehaviour{
         if (Instance == null)
         {
             this.RoundEvents = new Dictionary<string, UnityEvent>();
-            this._door = GameObject.Find("HeroDoor");
+            
             Instance = this;
         }
 		else {
@@ -315,5 +314,16 @@ public class RoundManager : NetworkBehaviour{
         {
             thisEvent.Invoke();
         }
+    }
+
+    public IEnumerator DoorLock()
+    {
+        while(GameObject.Find("HeroDoor(Clone)") == null)
+        {
+            yield return null;
+        }
+
+        this._door = GameObject.Find("HeroDoor(Clone)");
+        StartGame();
     }
 }

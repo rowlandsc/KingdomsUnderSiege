@@ -21,22 +21,12 @@ public class MenuScript : MonoBehaviour
     /// </summary>
 	void Start ()
     {
-        //playTextBtn = playTextBtn.GetComponent<Button>();
-        //optionsMenu = optionsMenu.GetComponent<Canvas>();
-        //optionsTextBtn = optionsTextBtn.GetComponent<Button>();
-        //quitOptionsMenuBtn = quitOptionsMenuBtn.GetComponent<Button>();
 
         if(optionsMenu)
         optionsMenu.enabled = false;
 
-        //multiplayerMenu = multiplayerMenu.GetComponent<Canvas>();
-        //hostGameBtn = hostGameBtn.GetComponent<Button>();
-        //connectToBtn = connectToBtn.GetComponent<Button>();
-        //quitMuliBtn = quitMuliBtn.GetComponent<Button>();
-
         if(multiplayerMenu)
         multiplayerMenu.enabled = false;
-        //ipAddressField = ipAddressField.GetComponent<InputField>();
 
 	}
 

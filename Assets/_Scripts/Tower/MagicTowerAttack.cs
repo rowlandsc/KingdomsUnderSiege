@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEngine.Networking;
 
 public class MagicTowerAttack : MonoBehaviour {
 
@@ -33,10 +34,13 @@ public class MagicTowerAttack : MonoBehaviour {
 		if(canAttack){
 			if(target==null || Vector3.Distance(this.gameObject.transform.position,target.transform.position) > profile.AttackRange) findTarget();
 			if(target!=null){
-                attack_=Instantiate(attack,this.gameObject.transform.position,Quaternion.identity)as GameObject;
-				attack_.GetComponent<TowerAttackHit>().Tower = this.gameObject;
-                attack_.GetComponent<TowerAttackHit>().velocity = (target.transform.position - transform.position).normalized * profile.AttackSpeed;
 
+                KUSNetworkManager.HostPlayer.CmdTowerAttack(
+                    GetComponent<NetworkIdentity>(),
+                    "MagicTowerShot",
+                    this.gameObject.transform.position,
+                    Quaternion.identity,
+                    (target.transform.position - transform.position).normalized * profile.AttackSpeed);
                 canAttack =false;
 			}
 		}
