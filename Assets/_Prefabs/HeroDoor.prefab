@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 457796}
   - 33: {fileID: 3336258}
   - 23: {fileID: 2379698}
-  - 54: {fileID: 5417938}
   - 65: {fileID: 6561930}
   m_Layer: 19
   m_Name: gate_p2
@@ -47,7 +46,6 @@ GameObject:
   - 4: {fileID: 470514}
   - 33: {fileID: 3342810}
   - 23: {fileID: 2336738}
-  - 54: {fileID: 5469304}
   - 65: {fileID: 6514316}
   m_Layer: 19
   m_Name: gate_p1
@@ -88,7 +86,7 @@ Transform:
   m_GameObject: {fileID: 116952}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: -1.4, y: 2.722, z: 1.57}
-  m_LocalScale: {x: 1.8976679, y: 2.1574492, z: 2.1132233}
+  m_LocalScale: {x: 5.2712827, y: 2.4418085, z: 2.3917534}
   m_Children:
   - {fileID: 470514}
   - {fileID: 457796}
@@ -162,36 +160,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133400}
   m_Mesh: {fileID: 4300000, guid: 2d1adb2d313640f429942b696657c58f, type: 3}
---- !u!54 &5417938
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104622}
-  serializedVersion: 2
-  m_Mass: 10000
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!54 &5469304
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133400}
-  serializedVersion: 2
-  m_Mass: 10000
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!65 &6514316
 BoxCollider:
   m_ObjectHideFlags: 1
