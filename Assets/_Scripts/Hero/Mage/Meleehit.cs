@@ -61,8 +61,10 @@ public class Meleehit : MonoBehaviour {
 
             ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
             if (colProfile) {
+				ProfileEffect slowdown = new ProfileEffect(Mage.netId,  startingDuration: 3, moveSpeedAdd: -1 * 0.5f);
                 ProfileEffect hitEffect = new ProfileEffect(Mage.netId, healthPointsAdd: -1 * mageStats.MeleeDamageDealt);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);
+				KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), slowdown);
             }
         }
 		Destroy(this.gameObject);
