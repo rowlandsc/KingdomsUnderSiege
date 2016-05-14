@@ -8,6 +8,7 @@ public class MortarTowerAttack : MonoBehaviour {
 
 	public GameObject attack;
 	private GameObject attack_;
+    public GameObject ShootPoint;
 
 	private GameObject target;
 
@@ -39,8 +40,8 @@ public class MortarTowerAttack : MonoBehaviour {
                 findTarget();
 
 			if(target!=null){
-                attack_=Instantiate(attack,this.gameObject.transform.position,Quaternion.identity)as GameObject;
-				attack_.GetComponent<MortarTowerHit>().Tower = this.gameObject;
+                attack_=Instantiate(attack,ShootPoint.transform.position,Quaternion.identity)as GameObject;
+                attack_.GetComponent<MortarTowerHit>().Initialize(gameObject);
 				attack_.GetComponent<MortarTowerHit>().canShot = true;
 				attack_.GetComponent<MortarTowerHit>().hitPosition = target.transform.position;
 
@@ -63,8 +64,8 @@ public class MortarTowerAttack : MonoBehaviour {
         /*GameObject archer = GameObject.Find("Arch(Clone)");
         Vector2 direction2 = new Vector2(archer.transform.position.x, archer.transform.position.z) - new Vector2(transform.position.x, transform.position.z);
         float angle2 = Vector2.Angle(new Vector2(transform.forward.x, transform.forward.z), direction2);
-        Debug.Log(angle2 + " " + Vector3.Distance(this.gameObject.transform.position, archer.transform.position));*/
-
+        Debug.Log(angle2 + " " + Vector3.Distance(this.gameObject.transform.position, archer.transform.position));
+        */
         GameObject[] targetList = GameObject.FindGameObjectsWithTag("HeroPlayer");
         target = null;
 		for(int i=0;i<targetList.Length;i++){
