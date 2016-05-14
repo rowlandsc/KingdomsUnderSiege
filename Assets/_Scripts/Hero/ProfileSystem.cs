@@ -11,6 +11,9 @@ public class ProfileSystem : NetworkBehaviour {
     public ProfileEffectList CurrentEffects = new ProfileEffectList();
 
     [SyncVar]
+    public int Level = 1;
+
+    [SyncVar]
     public bool IsDead = false;
     [SyncVar]
     public NetworkInstanceId Killer = NetworkInstanceId.Invalid;
