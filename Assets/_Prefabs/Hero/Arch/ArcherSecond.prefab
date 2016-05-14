@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0966f8527e3461387040522ddfbdac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect_time: 10
+  effect_time: 5
   ending: {fileID: 100004, guid: 02502074d89dc104491ab98cb71490a4, type: 2}
   Archer: {fileID: 0}
 --- !u!114 &11418140
@@ -12691,7 +12691,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: effect_time
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: looping

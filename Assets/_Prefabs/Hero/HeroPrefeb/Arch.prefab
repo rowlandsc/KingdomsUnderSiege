@@ -647,7 +647,7 @@ MonoBehaviour:
   DefendPoints: 0
   haveMoney: 5000
   baseMeleeDamageDealt: 5
-  baseSecondDamageDealt: 12
+  baseSecondDamageDealt: 0.4
   baseSuperDamageDealt: 40
   baseHealthRegen: 1
   baseMagicRegen: 1
@@ -671,7 +671,7 @@ MonoBehaviour:
   hpupgrade: 50
   mpupgrade: 50
   meleeupgrade: 5
-  secondupgrade: 10
+  secondupgrade: 0.1
   superupgrade: 20
   armorupgrade: 10
   healthregenupgrade: 3
@@ -721,8 +721,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   electric: {fileID: 191426, guid: 3b20f5a51bb754b9886e99e50f75b526, type: 2}
-  mp_use: 10
-  cooldown: 4
+  mp_use: 40
+  cooldown: 30
   distance: 20
   timer: 0
   _netid: {fileID: 0}
@@ -901,6 +901,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: distance
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseSecondDamageDealt
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mp_use
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cooldown
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: secondupgrade
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

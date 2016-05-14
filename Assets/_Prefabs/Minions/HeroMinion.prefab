@@ -284,9 +284,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDead: 0
   Worth: 100
-  baseHealthPoints: 100
+  baseHealthPoints: 50
   baseMagicPoints: 100
-  baseMaxHealthPoints: 100
+  baseMaxHealthPoints: 50
   baseMaxMagicPoints: 100
   DefendPoints: 0
   haveMoney: 0
@@ -509,6 +509,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPlayerAuthority
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseHealthPoints
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseMaxHealthPoints
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class ArchSuper : MonoBehaviour {
 	
-	private float cooldown=10f;
+	private float cooldown=25f;
 	private bool canAttack;
 	private float skytime=10f;
 	public bool SuperActivate;
