@@ -132,6 +132,7 @@ MonoBehaviour:
   Zoom: 2.4693391
   ScrollSpeed: 50
   EdgePanEnabled: 0
+  EdgePanOnlyWhenOnWindow: 1
   EdgePanVerticalBuffer: 0.25
   EdgePanHorizontalBuffer: 0.25
   PanSpeed: 100

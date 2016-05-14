@@ -37,7 +37,6 @@ public class HeroMove : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		CharacterController control = this.gameObject.GetComponent<CharacterController>();
 		Maincamera = GameObject.FindGameObjectWithTag("MainCamera");
 		curPos = this.gameObject.transform.position;
 
@@ -56,8 +55,8 @@ public class HeroMove : NetworkBehaviour {
 			Vector3.Normalize(moveDirection);
 
             //transform.Translate(moveDirection * Time.deltaTime* movespeed, Space.World);
-			control.Move(moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * movespeedMult);
-            //_rigidbody.position += moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * movespeedMult;
+            _rigidbody.position += moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * movespeedMult;
+
         }
 
 		if(_playerInput.HeroMoveHorizontalInput < -1 * float.Epsilon && CanMove){
@@ -67,7 +66,7 @@ public class HeroMove : NetworkBehaviour {
 			Vector3.Normalize(moveDirection);
 
             //transform.Translate(-moveDirection * Time.deltaTime* sidespeed, Space.World);
-			control.Move(-moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * sidespeedMult);
+			_rigidbody.position += -moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * sidespeedMult;
 
         }
 		if(_playerInput.HeroMoveHorizontalInput > float.Epsilon && CanMove){
@@ -77,8 +76,7 @@ public class HeroMove : NetworkBehaviour {
 			Vector3.Normalize(moveDirection);
 
 			//transform.Translate(moveDirection * Time.deltaTime* sidespeed, Space.World);
-			control.Move(moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * sidespeedMult);
-            //_rigidbody.position += moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * sidespeedMult;
+            _rigidbody.position += moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * sidespeedMult;
         }
 		if(_playerInput.HeroMoveForwardInput < -1 * float.Epsilon && CanMove){
 			Vector3 moveDirection = Maincamera.transform.forward;
@@ -86,8 +84,7 @@ public class HeroMove : NetworkBehaviour {
 			Vector3.Normalize(moveDirection);
 
             //transform.Translate(-moveDirection * Time.deltaTime* backwardspeed, Space.World);
-			control.Move(-moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * backwardspeedMult);
-            //_rigidbody.position += -moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * backwardspeedMult;
+            _rigidbody.position += -moveDirection * Time.deltaTime * _profileSystem.MoveSpeed * backwardspeedMult;
         }
         
 	}
