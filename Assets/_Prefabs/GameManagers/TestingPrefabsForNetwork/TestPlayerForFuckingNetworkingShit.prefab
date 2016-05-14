@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267ee68d6bec4e049b1b22b3da19c1ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gold: 10000
+  Gold: 1000
   MinionKills: 0
   HeroKills: 0
   Deaths: 0
