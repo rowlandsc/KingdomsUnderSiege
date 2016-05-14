@@ -58,7 +58,6 @@ public class OverseerTowerMenuUI : MonoBehaviour {
     }
 
     IEnumerator SlideOut() {
-        Debug.Log("Sliding out");
         while (slidOut && SlidingMenu.offsetMin.x > 0) {
             SlidingMenu.offsetMin = new Vector2(SlidingMenu.offsetMin.x - SlideSpeed * Time.deltaTime, SlidingMenu.offsetMin.y);
             SlidingMenu.offsetMax = new Vector2(SlidingMenu.offsetMax.x - SlideSpeed * Time.deltaTime, SlidingMenu.offsetMax.y);

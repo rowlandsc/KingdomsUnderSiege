@@ -93,9 +93,13 @@ public class ObjectSelector : NetworkBehaviour {
     }
 
     void OnDrawGizmos() {
-        if (!TowerPlacer.TowerPlaceModeOn) {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawRay(Cam.Camera.transform.position, Cam.Camera.ScreenPointToRay(Input.mousePosition).direction * Cam.transform.position.y * 4);
+        if (TowerPlacer)
+        {
+            if (!TowerPlacer.TowerPlaceModeOn)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawRay(Cam.Camera.transform.position, Cam.Camera.ScreenPointToRay(Input.mousePosition).direction * Cam.transform.position.y * 4);
+            }
         }
     }
 
