@@ -1,37 +1,49 @@
 fileFormatVersion: 2
-guid: 51b4b4bad625e4c1ab8ab482c82c33fd
-timeCreated: 1463174927
+guid: 75bbe9ae1e598448b868723fde548f03
+timeCreated: 1463252693
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: imagePlane4
-    100002: MinionNavArea
-    100004: //RootNode
-    100006: pCube1
-    100008: Surroundings
-    100010: Terrain1
-    100012: MinionRoad
-    400000: imagePlane4
-    400002: MinionNavArea
-    400004: //RootNode
-    400006: pCube1
-    400008: Surroundings
-    400010: Terrain1
-    400012: MinionRoad
-    2300000: MinionNavArea
-    2300002: pCube1
-    2300004: Surroundings
-    2300006: MinionRoad
-    3300000: MinionNavArea
-    3300002: pCube1
-    3300004: Surroundings
-    3300006: MinionRoad
-    4300000: MinionNavArea
-    4300002: Surroundings
-    4300004: pCube1
-    4300006: MinionRoad
-    9500000: //RootNode
+    100000: FloatingGems
+    100002: Gem1
+    100004: Gem7
+    100006: Gem8
+    100008: Gem9
+    100010: MagicTowerBase2
+    100012: //RootNode
+    100014: ShootingGem
+    100016: TowerBase
+    400000: FloatingGems
+    400002: Gem1
+    400004: Gem7
+    400006: Gem8
+    400008: Gem9
+    400010: MagicTowerBase2
+    400012: //RootNode
+    400014: ShootingGem
+    400016: TowerBase
+    2300000: Gem1
+    2300002: Gem7
+    2300004: Gem8
+    2300006: Gem9
+    2300008: MagicTowerBase2
+    2300010: ShootingGem
+    2300012: TowerBase
+    3300000: Gem1
+    3300002: Gem7
+    3300004: Gem8
+    3300006: Gem9
+    3300008: MagicTowerBase2
+    3300010: ShootingGem
+    3300012: TowerBase
+    4300000: ShootingGem
+    4300002: TowerBase
+    4300004: Gem1
+    4300006: Gem7
+    4300008: Gem8
+    4300010: Gem9
+    4300012: MagicTowerBase2
   materials:
     importMaterials: 1
     materialName: 0
@@ -56,7 +68,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 50
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -72,8 +84,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
+    normalSmoothAngle: 0
+    normalImportMode: 1
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
@@ -90,7 +102,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
