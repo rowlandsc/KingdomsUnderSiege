@@ -36,7 +36,7 @@ GameObject:
   - 65: {fileID: 6513216}
   - 23: {fileID: 2369910}
   - 114: {fileID: 11414450}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: HealthBar_Hero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,9 +52,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 437572}
   - 114: {fileID: 11421638}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: HeroMinionSpawn
-  m_TagString: HeroPlayer
+  m_TagString: HeroStructure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

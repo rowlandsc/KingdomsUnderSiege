@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6596140}
   - 23: {fileID: 2344720}
   - 114: {fileID: 11458748}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,9 +50,9 @@ GameObject:
   - 114: {fileID: 11489984}
   - 65: {fileID: 6501336}
   - 114: {fileID: 11495464}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OverseerMinionSpawn
-  m_TagString: OverseerPlayer
+  m_TagString: OverseerStructure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
