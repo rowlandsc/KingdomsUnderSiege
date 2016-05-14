@@ -30,7 +30,7 @@ GameObject:
   - 33: {fileID: 3349010}
   - 23: {fileID: 2370690}
   - 95: {fileID: 9582938}
-  - 114: {fileID: 11461248}
+  - 114: {fileID: 11474382}
   - 120: {fileID: 12051640}
   - 114: {fileID: 11433524}
   - 114: {fileID: 11473872}
@@ -39,6 +39,7 @@ GameObject:
   - 114: {fileID: 11411306}
   - 114: {fileID: 11402072}
   - 65: {fileID: 6597564}
+  - 114: {fileID: 11457934}
   m_Layer: 9
   m_Name: ArcherTowerLevel1
   m_TagString: OverseerPlayer
@@ -237,6 +238,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e64ded0bc35407d9700ed613b775bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11457934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fd20262429dcd43b8a44dc989885b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeStatEffects: []
+  AlwaysUseSameUpgrade: 0
 --- !u!114 &11459474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,18 +271,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11461248
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f74b6266347a1542800182f0baf25a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Radius: 8
 --- !u!114 &11472120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 1
   IsDead: 0
   Worth: 1000
   baseHealthPoints: 100
@@ -331,6 +334,18 @@ MonoBehaviour:
     i15: 129
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11474382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2f3c81bc81d5a4193f8429bd7cbef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 3
 --- !u!120 &12051640
 LineRenderer:
   m_ObjectHideFlags: 1

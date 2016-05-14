@@ -2,11 +2,11 @@
 using UnityEngine.Networking;
 using System.Collections;
 
-public class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelectable {
+public abstract class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelectable, IUpgradable {
 
     public float Radius = 2;
 
-    public GameObject GameObject {
+    public GameObject GameObject {                
         get { return gameObject; }
     }
 
@@ -74,4 +74,6 @@ public class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelectable {
     public Collider GetSelectionCollider() {
         return GetComponent<Collider>();
     }
+
+    public abstract void LevelUp(int level);
 }
