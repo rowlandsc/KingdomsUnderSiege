@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.Networking;
 using System;
 
-public class MagicTowerAttackHit : MonoBehaviour, IShootable {
+public class MagicTowerHit : MonoBehaviour, IShootable {
 
 	public GameObject Tower ;
 	private ProfileSystem towerStats;
@@ -49,7 +49,7 @@ public class MagicTowerAttackHit : MonoBehaviour, IShootable {
 			}*/
 
 			towerStats = Tower.GetComponent<ProfileSystem>();
-			ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
+			ProfileSystem colProfile = col.transform.root.GetComponent<ProfileSystem>();
 			if (colProfile) {
 				ProfileEffect slowdown = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId,  startingDuration: 3, moveSpeedAdd: -1 * 0.5f);
 				ProfileEffect hitEffect = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId, healthPointsAdd: -1 * towerStats.SecondDamageDealt);

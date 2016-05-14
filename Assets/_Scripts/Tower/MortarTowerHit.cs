@@ -97,7 +97,7 @@ public class MortarTowerHit : MonoBehaviour, IShootable {
         for(int i = 0; i < splashObjects.Length; i++)
         {
             towerStats = Tower.GetComponent<ProfileSystem>();
-            ProfileSystem colProfile = splashObjects[i].gameObject.GetComponent<ProfileSystem>();
+            ProfileSystem colProfile = splashObjects[i].transform.root.GetComponent<ProfileSystem>();
             if (colProfile)
             {
                 ProfileEffect hitEffect = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId, healthPointsAdd: -1 * towerStats.MeleeDamageDealt);

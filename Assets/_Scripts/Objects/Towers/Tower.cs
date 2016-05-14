@@ -72,7 +72,7 @@ public abstract class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelec
     }
     
     public Collider GetSelectionCollider() {
-        return GetComponent<Collider>();
+        return transform.FindChild("View").GetComponentInChildren<Collider>();
     }
 
     public abstract void LevelUp(int level);

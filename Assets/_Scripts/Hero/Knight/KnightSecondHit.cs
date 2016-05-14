@@ -35,7 +35,7 @@ public class KnightSecondHit : MonoBehaviour {
                 {player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}}
                 */
 
-            ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
+            ProfileSystem colProfile = col.transform.root.GetComponent<ProfileSystem>();
             if (colProfile) {
                 ProfileEffect hitEffect = new ProfileEffect(Knight.netId, healthPointsAdd: -1 * knightStats.SecondDamageDealt * Time.deltaTime);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);

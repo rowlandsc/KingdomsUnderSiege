@@ -55,7 +55,7 @@ public class SuperHit : MonoBehaviour {
 
 	            }*/
 
-				ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
+				ProfileSystem colProfile = col.transform.root.GetComponent<ProfileSystem>();
 	            if (colProfile) {
 	                ProfileEffect hitEffect = new ProfileEffect(Mage.netId, healthPointsAdd: -1 * mageStats.SuperDamageDealt);
 	                KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);

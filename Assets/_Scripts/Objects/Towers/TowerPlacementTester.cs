@@ -29,7 +29,7 @@ public class TowerPlacementTester : NetworkBehaviour
         _mapCircleDrawer = GetComponent<MapCircleDrawer>();
 
         TowerToPlaceID = towerID;
-        GameObject prefab = PrefabCache.Instance.PrefabIndex[TowerToPlaceID];
+        GameObject meshPrefab = PrefabCache.Instance.PrefabIndex[TowerToPlaceID + "1"];
         /*_meshFilter.mesh = GetComponent<MeshFilter>().sharedMesh;
         Material[] matlist = PrefabCache.Instance.PrefabIndex[TowerToPlaceID].GetComponent<MeshRenderer>().sharedMaterials;
         for (int i = 0; i < matlist.Length; i++)
@@ -38,7 +38,7 @@ public class TowerPlacementTester : NetworkBehaviour
         }
         _meshRenderer.sharedMaterials = matlist;*/
 
-        GenerateMeshFromPrefab(prefab.transform, transform);
+        GenerateMeshFromPrefab(meshPrefab.transform, transform);
 
         _mapCircleDrawer.CircleRadius = PrefabCache.Instance.PrefabIndex[TowerToPlaceID].GetComponent<Tower>().Radius;
         _mapCircleDrawer.GameMap = GameMap;

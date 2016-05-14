@@ -56,7 +56,7 @@ public class ArchMeleeHit : MonoBehaviour {
 		
 			}*/
 
-            ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
+            ProfileSystem colProfile = col.transform.root.GetComponent<ProfileSystem>();
             if (colProfile) {
                 ProfileEffect hitEffect = new ProfileEffect(Archer.netId, healthPointsAdd: -1 * archerStats.MeleeDamageDealt);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);

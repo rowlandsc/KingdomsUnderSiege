@@ -14,8 +14,8 @@ public class TowerPlacer : NetworkBehaviour {
     public bool TowerPlaceModeOn = false;
     public bool TowerPlaceLocationValid = true;
     public Vector3 TowerPlaceLocation;
-    public string TowerToPlaceID = "TowerArcher1";
-    public string ArcherTowerID = "TowerArcher1";
+    public string TowerToPlaceID = "TowerArcher";
+    public string ArcherTowerID = "TowerArcher";
     public string MortarTowerID = "TowerMortar1";
     public string MageTowerID = "TowerMagic1";
     public NetworkIdentity OverseerPlayer;

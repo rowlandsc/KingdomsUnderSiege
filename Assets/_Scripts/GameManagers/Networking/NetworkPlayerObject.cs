@@ -120,6 +120,8 @@ public class NetworkPlayerObject : NetworkBehaviour {
     [Command]
     public void CmdPlaceTower(NetworkIdentity player, string prefabID, Vector3 position, Quaternion rotation) { 
         Tower tower = GameObject.Instantiate(PrefabCache.Instance.PrefabIndex[prefabID]).GetComponent<Tower>();
+        //GameObject mesh = GameObject.Instantiate(PrefabCache.Instance.PrefabIndex[prefabID + "1"]);
+        //mesh.transform.SetParent(tower.transform);
         tower.transform.position = position;
         tower.transform.rotation = rotation;
         player.gameObject.GetComponent<NetworkPlayerStats>().PurchaseItem(PrefabCache.Instance.PrefabIndex[prefabID].GetComponent<ProfileSystem>().Worth);
@@ -127,7 +129,20 @@ public class NetworkPlayerObject : NetworkBehaviour {
         NetworkServer.Spawn(tower.gameObject);
 
         RpcSetOwner(tower.GetComponent<NetworkIdentity>(), player);
+        RpcSetObjectView(tower.GetComponent<NetworkIdentity>(), prefabID + "1");
         player.gameObject.GetComponent<NetworkPlayerStats>().AddTowerPlaced();
+    }
+
+    [ClientRpc]
+    public void RpcSetObjectView(NetworkIdentity obj, string viewPrefabID) {
+        Transform view = obj.transform.FindChild("View");
+        for (int i=view.childCount-1; i>=0; i--) {
+            Destroy(view.GetChild(i));
+        }
+        GameObject newView = Instantiate(PrefabCache.Instance.PrefabIndex[viewPrefabID]);
+        newView.transform.SetParent(view);
+        newView.transform.localPosition = Vector3.zero;
+        newView.transform.localRotation = Quaternion.identity;
     }
 
 	[Command]

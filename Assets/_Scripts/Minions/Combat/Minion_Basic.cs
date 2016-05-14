@@ -62,7 +62,7 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
                 this.gameObject.transform.LookAt(target);
 
                 // Do the attack damage
-                ProfileEffect hitEffect = new ProfileEffect(NetworkInstanceId.Invalid, healthPointsAdd: -1 * GetComponent<ProfileSystem>().MeleeDamageDealt);
+                ProfileEffect hitEffect = new ProfileEffect(NetworkInstanceId.Invalid, healthPointsAdd: -1 * _ps.MeleeDamageDealt);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(target.GetComponent<NetworkIdentity>(), hitEffect);
             }
             else

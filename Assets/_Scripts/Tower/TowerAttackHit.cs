@@ -49,7 +49,7 @@ public class TowerAttackHit : MonoBehaviour, IShootable {
 			}*/
 
             towerStats = Tower.GetComponent<ProfileSystem>();
-            ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
+            ProfileSystem colProfile = col.transform.root.GetComponent<ProfileSystem>();
             if (colProfile) {
                 ProfileEffect hitEffect = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId, healthPointsAdd: -1 * towerStats.MeleeDamageDealt);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);

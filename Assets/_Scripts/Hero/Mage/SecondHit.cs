@@ -55,7 +55,7 @@ public class SecondHit : MonoBehaviour {
 				{player.GetComponent<ProfileSystem>().haveMoney+=col.gameObject.GetComponent<ProfileSystem>().Worth;}
 
 			}*/
-            ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
+            ProfileSystem colProfile = col.transform.root.GetComponent<ProfileSystem>();
             if (colProfile) {
                 ProfileEffect hitEffect = new ProfileEffect(Mage.netId, healthPointsAdd: -1 * mageStats.SecondDamageDealt);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);

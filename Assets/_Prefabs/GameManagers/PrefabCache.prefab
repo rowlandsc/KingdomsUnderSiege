@@ -104,9 +104,11 @@ MonoBehaviour:
     - OverseerTowerUpgrader
     - OverseerTowerUpgradeUI
     - OverseerUI
+    - TowerArcher
     - TowerArcher1
+    - TowerMagic
     - TowerMagic1
-    - TowerMortar1
+    - TowerMortar
     Prefabs:
     - {fileID: 123532, guid: fd27a154a1ba744c3bf485d156dbe2f1, type: 2}
     - {fileID: 191426, guid: 3b20f5a51bb754b9886e99e50f75b526, type: 2}
@@ -138,9 +140,11 @@ MonoBehaviour:
     - {fileID: 130276, guid: 4794ad71281fc4e43827236381e6328f, type: 2}
     - {fileID: 117714, guid: af81f9f92b96e6247adda433c2465f52, type: 2}
     - {fileID: 130880, guid: e97faf6136f71774ca330ecd83eb83d7, type: 2}
-    - {fileID: 181652, guid: 3c495dd3c3f17ac43aab8e68ed15de81, type: 2}
+    - {fileID: 181652, guid: d7fbcfc2222458a438f4bb901ecf8eca, type: 2}
+    - {fileID: 150152, guid: 3c495dd3c3f17ac43aab8e68ed15de81, type: 2}
+    - {fileID: 113450, guid: c7dc3ac2d1b1e4e46b3408c7c8c7a5f2, type: 2}
     - {fileID: 113450, guid: 9e40221467735c14d8f1284ea8e9639a, type: 2}
-    - {fileID: 169318, guid: 7d5b77d3f9e609049bcc31c268db723b, type: 2}
+    - {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
