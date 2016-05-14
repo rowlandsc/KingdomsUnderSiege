@@ -76,7 +76,6 @@ public class MortarTowerAttack : MonoBehaviour {
                 angle <= 50){
                 
 				target = targetList[i];
-                Debug.Log("Found " + target.gameObject.name);
 				break;
 			}
 		}
