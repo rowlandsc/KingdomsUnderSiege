@@ -18,12 +18,17 @@ public class MortarTowerHit : MonoBehaviour, IShootable {
 	public bool canShot = false;
 	public Vector3 hitPosition;
 
+    private float speed;
+
     private float hitPositionX;
 	private float hitPositionY;
 	private float hitPositionZ;
 
     private float localpositionX;
-	private float localpositionZ;
+    private float localpositionY;
+    private float localpositionZ;
+
+
 
     public string PrefabCacheId
     {
@@ -37,9 +42,16 @@ public class MortarTowerHit : MonoBehaviour, IShootable {
     void Start () {
 		kill_time=10f;
 		memory_saving_timer=0f;
-		localpositionX = this.gameObject.transform.position.x;
-		localpositionZ = this.gameObject.transform.position.z;
+		localpositionX = transform.position.x;
+        localpositionY = transform.position.y;
+		localpositionZ = transform.position.z;
 	}
+
+    public void Initialize(GameObject tower) {
+        Tower = tower;
+        towerStats = Tower.GetComponent<ProfileSystem>();
+        speed = towerStats.AttackSpeed;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -55,10 +67,19 @@ public class MortarTowerHit : MonoBehaviour, IShootable {
 			hitPositionY = hitPosition.y;
 			hitPositionZ = hitPosition.z;
 
-			Sequence mySequence = DOTween.Sequence();
-			mySequence.Append(this.transform.DOMove(new Vector3((localpositionX+hitPositionX)/2,70f,(localpositionZ+hitPositionZ)/2 ),3f,false));
-			mySequence.Append(this.transform.DOMove(new Vector3(hitPositionX,hitPositionY-1f,hitPositionZ),2f,false));
+            float xdistance = hitPositionX - localpositionX;
+            float zdistance = hitPositionZ - localpositionZ;
+            float ydistance = Mathf.Sqrt(xdistance * xdistance + zdistance * zdistance) / 2;
 
+            float duration = Mathf.Sqrt((xdistance * xdistance) / 4 + (ydistance * ydistance) / 4 + (zdistance * zdistance) / 4) * Time.deltaTime / speed;
+
+
+
+
+			Sequence mySequence = DOTween.Sequence();
+			mySequence.Append(this.transform.DOMove(new Vector3(localpositionX + xdistance/2, localpositionY + ydistance, localpositionZ + zdistance/2 ), duration, false));
+			mySequence.Append(this.transform.DOMove(new Vector3(hitPositionX,hitPositionY-1f,hitPositionZ), duration / 1.5f, false));
+            
 
 			canShot = false;
 		}
@@ -69,6 +90,8 @@ public class MortarTowerHit : MonoBehaviour, IShootable {
 	}
 
 	void OnTriggerEnter(Collider col){
+        if (col.gameObject == Tower) return;
+
         Debug.Log("Collided with " + col.gameObject.name);
         Collider[] splashObjects = Physics.OverlapSphere(transform.position, this.SplashDamageRadius, this.LayersEffectedBySplash);
 

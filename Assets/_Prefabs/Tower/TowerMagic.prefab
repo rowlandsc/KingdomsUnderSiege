@@ -11,7 +11,7 @@ GameObject:
   - 198: {fileID: 19869914}
   - 199: {fileID: 19966626}
   - 96: {fileID: 9610732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StormTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400828}
   - 82: {fileID: 8295366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StormProjectileTiny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,9 +48,9 @@ GameObject:
   - 135: {fileID: 13515336}
   - 114: {fileID: 11497870}
   - 114: {fileID: 11444204}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TowerMagic
-  m_TagString: Untagged
+  m_TagString: OverseerPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 420148}
   - 108: {fileID: 10864732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - 4: {fileID: 467440}
   - 198: {fileID: 19866800}
   - 199: {fileID: 19930148}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StormCutter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

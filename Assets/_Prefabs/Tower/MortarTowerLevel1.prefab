@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &111876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 466908}
+  m_Layer: 9
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &139632
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,7 +55,7 @@ GameObject:
   - 114: {fileID: 11413520}
   m_Layer: 9
   m_Name: MortarTowerLevel1
-  m_TagString: OverseerStructure
+  m_TagString: OverseerPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,6 +72,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 470194}
   m_RootOrder: 0
+--- !u!4 &466908
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111876}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0005, y: 0.0269, z: 0.0018}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 470194}
+  m_RootOrder: 1
 --- !u!4 &470194
 Transform:
   m_ObjectHideFlags: 1
@@ -68,6 +95,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 447518}
+  - {fileID: 466908}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2384874
@@ -188,7 +216,7 @@ MonoBehaviour:
   baseHealthRegen: 0
   baseMagicRegen: 0
   baseMoveSpeed: 0
-  baseAttackSpeed: 0.75
+  baseAttackSpeed: 0.4
   baseAttackFrequency: 2
   baseAttackRange: 100
   damagePOP: {fileID: 0}
@@ -243,6 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: {fileID: 171542, guid: 002c295ac9d10f54785efd362736262a, type: 2}
+  ShootPoint: {fileID: 111876}
   range: 20
   Arrowspeed: 0.25
 --- !u!114 &11446106
