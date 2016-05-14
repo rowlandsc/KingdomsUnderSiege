@@ -50,7 +50,7 @@ public class HeroMove : NetworkBehaviour {
 
         if(_playerInput.HeroMoveForwardInput > float.Epsilon && CanMove){
 
-			Vector3 moveDirection = this.gameObject.transform.forward;
+			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);
 

@@ -126,7 +126,6 @@ GameObject:
   - 54: {fileID: 5495304}
   - 114: {fileID: 11490980}
   - 114: {fileID: 11408298}
-  - 143: {fileID: 14349734}
   m_Layer: 12
   m_Name: Arch
   m_TagString: HeroPlayer
@@ -591,7 +590,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!65 &6513618
 BoxCollider:
@@ -821,23 +820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e715f8e43a684f5408d98fe6b4cba476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!143 &14349734
-CharacterController:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152332}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -936,6 +918,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: secondupgrade
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
