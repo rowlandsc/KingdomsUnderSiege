@@ -10,13 +10,6 @@ GameObject:
   - 4: {fileID: 477336}
   - 33: {fileID: 3362552}
   - 23: {fileID: 2332572}
-  - 114: {fileID: 11475872}
-  - 114: {fileID: 11498420}
-  - 114: {fileID: 11456850}
-  - 65: {fileID: 6509112}
-  - 54: {fileID: 5433992}
-  - 114: {fileID: 11413860}
-  - 65: {fileID: 6579190}
   m_Layer: 20
   m_Name: HeroMinionSpawner
   m_TagString: HeroStructure
@@ -52,6 +45,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 437572}
   - 114: {fileID: 11421638}
+  - 114: {fileID: 11427034}
+  - 114: {fileID: 11459660}
+  - 65: {fileID: 6586430}
+  - 114: {fileID: 11484634}
+  - 54: {fileID: 5405278}
   m_Layer: 20
   m_Name: HeroMinionSpawn
   m_TagString: HeroStructure
@@ -198,12 +196,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125946}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5433992
+--- !u!54 &5405278
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105698}
+  m_GameObject: {fileID: 137782}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -213,18 +211,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6509112
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105698}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.535369, y: 1.9112258, z: 2.462259}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6513216
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -237,29 +223,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6579190
+--- !u!65 &6586430
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105698}
+  m_GameObject: {fileID: 137782}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.535369, y: 1.9112258, z: 2.462259}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11413860
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a832f0a9ff9df4c4ea0ef66ddf705cd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11414450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -303,12 +278,28 @@ MonoBehaviour:
     i15: 80
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &11456850
+--- !u!114 &11427034
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105698}
+  m_GameObject: {fileID: 137782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984040fe1ae2b36458d8e71d1d6b1d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Minion: {fileID: 135998, guid: 8c617c95d17c80448a2ae0dd6ecb1119, type: 2}
+  SpawnPoint: {fileID: 460732}
+  NumberToSpawn: 5
+  SpawnDelay: 20
+  TimeBetweenMinions: 1
+--- !u!114 &11459660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137782}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
@@ -333,54 +324,17 @@ MonoBehaviour:
   baseAttackRange: 1
   damagePOP: {fileID: 0}
   death: {fileID: 0}
---- !u!114 &11475872
+--- !u!114 &11484634
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105698}
+  m_GameObject: {fileID: 137782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Script: {fileID: 11500000, guid: a832f0a9ff9df4c4ea0ef66ddf705cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 187
-    i1: 83
-    i2: 188
-    i3: 86
-    i4: 200
-    i5: 96
-    i6: 215
-    i7: 68
-    i8: 152
-    i9: 220
-    i10: 94
-    i11: 172
-    i12: 186
-    i13: 193
-    i14: 184
-    i15: 80
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
---- !u!114 &11498420
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 984040fe1ae2b36458d8e71d1d6b1d1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Minion: {fileID: 135998, guid: 8c617c95d17c80448a2ae0dd6ecb1119, type: 2}
-  SpawnPoint: {fileID: 460732}
-  NumberToSpawn: 5
-  SpawnDelay: 20
-  TimeBetweenMinions: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

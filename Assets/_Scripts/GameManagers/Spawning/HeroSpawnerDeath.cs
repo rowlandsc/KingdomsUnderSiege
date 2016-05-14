@@ -10,6 +10,6 @@ public class HeroSpawnerDeath : NetworkBehaviour, IKillable {
         NetworkPlayerObject player = KUSNetworkManager.OverseerPlayer;
         player.GetComponent<NetworkPlayerStats>().AddGold(GetComponent<ProfileSystem>().Worth);
 
-        Destroy(this.gameObject.transform.parent.gameObject);
+        Destroy(this.gameObject);
     }
 }
