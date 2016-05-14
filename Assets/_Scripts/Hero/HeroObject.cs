@@ -3,6 +3,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.Text;
 
 public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectable {
     private GameObject Mage_birthplace;
@@ -71,9 +72,25 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 
     public IEnumerator respawn()
     {
-        herorespwn_words = "Respawn in " + ((int)Mathf.Round(herorespwn_timer)).ToString() + " seconds";
-		DeathCount();
-        yield return new WaitForSeconds(herorespwn_timer);
+        DeathCount();
+        StringBuilder sb = new StringBuilder();
+        while(herorespwn_timer >= float.Epsilon)
+        {
+            sb.Append("Respawn in ");
+            sb.Append(((int)Mathf.Round(herorespwn_timer)).ToString());
+            sb.Append(" seconds");
+            herorespwn_words = sb.ToString();
+            words.text = herorespwn_words;
+            herorespwn_timer -= Time.deltaTime;
+
+            // Clear StringBuilder
+            sb.Length = 0;
+            sb.Capacity = 0;
+            yield return null;
+        }
+        
+		
+        //yield return new WaitForSeconds(herorespwn_timer);
 
         if (this.gameObject.name == "Mage(Clone)")
         {
@@ -87,7 +104,7 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 			UnDeathCount();
         }
 
-        else if (this.gameObject.name == "Archer(Clone)")
+        else if (this.gameObject.name == "Arch(Clone)")
         {
             this.gameObject.transform.position = Arch_birthplace.transform.position;
 			UnDeathCount();
