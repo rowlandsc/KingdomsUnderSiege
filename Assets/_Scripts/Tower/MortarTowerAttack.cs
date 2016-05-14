@@ -60,13 +60,18 @@ public class MortarTowerAttack : MonoBehaviour {
 	}
 
 	public void findTarget(){
+        /*GameObject archer = GameObject.Find("Arch(Clone)");
+        Vector2 direction2 = new Vector2(archer.transform.position.x, archer.transform.position.z) - new Vector2(transform.position.x, transform.position.z);
+        float angle2 = Vector2.Angle(new Vector2(transform.forward.x, transform.forward.z), direction2);
+        Debug.Log(angle2 + " " + Vector3.Distance(this.gameObject.transform.position, archer.transform.position));*/
 
-		GameObject[] targetList = GameObject.FindGameObjectsWithTag("HeroPlayer");
+        GameObject[] targetList = GameObject.FindGameObjectsWithTag("HeroPlayer");
         target = null;
 		for(int i=0;i<targetList.Length;i++){
             Vector2 direction = new Vector2(targetList[i].transform.position.x, targetList[i].transform.position.z) - new Vector2(transform.position.x, transform.position.z);
             float angle = Vector2.Angle(new Vector2(transform.forward.x, transform.forward.z), direction);
-            if (Vector3.Distance(this.gameObject.transform.position,targetList[i].transform.position) < range && 
+            //Debug.Log(angle + " " + Vector3.Distance(this.gameObject.transform.position, targetList[i].transform.position));
+            if (Vector3.Distance(this.gameObject.transform.position,targetList[i].transform.position) < profile.AttackRange && 
                 angle <= 50){
                 
 				target = targetList[i];
