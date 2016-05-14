@@ -78,6 +78,7 @@ MonoBehaviour:
   OverseerMinionSpawner: {fileID: 177232, guid: f5717d3a335e3c34a96c633602211092,
     type: 2}
   MinionManager: {fileID: 137770, guid: 6b1bdb2d589c0cb4681c94b274d86245, type: 2}
+  heroDoor: {fileID: 116952, guid: 4d3409d14f4c74d3e971acda3811911f, type: 2}
   DoneLoading: 0
 --- !u!1001 &100100000
 Prefab:
@@ -85,7 +86,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: heroDoor
+      value: 
+      objectReference: {fileID: 116952, guid: 4d3409d14f4c74d3e971acda3811911f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188722}
