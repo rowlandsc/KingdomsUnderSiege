@@ -29,8 +29,6 @@ public class ChooseHero : MonoBehaviour {
 		Mage_birthplace=GameObject.Find("MageSummonPoint");
 		Knight_birthplace =GameObject.Find("KnightSummonPoint");
 		Arch_birthplace =GameObject.Find("ArchSummonPoint");
-
-
 	}
 	
 	// Update is called once per frame

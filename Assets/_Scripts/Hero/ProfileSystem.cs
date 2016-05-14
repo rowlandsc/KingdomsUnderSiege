@@ -1,12 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Networking;
+using DG.Tweening;
 
 public class ProfileSystem : NetworkBehaviour {
+
+
 
     [SerializeField]
     public ProfileEffectList CurrentEffects = new ProfileEffectList();
 
+    [SyncVar]
+    public int Level = 1;
+
+    [SyncVar]
+    public bool IsDead = false;
+    [SyncVar]
+    public NetworkInstanceId Killer = NetworkInstanceId.Invalid;
+
+    [SyncVar]
+    public int Worth = 100;
+
+    [SyncVar]
     public float baseHealthPoints = 100f;
     public float HealthPoints {
         get {
@@ -14,6 +29,7 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
     public float baseMagicPoints = 100f;
     public float MagicPoints {
         get {
@@ -21,6 +37,7 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
     public float baseMaxHealthPoints = 100f;
     public float MaxHealthPoints {
         get {
@@ -35,6 +52,7 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
     public float baseMaxMagicPoints = 100f;
     public float MaxMagicPoints {
         get {
@@ -51,10 +69,12 @@ public class ProfileSystem : NetworkBehaviour {
 
 
     //the defendpoints max is 100
+    [SyncVar]
     public float DefendPoints = 0f;
-    public float Worth = 100f;
+    [SyncVar]
     public float haveMoney = 0f;
 
+    [SyncVar]
     public float baseMeleeDamageDealt = 5f;
     public float MeleeDamageDealt {
         get {
@@ -68,6 +88,7 @@ public class ProfileSystem : NetworkBehaviour {
             return meleeDamage;
         }
     }
+    [SyncVar]
     public float baseSecondDamageDealt = 12f; 
     public float SecondDamageDealt {
         get {
@@ -81,6 +102,7 @@ public class ProfileSystem : NetworkBehaviour {
             return secondDamage;
         }
     }
+    [SyncVar]
     public float baseSuperDamageDealt=40f;
     public float SuperDamageDealt {
         get {
@@ -95,6 +117,7 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
     public float baseHealthRegen = 1f;
     public float HealthRegen {
         get {
@@ -108,7 +131,8 @@ public class ProfileSystem : NetworkBehaviour {
             return healthRegen;
         }
     }
-	public float baseMagicRegen=1f;
+    [SyncVar]
+    public float baseMagicRegen=1f;
     public float MagicRegen {
         get {
             float magicRegen = baseMagicRegen;
@@ -122,6 +146,7 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
     public float baseMoveSpeed=1.5f;
     public float MoveSpeed {
         get {
@@ -136,9 +161,56 @@ public class ProfileSystem : NetworkBehaviour {
         }
     }
 
+    [SyncVar]
+    public float baseAttackSpeed = 1.5f;
+    public float AttackSpeed {
+        get {
+            float attackSpeed = baseAttackSpeed;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackSpeed *= CurrentEffects[i].AttackSpeedMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackSpeed += CurrentEffects[i].AttackSpeedAdd;
+            }
+            return attackSpeed;
+        }
+    }
+
+    [SyncVar]
+    public float baseAttackFrequency = 1.0f;
+    public float AttackFrequency {
+        get {
+            float attackFrequency = baseAttackFrequency;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackFrequency *= CurrentEffects[i].AttackFrequencyMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackFrequency += CurrentEffects[i].AttackFrequencyAdd;
+            }
+            return attackFrequency;
+        }
+    }
+
+    [SyncVar]
+    public float baseAttackRange = 1.0f;
+    public float AttackRange {
+        get {
+            float attackRange = baseAttackRange;
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackRange *= CurrentEffects[i].AttackRangeMult;
+            }
+            for (int i = 0; i < CurrentEffects.Count; i++) {
+                attackRange += CurrentEffects[i].AttackRangeAdd;
+            }
+            return attackRange;
+        }
+    }
+
     private float timer;
 	public GameObject damagePOP;
 	private GameObject damagePOP_;
+	string herorespwn_words = "";
+	float herorespwn_timer = 10f;
 
 	//FX
 	public GameObject death;
@@ -148,6 +220,7 @@ public class ProfileSystem : NetworkBehaviour {
 	private GameObject Mage_birthplace;
 	private GameObject Knight_birthplace;
 	private GameObject Arch_birthplace;
+	private GameObject deathPoint;
 
 
 	// Use this for initialization
@@ -156,10 +229,12 @@ public class ProfileSystem : NetworkBehaviour {
 		Mage_birthplace=GameObject.Find("MageSummonPoint");
 		Knight_birthplace =GameObject.Find("KnightSummonPoint");
 		Arch_birthplace =GameObject.Find("ArchSummonPoint");
+		deathPoint = GameObject.Find("DeathPoint");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (!KUSNetworkManager.HostPlayer.isLocalPlayer) return;
         
         UpdateEffects();
 
@@ -168,35 +243,22 @@ public class ProfileSystem : NetworkBehaviour {
 		}
 
         if(HealthPoints<=0){
-            //death_ = Instantiate(death_, this.transform.position, Quaternion.identity) as GameObject;
-			//death_.AddComponent<DestoryselfAfterfewsecond>();
-			if(this.gameObject.tag=="Player"){
-				herodie = true;
-				Destroy(this.gameObject);
-			}
-			else if(this.gameObject.name=="ChaDragon"){
-				this.gameObject.GetComponent<DragonAI>().NowState = 2;
-			}
-			else{
-				Destroy(this.gameObject);
-			}
+			this.gameObject.GetComponent<IKillable>().OnDeath();
 		}
 
 		if(baseHealthPoints < MaxHealthPoints){
 			baseHealthPoints += HealthRegen * Time.deltaTime;
 		}
 
-		if(baseMaxMagicPoints < MaxMagicPoints){
-            baseMaxMagicPoints += MagicRegen * Time.deltaTime;
+		if(baseMagicPoints < MaxMagicPoints){
+			baseMagicPoints += MagicRegen * Time.deltaTime;
 		}
 
-		if(herodie){
-			if(this.gameObject.name=="Mage(Clone)") Mage_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MaxHealthPoints,MaxMagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
-			if(this.gameObject.name=="Knight(Clone)") Knight_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MaxHealthPoints,MaxMagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
-			if(this.gameObject.name=="Arch(Clone)") Arch_birthplace.GetComponent<RespawnManager>().HeroDie(this.gameObject.name,MaxHealthPoints,MaxMagicPoints,MeleeDamageDealt,SecondDamageDealt,SuperDamageDealt,DefendPoints,HealthRegen,MagicRegen,haveMoney);
-		}
+
 			
 	}
+
+
 
     public void AddEffect(ProfileEffect effect) {
         if (effect.StartingDuration == ProfileEffect.INSTANT) {
@@ -219,6 +281,11 @@ public class ProfileSystem : NetworkBehaviour {
             baseHealthRegen += effect.HealthRegenAdd;
             baseMagicRegen *= effect.MagicRegenMult;
             baseMagicRegen += effect.MagicRegenAdd;
+
+            if (baseHealthPoints < 0 && !IsDead) {
+                IsDead = true;
+                Killer = effect.InflicterID;
+            }
         }
         else {
             CurrentEffects.Add(effect);
@@ -237,6 +304,12 @@ public class ProfileSystem : NetworkBehaviour {
                 // Update health/magic damage over time
                 baseHealthPoints += CurrentEffects[i].HealthPointsAdd * Time.deltaTime;
                 baseMagicPoints += CurrentEffects[i].MagicPointsAdd * Time.deltaTime;
+
+                if (baseHealthPoints < 0 && !IsDead) {
+                    Killer = CurrentEffects[i].InflicterID;
+                    IsDead = true;
+                    break;
+                }
             }
         }
     }
@@ -246,7 +319,7 @@ public class ProfileSystem : NetworkBehaviour {
 	}
 
 	public void useMagic(float mp){
-		baseMaxMagicPoints = MagicPoints - mp;
+		baseMagicPoints = MagicPoints - mp;
 	}
 
 	public bool MPenough(float mp){

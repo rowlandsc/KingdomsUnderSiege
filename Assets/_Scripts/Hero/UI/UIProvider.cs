@@ -38,70 +38,116 @@ public class UIProvider : MonoBehaviour {
 
 	public bool enable=true;
 
+    private bool initialized = false;
+
+    private ProfileSystem profileSystem;
+    private NetworkPlayerStats ownerStats;
+
+    private MageMelee mageMelee;
+    private MegeSecond mageSecond;
+    private MageSuper mageSuper;
+
+    private KnightMelee knightMelee;
+    private KnightSecond knightSecond;
+    private KnightSuper knightSuper;
+
+    private ArchMelee archerMelee;
+    private ArchSecond archerSecond;
+    private ArchSuper archerSuper;
+
 	// Use this for initialization
 	void Start () {
 		melee_cooldown=0;
 		second_cooldown=0;
 		super_cooldown=0;
-	}
+    }
+
+    void Initialize() {
+        initialized = true;
+
+        UIhp = GameObject.Find("HealthPoints");
+        UIhptext = GameObject.Find("HP_Shows");
+        UImp = GameObject.Find("MagicPoints");
+        UImptext = GameObject.Find("MP_Shows");
+        UIMoney = GameObject.Find("Money_Amount");
+        UIMelee = GameObject.Find("Melee_Cooldown");
+        UISecond = GameObject.Find("Second_Cooldown");
+        UISuper = GameObject.Find("Super_Cooldown");
+
+        MeleeIcon = GameObject.Find("UIMelee");
+        SecondIcon = GameObject.Find("UISecond");
+        SuperIcon = GameObject.Find("UISuper");
+
+        profileSystem = GetComponent<ProfileSystem>();
+        ownerStats = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+
+        if (this.gameObject.name == "Mage" || this.gameObject.name == "Mage(Clone)") {
+            mageMelee = GetComponent<MageMelee>();
+            mageSecond = GetComponent<MegeSecond>();
+            mageSuper = GetComponent<MageSuper>();
+        }
+
+        if (this.gameObject.name == "Knight" || this.gameObject.name == "Knight(Clone)") {
+            knightMelee = GetComponent<KnightMelee>();
+            knightSecond = GetComponent<KnightSecond>();
+            knightSuper = GetComponent<KnightSuper>();
+        }
+
+        if (this.gameObject.name == "Arch" || this.gameObject.name == "Arch(Clone)") {
+            archerMelee = GetComponent<ArchMelee>();
+            archerSecond = GetComponent<ArchSecond>();
+            archerSuper = GetComponent<ArchSuper>();
+        }
+    }
 
 	// Update is called once per frame
 	void Update () {
 
-        if (!GameObject.Find("UISystem(Clone)")) return;
+        if (!initialized) {
+            if (!GameObject.Find("UISystem(Clone)")) return;
+            else {
+                Initialize();
+            }
+        }
 
 		if(enable){
-
-			UIhp = GameObject.Find("HealthPoints");
-			UIhptext = GameObject.Find("HP_Shows");
-			UImp = GameObject.Find("MagicPoints");
-			UImptext = GameObject.Find("MP_Shows");
-			UIMoney = GameObject.Find("Money_Amount");
-			UIMelee = GameObject.Find("Melee_Cooldown");
-			UISecond = GameObject.Find("Second_Cooldown");
-			UISuper = GameObject.Find("Super_Cooldown");
-
-			MeleeIcon = GameObject.Find("UIMelee");
-			SecondIcon = GameObject.Find("UISecond");
-			SuperIcon = GameObject.Find("UISuper");
-
-			hp = this.gameObject.GetComponent<ProfileSystem>().HealthPoints;
-			mp = this.gameObject.GetComponent<ProfileSystem>().MagicPoints;
-			money = this.gameObject.GetComponent<ProfileSystem>().haveMoney;
-			Max_hp = this.gameObject.GetComponent<ProfileSystem>().MaxHealthPoints;
-			Max_mp = this.gameObject.GetComponent<ProfileSystem>().MaxMagicPoints;
+            hp = profileSystem.HealthPoints;
+			mp = profileSystem.MagicPoints;
+            money = ownerStats.Gold;
+			Max_hp = profileSystem.MaxHealthPoints;
+			Max_mp = profileSystem.MaxMagicPoints;
 
 			if(this.gameObject.name=="Mage"||this.gameObject.name=="Mage(Clone)")
 			{
-				melee_cooldown = this.gameObject.GetComponent<MageMelee>().getcooldown();
-				second_cooldown = this.gameObject.GetComponent<MegeSecond>().getcooldown();
-				super_cooldown = this.gameObject.GetComponent<MageSuper>().getcooldown();
+				melee_cooldown = mageMelee.getcooldown();
+				second_cooldown = mageSecond.getcooldown();
+				super_cooldown = mageSuper.getcooldown();
 
-				melee_cooldown_timer = this.gameObject.GetComponent<MageMelee>().gettimer();
-				second_cooldown_timer = this.gameObject.GetComponent<MegeSecond>().gettimer();
-				super_cooldown_timer = this.gameObject.GetComponent<MageSuper>().gettimer();
+				melee_cooldown_timer = mageMelee.gettimer();
+				second_cooldown_timer = mageSecond.gettimer();
+				super_cooldown_timer = mageSuper.gettimer();
 			}
 
 			if(this.gameObject.name=="Knight"||this.gameObject.name=="Knight(Clone)")
 			{
-				melee_cooldown = this.gameObject.GetComponent<KnightMelee>().getcooldown();
-				second_cooldown = this.gameObject.GetComponent<KnightSecond>().getcooldown();
-				super_cooldown = this.gameObject.GetComponent<KnightSuper>().getcooldown();
+				melee_cooldown = knightMelee.getcooldown();
+				second_cooldown = knightSecond.getcooldown();
+				super_cooldown = knightSuper.getcooldown();
 
-				melee_cooldown_timer = this.gameObject.GetComponent<KnightMelee>().gettimer();
-				second_cooldown_timer = this.gameObject.GetComponent<KnightSecond>().gettimer();
-				super_cooldown_timer = this.gameObject.GetComponent<KnightSuper>().gettimer();
+				melee_cooldown_timer = knightMelee.gettimer();
+				second_cooldown_timer = knightSecond.gettimer();
+				super_cooldown_timer = knightSuper.gettimer();
 			}
 
 			if(this.gameObject.name=="Arch"||this.gameObject.name=="Arch(Clone)")
 			{
-				melee_cooldown = this.gameObject.GetComponent<ArchMelee>().getcooldown();
-				second_cooldown = this.gameObject.GetComponent<ArchSecond>().getcooldown();
-				super_cooldown = this.gameObject.GetComponent<ArchSuper>().getcooldown();
+				melee_cooldown = archerMelee.getcooldown();
+				second_cooldown = archerSecond.getcooldown();
+				super_cooldown = archerSuper.getcooldown();
 
-				melee_cooldown_timer = this.gameObject.GetComponent<ArchMelee>().gettimer();
-				second_cooldown_timer = this.gameObject.GetComponent<ArchSecond>().gettimer();
-				super_cooldown_timer = this.gameObject.GetComponent<ArchSuper>().gettimer();
+				melee_cooldown_timer = archerMelee.gettimer();
+				second_cooldown_timer = archerSecond.gettimer();
+				super_cooldown_timer = archerSuper.gettimer();
 			}
 
 
@@ -109,7 +155,6 @@ public class UIProvider : MonoBehaviour {
 			MeleeIcon.GetComponent<RawImage>().texture = melee_icon;
 			SecondIcon.GetComponent<RawImage>().texture = second_icon;
 			SuperIcon.GetComponent<RawImage>().texture = super_icon;
-
 
 			UIhp.GetComponent<Slider>().value = hp/(this.gameObject.GetComponent<ProfileSystem>().MaxHealthPoints);
 			UImp.GetComponent<Slider>().value = mp/(this.gameObject.GetComponent<ProfileSystem>().MaxMagicPoints);

@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using DG.Tweening;
 
@@ -17,6 +18,7 @@ public class ArchSecond : MonoBehaviour {
 	private GameObject electric_clone;
 
     private NetworkPlayerInput _playerInput;
+    public NetworkIdentity _netid;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +27,7 @@ public class ArchSecond : MonoBehaviour {
 		timer = cooldown;
 
         _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+        _netid = GetComponent<NetworkIdentity>();
     }
 
 	// Update is called once per frame
@@ -47,7 +50,7 @@ public class ArchSecond : MonoBehaviour {
 
 				if(real_distance<=distance){
 					this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
-					electric_clone = Instantiate(electric, hit.point, Quaternion.LookRotation(ray.direction)) as GameObject;
+                    KUSNetworkManager.HostPlayer.CmdArcherSecond(_netid, hit.point, Quaternion.LookRotation(ray.direction));
 				}
 				else{
 					canAttack = true;

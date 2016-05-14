@@ -5,25 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/_Scenes/Testing/TestScene.unity
-  - enabled: 0
-    path: Assets/_Scenes/Testing/AlexScene.unity
-  - enabled: 0
-    path: Assets/_Scenes/Testing/HeroMainScene.unity
-  - enabled: 0
-    path: Assets/_Scenes/Testing/ChenghaoScene.unity
   - enabled: 1
     path: Assets/_Scenes/Game/StartScreen.unity
   - enabled: 1
     path: Assets/_Scenes/Game/SetupScreen.unity
   - enabled: 1
     path: Assets/_Scenes/Game/GameScreen.unity
-  - enabled: 0
-    path: Assets/_Scenes/Testing/NetworkingTestStart.unity
-  - enabled: 0
-    path: Assets/_Scenes/Testing/NetworkingTestSetup.unity
-  - enabled: 0
-    path: Assets/_Scenes/Testing/NetworkingTestScene.unity
-  - enabled: 0
-    path: Assets/_Scenes/Testing/Map Design/MapDesign.unity
+  - enabled: 1
+    path: Assets/_Scenes/Game/EndScreen.unity

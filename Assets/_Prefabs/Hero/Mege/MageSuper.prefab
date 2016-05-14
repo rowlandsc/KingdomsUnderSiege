@@ -128,6 +128,8 @@ GameObject:
   - 114: {fileID: 11414636}
   - 54: {fileID: 5493464}
   - 135: {fileID: 13543598}
+  - 114: {fileID: 11438200}
+  - 114: {fileID: 11433766}
   m_Layer: 0
   m_Name: MageSuper
   m_TagString: IceBullet
@@ -557,7 +559,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36a235a2e67544faa80a2e467ef6e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ending: {fileID: 100012, guid: 9825718a75f7cfb428f2377f35d10ed5, type: 2}
+  ending: {fileID: 133256, guid: 6d2322417202a7644a937c13038aa011, type: 2}
+  Mage: {fileID: 0}
+--- !u!114 &11433766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &11438200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 85
+    i1: 82
+    i2: 172
+    i3: 77
+    i4: 224
+    i5: 138
+    i6: 100
+    i7: 1
+    i8: 27
+    i9: 77
+    i10: 192
+    i11: 143
+    i12: 217
+    i13: 63
+    i14: 187
+    i15: 168
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11462372
 MonoBehaviour:
   m_ObjectHideFlags: 1

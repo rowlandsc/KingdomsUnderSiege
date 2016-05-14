@@ -22,6 +22,12 @@ TagManager:
   - ArchDamage
   - HeroUI
   - RoundManager
+  - HeroPlayer
+  - HeroStructure
+  - OverseerStructure
+  - DeathCount
+  - MorterTowerShot
+  - DeathScreen
   layers:
   - Default
   - TransparentFX
@@ -41,10 +47,10 @@ TagManager:
   - UI
   - EnemyDamage
   - Environment
-  - 
-  - 
-  - 
-  - 
+  - MapPlayArea
+  - BaseWalls
+  - HeroStructure
+  - OverseerShot
   - 
   - 
   - 

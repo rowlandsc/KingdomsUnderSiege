@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &190582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 423688}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &193990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 499816}
+  - 33: {fileID: 3348904}
+  - 23: {fileID: 2362066}
+  - 114: {fileID: 11436196}
+  - 114: {fileID: 11484500}
+  m_Layer: 0
+  m_Name: OverseerMinionSpawner 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &423688
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.67, y: -0.88, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 499816}
+  m_RootOrder: 0
+--- !u!4 &499816
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193990}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 217.4, y: 22.67, z: 151.83}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_Children:
+  - {fileID: 423688}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!23 &2362066
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193990}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 9e1cd794d49ce45008e2bf1f8177a532, type: 2}
+  - {fileID: 2100000, guid: bf38a27b64fba4909bb810ff6d6c1733, type: 2}
+  - {fileID: 2100000, guid: 646d04d13fdd347f08c446076a7f0909, type: 2}
+  - {fileID: 2100000, guid: f52c5ce9bb73b443dae49c0f4af86589, type: 2}
+  - {fileID: 2100000, guid: fa674aa23575b4792af36732fff09545, type: 2}
+  - {fileID: 2100000, guid: dc5d9f3086fbd4b88b0215bbbb982334, type: 2}
+  - {fileID: 2100000, guid: 9695878dff9ef4705a6864c5f2fa0891, type: 2}
+  - {fileID: 2100000, guid: 152ff37c04f254d31ad46710bf2e625d, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3348904
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193990}
+  m_Mesh: {fileID: 4300000, guid: 6d7ba00e406554344a26a6beb257b31b, type: 3}
+--- !u!114 &11436196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 52
+    i1: 55
+    i2: 16
+    i3: 48
+    i4: 95
+    i5: 188
+    i6: 151
+    i7: 68
+    i8: 171
+    i9: 65
+    i10: 225
+    i11: 34
+    i12: 158
+    i13: 177
+    i14: 119
+    i15: 202
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
+--- !u!114 &11484500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984040fe1ae2b36458d8e71d1d6b1d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Minion: {fileID: 107686, guid: 9e567de639d4f4dd39dea28afb85d04c, type: 2}
+  SpawnPoint: {fileID: 423688}
+  NumberToSpawn: 5
+  SpawnDelay: 20
+  TimeBetweenMinions: 1
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 193990}
+  m_IsPrefabParent: 1

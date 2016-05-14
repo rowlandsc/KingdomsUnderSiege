@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.Networking;
 
 public class ArchSuper : MonoBehaviour {
 	
-	private float cooldown=10f;
+	private float cooldown=25f;
 	private bool canAttack;
 	private float skytime=10f;
 	public bool SuperActivate;
@@ -24,6 +25,7 @@ public class ArchSuper : MonoBehaviour {
 	private GameObject spellPosition;
 
     private NetworkPlayerInput _playerInput;
+    private NetworkIdentity _netid;
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +36,7 @@ public class ArchSuper : MonoBehaviour {
 		effect_apply=true;
 		timer = cooldown;
         _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+        _netid = GetComponent<NetworkIdentity>();
     }
 	
 	// Update is called once per frame
@@ -53,8 +56,9 @@ public class ArchSuper : MonoBehaviour {
 			HeroMove.DisableMove();
 
 			if(effect_apply){
-                superFx_clone = Instantiate(superFx, this.gameObject.transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 0f))) as GameObject;
-				superFx_clone.transform.parent=this.gameObject.transform;
+                //superFx_clone = Instantiate(superFx, this.gameObject.transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 0f))) as GameObject;
+                //superFx_clone.transform.parent=this.gameObject.transform;
+                KUSNetworkManager.HostPlayer.CmdArcherSuperStart(_netid, transform.position, Quaternion.Euler(new Vector3(-90f, 0f, 0f)));
 
 				effect_apply=false;
 			}
@@ -71,7 +75,8 @@ public class ArchSuper : MonoBehaviour {
 
 					if(hit.transform.gameObject.tag!="Player"){
 						superbullet_clone = Instantiate(superbullet, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
-						superbullet_clone.transform.DOMove(hit.point,1f,false);
+                        superbullet_clone.GetComponent<ArchSuperHit>().Initialize(GetComponent<NetworkIdentity>());
+						superbullet_clone.GetComponent<ArchSuperHit>().velocity = (hit.point - transform.position).normalized*0.9f;
 					}
 				} 
 			}
@@ -81,8 +86,8 @@ public class ArchSuper : MonoBehaviour {
 			if(skytime<=0||shot_times_left<=0){
 				this.gameObject.GetComponent<Rigidbody>().useGravity=true;
 				SuperActivate=false;
-				Destroy(superFx_clone);
-				effect_apply=true;
+                KUSNetworkManager.HostPlayer.CmdArcherSuperDestroy();
+                effect_apply =true;
 				skytime=10f;
 				shot_times_left=3;
 			}

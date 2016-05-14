@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -19,35 +20,35 @@ public class TowerAttack : MonoBehaviour {
 	private float rest_time = 2f;
 	private float timer;
 
+    private ProfileSystem profile;
 
 	// Use this for initialization
 	void Start () {
 		timer=0;
 		canAttack=true;
-		attackDamage= this.gameObject.GetComponent<ProfileSystem>().returnMeleeDamage();
+        profile = GetComponent<ProfileSystem>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
 		if(canAttack){
-
-			if(target==null || Vector3.Distance(this.gameObject.transform.position,target.transform.position)>range) findTarget();
+			if(target==null || Vector3.Distance(this.gameObject.transform.position,target.transform.position) > profile.AttackRange) findTarget();
 			if(target!=null){
 
-				attack_=Instantiate(attack,this.gameObject.transform.position,Quaternion.identity)as GameObject;
-				attack_.GetComponent<TowerAttackHit>().tower = this.gameObject;
-                attack_.GetComponent<TowerAttackHit>().velocity = (target.transform.position - transform.position).normalized * Arrowspeed;
-
+                KUSNetworkManager.HostPlayer.CmdTowerAttack(
+                    GetComponent<NetworkIdentity>(),
+                    attack.GetComponent<IShootable>().PrefabCacheId,
+                    this.gameObject.transform.position,
+                    Quaternion.identity,
+                    (target.transform.position - transform.position).normalized * profile.AttackSpeed);
+                               
                 canAttack =false;
 			}
-			
-
 		}
 
 		if(!canAttack){
 			timer+=Time.deltaTime;
-			if(timer>rest_time){
+			if(timer > profile.AttackFrequency) {
 				canAttack=true;
 				timer=0;
 			}
@@ -58,8 +59,8 @@ public class TowerAttack : MonoBehaviour {
 
 	public void findTarget(){
 
-		GameObject[] targetList = GameObject.FindGameObjectsWithTag("Player");
-
+		GameObject[] targetList = GameObject.FindGameObjectsWithTag("HeroPlayer");
+        target = null;
 		for(int i=0;i<targetList.Length;i++){
 			if(Vector3.Distance(this.gameObject.transform.position,targetList[i].transform.position)<range){
 				target = targetList[i];

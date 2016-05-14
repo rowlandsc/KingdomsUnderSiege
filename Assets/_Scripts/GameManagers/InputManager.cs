@@ -48,6 +48,18 @@ public class InputManager : MonoBehaviour {
         }
     }
 
+    public bool OverseerSelect {
+        get {
+            return Input.GetMouseButton(0);
+        }
+    }
+
+    public bool OverseerRotateTower {
+        get {
+            return Input.GetMouseButton(1);
+        }
+    }
+
     public Vector3 CameraEdgePan {
         get {
             int screenWidth = OverseerCamera.Instance.Camera.pixelWidth;
@@ -77,13 +89,13 @@ public class InputManager : MonoBehaviour {
 
     public bool CameraDragPanDown {
         get {
-            return Input.GetMouseButtonDown(1);
+            return Input.GetMouseButtonDown(2);
         }
     }
 
     public bool CameraDragPanUp {
         get {
-            return Input.GetMouseButtonUp(1);
+            return Input.GetMouseButtonUp(2);
         }
     }
 

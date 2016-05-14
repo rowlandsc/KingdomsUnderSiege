@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6544502}
   - 23: {fileID: 2346704}
   - 114: {fileID: 11448812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,15 +30,17 @@ GameObject:
   - 33: {fileID: 3349010}
   - 23: {fileID: 2370690}
   - 95: {fileID: 9582938}
-  - 114: {fileID: 11461248}
+  - 114: {fileID: 11474382}
   - 120: {fileID: 12051640}
   - 114: {fileID: 11433524}
-  - 64: {fileID: 6422882}
   - 114: {fileID: 11473872}
   - 114: {fileID: 11459474}
   - 114: {fileID: 11472120}
   - 114: {fileID: 11411306}
-  m_Layer: 0
+  - 114: {fileID: 11402072}
+  - 65: {fileID: 6597564}
+  - 114: {fileID: 11457934}
+  m_Layer: 9
   m_Name: ArcherTowerLevel1
   m_TagString: OverseerPlayer
   m_Icon: {fileID: 0}
@@ -52,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 223.5, y: 20.25, z: 270.7}
+  m_LocalPosition: {x: 258.56635, y: 20.75, z: 198.09355}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 470414}
@@ -65,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129686}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.0562, z: 0}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
   m_LocalScale: {x: -0.024534008, y: 0.0024534005, z: 0.0004904972}
   m_Children: []
   m_Father: {fileID: 442170}
@@ -140,18 +142,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181652}
   m_Mesh: {fileID: 4300000, guid: db593bc9fe0c9456f94f2a333e8a18c8, type: 3}
---- !u!64 &6422882
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: db593bc9fe0c9456f94f2a333e8a18c8, type: 3}
 --- !u!65 &6544502
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -164,6 +154,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6597564
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03256432, y: 0.055555094, z: 0.037016444}
+  m_Center: {x: 0.000089721674, y: 0.02078926, z: 0.00039505004}
 --- !u!95 &9582938
 Animator:
   serializedVersion: 3
@@ -181,6 +183,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11402072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0e981756f0b9b4ca745c3e5277833c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
 --- !u!114 &11411306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,9 +221,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameMap: {fileID: 0}
+  CirclePosition: {x: 0, y: 0, z: 0}
   CircleThetaScale: 0.01
   CircleRadius: 0
-  CircleColor: {r: 0, g: 0, b: 0, a: 0}
+  CircleColor: {r: 0, g: 0, b: 0, a: 1}
   PositionOffset: {x: 0, y: 0.5, z: 0}
   LineWidth: 0.1
 --- !u!114 &11448812
@@ -223,6 +238,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e64ded0bc35407d9700ed613b775bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11457934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fd20262429dcd43b8a44dc989885b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeStatEffects: []
+  AlwaysUseSameUpgrade: 0
 --- !u!114 &11459474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,18 +271,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11461248
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f74b6266347a1542800182f0baf25a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Radius: 8
 --- !u!114 &11472120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,18 +282,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 200
-  MagicPoints: 100
-  MAX_HealthPoints: 200
-  MAX_MagicPoints: 100
-  DefendePoints: 50
+  Level: 1
+  IsDead: 0
   Worth: 1000
+  baseHealthPoints: 100
+  baseMagicPoints: 100
+  baseMaxHealthPoints: 100
+  baseMaxMagicPoints: 100
+  DefendPoints: 0
   haveMoney: 0
-  meleeDamageDealt: 8
-  secondDamageDealt: 12
-  superDamageDealt: 40
-  Health_Regen: 0
-  Magic_Regen: 0
+  baseMeleeDamageDealt: 5
+  baseSecondDamageDealt: 12
+  baseSuperDamageDealt: 40
+  baseHealthRegen: 0
+  baseMagicRegen: 0
+  baseMoveSpeed: 0
+  baseAttackSpeed: 0.75
+  baseAttackFrequency: 2
+  baseAttackRange: 15
   damagePOP: {fileID: 0}
   death: {fileID: 0}
 --- !u!114 &11473872
@@ -312,6 +334,18 @@ MonoBehaviour:
     i15: 129
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &11474382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2f3c81bc81d5a4193f8429bd7cbef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Radius: 3
 --- !u!120 &12051640
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -401,6 +435,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SendInterval
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseMeleeDamageDealt
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: baseSecondDamageDealt
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

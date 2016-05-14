@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using System;
 
 /**
  * A class for managing the Minion spawner.
@@ -45,8 +46,11 @@ public class Minion_Spawner : NetworkBehaviour {
     void Start(){
         this._roundManager = RoundManager.Instance;
 
-        // Start spawn cycle
-        StartCoroutine(PREROUND_WAIT);
+        if (KUSNetworkManager.LocalPlayer.isServer)
+        {
+            // Start spawn cycle
+            StartCoroutine(PREROUND_WAIT);
+        }
     }
 
     /**

@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.Networking;
 
 public class ArchMelee : MonoBehaviour {
 
 	public GameObject arch;
 	public float cooldown=0.5f;
-	public float distance=30f;
+	public float distance=50f;
 	
 	private bool canAttack;
 	public float timer;
@@ -15,6 +16,7 @@ public class ArchMelee : MonoBehaviour {
 	private GameObject spellPosition;
 
     private NetworkPlayerInput _playerInput;
+    private NetworkIdentity _netid;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,7 @@ public class ArchMelee : MonoBehaviour {
 		canAttack = true;
 		timer = cooldown;
         _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+        _netid = GetComponent<NetworkIdentity>();
     }
 	
 	// Update is called once per frame
@@ -43,9 +46,11 @@ public class ArchMelee : MonoBehaviour {
 				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.point); 
 			
 				if(real_distance<=distance){
-					arch_clone = Instantiate(arch, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
-						arch_clone.transform.DOMove(hit.point,0.3f,false);
-					}
+                    KUSNetworkManager.HostPlayer.CmdArcherMelee(_netid, spellPosition.transform.position, Quaternion.LookRotation(ray.direction), (hit.point - transform.position).normalized * 1.0f);
+                    //arch_clone = Instantiate(arch, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
+                    //arch_clone.GetComponent<ArchMeleeHit>().Initialize(GetComponent<NetworkIdentity>());
+					//arch_clone.GetComponent<ArchMeleeHit>().velocity = (hit.point - transform.position).normalized*1.0f;
+				}
 				else{
 					canAttack = true;
 				}

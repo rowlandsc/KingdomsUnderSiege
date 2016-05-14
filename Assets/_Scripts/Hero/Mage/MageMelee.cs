@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.Networking;
 
 public class MageMelee : MonoBehaviour {
 
 	public GameObject iceball;
 	public float cooldown=0.5f;
-	private float distance=30f;
 
 	private bool canAttack;
 	public float timer;
@@ -27,7 +27,7 @@ public class MageMelee : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 		if(_playerInput.HeroMeleeAttackInputDown > 0 && canAttack)
 		{
 			canAttack = false;
@@ -40,17 +40,8 @@ public class MageMelee : MonoBehaviour {
 			layerMask = ~layerMask;
 
 
-			if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))  {  
-				float real_distance=Vector3.Distance(this.gameObject.transform.position,hit.point); 
-				  
-				if(real_distance<=distance){
-					iceball_clone = Instantiate(iceball, spellPosition.transform.position, Quaternion.LookRotation(ray.direction)) as GameObject;
-				    	iceball_clone.transform.DOMove(hit.point,real_distance/40f,false);
-				   }
-				else{
-					canAttack=true;
-				}
-
+			if (Physics.Raycast(ray, out hit,Mathf.Infinity,layerMask))  {
+                KUSNetworkManager.HostPlayer.CmdMageMelee(GetComponent<NetworkIdentity>(), spellPosition.transform.position, Quaternion.LookRotation(ray.direction), (hit.point - transform.position).normalized * 0.5f);
 			} 
 		}
 

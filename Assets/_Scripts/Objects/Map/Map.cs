@@ -67,7 +67,6 @@ public class Map : MonoBehaviour {
 
     public void UpdateGrid() {
         if (TerrainBounds) {
-            Debug.Log("Updating grid...");
             ArrayUtility.Clear<Cell[]>(ref _grid);
 
             for (int i = 0; i < GridHeight; i++) {
@@ -85,10 +84,8 @@ public class Map : MonoBehaviour {
                 }
                 ArrayUtility.Add<Cell[]>(ref _grid, list);
             }
-            Debug.Log("Done updating grid.");
         }
         else {
-            Debug.Log("Can't update grid: no terrain given.");
         }
     }
 
@@ -97,16 +94,16 @@ public class Map : MonoBehaviour {
     public Vector3 GetMapPositionAtPoint(float x, float z) {
         float TEST_HEIGHT = 100;
 
-        if (x < TerrainBounds.transform.position.x)
-            x = TerrainBounds.transform.position.x;
-        if (x > TerrainBounds.transform.position.x + TerrainBounds.bounds.size.x - .1f)
-            x = TerrainBounds.transform.position.x + TerrainBounds.bounds.size.x - .1f;
-        if (z < TerrainBounds.transform.position.z)
-            z = TerrainBounds.transform.position.z;
-        if (z > TerrainBounds.transform.position.z + TerrainBounds.bounds.size.z - .1f)
-            z = TerrainBounds.transform.position.z + TerrainBounds.bounds.size.z - .1f;
+        if (x < TerrainBounds.transform.position.z - TerrainBounds.bounds.extents.x + .1f)
+            x = TerrainBounds.transform.position.z - TerrainBounds.bounds.extents.x + .1f;
+        if (x > TerrainBounds.transform.position.x + TerrainBounds.bounds.extents.x - .1f)
+            x = TerrainBounds.transform.position.x + TerrainBounds.bounds.extents.x - .1f;
+        if (z < TerrainBounds.transform.position.z - TerrainBounds.bounds.extents.z + .1f)
+            z = TerrainBounds.transform.position.z - TerrainBounds.bounds.extents.z + .1f;
+        if (z > TerrainBounds.transform.position.z + TerrainBounds.bounds.extents.z - .1f)
+            z = TerrainBounds.transform.position.z + TerrainBounds.bounds.extents.z - .1f;
 
-        if (TerrainBounds) {
+        /*if (TerrainBounds) {
             Vector3 xzpos = transform.position + new Vector3(x, TEST_HEIGHT, z);
             Ray ray = new Ray(xzpos, Vector3.down);
             RaycastHit hit;
@@ -115,7 +112,17 @@ public class Map : MonoBehaviour {
             return hit.point;
         }
 
-        return new Vector3(x, TEST_HEIGHT, z);
+        return new Vector3(x, TEST_HEIGHT, z);*/
+
+        Ray ray = new Ray(new Vector3(x, TEST_HEIGHT, z), Vector3.down);
+        string layer = "MapPlayArea";
+        LayerMask mask = LayerMask.GetMask(layer);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit, TEST_HEIGHT * 2, mask);
+        if (hit.collider != null) {
+            return hit.point;
+        }
+        return new Vector3(x, 0, z);
     }
 }
 

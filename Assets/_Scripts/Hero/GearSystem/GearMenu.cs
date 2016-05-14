@@ -132,32 +132,27 @@ public class GearMenu : NetworkBehaviour {
 				+ "/" + this.gameObject.GetComponent<ProfileSystem>().returnSuperDamage().ToString();
 			HR_text.GetComponent<Text>().text = this.gameObject.GetComponent<ProfileSystem>().returnHR().ToString();
 			MR_text.GetComponent<Text>().text = this.gameObject.GetComponent<ProfileSystem>().returnMR().ToString();
-
-
-
-
 		}
 
 		if(!actvate){
-			camera.GetComponent<DrawShotStar>().enableFS();
+            DrawShotStar dss = camera.GetComponent<DrawShotStar>();
+
+            if(dss)
+            dss.enableFS();
 
 			HeroMove.EnableMove();
+
+            if(gearsystemUI)
 			gearsystemUI.SetActive(false);
 			Cursor.visible = false;
 		}
-
-
-
-
 	}
 
 
 		
 	public void upgradeHP(float value, float price){
 
-
-
-		if(this.gameObject.GetComponent<ProfileSystem>().useMoney(price))
+		if(KUSNetworkManager.LocalPlayer.GetComponent<NetworkPlayerStats>().PurchaseItem((int)price))
 		{
 			effect_clone = Instantiate(effect, this.transform.position, Quaternion.identity) as GameObject;
 			effect_clone.AddComponent<DestoryselfAfterfewsecond>();
@@ -169,7 +164,7 @@ public class GearMenu : NetworkBehaviour {
 	public void upgradeMP(float value, float price){
 		
 
-		if(this.gameObject.GetComponent<ProfileSystem>().useMoney(price))
+		if(KUSNetworkManager.LocalPlayer.GetComponent<NetworkPlayerStats>().PurchaseItem((int)price))
 		{
 
 			effect_clone = Instantiate(effect, this.transform.position, Quaternion.identity) as GameObject;
@@ -183,7 +178,7 @@ public class GearMenu : NetworkBehaviour {
 	public void upgradeMeleeDamage(float value, float price){
 		
 
-		if(this.gameObject.GetComponent<ProfileSystem>().useMoney(price))
+		if(KUSNetworkManager.LocalPlayer.GetComponent<NetworkPlayerStats>().PurchaseItem((int)price))
 		{
 			effect_clone = Instantiate(effect, this.transform.position, Quaternion.identity) as GameObject;
 			effect_clone.AddComponent<DestoryselfAfterfewsecond>();
@@ -195,7 +190,7 @@ public class GearMenu : NetworkBehaviour {
 
 	public void upgradeSecondDamage(float value, float price){
 		
-		if(this.gameObject.GetComponent<ProfileSystem>().useMoney(price))
+		if(KUSNetworkManager.LocalPlayer.GetComponent<NetworkPlayerStats>().PurchaseItem((int)price))
 		{
 			effect_clone = Instantiate(effect, this.transform.position, Quaternion.identity) as GameObject;
 			effect_clone.AddComponent<DestoryselfAfterfewsecond>();
@@ -208,7 +203,7 @@ public class GearMenu : NetworkBehaviour {
 	public void upgradeSuperDamage(float value, float price){
 		
 
-		if(this.gameObject.GetComponent<ProfileSystem>().useMoney(price))
+		if(KUSNetworkManager.LocalPlayer.GetComponent<NetworkPlayerStats>().PurchaseItem((int)price))
 		{
 			effect_clone = Instantiate(effect, this.transform.position, Quaternion.identity) as GameObject;
 			effect_clone.AddComponent<DestoryselfAfterfewsecond>();
@@ -221,7 +216,7 @@ public class GearMenu : NetworkBehaviour {
 	public void upgradeArmor(float value, float price){
 		
 
-		if(this.gameObject.GetComponent<ProfileSystem>().useMoney(price))
+		if(KUSNetworkManager.LocalPlayer.GetComponent<NetworkPlayerStats>().PurchaseItem((int)price))
 		{
 			effect_clone = Instantiate(effect, this.transform.position, Quaternion.identity) as GameObject;
 			effect_clone.AddComponent<DestoryselfAfterfewsecond>();
@@ -233,7 +228,7 @@ public class GearMenu : NetworkBehaviour {
 
 	public void upgradeHealthRegen(float value, float price){
 		
-		if(this.gameObject.GetComponent<ProfileSystem>().useMoney(price))
+		if(KUSNetworkManager.LocalPlayer.GetComponent<NetworkPlayerStats>().PurchaseItem((int)price))
 		{
 			effect_clone = Instantiate(effect, this.transform.position, Quaternion.identity) as GameObject;
 			effect_clone.AddComponent<DestoryselfAfterfewsecond>();
@@ -246,7 +241,7 @@ public class GearMenu : NetworkBehaviour {
 	public void upgradeMagicRegen(float value, float price){
 		
 
-		if(this.gameObject.GetComponent<ProfileSystem>().useMoney(price))
+		if(KUSNetworkManager.LocalPlayer.GetComponent<NetworkPlayerStats>().PurchaseItem((int)price))
 		{
 			effect_clone = Instantiate(effect, this.transform.position, Quaternion.identity) as GameObject;
 			effect_clone.AddComponent<DestoryselfAfterfewsecond>();

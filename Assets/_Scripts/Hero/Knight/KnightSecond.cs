@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.Networking;
 
 public class KnightSecond : MonoBehaviour {
 
@@ -19,6 +20,7 @@ public class KnightSecond : MonoBehaviour {
 	private GameObject Maincamera;
 
     private NetworkPlayerInput _playerInput;
+    private NetworkIdentity _netid;
 
 
     //FX
@@ -38,6 +40,7 @@ public class KnightSecond : MonoBehaviour {
 		knightsecond_Activate=false;
 		effect_fire_clone_runonce=true;
         _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
+        _netid = GetComponent<NetworkIdentity>();
     }
 	
 	// Update is called once per frame
@@ -69,18 +72,17 @@ public class KnightSecond : MonoBehaviour {
 			Vector3 moveDirection = Maincamera.transform.forward;
 			moveDirection.y = 0.0f;
 			Vector3.Normalize(moveDirection);
-			if(Input.GetKey(KeyCode.W)){transform.Translate(moveDirection * Time.deltaTime* movespeed*1.2f, Space.World);}
-			else if(!Input.GetKey(KeyCode.W)){transform.Translate(moveDirection * Time.deltaTime* movespeed*1.5f, Space.World);}
+			if(Input.GetKey(KeyCode.W)){transform.Translate(moveDirection * Time.deltaTime* movespeed*3f, Space.World);}
+			else if(!Input.GetKey(KeyCode.W)){transform.Translate(moveDirection * Time.deltaTime* movespeed*3f, Space.World);}
 
 			if(effect_fire_clone_runonce){
-				effect_fire_clone= Instantiate(effect_fire, this.transform.position, transform.rotation)as GameObject;
-				effect_fire_clone.transform.parent=this.gameObject.transform;
-				effect_fire_clone_runonce=false;
+                KUSNetworkManager.HostPlayer.CmdKnightSecond(_netid, transform.position, transform.rotation);
+                effect_fire_clone_runonce=false;
 			}
 		}
 
 		if(!knightsecond_Activate){
-			Destroy(effect_fire_clone);
+            KUSNetworkManager.HostPlayer.CmdKnightSecondDestroy();
 			effect_fire_clone_runonce=true;
 		}
 

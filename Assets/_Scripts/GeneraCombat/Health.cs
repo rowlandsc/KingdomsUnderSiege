@@ -16,7 +16,7 @@ public class Health : MonoBehaviour{
         if (HitPoints < float.Epsilon){
 
             // Destroy it
-            DestroySelf();
+           // DestroySelf();
         }
     }
 
@@ -24,6 +24,6 @@ public class Health : MonoBehaviour{
      * Performs the destruction of the character
      */
     void DestroySelf(){
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
 }

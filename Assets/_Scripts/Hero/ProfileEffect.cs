@@ -12,6 +12,8 @@ public struct ProfileEffect {
     public const float INSTANT = -1;
     public const float FOREVER = float.MaxValue;
 
+    public NetworkInstanceId InflicterID;
+
     public float StartingDuration;
     public float RemainingDuration;
 
@@ -37,11 +39,22 @@ public struct ProfileEffect {
     public float MoveSpeedMult;
     public float MoveSpeedAdd;
 
-    public ProfileEffect(float startingDuration = INSTANT, float healthPointsAdd = 0, float magicPointsAdd = 0, 
+    public float AttackSpeedMult;
+    public float AttackSpeedAdd;
+    public float AttackFrequencyMult;
+    public float AttackFrequencyAdd;
+    public float AttackRangeMult;
+    public float AttackRangeAdd;
+
+    public ProfileEffect(NetworkInstanceId inflicterID, float startingDuration = INSTANT, float healthPointsAdd = 0, float magicPointsAdd = 0, 
         float maxHealthPointsMult = 1, float maxHealthPointsAdd = 0, float maxMagicPointsMult = 1, float maxMagicPointsAdd = 0,
         float meleeDamageMult = 1, float meleeDamageAdd = 0, float secondDamageMult = 1, float secondDamageAdd = 0,
         float superDamageMult = 1, float superDamageAdd = 0, float healthRegenMult = 1, float healthRegenAdd = 0,
-        float magicRegenMult = 1, float magicRegenAdd = 0, float moveSpeedMult = 0, float moveSpeedAdd = 0) {
+        float magicRegenMult = 1, float magicRegenAdd = 0, float moveSpeedMult = 1, float moveSpeedAdd = 0,
+        float attackSpeedMult = 1, float attackSpeedAdd = 0, float attackFreqMult = 1, float attackFreqAdd = 0,
+        float attackRangeMult = 1, float attackRangeAdd = 0) {
+
+        InflicterID = inflicterID;
 
         StartingDuration = startingDuration;
         RemainingDuration = startingDuration;
@@ -67,8 +80,17 @@ public struct ProfileEffect {
 
         MoveSpeedMult = moveSpeedMult;
         MoveSpeedAdd = moveSpeedAdd;
+
+        AttackSpeedMult = attackSpeedMult;
+        AttackSpeedAdd = attackSpeedAdd;
+        AttackFrequencyMult = attackFreqMult;
+        AttackFrequencyAdd = attackFreqAdd;
+        AttackRangeMult = attackRangeMult;
+        AttackRangeAdd = attackRangeAdd;
     }
     public ProfileEffect(ProfileEffect original) {
+        InflicterID = original.InflicterID;
+
         StartingDuration = original.StartingDuration;
         RemainingDuration = original.RemainingDuration;
 
@@ -93,5 +115,12 @@ public struct ProfileEffect {
 
         MoveSpeedMult = original.MoveSpeedMult;
         MoveSpeedAdd = original.MoveSpeedAdd;
+
+        AttackSpeedMult = original.AttackSpeedMult;
+        AttackSpeedAdd = original.AttackSpeedAdd;
+        AttackFrequencyMult = original.AttackFrequencyMult;
+        AttackFrequencyAdd = original.AttackFrequencyAdd;
+        AttackRangeMult = original.AttackRangeMult;
+        AttackRangeAdd = original.AttackRangeAdd;
     }
 }
