@@ -10,7 +10,6 @@ public class PrefabCache : MonoBehaviour {
 			DontDestroyOnLoad(this.gameObject);
         }
         else {
-            Debug.Log("Extra prefab cache");
             Destroy(this.gameObject);
         }
     }

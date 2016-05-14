@@ -91,8 +91,7 @@ public class MortarTowerHit : MonoBehaviour, IShootable {
 
 	void OnTriggerEnter(Collider col){
         if (col.gameObject == Tower) return;
-
-        Debug.Log("Collided with " + col.gameObject.name);
+        
         Collider[] splashObjects = Physics.OverlapSphere(transform.position, this.SplashDamageRadius, this.LayersEffectedBySplash);
 
         for(int i = 0; i < splashObjects.Length; i++)

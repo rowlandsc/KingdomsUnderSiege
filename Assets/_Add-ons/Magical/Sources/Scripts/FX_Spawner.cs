@@ -32,7 +32,6 @@ namespace MagicalFX
 		{
 			if (TimeSpawn > 0.0f) {
 				if (Time.time > timeTemp + TimeSpawn) {
-					Debug.Log("spawn");
 					
 					if (FXSpawn != null) {
 						Quaternion rotate = this.transform.rotation;

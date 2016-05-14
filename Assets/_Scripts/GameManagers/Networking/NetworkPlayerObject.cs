@@ -77,7 +77,6 @@ public class NetworkPlayerObject : NetworkBehaviour {
 	}
 
 	void OnHitStartButton() {
-		Debug.Log("Hit start button like a mofo");
 		RpcStartGame();
 	}
 
@@ -119,8 +118,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
 
     [Command]
-    public void CmdPlaceTower(NetworkIdentity player, string prefabID, Vector3 position, Quaternion rotation) {  
-        Debug.Log("Server Command Called " + prefabID + " " + position);
+    public void CmdPlaceTower(NetworkIdentity player, string prefabID, Vector3 position, Quaternion rotation) { 
         Tower tower = GameObject.Instantiate(PrefabCache.Instance.PrefabIndex[prefabID]).GetComponent<Tower>();
         tower.transform.position = position;
         tower.transform.rotation = rotation;
@@ -144,48 +142,45 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
 	[Command]
 	public void CmdCreateHeroMagePlayer(NetworkIdentity player) {
-		Debug.Log("Server Command Called create mage player");
 		GameObject birthplace = GameObject.Find("MageSummonPoint");
 		GameObject mage_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroMage"], birthplace.transform.position, Quaternion.identity)as GameObject;
         mage_Clone.gameObject.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
         NetworkServer.Spawn(mage_Clone);
         if (player.connectionToClient != null)
-            Debug.Log("Assigned authority? " + mage_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToClient));
+            mage_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToClient);
         else
-            Debug.Log("Assigned authority? " + mage_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToServer));
+            mage_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToServer);
 
         RpcSetOwner(mage_Clone.GetComponent<NetworkIdentity>(), player);
 	}
 
 	[Command]
 	public void CmdCreateHeroKnightPlayer(NetworkIdentity player) {
-		Debug.Log("Server Command Called create knight player");
 		GameObject birthplace = GameObject.Find("KnightSummonPoint");
 		GameObject knight_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroKnight"], birthplace.transform.position, Quaternion.identity)as GameObject;
         knight_Clone.gameObject.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
         NetworkServer.Spawn(knight_Clone);
         if (player.connectionToClient != null)
-            Debug.Log("Assigned authority? " + knight_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToClient));
+            knight_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToClient);
         else
-            Debug.Log("Assigned authority? " + knight_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToServer));
+            knight_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToServer);
 
         RpcSetOwner(knight_Clone.GetComponent<NetworkIdentity>(), player);
     }
 
 	[Command]
 	public void CmdCreateHeroArchPlayer(NetworkIdentity player) {
-		Debug.Log("Server Command Called create arch player");
 		GameObject birthplace = GameObject.Find("ArchSummonPoint");
 		GameObject arch_Clone = Instantiate(PrefabCache.Instance.PrefabIndex["HeroArch"], birthplace.transform.position, Quaternion.identity)as GameObject;
         arch_Clone.gameObject.GetComponent<NetworkPlayerOwner>().Owner = player.gameObject.GetComponent<NetworkPlayerObject>();
 
         NetworkServer.Spawn(arch_Clone);
         if (player.connectionToClient != null)
-            Debug.Log("Assigned authority? " + arch_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToClient));
+            arch_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToClient);
         else
-            Debug.Log("Assigned authority? " + arch_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToServer));
+           arch_Clone.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToServer);
 
         RpcSetOwner(arch_Clone.GetComponent<NetworkIdentity>(), player);
 	}
@@ -354,7 +349,6 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
     [ClientRpc]
     public void RpcSetOwner(NetworkIdentity obj, NetworkIdentity owner) {
-        Debug.Log("Setting network player owner of " + obj.gameObject.name + " to " + owner.gameObject.name);
         obj.gameObject.GetComponent<NetworkPlayerOwner>().Owner = owner.gameObject.GetComponent<NetworkPlayerObject>();
     }
 }

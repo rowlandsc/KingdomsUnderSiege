@@ -67,7 +67,6 @@ public class Map : MonoBehaviour {
 
     public void UpdateGrid() {
         if (TerrainBounds) {
-            Debug.Log("Updating grid...");
             ArrayUtility.Clear<Cell[]>(ref _grid);
 
             for (int i = 0; i < GridHeight; i++) {
@@ -85,10 +84,8 @@ public class Map : MonoBehaviour {
                 }
                 ArrayUtility.Add<Cell[]>(ref _grid, list);
             }
-            Debug.Log("Done updating grid.");
         }
         else {
-            Debug.Log("Can't update grid: no terrain given.");
         }
     }
 

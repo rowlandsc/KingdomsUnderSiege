@@ -137,7 +137,6 @@ public class OverseerCamera : MonoBehaviour {
 
     public void InitializeCamera() {
         //Camera = GetComponent<Camera>();
-		Debug.Log("Inititalizing overseer camera");
         Zoom = 1;
         if (GameMap) {
             float vFOV = Camera.fieldOfView;
