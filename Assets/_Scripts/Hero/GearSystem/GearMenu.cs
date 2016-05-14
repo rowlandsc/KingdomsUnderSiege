@@ -135,9 +135,14 @@ public class GearMenu : NetworkBehaviour {
 		}
 
 		if(!actvate){
-			camera.GetComponent<DrawShotStar>().enableFS();
+            DrawShotStar dss = camera.GetComponent<DrawShotStar>();
+
+            if(dss)
+            dss.enableFS();
 
 			HeroMove.EnableMove();
+
+            if(gearsystemUI)
 			gearsystemUI.SetActive(false);
 			Cursor.visible = false;
 		}
