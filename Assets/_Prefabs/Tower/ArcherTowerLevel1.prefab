@@ -284,22 +284,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: 1
   IsDead: 0
-  Worth: 1000
-  baseHealthPoints: 100
-  baseMagicPoints: 100
-  baseMaxHealthPoints: 100
-  baseMaxMagicPoints: 100
+  Worth: 200
+  baseHealthPoints: 250
+  baseMagicPoints: 0
+  baseMaxHealthPoints: 250
+  baseMaxMagicPoints: 0
   DefendPoints: 0
   haveMoney: 0
-  baseMeleeDamageDealt: 5
-  baseSecondDamageDealt: 12
-  baseSuperDamageDealt: 40
+  baseMeleeDamageDealt: 8
+  baseSecondDamageDealt: 0
+  baseSuperDamageDealt: 0
   baseHealthRegen: 0
   baseMagicRegen: 0
   baseMoveSpeed: 0
   baseAttackSpeed: 0.75
   baseAttackFrequency: 2
-  baseAttackRange: 15
+  baseAttackRange: 40
   damagePOP: {fileID: 0}
   death: {fileID: 0}
 --- !u!114 &11473872

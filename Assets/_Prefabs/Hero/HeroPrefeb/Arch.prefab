@@ -641,13 +641,13 @@ MonoBehaviour:
   Level: 1
   IsDead: 0
   Worth: 100
-  baseHealthPoints: 100
+  baseHealthPoints: 40
   baseMagicPoints: 100
-  baseMaxHealthPoints: 100
+  baseMaxHealthPoints: 40
   baseMaxMagicPoints: 100
   DefendPoints: 0
   haveMoney: 5000
-  baseMeleeDamageDealt: 5
+  baseMeleeDamageDealt: 10
   baseSecondDamageDealt: 0.4
   baseSuperDamageDealt: 40
   baseHealthRegen: 1
@@ -669,15 +669,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba46e61501e7a4bb7a4611bc8b607aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpupgrade: 50
-  mpupgrade: 50
+  hpupgrade: 25
+  mpupgrade: 25
   meleeupgrade: 5
-  secondupgrade: 0.1
+  secondupgrade: 0.05
   superupgrade: 20
   armorupgrade: 10
-  healthregenupgrade: 3
-  magicregenupgrade: 3
-  price_for_upgrade: 500
+  healthregenupgrade: 1
+  magicregenupgrade: 1
+  price_for_upgrade: 100
   effect: {fileID: 126012, guid: 7c9cd5ba07a192745a6202ad83c74022, type: 2}
 --- !u!114 &11426140
 MonoBehaviour:
@@ -692,7 +692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arch: {fileID: 123532, guid: fd27a154a1ba744c3bf485d156dbe2f1, type: 2}
   cooldown: 1
-  distance: 40
+  distance: 60
   timer: 0
 --- !u!114 &11444318
 MonoBehaviour:

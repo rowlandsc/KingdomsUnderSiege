@@ -95,24 +95,22 @@ public class NetworkPlayerObject : NetworkBehaviour {
 			yield return null;
 		}
 
-		if (Type == PlayerType.OVERSEER) {
+		if (Class == PlayerClass.OVERSEER) {
 			_player = gameObject.AddComponent<Overseer> ();
 		}
-		else if(Type == PlayerType.HERO) {
-			if(Class == PlayerClass.MAGE){
-				_player = gameObject.AddComponent<HeroMage>();
-				KUSNetworkManager.HostPlayer.CmdCreateHeroMagePlayer(_networkIdentity);
+		else if(Class == PlayerClass.MAGE){
+			_player = gameObject.AddComponent<HeroMage>();
+			KUSNetworkManager.HostPlayer.CmdCreateHeroMagePlayer(_networkIdentity);
 
-			}
-			if(Class == PlayerClass.KNIGHT){
-				_player = gameObject.AddComponent<HeroKnight>();
-				KUSNetworkManager.HostPlayer.CmdCreateHeroKnightPlayer(_networkIdentity);
+		}
+		if(Class == PlayerClass.KNIGHT){
+			_player = gameObject.AddComponent<HeroKnight>();
+			KUSNetworkManager.HostPlayer.CmdCreateHeroKnightPlayer(_networkIdentity);
 
-			}
-			if(Class == PlayerClass.ARCHER){
-				_player = gameObject.AddComponent<HeroArch>();
-				KUSNetworkManager.HostPlayer.CmdCreateHeroArchPlayer(_networkIdentity);
-			}
+		}
+		if(Class == PlayerClass.ARCHER){
+			_player = gameObject.AddComponent<HeroArch>();
+			KUSNetworkManager.HostPlayer.CmdCreateHeroArchPlayer(_networkIdentity);
 		}
 	}
 

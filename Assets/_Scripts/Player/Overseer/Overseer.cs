@@ -22,6 +22,8 @@ public class Overseer : Player {
 			yield return null;
 		}
 
+        GetComponent<NetworkPlayerStats>().Gold = 300;
+
         GameObject cam = Instantiate(PrefabCache.Instance.PrefabIndex["OverseerCamera"]);
         cam.GetComponent<NetworkPlayerOwner>().Owner = GetComponent<NetworkPlayerObject>();
         GameObject towerPlacerGO = Instantiate(PrefabCache.Instance.PrefabIndex["OverseerTowerPlacer"]);

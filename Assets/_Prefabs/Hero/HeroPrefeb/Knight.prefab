@@ -806,14 +806,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpupgrade: 50
-  mpupgrade: 50
-  meleeupgrade: 5
-  secondupgrade: 10
-  superupgrade: 20
+  mpupgrade: 10
+  meleeupgrade: 10
+  secondupgrade: 3
+  superupgrade: 5
   armorupgrade: 10
-  healthregenupgrade: 3
-  magicregenupgrade: 3
-  price_for_upgrade: 500
+  healthregenupgrade: 1
+  magicregenupgrade: 1
+  price_for_upgrade: 100
   effect: {fileID: 126012, guid: 7c9cd5ba07a192745a6202ad83c74022, type: 2}
 --- !u!114 &11418032
 MonoBehaviour:
@@ -1002,9 +1002,9 @@ MonoBehaviour:
   baseMaxMagicPoints: 100
   DefendPoints: 0
   haveMoney: 5000
-  baseMeleeDamageDealt: 5
-  baseSecondDamageDealt: 12
-  baseSuperDamageDealt: 40
+  baseMeleeDamageDealt: 20
+  baseSecondDamageDealt: 4
+  baseSuperDamageDealt: 10
   baseHealthRegen: 1
   baseMagicRegen: 1
   baseMoveSpeed: 4
