@@ -12,10 +12,7 @@ public class MortarTowerAttack : MonoBehaviour {
     public GameObject ShootPoint;
 
 	private GameObject target;
-
-	private float attackDamage;
-	public float range;
-	public float Arrowspeed;
+    
 
 	private bool canAttack;
 	private float rest_time = 2f;

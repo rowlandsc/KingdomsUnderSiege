@@ -20,6 +20,7 @@ public class Minions_Navigation : MonoBehaviour {
      */
     private NavMeshAgent _navMeshAgent;
     private Transform _endTarget;
+    private ProfileSystem _profileSystem;
 
 	/**
      * Called when a Minion is created.
@@ -29,7 +30,12 @@ public class Minions_Navigation : MonoBehaviour {
         this._navMeshAgent = GetComponent<NavMeshAgent>();
         this._endTarget = GameObject.Find(MoveTarget).transform;
         this._navMeshAgent.SetDestination(this._endTarget.position);
+        this._profileSystem = GetComponent<ProfileSystem>();
 	}
+
+    void Update() {
+        _navMeshAgent.speed = _profileSystem.MoveSpeed;
+    }
 
     public Transform getTarget(){
         return this._endTarget;

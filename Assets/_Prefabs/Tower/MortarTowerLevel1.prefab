@@ -211,7 +211,7 @@ MonoBehaviour:
   baseMaxMagicPoints: 0
   DefendPoints: 0
   haveMoney: 0
-  baseMeleeDamageDealt: 25
+  baseMeleeDamageDealt: 20
   baseSecondDamageDealt: 0
   baseSuperDamageDealt: 0
   baseHealthRegen: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   baseMoveSpeed: 0
   baseAttackSpeed: 0.4
   baseAttackFrequency: 2
-  baseAttackRange: 70
+  baseAttackRange: 60
   damagePOP: {fileID: 0}
   death: {fileID: 0}
 --- !u!114 &11408852
@@ -285,8 +285,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 171542, guid: 002c295ac9d10f54785efd362736262a, type: 2}
   ShootPoint: {fileID: 111876}
-  range: 20
-  Arrowspeed: 0.25
 --- !u!114 &11446106
 MonoBehaviour:
   m_ObjectHideFlags: 1

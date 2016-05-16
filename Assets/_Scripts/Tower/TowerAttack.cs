@@ -7,13 +7,13 @@ using DG.Tweening;
 public class TowerAttack : MonoBehaviour {
 
 
+    public GameObject ShootPoint;
 	public GameObject attack;
 	private GameObject attack_;
 
 	private GameObject target;
 
 	private float attackDamage;
-	public float range;
 	public float Arrowspeed;
 
 	private bool canAttack;
@@ -40,9 +40,9 @@ public class TowerAttack : MonoBehaviour {
                 KUSNetworkManager.HostPlayer.CmdArcherTowerAttack(
                     GetComponent<NetworkIdentity>(),
                     attack.GetComponent<IShootable>().PrefabCacheId,
-                    this.gameObject.transform.position,
-                    Quaternion.identity,
-                    (target.transform.position - transform.position).normalized * profile.AttackSpeed);
+                    ShootPoint.transform.position,
+                    transform.rotation,
+                    (target.transform.position - ShootPoint.transform.position).normalized * profile.AttackSpeed);
                                
                 canAttack =false;
 			}
@@ -64,7 +64,7 @@ public class TowerAttack : MonoBehaviour {
 		GameObject[] targetList = GameObject.FindGameObjectsWithTag("HeroPlayer");
         target = null;
 		for(int i=0;i<targetList.Length;i++){
-			if(Vector3.Distance(this.gameObject.transform.position,targetList[i].transform.position)<range){
+			if(Vector3.Distance(this.gameObject.transform.position,targetList[i].transform.position) < profile.AttackRange) {
 				target = targetList[i];
 				break;
 			}

@@ -7,14 +7,13 @@ using UnityEngine.Networking;
 public class MagicTowerAttack : MonoBehaviour {
 
 
+    public GameObject ShootPoint;
 	public GameObject attack;
 	private GameObject attack_;
 
 	private GameObject target;
 
 	private float attackDamage;
-	public float range;
-	public float Arrowspeed;
 
 	private bool canAttack;
 	private float rest_time = 2f;
@@ -40,9 +39,9 @@ public class MagicTowerAttack : MonoBehaviour {
                 KUSNetworkManager.HostPlayer.CmdMagicTowerAttack(
                     GetComponent<NetworkIdentity>(),
                     attack.GetComponent<IShootable>().PrefabCacheId,
-                    this.gameObject.transform.position,
+                    ShootPoint.transform.position,
                     Quaternion.identity,
-                    (target.transform.position - transform.position).normalized * profile.AttackSpeed);
+                    (target.transform.position - ShootPoint.transform.position).normalized * profile.AttackSpeed);
                 canAttack =false;
 			}
 		}
@@ -63,7 +62,7 @@ public class MagicTowerAttack : MonoBehaviour {
 		GameObject[] targetList = GameObject.FindGameObjectsWithTag("HeroPlayer");
         target = null;
 		for(int i=0;i<targetList.Length;i++){
-			if(Vector3.Distance(this.gameObject.transform.position,targetList[i].transform.position)<range){
+			if(Vector3.Distance(this.gameObject.transform.position,targetList[i].transform.position) < profile.AttackRange) {
 				target = targetList[i];
 				break;
 			}
