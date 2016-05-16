@@ -21,17 +21,20 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
     private Minions_State _state;
     private Transform _endTarget;
     private ProfileSystem _ps;
+    NetworkPlayerOwner owner;
 
     /**
      * Called when Minion is created.
      * Initializes _stats and _navMeshAgent.
      */
-	void Start () {
+    void Start () {
         this._navMeshAgent = GetComponent<NavMeshAgent>();
         this._state = GetComponent<Minions_State>();
         this._endTarget = GameObject.Find(GetComponent<Minions_Navigation>().MoveTarget).transform;
         MinionManager.AddActiveMinion(this.gameObject);
         this._ps = this.GetComponent<ProfileSystem>();
+        owner = GetComponent<NetworkPlayerOwner>();
+        if(owner && KUSNetworkManager.OverseerPlayer) owner.Owner = KUSNetworkManager.OverseerPlayer;
     }
 
     void OnEnable()
@@ -62,7 +65,9 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
                 this.gameObject.transform.LookAt(target);
 
                 // Do the attack damage
-                ProfileEffect hitEffect = new ProfileEffect(NetworkInstanceId.Invalid, healthPointsAdd: -1 * GetComponent<ProfileSystem>().MeleeDamageDealt);
+                NetworkInstanceId netID = NetworkInstanceId.Invalid;
+                if (owner != null && owner.Owner != null) netID = owner.Owner.netId;
+                ProfileEffect hitEffect = new ProfileEffect(netID, healthPointsAdd: -1 * GetComponent<ProfileSystem>().MeleeDamageDealt);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(target.GetComponent<NetworkIdentity>(), hitEffect);
             }
             else
@@ -105,14 +110,34 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
             if (isServer)
             {
                 GameObject player = NetworkServer.FindLocalObject(this._ps.Killer);
-                NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+                NetworkPlayerStats playerStats;
+                NetworkPlayerOwner playerOwner = player.GetComponent<NetworkPlayerOwner>();
+
+                if (playerOwner)
+                {
+                    playerStats = playerOwner.GetComponent<NetworkPlayerStats>();
+                }
+                else
+                {
+                    playerStats = player.GetComponent<NetworkPlayerStats>();
+                }
                 playerStats.AddGold((int)this._ps.Worth);
                 playerStats.AddMinionKill();
             }
             else
             {
                 GameObject player = ClientScene.FindLocalObject(this._ps.Killer);
-                NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+                NetworkPlayerStats playerStats;
+                NetworkPlayerOwner playerOwner = player.GetComponent<NetworkPlayerOwner>();
+
+                if (playerOwner)
+                {
+                    playerStats = playerOwner.GetComponent<NetworkPlayerStats>();
+                }
+                else
+                {
+                    playerStats = player.GetComponent<NetworkPlayerStats>();
+                }
                 playerStats.AddGold((int)this._ps.Worth);
                 playerStats.AddMinionKill();
             }
