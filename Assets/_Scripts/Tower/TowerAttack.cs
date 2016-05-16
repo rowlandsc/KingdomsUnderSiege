@@ -31,6 +31,8 @@ public class TowerAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!KUSNetworkManager.LocalPlayer.isServer) return;
+
 		if(canAttack){
 			if(target==null || Vector3.Distance(this.gameObject.transform.position,target.transform.position) > profile.AttackRange) findTarget();
 			if(target!=null){

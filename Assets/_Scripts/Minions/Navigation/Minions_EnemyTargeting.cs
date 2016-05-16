@@ -45,6 +45,7 @@ public class Minions_EnemyTargeting : MonoBehaviour
 
     // Called every frame
     void Update(){
+        if (!KUSNetworkManager.LocalPlayer.isServer) return;
 
         // If it's not already attacking a target
         if (this._state.State != MINION_STATE.ATTACKING){

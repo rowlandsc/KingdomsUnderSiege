@@ -10,7 +10,7 @@ public class KnightSuper : MonoBehaviour {
 	public float mp_use=40f;
 
 	public float cooldown=30f;
-	public float duration=10f;
+	public float duration;
 	
 	public bool canAttack;
 	public float timer;
@@ -20,6 +20,7 @@ public class KnightSuper : MonoBehaviour {
 	private Vector3 normal_hero_size;
 	private Vector3 super_hero_size;
 
+    private ProfileSystem _profile;
     private NetworkPlayerInput _playerInput;
     private NetworkIdentity _netId;
 
@@ -38,16 +39,19 @@ public class KnightSuper : MonoBehaviour {
 		normal_hero_size=this.gameObject.transform.localScale;
 		super_hero_size= normal_hero_size+new Vector3(12f, 12f, 12f);
 		super_clone_runonce=true;
+        _profile = GetComponent<ProfileSystem>();
         _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
         _netId = GetComponent<NetworkIdentity>();
+        duration = _profile.SuperDamageDealt;
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+
 		if(_playerInput.HeroMeleeSuperInputDown > 0 && canAttack && !super_activation && this.gameObject.GetComponent<ProfileSystem>().MPenough(mp_use)){
 			super_activation=true;
-			this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
+			_profile.useMagic(mp_use);
 		}
 
 		if(super_activation){
@@ -66,16 +70,17 @@ public class KnightSuper : MonoBehaviour {
 
                 ProfileEffect superEffect = new ProfileEffect(_netId.netId, 
                     startingDuration: duration,
-                    meleeDamageMult: 3, 
-                    secondDamageMult: 3);
+                    healthRegenAdd: 2,
+                    meleeDamageMult: 1.5f);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(_netId, superEffect);
 
 				super_clone_runonce=false;
 			}
 
-			duration_timer+=Time.deltaTime;
+			duration_timer += Time.deltaTime;
+            duration = _profile.SuperDamageDealt;
 
-			if(duration_timer>=duration){
+            if (duration_timer>=duration){
 				duration_timer=0;
 				super_activation=false;
 				canAttack=false;

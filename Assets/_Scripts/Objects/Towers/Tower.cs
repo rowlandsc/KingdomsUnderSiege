@@ -25,11 +25,11 @@ public abstract class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelec
     }
 
     void OnEnable() {
-        TowerPlacer.Instance.TowerList.Add(this);
         if (KUSNetworkManager.LocalPlayer.Class == NetworkPlayerObject.PlayerClass.OVERSEER) {
+            TowerPlacer.Instance.TowerList.Add(this);
             _localPlayerIsOverseer = true;
+            RegisterAsSelectable();
         }
-        RegisterAsSelectable();
     }
 
     void Update () {
@@ -37,8 +37,10 @@ public abstract class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelec
 	}
 
     void OnDisable() {
-        TowerPlacer.Instance.TowerList.Remove(this);
-        UnregisterAsSelectable();
+        if (_localPlayerIsOverseer) {
+            TowerPlacer.Instance.TowerList.Remove(this);
+            UnregisterAsSelectable();
+        }
     }
 
     public void OnDeath() {

@@ -147,7 +147,6 @@ public class HeroObject : NetworkBehaviour, IKillable, ObjectSelector.ISelectabl
 
 	void UnDeathCount() {
 		words.text = "";
-		DeathScreen.SetActive(false);
 		DeathScreen.GetComponent<RawImage>().enabled = false;
 	}
 

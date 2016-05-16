@@ -305,17 +305,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6384e79c49f4524b1ea997025a35e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 1
   IsDead: 0
   Worth: 1000
-  baseHealthPoints: 200
-  baseMagicPoints: 100
-  baseMaxHealthPoints: 200
-  baseMaxMagicPoints: 100
+  baseHealthPoints: 500
+  baseMagicPoints: 0
+  baseMaxHealthPoints: 500
+  baseMaxMagicPoints: 0
   DefendPoints: 0
   haveMoney: 0
-  baseMeleeDamageDealt: 5
-  baseSecondDamageDealt: 12
-  baseSuperDamageDealt: 40
+  baseMeleeDamageDealt: 0
+  baseSecondDamageDealt: 0
+  baseSuperDamageDealt: 0
   baseHealthRegen: 1
   baseMagicRegen: 1
   baseMoveSpeed: 1.5

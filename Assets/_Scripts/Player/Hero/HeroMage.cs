@@ -20,7 +20,9 @@ public class HeroMage : Hero {
 		}
         yield return new WaitForSeconds(0.1f);
 
-		HeroCamPrefab = PrefabCache.Instance.PrefabIndex["HeroCamera"];
+        GetComponent<NetworkPlayerStats>().Gold = 100;
+
+        HeroCamPrefab = PrefabCache.Instance.PrefabIndex["HeroCamera"];
 		HeroUIPrefab = PrefabCache.Instance.PrefabIndex["HeroUI"];
 		HeroGearSystemPrefab = PrefabCache.Instance.PrefabIndex["HeroGearSystem"];
 

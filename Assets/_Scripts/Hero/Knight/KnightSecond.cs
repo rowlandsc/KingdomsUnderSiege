@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class KnightSecond : MonoBehaviour {
 
-	public float effect_time=4f;
+	public float effect_time;
 	public float cooldown=10f;
 	public float mp_use=10f;
 
@@ -19,6 +19,7 @@ public class KnightSecond : MonoBehaviour {
 
 	private GameObject Maincamera;
 
+    private ProfileSystem _profile;
     private NetworkPlayerInput _playerInput;
     private NetworkIdentity _netid;
 
@@ -39,6 +40,7 @@ public class KnightSecond : MonoBehaviour {
 		movespeed = gameObject.GetComponent<ProfileSystem>().MoveSpeed;
 		knightsecond_Activate=false;
 		effect_fire_clone_runonce=true;
+        _profile = GetComponent<ProfileSystem>();
         _playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
         _netid = GetComponent<NetworkIdentity>();
     }
@@ -52,15 +54,17 @@ public class KnightSecond : MonoBehaviour {
 		{
 			knightsecond_Activate=true;
 
-			timer_for_max_effect+=Time.deltaTime;
-			if(timer_for_max_effect>=effect_time){
+			timer_for_max_effect += Time.deltaTime;
+            effect_time = _profile.SecondDamageDealt;
+
+            if (timer_for_max_effect>=effect_time){
 				knightsecond_Activate=false;
 				timer_for_max_effect=0;
 				canAttack=false;
 			}
 		}
 
-		if(Input.GetMouseButtonUp(1)&&knightsecond_Activate)
+		if(_playerInput.HeroMeleeChargeAttackInputUp > 0 && knightsecond_Activate)
 		{
 			this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
 			knightsecond_Activate=false;

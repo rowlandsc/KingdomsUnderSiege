@@ -54,50 +54,58 @@ public class UIProvider : MonoBehaviour {
     private ArchMelee archerMelee;
     private ArchSecond archerSecond;
     private ArchSuper archerSuper;
+	private NetworkPlayerInput _playerInput;
 
 	// Use this for initialization
 	void Start () {
 		melee_cooldown=0;
 		second_cooldown=0;
 		super_cooldown=0;
+		_playerInput = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerInput>();
     }
 
     void Initialize() {
-        initialized = true;
+		
+		if(_playerInput.CheckLocalPlayer != 1) {
 
-        UIhp = GameObject.Find("HealthPoints");
-        UIhptext = GameObject.Find("HP_Shows");
-        UImp = GameObject.Find("MagicPoints");
-        UImptext = GameObject.Find("MP_Shows");
-        UIMoney = GameObject.Find("Money_Amount");
-        UIMelee = GameObject.Find("Melee_Cooldown");
-        UISecond = GameObject.Find("Second_Cooldown");
-        UISuper = GameObject.Find("Super_Cooldown");
+		} else {
 
-        MeleeIcon = GameObject.Find("UIMelee");
-        SecondIcon = GameObject.Find("UISecond");
-        SuperIcon = GameObject.Find("UISuper");
+	        initialized = true;
 
-        profileSystem = GetComponent<ProfileSystem>();
-        ownerStats = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
+	        UIhp = GameObject.Find("HealthPoints");
+	        UIhptext = GameObject.Find("HP_Shows");
+	        UImp = GameObject.Find("MagicPoints");
+	        UImptext = GameObject.Find("MP_Shows");
+	        UIMoney = GameObject.Find("Money_Amount");
+	        UIMelee = GameObject.Find("Melee_Cooldown");
+	        UISecond = GameObject.Find("Second_Cooldown");
+	        UISuper = GameObject.Find("Super_Cooldown");
 
-        if (this.gameObject.name == "Mage" || this.gameObject.name == "Mage(Clone)") {
-            mageMelee = GetComponent<MageMelee>();
-            mageSecond = GetComponent<MegeSecond>();
-            mageSuper = GetComponent<MageSuper>();
-        }
+	        MeleeIcon = GameObject.Find("UIMelee");
+	        SecondIcon = GameObject.Find("UISecond");
+	        SuperIcon = GameObject.Find("UISuper");
 
-        if (this.gameObject.name == "Knight" || this.gameObject.name == "Knight(Clone)") {
-            knightMelee = GetComponent<KnightMelee>();
-            knightSecond = GetComponent<KnightSecond>();
-            knightSuper = GetComponent<KnightSuper>();
-        }
+	        profileSystem = GetComponent<ProfileSystem>();
+	        ownerStats = GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
 
-        if (this.gameObject.name == "Arch" || this.gameObject.name == "Arch(Clone)") {
-            archerMelee = GetComponent<ArchMelee>();
-            archerSecond = GetComponent<ArchSecond>();
-            archerSuper = GetComponent<ArchSuper>();
-        }
+	        if (this.gameObject.name == "Mage" || this.gameObject.name == "Mage(Clone)") {
+	            mageMelee = GetComponent<MageMelee>();
+	            mageSecond = GetComponent<MegeSecond>();
+	            mageSuper = GetComponent<MageSuper>();
+	        }
+
+	        if (this.gameObject.name == "Knight" || this.gameObject.name == "Knight(Clone)") {
+	            knightMelee = GetComponent<KnightMelee>();
+	            knightSecond = GetComponent<KnightSecond>();
+	            knightSuper = GetComponent<KnightSuper>();
+	        }
+
+	        if (this.gameObject.name == "Arch" || this.gameObject.name == "Arch(Clone)") {
+	            archerMelee = GetComponent<ArchMelee>();
+	            archerSecond = GetComponent<ArchSecond>();
+	            archerSuper = GetComponent<ArchSuper>();
+	        }
+		}
     }
 
 	// Update is called once per frame
@@ -110,7 +118,8 @@ public class UIProvider : MonoBehaviour {
             }
         }
 
-		if(enable){
+		if(enable && _playerInput.CheckLocalPlayer == 1){
+			
             hp = profileSystem.HealthPoints;
 			mp = profileSystem.MagicPoints;
             money = ownerStats.Gold;
@@ -151,7 +160,7 @@ public class UIProvider : MonoBehaviour {
 			}
 
 
-		//push the value to UI
+			//push the value to UI
 			MeleeIcon.GetComponent<RawImage>().texture = melee_icon;
 			SecondIcon.GetComponent<RawImage>().texture = second_icon;
 			SuperIcon.GetComponent<RawImage>().texture = super_icon;

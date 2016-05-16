@@ -26,8 +26,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
     public PlayerClass Class;
 
 	private Player _player = null;
-
-	private UnityEngine.UI.Dropdown _typeDropdown;
+        
 	private UnityEngine.UI.Dropdown _classDropdown;
 	private UnityEngine.UI.Button _startButton;
 
@@ -46,11 +45,8 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
 	void Start() {
 		if (isLocalPlayer) {
-			_typeDropdown = GameObject.Find("TypeDropdown").GetComponent<UnityEngine.UI.Dropdown>();
 			_classDropdown = GameObject.Find("ClassDropdown").GetComponent<UnityEngine.UI.Dropdown>();
-
-			_typeDropdown.onValueChanged.AddListener(OnTypeChange);
-			_classDropdown.onValueChanged.AddListener(OnClassChange);
+            _classDropdown.onValueChanged.AddListener(OnClassChange);
 			
 			_startButton = GameObject.Find("StartButton").GetComponent<UnityEngine.UI.Button>();
 			if (isServer) {
@@ -95,24 +91,22 @@ public class NetworkPlayerObject : NetworkBehaviour {
 			yield return null;
 		}
 
-		if (Type == PlayerType.OVERSEER) {
+		if (Class == PlayerClass.OVERSEER) {
 			_player = gameObject.AddComponent<Overseer> ();
 		}
-		else if(Type == PlayerType.HERO) {
-			if(Class == PlayerClass.MAGE){
-				_player = gameObject.AddComponent<HeroMage>();
-				KUSNetworkManager.HostPlayer.CmdCreateHeroMagePlayer(_networkIdentity);
+		else if(Class == PlayerClass.MAGE){
+			_player = gameObject.AddComponent<HeroMage>();
+			KUSNetworkManager.HostPlayer.CmdCreateHeroMagePlayer(_networkIdentity);
 
-			}
-			if(Class == PlayerClass.KNIGHT){
-				_player = gameObject.AddComponent<HeroKnight>();
-				KUSNetworkManager.HostPlayer.CmdCreateHeroKnightPlayer(_networkIdentity);
+		}
+		if(Class == PlayerClass.KNIGHT){
+			_player = gameObject.AddComponent<HeroKnight>();
+			KUSNetworkManager.HostPlayer.CmdCreateHeroKnightPlayer(_networkIdentity);
 
-			}
-			if(Class == PlayerClass.ARCHER){
-				_player = gameObject.AddComponent<HeroArch>();
-				KUSNetworkManager.HostPlayer.CmdCreateHeroArchPlayer(_networkIdentity);
-			}
+		}
+		if(Class == PlayerClass.ARCHER){
+			_player = gameObject.AddComponent<HeroArch>();
+			KUSNetworkManager.HostPlayer.CmdCreateHeroArchPlayer(_networkIdentity);
 		}
 	}
 
@@ -322,6 +316,13 @@ public class NetworkPlayerObject : NetworkBehaviour {
         GameObject super1_ = Instantiate(PrefabCache.Instance.PrefabIndex["MageSuper1"], position, rotation) as GameObject;
         super1_.GetComponent<SuperHit>().Initialize(mage);
         NetworkServer.Spawn(super1_);
+    }
+
+    [Command]
+    public void CmdMinionMelee(NetworkIdentity minion, Vector3 position, Quaternion rotation) {
+        GameObject minionMelee = Instantiate(PrefabCache.Instance.PrefabIndex["MinionMeleeObj"], position, rotation) as GameObject;
+        minionMelee.AddComponent<DestoryAfter3second>();
+        NetworkServer.Spawn(minionMelee);
     }
 
     [Command]
