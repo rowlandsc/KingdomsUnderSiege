@@ -116,7 +116,7 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
 
                 if (playerOwner)
                 {
-                    playerStats = playerOwner.GetComponent<NetworkPlayerStats>();
+                    playerStats = playerOwner.Owner.GetComponent<NetworkPlayerStats>();
                 }
                 else
                 {
