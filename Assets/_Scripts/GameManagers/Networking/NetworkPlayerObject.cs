@@ -26,8 +26,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
     public PlayerClass Class;
 
 	private Player _player = null;
-
-	private UnityEngine.UI.Dropdown _typeDropdown;
+        
 	private UnityEngine.UI.Dropdown _classDropdown;
 	private UnityEngine.UI.Button _startButton;
 
@@ -46,11 +45,8 @@ public class NetworkPlayerObject : NetworkBehaviour {
 
 	void Start() {
 		if (isLocalPlayer) {
-			_typeDropdown = GameObject.Find("TypeDropdown").GetComponent<UnityEngine.UI.Dropdown>();
 			_classDropdown = GameObject.Find("ClassDropdown").GetComponent<UnityEngine.UI.Dropdown>();
-
-			_typeDropdown.onValueChanged.AddListener(OnTypeChange);
-			_classDropdown.onValueChanged.AddListener(OnClassChange);
+            _classDropdown.onValueChanged.AddListener(OnClassChange);
 			
 			_startButton = GameObject.Find("StartButton").GetComponent<UnityEngine.UI.Button>();
 			if (isServer) {
