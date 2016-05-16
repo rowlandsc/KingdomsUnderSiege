@@ -299,7 +299,7 @@ MonoBehaviour:
   baseMoveSpeed: 0
   baseAttackSpeed: 0.75
   baseAttackFrequency: 2
-  baseAttackRange: 40
+  baseAttackRange: 50
   damagePOP: {fileID: 0}
   death: {fileID: 0}
 --- !u!114 &11473872

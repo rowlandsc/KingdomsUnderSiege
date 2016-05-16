@@ -51,8 +51,8 @@ public class MagicTowerHit : MonoBehaviour, IShootable {
 			towerStats = Tower.GetComponent<ProfileSystem>();
 			ProfileSystem colProfile = col.gameObject.GetComponent<ProfileSystem>();
 			if (colProfile) {
-				ProfileEffect slowdown = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId,  startingDuration: 3, moveSpeedAdd: -1 * 0.5f);
-				ProfileEffect hitEffect = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId, healthPointsAdd: -1 * towerStats.SecondDamageDealt);
+				ProfileEffect slowdown = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId,  startingDuration: 3, moveSpeedMult: 0.5f);
+				ProfileEffect hitEffect = new ProfileEffect(Tower.GetComponent<NetworkIdentity>().netId, healthPointsAdd: -1 * towerStats.MeleeDamageDealt);
 				KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), hitEffect);
 				KUSNetworkManager.HostPlayer.CmdAddProfileEffect(col.GetComponent<NetworkIdentity>(), slowdown);
 			}

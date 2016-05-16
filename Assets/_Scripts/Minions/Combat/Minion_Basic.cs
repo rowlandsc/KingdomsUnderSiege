@@ -108,26 +108,9 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
         
         if(this._ps.Killer != NetworkInstanceId.Invalid)
         {
-            if (isServer)
+            if (KUSNetworkManager.LocalPlayer.isServer)
             {
                 GameObject player = NetworkServer.FindLocalObject(this._ps.Killer);
-                NetworkPlayerStats playerStats;
-                NetworkPlayerOwner playerOwner = player.GetComponent<NetworkPlayerOwner>();
-
-                if (playerOwner)
-                {
-                    playerStats = playerOwner.GetComponent<NetworkPlayerStats>();
-                }
-                else
-                {
-                    playerStats = player.GetComponent<NetworkPlayerStats>();
-                }
-                playerStats.AddGold((int)this._ps.Worth);
-                playerStats.AddMinionKill();
-            }
-            else
-            {
-                GameObject player = ClientScene.FindLocalObject(this._ps.Killer);
                 NetworkPlayerStats playerStats;
                 NetworkPlayerOwner playerOwner = player.GetComponent<NetworkPlayerOwner>();
 

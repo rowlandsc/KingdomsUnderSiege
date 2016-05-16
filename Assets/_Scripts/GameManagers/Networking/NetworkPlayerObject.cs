@@ -347,6 +347,7 @@ public class NetworkPlayerObject : NetworkBehaviour {
            position,
            rotation) as GameObject;
 
+        attack_.GetComponent<MortarTowerHit>().Initialize(tower.gameObject);
         attack_.GetComponent<MortarTowerHit>().Tower = tower.gameObject;
         attack_.GetComponent<MortarTowerHit>().canShot = true;
         attack_.GetComponent<MortarTowerHit>().hitPosition = targetPosition;
