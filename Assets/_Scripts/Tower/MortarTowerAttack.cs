@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEngine.Networking;
 
 public class MortarTowerAttack : MonoBehaviour {
 
@@ -42,10 +43,15 @@ public class MortarTowerAttack : MonoBehaviour {
                 findTarget();
 
 			if(target!=null){
-                attack_=Instantiate(attack,ShootPoint.transform.position,Quaternion.identity)as GameObject;
+                /*attack_=Instantiate(attack,ShootPoint.transform.position,Quaternion.identity)as GameObject;
                 attack_.GetComponent<MortarTowerHit>().Initialize(gameObject);
 				attack_.GetComponent<MortarTowerHit>().canShot = true;
-				attack_.GetComponent<MortarTowerHit>().hitPosition = target.transform.position;
+				attack_.GetComponent<MortarTowerHit>().hitPosition = target.transform.position;*/
+                KUSNetworkManager.HostPlayer.CmdMortarTowerAttack(GetComponent<NetworkIdentity>(),
+                    attack.GetComponent<IShootable>().PrefabCacheId,
+                    ShootPoint.transform.position,
+                    Quaternion.identity,
+                    target.transform.position);
 
                 canAttack =false;
 			}

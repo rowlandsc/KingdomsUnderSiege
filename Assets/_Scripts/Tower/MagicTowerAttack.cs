@@ -37,7 +37,7 @@ public class MagicTowerAttack : MonoBehaviour {
 			if(target==null || Vector3.Distance(this.gameObject.transform.position,target.transform.position) > profile.AttackRange) findTarget();
 			if(target!=null){
 
-                KUSNetworkManager.HostPlayer.CmdTowerAttack(
+                KUSNetworkManager.HostPlayer.CmdMagicTowerAttack(
                     GetComponent<NetworkIdentity>(),
                     "MagicTowerShot",
                     this.gameObject.transform.position,

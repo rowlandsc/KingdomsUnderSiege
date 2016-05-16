@@ -37,7 +37,7 @@ public class TowerAttack : MonoBehaviour {
 			if(target==null || Vector3.Distance(this.gameObject.transform.position,target.transform.position) > profile.AttackRange) findTarget();
 			if(target!=null){
 
-                KUSNetworkManager.HostPlayer.CmdTowerAttack(
+                KUSNetworkManager.HostPlayer.CmdArcherTowerAttack(
                     GetComponent<NetworkIdentity>(),
                     attack.GetComponent<IShootable>().PrefabCacheId,
                     this.gameObject.transform.position,
