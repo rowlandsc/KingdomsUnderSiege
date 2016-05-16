@@ -124,7 +124,9 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
                 }
                 if (playerStats)
                 {
-                    playerStats.AddGold((int)this._ps.Worth);
+                    int worth = _ps.Worth;
+                    if (player.GetComponent<Minion_Basic>() != null) worth = (int) (worth * 0.25f);
+                    playerStats.AddGold(worth);
                     playerStats.AddMinionKill();
                 }
             }

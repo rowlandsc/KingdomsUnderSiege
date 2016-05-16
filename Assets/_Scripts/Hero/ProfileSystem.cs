@@ -282,7 +282,7 @@ public class ProfileSystem : NetworkBehaviour {
             baseMagicRegen *= effect.MagicRegenMult;
             baseMagicRegen += effect.MagicRegenAdd;
 
-            if (baseHealthPoints < 0 && !IsDead) {
+            if (baseHealthPoints <= 0 && !IsDead) {
                 IsDead = true;
                 Killer = effect.InflicterID;
             }
@@ -305,7 +305,7 @@ public class ProfileSystem : NetworkBehaviour {
                 baseHealthPoints += CurrentEffects[i].HealthPointsAdd * Time.deltaTime;
                 baseMagicPoints += CurrentEffects[i].MagicPointsAdd * Time.deltaTime;
 
-                if (baseHealthPoints < 0 && !IsDead) {
+                if (baseHealthPoints <= 0 && !IsDead) {
                     Killer = CurrentEffects[i].InflicterID;
                     IsDead = true;
                     break;
