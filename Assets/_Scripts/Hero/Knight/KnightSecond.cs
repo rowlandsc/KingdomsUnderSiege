@@ -64,7 +64,7 @@ public class KnightSecond : MonoBehaviour {
 			}
 		}
 
-		if(Input.GetMouseButtonUp(1)&&knightsecond_Activate)
+		if(_playerInput.HeroMeleeChargeAttackInputUp > 0 && knightsecond_Activate)
 		{
 			this.gameObject.GetComponent<ProfileSystem>().useMagic(mp_use);
 			knightsecond_Activate=false;

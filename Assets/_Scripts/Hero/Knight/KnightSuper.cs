@@ -70,8 +70,8 @@ public class KnightSuper : MonoBehaviour {
 
                 ProfileEffect superEffect = new ProfileEffect(_netId.netId, 
                     startingDuration: duration,
-                    meleeDamageMult: 3, 
-                    secondDamageMult: 3);
+                    healthRegenAdd: 2,
+                    meleeDamageMult: 1.5f);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(_netId, superEffect);
 
 				super_clone_runonce=false;

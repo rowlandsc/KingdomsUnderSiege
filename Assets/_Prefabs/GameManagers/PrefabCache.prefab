@@ -97,6 +97,7 @@ MonoBehaviour:
     - MageSuper
     - MageSuper1
     - MagicTowerShot
+    - MinionMeleeObj
     - MortarTowerShot
     - OverseerCamera
     - OverseerObjectSelector
@@ -131,6 +132,7 @@ MonoBehaviour:
     - {fileID: 177348, guid: 5552ac4de08a64011b4dc08fd93fbba8, type: 2}
     - {fileID: 127662, guid: a08d5e50b58ddf64d8429f3087fc49b6, type: 2}
     - {fileID: 127116, guid: 0f646d651eb2a4a0594b226b14516837, type: 2}
+    - {fileID: 158764, guid: c98fc171150d8f94e81c341e79e06927, type: 2}
     - {fileID: 171542, guid: 002c295ac9d10f54785efd362736262a, type: 2}
     - {fileID: 188464, guid: 4331aa5599bfeb84d974854a27e4aa5f, type: 2}
     - {fileID: 130276, guid: 4794ad71281fc4e43827236381e6328f, type: 2}

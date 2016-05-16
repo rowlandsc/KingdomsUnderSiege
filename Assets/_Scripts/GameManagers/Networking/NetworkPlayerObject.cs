@@ -323,6 +323,13 @@ public class NetworkPlayerObject : NetworkBehaviour {
     }
 
     [Command]
+    public void CmdMinionMelee(NetworkIdentity minion, Vector3 position, Quaternion rotation) {
+        GameObject minionMelee = Instantiate(PrefabCache.Instance.PrefabIndex["MinionMeleeObj"], position, rotation) as GameObject;
+        minionMelee.AddComponent<DestoryAfter3second>();
+        NetworkServer.Spawn(minionMelee);
+    }
+
+    [Command]
     public void CmdTowerAttack(NetworkIdentity tower, string towerAttackType, Vector3 position, Quaternion rotation, Vector3 velocity)
     {
         GameObject attack_ = Instantiate(

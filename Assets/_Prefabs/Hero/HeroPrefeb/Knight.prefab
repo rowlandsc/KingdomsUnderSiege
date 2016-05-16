@@ -1002,13 +1002,13 @@ MonoBehaviour:
   baseMaxMagicPoints: 100
   DefendPoints: 0
   haveMoney: 5000
-  baseMeleeDamageDealt: 20
+  baseMeleeDamageDealt: 15
   baseSecondDamageDealt: 4
   baseSuperDamageDealt: 10
   baseHealthRegen: 1
   baseMagicRegen: 1
   baseMoveSpeed: 4
-  baseAttackSpeed: 1.5
+  baseAttackSpeed: 1.17
   baseAttackFrequency: 1
   baseAttackRange: 1
   damagePOP: {fileID: 0}

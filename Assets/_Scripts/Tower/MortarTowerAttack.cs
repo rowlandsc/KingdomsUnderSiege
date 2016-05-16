@@ -31,7 +31,9 @@ public class MortarTowerAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(canAttack){
+        if (!KUSNetworkManager.LocalPlayer.isServer) return;
+
+        if (canAttack){
             Vector2 direction = (target != null) ? new Vector2(target.transform.position.x, target.transform.position.z) - new Vector2(transform.position.x, transform.position.z) : Vector2.zero;
             if (target==null || 
                 Vector3.Distance(this.gameObject.transform.position,target.transform.position) > profile.AttackRange ||
@@ -61,11 +63,6 @@ public class MortarTowerAttack : MonoBehaviour {
 	}
 
 	public void findTarget(){
-        /*GameObject archer = GameObject.Find("Arch(Clone)");
-        Vector2 direction2 = new Vector2(archer.transform.position.x, archer.transform.position.z) - new Vector2(transform.position.x, transform.position.z);
-        float angle2 = Vector2.Angle(new Vector2(transform.forward.x, transform.forward.z), direction2);
-        Debug.Log(angle2 + " " + Vector3.Distance(this.gameObject.transform.position, archer.transform.position));
-        */
         GameObject[] targetList = GameObject.FindGameObjectsWithTag("HeroPlayer");
         target = null;
 		for(int i=0;i<targetList.Length;i++){

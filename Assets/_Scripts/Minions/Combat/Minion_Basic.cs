@@ -53,7 +53,6 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
      * target - the enemy the minion is attacking.
      */
     public IEnumerator Attack(Transform target) {
-
         // If the target is still alive
         if (target != null) {
             
@@ -62,6 +61,7 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
                 this.gameObject.transform.LookAt(target);
 
                 // Do the attack damage
+                KUSNetworkManager.HostPlayer.CmdMinionMelee(GetComponent<NetworkIdentity>(), transform.position, transform.rotation);
                 ProfileEffect hitEffect = new ProfileEffect(NetworkInstanceId.Invalid, healthPointsAdd: -1 * GetComponent<ProfileSystem>().MeleeDamageDealt);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(target.GetComponent<NetworkIdentity>(), hitEffect);
             }
