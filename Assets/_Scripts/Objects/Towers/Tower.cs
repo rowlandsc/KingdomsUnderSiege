@@ -50,19 +50,25 @@ public abstract class Tower : NetworkBehaviour, IKillable, ObjectSelector.ISelec
             if (isServer)
             {
                 GameObject player = NetworkServer.FindLocalObject(this._towerStats.Killer);
-                if (player) {
-                    NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
-                    playerStats.AddGold((int)this._towerStats.Worth);
-                    playerStats.AddTowerKill();
+                if (player != null) {
+                    NetworkPlayerOwner owner = player.GetComponent<NetworkPlayerOwner>();
+                    if (owner != null) {
+                        NetworkPlayerStats playerStats = owner.Owner.GetComponent<NetworkPlayerStats>();
+                        playerStats.AddGold((int)this._towerStats.Worth);
+                        playerStats.AddTowerKill();
+                    }
                 }
             }
             else
             {
                 GameObject player = ClientScene.FindLocalObject(this._towerStats.Killer);
-                if (player) {
-                    NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
-                    playerStats.AddGold((int)this._towerStats.Worth);
-                    playerStats.AddTowerKill();
+                if (player != null) {
+                    NetworkPlayerOwner owner = player.GetComponent<NetworkPlayerOwner>();
+                    if (owner != null) {
+                        NetworkPlayerStats playerStats = owner.Owner.GetComponent<NetworkPlayerStats>();
+                        playerStats.AddGold((int)this._towerStats.Worth);
+                        playerStats.AddTowerKill();
+                    }
                 }
             }
         }

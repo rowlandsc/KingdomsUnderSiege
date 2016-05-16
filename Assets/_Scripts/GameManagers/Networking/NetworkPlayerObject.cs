@@ -326,13 +326,14 @@ public class NetworkPlayerObject : NetworkBehaviour {
     }
 
     [Command]
-    public void CmdArcherTowerAttack(NetworkIdentity tower, string towerAttackType, Vector3 position, Quaternion rotation, Vector3 velocity)
+    public void CmdArcherTowerAttack(NetworkIdentity tower, string towerAttackType, Vector3 position, Vector3 target, Vector3 velocity)
     {
         GameObject attack_ = Instantiate(
            PrefabCache.Instance.PrefabIndex[towerAttackType],
            position, 
-           rotation) as GameObject;
+           Quaternion.identity) as GameObject;
 
+        attack_.transform.LookAt(target);
         attack_.GetComponent<TowerAttackHit>().Tower = tower.gameObject;
         attack_.GetComponent<TowerAttackHit>().velocity = velocity;
 
@@ -357,12 +358,13 @@ public class NetworkPlayerObject : NetworkBehaviour {
     }
 
     [Command]
-    public void CmdMagicTowerAttack(NetworkIdentity tower, string towerAttackType, Vector3 position, Quaternion rotation, Vector3 velocity) {
+    public void CmdMagicTowerAttack(NetworkIdentity tower, string towerAttackType, Vector3 position, Vector3 target, Vector3 velocity) {
         GameObject attack_ = Instantiate(
            PrefabCache.Instance.PrefabIndex[towerAttackType],
            position,
-           rotation) as GameObject;
+           Quaternion.identity) as GameObject;
 
+        attack_.transform.LookAt(target);
         attack_.GetComponent<MagicTowerHit>().Tower = tower.gameObject;
         attack_.GetComponent<MagicTowerHit>().velocity = velocity;
 

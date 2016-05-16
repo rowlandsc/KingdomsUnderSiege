@@ -41,7 +41,7 @@ public class TowerAttack : MonoBehaviour {
                     GetComponent<NetworkIdentity>(),
                     attack.GetComponent<IShootable>().PrefabCacheId,
                     ShootPoint.transform.position,
-                    transform.rotation,
+                    target.transform.position,
                     (target.transform.position - ShootPoint.transform.position).normalized * profile.AttackSpeed);
                                
                 canAttack =false;

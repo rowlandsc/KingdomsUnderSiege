@@ -40,7 +40,7 @@ public class MagicTowerAttack : MonoBehaviour {
                     GetComponent<NetworkIdentity>(),
                     attack.GetComponent<IShootable>().PrefabCacheId,
                     ShootPoint.transform.position,
-                    Quaternion.identity,
+                    target.transform.position,
                     (target.transform.position - ShootPoint.transform.position).normalized * profile.AttackSpeed);
                 canAttack =false;
 			}
