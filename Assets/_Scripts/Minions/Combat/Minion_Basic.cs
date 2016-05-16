@@ -34,7 +34,7 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
         MinionManager.AddActiveMinion(this.gameObject);
         this._ps = this.GetComponent<ProfileSystem>();
         owner = GetComponent<NetworkPlayerOwner>();
-        if(owner && KUSNetworkManager.OverseerPlayer) owner.Owner = KUSNetworkManager.OverseerPlayer;
+        if(owner) owner.Owner = KUSNetworkManager.OverseerPlayer;
     }
 
     void OnEnable()
@@ -66,9 +66,9 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
 
                 // Do the attack damage
                 NetworkInstanceId netID = NetworkInstanceId.Invalid;
-                if (owner != null && owner.Owner != null) netID = owner.Owner.netId;
+                if (owner != null) netID = owner.Owner.netId;
                 KUSNetworkManager.HostPlayer.CmdMinionMelee(GetComponent<NetworkIdentity>(), transform.position, transform.rotation);
-                ProfileEffect hitEffect = new ProfileEffect(netID, healthPointsAdd: -1 * GetComponent<ProfileSystem>().MeleeDamageDealt);
+                ProfileEffect hitEffect = new ProfileEffect(GetComponent<NetworkIdentity>().netId, healthPointsAdd: -1 * GetComponent<ProfileSystem>().MeleeDamageDealt);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(target.GetComponent<NetworkIdentity>(), hitEffect);
             }
             else
@@ -122,8 +122,18 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
                 {
                     playerStats = player.GetComponent<NetworkPlayerStats>();
                 }
+                if (playerStats)
+                {
+                    playerStats.AddGold((int)this._ps.Worth);
+                    playerStats.AddMinionKill();
+                }
+            }
+            else
+            {
+                GameObject player = ClientScene.FindLocalObject(this._ps.Killer);
+                NetworkPlayerStats playerStats = player.GetComponent<NetworkPlayerOwner>().Owner.GetComponent<NetworkPlayerStats>();
                 playerStats.AddGold((int)this._ps.Worth);
-                playerStats.AddMinionKill();
+                playerStats.AddTowerKill();
             }
         }
 
