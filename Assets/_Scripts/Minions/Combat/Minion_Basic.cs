@@ -39,14 +39,14 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
 
     void OnEnable()
     {
-        RoundManager.AddListener("RoundEnded", OnDeath);
-        RegisterAsSelectable();
+        if (KUSNetworkManager.LocalPlayer.isServer) RoundManager.AddListener("RoundEnded", OnDeath);
+        if (KUSNetworkManager.OverseerPlayer.isLocalPlayer) RegisterAsSelectable();
     }
 
     void OnDisable()
     {
-        RoundManager.RemoveListener("RoundEnded", OnDeath);
-        UnregisterAsSelectable();
+        if (KUSNetworkManager.LocalPlayer.isServer) RoundManager.RemoveListener("RoundEnded", OnDeath);
+        if (KUSNetworkManager.OverseerPlayer.isLocalPlayer) UnregisterAsSelectable();
     }
 
     /**
@@ -67,6 +67,7 @@ public class Minion_Basic : NetworkBehaviour, IMinion_Attack, IKillable, ObjectS
                 // Do the attack damage
                 NetworkInstanceId netID = NetworkInstanceId.Invalid;
                 if (owner != null && owner.Owner != null) netID = owner.Owner.netId;
+                KUSNetworkManager.HostPlayer.CmdMinionMelee(GetComponent<NetworkIdentity>(), transform.position, transform.rotation);
                 ProfileEffect hitEffect = new ProfileEffect(netID, healthPointsAdd: -1 * GetComponent<ProfileSystem>().MeleeDamageDealt);
                 KUSNetworkManager.HostPlayer.CmdAddProfileEffect(target.GetComponent<NetworkIdentity>(), hitEffect);
             }

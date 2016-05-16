@@ -39,7 +39,7 @@ public class MagicTowerAttack : MonoBehaviour {
 
                 KUSNetworkManager.HostPlayer.CmdMagicTowerAttack(
                     GetComponent<NetworkIdentity>(),
-                    "MagicTowerShot",
+                    attack.GetComponent<IShootable>().PrefabCacheId,
                     this.gameObject.transform.position,
                     Quaternion.identity,
                     (target.transform.position - transform.position).normalized * profile.AttackSpeed);

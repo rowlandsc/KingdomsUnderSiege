@@ -234,7 +234,7 @@ public class ProfileSystem : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!KUSNetworkManager.HostPlayer.isLocalPlayer) return;
+        if (!KUSNetworkManager.LocalPlayer.isServer) return;
         
         UpdateEffects();
 
