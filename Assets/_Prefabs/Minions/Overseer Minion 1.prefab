@@ -622,7 +622,7 @@ MonoBehaviour:
   baseSuperDamageDealt: 0
   baseHealthRegen: 0
   baseMagicRegen: 0
-  baseMoveSpeed: 1.5
+  baseMoveSpeed: 3.5
   baseAttackSpeed: 1.5
   baseAttackFrequency: 1
   baseAttackRange: 2.2
